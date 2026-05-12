@@ -1,0 +1,353 @@
+{% liquid
+  assign section_bg = section.settings.background_color | default: '#F0F2F1'
+  assign ninja_logo = section.settings.super_ninja_logo
+  assign ninja_logo_asset = section.settings.super_ninja_logo_asset | strip
+  if ninja_logo_asset != blank
+    assign ninja_logo_url = ninja_logo_asset | asset_url
+  elsif ninja_logo != blank
+    assign ninja_logo_url = ninja_logo | image_url: width: 800
+  else
+    assign ninja_logo_url = 'logo-white.svg' | asset_url
+  endif
+  assign gradient_start = section.settings.ninja_gradient_start | default: '#F58F5E'
+  assign gradient_end = section.settings.ninja_gradient_end | default: '#FF641E'
+  assign accent_color = section.settings.accent_color | default: '#FF5000'
+  assign other_card_bg = section.settings.other_card_bg_image
+  if other_card_bg != blank
+    assign other_card_bg_url = other_card_bg | image_url: width: 1200
+  else
+    assign other_card_bg_url = 'card-bg.png' | asset_url
+  endif
+%}
+
+<section class="super-ninja-vs-rest" style="--snvr-bg: {{ section_bg }}; --snvr-gradient-start: {{ gradient_start }}; --snvr-gradient-end: {{ gradient_end }}; --snvr-accent: {{ accent_color }}; --snvr-other-card-bg: url('{{ other_card_bg_url }}');" {{ section.shopify_attributes }}>
+  <div class="super-ninja-vs-rest__inner">
+    <div class="super-ninja-vs-rest__head">
+      <{{ section.settings.heading_tag | default: 'h2' }}
+        class="super-ninja-vs-rest__heading"
+        style="--snvr-fs-d: {{ section.settings.heading_font_size_desktop | default: 64 }}px; --snvr-fs-m: {{ section.settings.heading_font_size_mobile | default: 40 }}px; --snvr-lh-d: {{ section.settings.heading_line_height_desktop | default: 1.0 }}; --snvr-lh-m: {{ section.settings.heading_line_height_mobile | default: 1.0 }}; font-weight: {{ section.settings.heading_font_weight | default: '700' }}; text-align: {{ section.settings.heading_text_align | default: 'center' }};"
+      >
+        {{ section.settings.heading_content }}
+      </{{ section.settings.heading_tag | default: 'h2' }}>
+
+      <div
+        class="super-ninja-vs-rest__text rte"
+        style="--snvr-text-fs-d: {{ section.settings.text_font_size_desktop | default: 24 }}px; --snvr-text-fs-m: {{ section.settings.text_font_size_mobile | default: 14 }}px; --snvr-text-lh-d: {{ section.settings.text_line_height_desktop | default: 1.0 }}; --snvr-text-lh-m: {{ section.settings.text_line_height_mobile | default: 1.0 }}; font-weight: {{ section.settings.text_font_weight | default: '400' }}; text-align: {{ section.settings.text_text_align | default: 'center' }};"
+      >
+        {{ section.settings.text_content }}
+      </div>
+    </div>
+
+    <div class="super-ninja-vs-rest__compare">
+      <div class="super-ninja-vs-rest__card super-ninja-vs-rest__card--features">
+        <h3 class="super-ninja-vs-rest__features-title">{{ section.settings.features_title }}</h3>
+        <ul class="super-ninja-vs-rest__rows super-ninja-vs-rest__features-list" role="list">
+          <li class="super-ninja-vs-rest__row super-ninja-vs-rest__row--feature">{{ section.settings.feature_1 }}</li>
+          <li class="super-ninja-vs-rest__row super-ninja-vs-rest__row--feature">{{ section.settings.feature_2 }}</li>
+          <li class="super-ninja-vs-rest__row super-ninja-vs-rest__row--feature">{{ section.settings.feature_3 }}</li>
+          <li class="super-ninja-vs-rest__row super-ninja-vs-rest__row--feature">{{ section.settings.feature_4 }}</li>
+          <li class="super-ninja-vs-rest__row super-ninja-vs-rest__row--feature">{{ section.settings.feature_5 }}</li>
+        </ul>
+      </div>
+
+      <div class="super-ninja-vs-rest__card super-ninja-vs-rest__card--ninja">
+        <div class="super-ninja-vs-rest__logo-wrap">
+          <img src="{{ ninja_logo_url }}" alt="{{ section.settings.super_ninja_logo_alt | default: 'Super Ninja' }}" width="314" height="96" class="super-ninja-vs-rest__logo" loading="lazy">
+        </div>
+        <div class="super-ninja-vs-rest__rows">
+          <div class="super-ninja-vs-rest__row">
+            <span class="super-ninja-vs-rest__row-label">{{ section.settings.feature_1 }}</span>
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true" class="super-ninja-vs-rest__row-icon">
+              <path d="M15 0L17.5081 3.29837L21.1341 1.31199L22.0935 5.35014L26.2114 5.01907L25.4512 9.10218L29.3455 10.4796L27 13.9006L30 16.7534L26.4756 18.9155L28.065 22.7493L23.9675 23.2847L23.8659 27.4373L19.9106 26.252L18.1382 30L15 27.2984L11.8659 30L10.0935 26.252L6.13414 27.4373L6.03252 23.2847L1.93903 22.7493L3.52439 18.9155L0 16.7534L3 13.9006L0.654478 10.4796L4.55285 9.10218L3.79269 5.01907L7.90651 5.35014L8.86585 1.31199L12.4919 3.29837L15 0Z" fill="#F0F2F1"/>
+              <path d="M22.5 11L13.0152 18L8.5 14.6677" stroke="var(--snvr-accent, #FF5000)" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="super-ninja-vs-rest__row">
+            <span class="super-ninja-vs-rest__row-label">{{ section.settings.feature_2 }}</span>
+            <span class="super-ninja-vs-rest__row-text">{{ section.settings.ninja_row_2 }}</span>
+          </div>
+          <div class="super-ninja-vs-rest__row">
+            <span class="super-ninja-vs-rest__row-label">{{ section.settings.feature_3 }}</span>
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true" class="super-ninja-vs-rest__row-icon">
+              <path d="M15 0L17.5081 3.29837L21.1341 1.31199L22.0935 5.35014L26.2114 5.01907L25.4512 9.10218L29.3455 10.4796L27 13.9006L30 16.7534L26.4756 18.9155L28.065 22.7493L23.9675 23.2847L23.8659 27.4373L19.9106 26.252L18.1382 30L15 27.2984L11.8659 30L10.0935 26.252L6.13414 27.4373L6.03252 23.2847L1.93903 22.7493L3.52439 18.9155L0 16.7534L3 13.9006L0.654478 10.4796L4.55285 9.10218L3.79269 5.01907L7.90651 5.35014L8.86585 1.31199L12.4919 3.29837L15 0Z" fill="#F0F2F1"/>
+              <path d="M22.5 11L13.0152 18L8.5 14.6677" stroke="var(--snvr-accent, #FF5000)" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="super-ninja-vs-rest__row">
+            <span class="super-ninja-vs-rest__row-label">{{ section.settings.feature_4 }}</span>
+            <span class="super-ninja-vs-rest__row-text">{{ section.settings.ninja_row_4 }}</span>
+          </div>
+          <div class="super-ninja-vs-rest__row">
+            <span class="super-ninja-vs-rest__row-label">{{ section.settings.feature_5 }}</span>
+            <span class="super-ninja-vs-rest__row-text">{{ section.settings.ninja_row_5 }}</span>
+          </div>
+        </div>
+        <a href="{{ section.settings.ninja_cta_url | default: '/products/super-ninja-fruit-fly-trap' }}" class="super-ninja-vs-rest__cta">
+          {{ section.settings.ninja_cta_label }}
+        </a>
+      </div>
+
+      <div class="super-ninja-vs-rest__card super-ninja-vs-rest__card--other">
+        <h3 class="super-ninja-vs-rest__other-title">
+          {{ section.settings.other_brand_title_line_1 }}<br>
+          {{ section.settings.other_brand_title_line_2 }}
+        </h3>
+        <div class="super-ninja-vs-rest__rows">
+          <div class="super-ninja-vs-rest__row">
+            <span class="super-ninja-vs-rest__row-label">{{ section.settings.feature_1 }}</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="super-ninja-vs-rest__row-icon">
+              <path d="M15.3143 4.66789C14.3711 6.06949 12.5279 9.17989 10.6583 12.4223C10.6439 12.4031 10.6271 12.3815 10.6127 12.3623C7.97747 8.84389 6.54707 7.03909 4.27427 7.08229C3.64547 7.09429 2.20067 7.31749 3.77987 9.19429C4.47107 10.0175 6.67667 12.6935 8.93507 15.4367C7.49987 17.9711 6.22067 20.2751 5.54627 21.5519C5.30147 22.0151 5.63747 22.5695 6.16067 22.5695H7.23107C7.63907 22.5695 8.01827 22.3655 8.24147 22.0223C8.74067 21.2543 9.76547 19.7687 11.0159 17.9711C12.5183 19.7999 13.8239 21.3911 14.4311 22.1279C14.6615 22.4063 15.0023 22.5671 15.3623 22.5671H16.8167C17.3711 22.5671 17.6903 21.9383 17.3615 21.4895C16.3487 20.1119 14.5247 17.6351 12.8375 15.3551C15.4847 11.5655 18.4727 7.30789 19.8047 5.31349C22.5599 1.18549 18.8975 -0.669708 15.3095 4.66309L15.3143 4.66789Z" fill="var(--snvr-accent, #FF5000)"/>
+            </svg>
+          </div>
+          <div class="super-ninja-vs-rest__row">
+            <span class="super-ninja-vs-rest__row-label">{{ section.settings.feature_2 }}</span>
+            <span class="super-ninja-vs-rest__row-text">{{ section.settings.other_row_2 }}</span>
+          </div>
+          <div class="super-ninja-vs-rest__row">
+            <span class="super-ninja-vs-rest__row-label">{{ section.settings.feature_3 }}</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="super-ninja-vs-rest__row-icon">
+              <path d="M15.3143 4.66789C14.3711 6.06949 12.5279 9.17989 10.6583 12.4223C10.6439 12.4031 10.6271 12.3815 10.6127 12.3623C7.97747 8.84389 6.54707 7.03909 4.27427 7.08229C3.64547 7.09429 2.20067 7.31749 3.77987 9.19429C4.47107 10.0175 6.67667 12.6935 8.93507 15.4367C7.49987 17.9711 6.22067 20.2751 5.54627 21.5519C5.30147 22.0151 5.63747 22.5695 6.16067 22.5695H7.23107C7.63907 22.5695 8.01827 22.3655 8.24147 22.0223C8.74067 21.2543 9.76547 19.7687 11.0159 17.9711C12.5183 19.7999 13.8239 21.3911 14.4311 22.1279C14.6615 22.4063 15.0023 22.5671 15.3623 22.5671H16.8167C17.3711 22.5671 17.6903 21.9383 17.3615 21.4895C16.3487 20.1119 14.5247 17.6351 12.8375 15.3551C15.4847 11.5655 18.4727 7.30789 19.8047 5.31349C22.5599 1.18549 18.8975 -0.669708 15.3095 4.66309L15.3143 4.66789Z" fill="var(--snvr-accent, #FF5000)"/>
+            </svg>
+          </div>
+          <div class="super-ninja-vs-rest__row">
+            <span class="super-ninja-vs-rest__row-label">{{ section.settings.feature_4 }}</span>
+            <span class="super-ninja-vs-rest__row-text">{{ section.settings.other_row_4 }}</span>
+          </div>
+          <div class="super-ninja-vs-rest__row">
+            <span class="super-ninja-vs-rest__row-label">{{ section.settings.feature_5 }}</span>
+            <span class="super-ninja-vs-rest__row-text">{{ section.settings.other_row_5 }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .super-ninja-vs-rest { background: var(--snvr-bg); padding: 56px 0; }
+  .super-ninja-vs-rest__inner { width: 100%; max-width: 1312px; margin: 0 auto; padding: 0 16px; }
+  .super-ninja-vs-rest__head { text-align: center; margin-bottom: 40px; }
+  .super-ninja-vs-rest__heading { margin: 0; font-family: var(--font-heading--family); font-size: var(--snvr-fs-d, 64px); line-height: var(--snvr-lh-d, 1); color: #1C1C1C; text-transform: uppercase; }
+  .super-ninja-vs-rest__text { margin-top: 12px; font-family: var(--font-body--family); font-size: var(--snvr-text-fs-d, 24px); line-height: var(--snvr-text-lh-d, 1); color: #444444; }
+  .super-ninja-vs-rest__text p { margin: 0; }
+  .super-ninja-vs-rest__compare { display: flex; gap: 28px; align-items: stretch; justify-content: center; }
+  .super-ninja-vs-rest__features-title { margin: 0; min-height: 132px; display: flex; align-items: center; font-family: var(--font-heading--family); font-size: 36px; line-height: 1; font-weight: 700; text-transform: uppercase; color: #1C1C1C; }
+  .super-ninja-vs-rest__features-list { list-style: none; padding: 0; margin: 0; }
+  .super-ninja-vs-rest__features-list .super-ninja-vs-rest__row--feature { 
+    border-bottom-color: rgba(28, 28, 28, 0.35); 
+    justify-content: flex-start; 
+    text-align: left; 
+    padding-left: 0; 
+    color: #1C1C1C;
+    font-family: var(--font-heading--family);
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 100%;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+  .super-ninja-vs-rest__features-list .super-ninja-vs-rest__row--feature:last-child { border-bottom: 0; }
+  .super-ninja-vs-rest__card {max-width: 313px; width: 100%; border: 3px solid #c5c5c5; padding: 28px 28px 36px; display: flex; flex-direction: column; min-height: 680px; }
+  .super-ninja-vs-rest__card--features { border: 0; background: transparent; padding-left: 0; padding-right: 12px; }
+  .super-ninja-vs-rest__card--ninja { background: linear-gradient(180deg, var(--snvr-gradient-start, #F58F5E) 0%, var(--snvr-gradient-end, #FF641E) 100%); border-color: transparent; }
+  .super-ninja-vs-rest__card--other {
+    background: var(--snvr-other-card-bg) center bottom / cover no-repeat, #f0f2f1;
+  }
+  .super-ninja-vs-rest__logo-wrap, .super-ninja-vs-rest__other-title { min-height: 132px; display: flex; align-items: center; justify-content: center; }
+  .super-ninja-vs-rest__logo { max-width: 314px; width: 100%; height: auto; display: block; }
+  .super-ninja-vs-rest__other-title { margin: 0; text-align: center; color: #aeb0b3; font-family: var(--font-heading--family); font-size: 39px; line-height: 1; font-weight: 400; text-transform: uppercase; }
+  .super-ninja-vs-rest__rows { margin-top: 0; }
+  .super-ninja-vs-rest__row { min-height: 86px; border-bottom: 4px solid rgba(240, 242, 241, 0.5); display: flex; align-items: center; justify-content: space-between; padding: 10px 8px; text-transform: uppercase; gap: 12px; }
+  .super-ninja-vs-rest__card--other .super-ninja-vs-rest__row { 
+    border-bottom-color: var(--snvr-accent-rgba, rgba(255, 80, 0, 0.45));
+  }
+  .super-ninja-vs-rest__rows .super-ninja-vs-rest__row:last-child { border-bottom: 0; }
+  .super-ninja-vs-rest__row-label { font-family: var(--font-heading--family); font-size: 24px; line-height: 100%; font-weight: 700; flex: 1; }
+  .super-ninja-vs-rest__card--ninja .super-ninja-vs-rest__row-label { color: #f0f2f1; }
+  .super-ninja-vs-rest__card--other .super-ninja-vs-rest__row-label { color: #1C1C1C; }
+  .super-ninja-vs-rest__row-text { font-family: var(--font-heading--family); font-size: 24px; line-height: 100%; font-weight: 700; flex-shrink: 0; }
+  .super-ninja-vs-rest__card--ninja .super-ninja-vs-rest__row-text { color: #f0f2f1; }
+  .super-ninja-vs-rest__card--other .super-ninja-vs-rest__row-text { color: var(--snvr-accent, #ff5000); }
+  .super-ninja-vs-rest__row-icon { flex-shrink: 0; display: block; }
+  .super-ninja-vs-rest__cta { margin-top: auto; min-height: 60px; background: #f0f2f1; color: var(--snvr-accent, #ff5000); font-family: var(--font-heading--family); font-size: 24px; line-height: 1; font-weight: 700; text-transform: uppercase; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; width: 100%; }
+  .super-ninja-vs-rest__heading p { margin: 0; }
+
+  .super-ninja-vs-rest__card--ninja .super-ninja-vs-rest__row, .super-ninja-vs-rest__card--other .super-ninja-vs-rest__row {
+    justify-content: center;
+  }
+  @media screen and (min-width: 768px) {
+   .super-ninja-vs-rest__row-label{
+    display: none;
+   }
+  }
+  @media screen and (max-width: 768px) {
+    .super-ninja-vs-rest__card--features { display: none;  }
+    .super-ninja-vs-rest__compare { justify-content: center; gap: 14px; }
+    .super-ninja-vs-rest__card--ninja .super-ninja-vs-rest__row, .super-ninja-vs-rest__card--other .super-ninja-vs-rest__row {
+    justify-content: center;
+    flex-direction: column;
+  }
+  .super-ninja-vs-rest__cta{
+    margin-top:20px;
+  }
+  .super-ninja-vs-rest__row-label{
+    font-size: 14px;
+    line-height: 1;
+    flex:initial
+  }
+  .super-ninja-vs-rest__row-text{
+    font-size: 20px;
+    text-align: center;
+  }
+  .super-ninja-vs-rest__rows .super-ninja-vs-rest__row:last-child{
+    gap:6px;
+  }
+    .super-ninja-vs-rest__heading{
+      font-size: 40px;
+    }
+    .super-ninja-vs-rest__text{
+      font-size: 14px;
+    }
+  }
+
+</style>
+
+<script>
+  (function() {
+    const section = document.querySelector('.super-ninja-vs-rest');
+    if (!section) return;
+    
+    const accentColor = getComputedStyle(section).getPropertyValue('--snvr-accent').trim() || '#FF5000';
+    
+    // Convert hex to rgba
+    function hexToRgba(hex, alpha) {
+      const r = parseInt(hex.slice(1, 3), 16);
+      const g = parseInt(hex.slice(3, 5), 16);
+      const b = parseInt(hex.slice(5, 7), 16);
+      return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    }
+    
+    if (accentColor.startsWith('#')) {
+      const rgba = hexToRgba(accentColor, 0.45);
+      section.style.setProperty('--snvr-accent-rgba', rgba);
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Super Ninja vs The Rest",
+  "tag": "section",
+  "class": "section-super-ninja-vs-rest",
+  "settings": [
+    { "type": "color", "id": "background_color", "label": "Background color", "default": "#F0F2F1" },
+    { "type": "header", "content": "Other card (right)" },
+    { "type": "image_picker", "id": "other_card_bg_image", "label": "Card background image", "info": "Default: card-bg.png (insects at bottom)" },
+
+    { "type": "header", "content": "Heading and text" },
+    { "type": "inline_richtext", "id": "heading_content", "label": "Heading", "default": "Super Ninja vs The Rest" },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading HTML tag",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "p", "label": "P" },
+        { "value": "span", "label": "Span" }
+      ],
+      "default": "h2"
+    },
+    { "type": "range", "id": "heading_font_size_desktop", "label": "Heading size desktop", "min": 12, "max": 90, "step": 1, "unit": "px", "default": 64 },
+    { "type": "range", "id": "heading_font_size_mobile", "label": "Heading size mobile", "min": 12, "max": 60, "step": 1, "unit": "px", "default": 40 },
+    { "type": "range", "id": "heading_line_height_desktop", "label": "Heading line-height desktop", "min": 0.8, "max": 2.5, "step": 0.1, "default": 1.0 },
+    { "type": "range", "id": "heading_line_height_mobile", "label": "Heading line-height mobile", "min": 0.8, "max": 2.5, "step": 0.1, "default": 1.0 },
+    {
+      "type": "select",
+      "id": "heading_font_weight",
+      "label": "Heading weight",
+      "options": [
+        { "value": "400", "label": "400" },
+        { "value": "500", "label": "500" },
+        { "value": "600", "label": "600" },
+        { "value": "700", "label": "700" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "select",
+      "id": "heading_text_align",
+      "label": "Heading align",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    { "type": "richtext", "id": "text_content", "label": "Text", "default": "<p>See why Super Ninja is the best choice.</p>" },
+    { "type": "range", "id": "text_font_size_desktop", "label": "Text size desktop", "min": 12, "max": 40, "step": 1, "unit": "px", "default": 24 },
+    { "type": "range", "id": "text_font_size_mobile", "label": "Text size mobile", "min": 12, "max": 28, "step": 1, "unit": "px", "default": 14 },
+    { "type": "range", "id": "text_line_height_desktop", "label": "Text line-height desktop", "min": 0.8, "max": 2.5, "step": 0.1, "default": 1.0 },
+    { "type": "range", "id": "text_line_height_mobile", "label": "Text line-height mobile", "min": 0.8, "max": 2.5, "step": 0.1, "default": 1.0 },
+    {
+      "type": "select",
+      "id": "text_font_weight",
+      "label": "Text weight",
+      "options": [
+        { "value": "400", "label": "400" },
+        { "value": "500", "label": "500" },
+        { "value": "600", "label": "600" },
+        { "value": "700", "label": "700" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "select",
+      "id": "text_text_align",
+      "label": "Text align",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+
+    { "type": "header", "content": "Features column" },
+    { "type": "text", "id": "features_title", "label": "Features title", "default": "FEATURES" },
+    { "type": "text", "id": "feature_1", "label": "Feature line 1", "default": "EFFECTIVENESS" },
+    { "type": "text", "id": "feature_2", "label": "Feature line 2", "default": "EFFORT REQUIRED" },
+    { "type": "text", "id": "feature_3", "label": "Feature line 3", "default": "SAFETY (PETS/KIDS)" },
+    { "type": "text", "id": "feature_4", "label": "Feature line 4", "default": "MESS LEVEL" },
+    { "type": "text", "id": "feature_5", "label": "Feature line 5", "default": "DURATION" },
+
+    { "type": "header", "content": "Super Ninja card" },
+    { "type": "image_picker", "id": "super_ninja_logo", "label": "Logo", "info": "Default: logo-white.svg" },
+    { "type": "text", "id": "super_ninja_logo_asset", "label": "Logo asset filename", "info": "Optional. Example: logo-orange.svg (from assets folder)." },
+    { "type": "text", "id": "super_ninja_logo_alt", "label": "Logo alt text", "default": "Super Ninja" },
+    { "type": "color", "id": "ninja_gradient_start", "label": "Gradient start color", "default": "#F58F5E", "info": "Top color of the gradient background" },
+    { "type": "color", "id": "ninja_gradient_end", "label": "Gradient end color", "default": "#FF641E", "info": "Bottom color of the gradient background" },
+    { "type": "color", "id": "accent_color", "label": "Accent color", "default": "#FF5000", "info": "Color for icons, text highlights, and CTA in other brands card" },
+    { "type": "text", "id": "ninja_row_2", "label": "Row 2", "default": "MINIMAL" },
+    { "type": "text", "id": "ninja_row_4", "label": "Row 4", "default": "NO MESS" },
+    { "type": "text", "id": "ninja_row_5", "label": "Row 5", "default": "30 DAYS LONG DURATION" },
+    { "type": "text", "id": "ninja_cta_label", "label": "CTA label", "default": "ADD TO CART" },
+    { "type": "url", "id": "ninja_cta_url", "label": "CTA link" },
+
+    { "type": "header", "content": "Other brands card" },
+    { "type": "text", "id": "other_brand_title_line_1", "label": "Title line 1", "default": "OTHER" },
+    { "type": "text", "id": "other_brand_title_line_2", "label": "Title line 2", "default": "BRANDS" },
+    { "type": "text", "id": "other_row_2", "label": "Row 2", "default": "HIGH" },
+    { "type": "text", "id": "other_row_4", "label": "Row 4", "default": "HIGH MESS LEVEL" },
+    { "type": "text", "id": "other_row_5", "label": "Row 5", "default": "2-3 DAYS DURATION" }
+  ],
+  "presets": [
+    {
+      "name": "Super Ninja vs The Rest"
+    }
+  ]
+}
+{% endschema %}

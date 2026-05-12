@@ -1,0 +1,766 @@
+{% comment %}
+  Hero CTA section – similar to home hero but with background image and decorative SVG.
+  Classes: hero-cta, hero-cta__bg, hero-cta__inner, hero-cta__box
+  Modifiers: hero-cta--x-left|center|right, hero-cta--y-top|middle|bottom
+{% endcomment %}
+
+{% liquid
+  assign x_align = section.settings.box_h_align
+  assign y_align = section.settings.box_v_align
+  comment
+    Section background (the section itself: color or image)
+  endcomment
+  assign section_bg_color = section.settings.section_background_color | default: '#f0f0f0'
+  assign section_bg_image = section.settings.section_background_image
+  assign section_bg_image_mobile = section.settings.section_background_image_mobile
+  if section_bg_image != blank
+    assign section_bg_url_desktop = section_bg_image | image_url: width: 1920
+  else
+    assign section_bg_url_desktop = 'bg-last.png' | asset_url
+  endif
+  if section_bg_image_mobile != blank
+    assign section_bg_url_mobile = section_bg_image_mobile | image_url: width: 1200
+  else
+    assign section_bg_url_mobile = 'bg-last.png' | asset_url
+  endif
+  assign section_has_bg_image = true
+  assign section_has_bg_image_mobile = true
+  comment
+    Content box background (the red box: color or image)
+  endcomment
+  assign box_bg_color = section.settings.background_color | default: 'rgba(0,0,0,0)'
+  assign box_bg_image = section.settings.background_image
+  assign box_has_bg_image = false
+  if box_bg_image != blank
+    assign box_has_bg_image = true
+  endif
+%}
+
+<section class="hero-cta hero-cta--x-{{ x_align }} hero-cta--y-{{ y_align }}" {{ section.shopify_attributes }}>
+  <div
+    class="hero-cta__bg"
+    style="--hero-cta-bg-color: {{ section_bg_color }}; --hero-cta-bg-image: url({{ section_bg_url_desktop }}); --hero-cta-bg-image-mobile: url({{ section_bg_url_mobile }});"
+    role="{% if section_has_bg_image or section_has_bg_image_mobile %}img{% endif %}"
+    aria-label="{% if section_bg_image != blank %}{{ section_bg_image.alt | default: 'Section background' }}{% elsif section_bg_image_mobile != blank %}{{ section_bg_image_mobile.alt | default: 'Section background' }}{% else %}Section background{% endif %}"></div>
+
+  <div class="hero-cta__inner">
+    <div class="hero-cta__decorative-svg" aria-hidden="true">
+      <svg width="1125" height="650" viewBox="0 0 1125 650" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g filter="url(#filter0_f_1_9124)">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M253.024 553.026C180.375 508.414 153.912 414.639 150.286 329.635C146.763 247.03 175.763 165.044 233.983 106.558C288.878 51.4122 479.448 86.1199 556.164 72.4059C648.416 55.9147 766.946 42.3236 846.479 92.3056C932.206 146.18 971.6 253.768 974.545 354.765C977.382 452.056 941.558 556.237 861.618 611.489C790.594 660.578 678.476 570.892 592.007 573.338C512.38 575.59 321.024 594.784 253.024 553.026Z" fill="#F0F2F1"/>
+        </g>
+        <defs>
+          <filter id="filter0_f_1_9124" x="0" y="-92.6286" width="1124.7" height="868.831" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+            <feGaussianBlur stdDeviation="75" result="effect1_foregroundBlur_1_9124"/>
+          </filter>
+        </defs>
+      </svg>
+    </div>
+    <div class="hero-cta__box" style="{% if box_has_bg_image %}background-image: url({{ box_bg_image | image_url: width: 1200 }}); background-size: cover; background-position: center;{% else %}background-color: {{ box_bg_color }};{% endif %}">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'trust_badge' %}
+            <div
+              class="hero-cta__trust-badge"
+              style="text-align: {{ block.settings.badge_align }};"
+              {{ block.shopify_attributes }}>
+              <span class="hero-cta__stars" aria-hidden="true">
+                {% for i in (1..5) %}
+                  <svg
+                    class="hero-cta__star"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    focusable="false">
+                    <path d="M13.3057 0.843656C13.0648 0.328088 12.5558 0 11.9967 0C11.4377 0 10.9332 0.328088 10.6878 0.843656L7.76537 7.04452L1.2388 8.03816C0.693401 8.12253 0.238904 8.51623 0.0707399 9.05524C-0.0974239 9.59424 0.0389251 10.1895 0.429792 10.5879L5.16565 15.4201L4.04759 22.2491C3.95669 22.8115 4.18394 23.3833 4.63389 23.7161C5.08384 24.0489 5.67923 24.0911 6.17009 23.8239L12.0013 20.6133L17.8325 23.8239C18.3233 24.0911 18.9187 24.0536 19.3687 23.7161C19.8186 23.3786 20.0459 22.8115 19.955 22.2491L18.8324 15.4201L23.5682 10.5879C23.9591 10.1895 24.1 9.59424 23.9273 9.05524C23.7546 8.51623 23.3046 8.12253 22.7592 8.03816L16.2281 7.04452L13.3057 0.843656Z" fill="#FF5000" />
+                  </svg>
+                {% endfor %}
+              </span>
+              <span class="hero-cta__trust-text">{{ block.settings.text }}</span>
+            </div>
+
+          {% when 'heading' %}
+            {% liquid
+              assign tag = block.settings.tag | default: 'h2'
+              assign fs_d = block.settings.font_size_desktop | default: 32
+              assign fs_m = block.settings.font_size_mobile | default: 24
+              assign lh_d = block.settings.line_height_desktop | default: 1.2
+              assign lh_m = block.settings.line_height_mobile | default: 1.3
+              assign fw = block.settings.font_weight | default: '700'
+              assign align = block.settings.text_align | default: 'center'
+            %}
+            <{{ tag }}
+              class="hero-cta__heading"
+              style="--hero-cta-fs-d: {{ fs_d }}px; --hero-cta-fs-m: {{ fs_m }}px; --hero-cta-lh-d: {{ lh_d }}; --hero-cta-lh-m: {{ lh_m }}; font-weight: {{ fw }}; text-align: {{ align }};"
+              {{ block.shopify_attributes }}>
+              {{ block.settings.content }}
+            </{{ tag }}>
+
+          {% when 'text' %}
+            {% liquid
+              assign fs_d = block.settings.font_size_desktop | default: 18
+              assign fs_m = block.settings.font_size_mobile | default: 16
+              assign lh_d = block.settings.line_height_desktop | default: 1.5
+              assign lh_m = block.settings.line_height_mobile | default: 1.5
+              assign fw = block.settings.font_weight | default: '400'
+              assign align = block.settings.text_align | default: 'center'
+            %}
+            <div
+              class="hero-cta__text rte"
+              style="--hero-cta-text-fs-d: {{ fs_d }}px; --hero-cta-text-fs-m: {{ fs_m }}px; --hero-cta-text-lh-d: {{ lh_d }}; --hero-cta-text-lh-m: {{ lh_m }}; font-weight: {{ fw }}; text-align: {{ align }};"
+              {{ block.shopify_attributes }}>
+              {{ block.settings.content }}
+            </div>
+
+          {% when 'button' %}
+            <div class="hero-cta__button-wrap" {{ block.shopify_attributes }}>
+              <a href="{{ block.settings.url | default: '#' }}" class="hero-cta__button btn btn--hero">
+                {{ block.settings.label | default: 'Shop now' }}
+              </a>
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Hero CTA – layout & background */
+  .hero-cta {
+    position: relative;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    padding: 170px 16px;
+  }
+  .hero-cta__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-color: var(--hero-cta-bg-color);
+    background-image: var(--hero-cta-bg-image);
+    background-size: cover;
+    background-position: center;
+  }
+  .hero-cta__inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1312px;
+    margin: 0 auto;
+    display: flex;
+    box-sizing: border-box;
+  }
+  .hero-cta--x-left .hero-cta__inner {
+    justify-content: flex-start;
+  }
+  .hero-cta--x-center .hero-cta__inner {
+    justify-content: center;
+  }
+  .hero-cta--x-right .hero-cta__inner {
+    justify-content: flex-end;
+  }
+  .hero-cta--y-top .hero-cta__inner {
+    align-items: flex-start;
+  }
+  .hero-cta--y-middle .hero-cta__inner {
+    align-items: center;
+  }
+  .hero-cta--y-bottom .hero-cta__inner {
+    align-items: flex-end;
+  }
+  .hero-cta__decorative-svg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-cta__decorative-svg svg {
+    width: 100%;
+  }
+  .hero-cta__box {
+    position: relative;
+    z-index: 2;
+    max-width: 737px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 2.5rem 2rem;
+    box-sizing: border-box;
+  }
+  .hero-cta--x-left .hero-cta__box {
+    align-items: flex-start;
+  }
+  .hero-cta--x-center .hero-cta__box {
+    align-items: center;
+  }
+  .hero-cta--x-right .hero-cta__box {
+    align-items: flex-end;
+  }
+
+  /* Rating line – 5 stars + text */
+  .hero-cta__trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    font-size: 16px;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  .hero-cta__stars {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+  .hero-cta__star {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+  .hero-cta__star path {
+    fill: #FF5000;
+  }
+  .hero-cta__trust-text {
+    font-size: 16px;
+    line-height: 1;
+    color: #000;
+  }
+  .hero-cta__trust-text strong {
+    font-weight: 700;
+  }
+
+  /* Hero heading – same voice as button (condensed) */
+  .hero-cta__heading {
+    margin: 0;
+    color: #222222;
+    font-family: var(--font-heading--family);
+    font-size: var(--hero-cta-fs-d, 32px);
+    line-height: var(--hero-cta-lh-d, 1.2);
+    text-transform: uppercase;
+  }
+  .hero-cta__heading p {
+    margin: 0;
+  }
+
+  /* Secondary text */
+  .hero-cta__text {
+    margin: 0;
+    font-size: var(--hero-cta-text-fs-d, 18px);
+    line-height: var(--hero-cta-text-lh-d, 1.5);
+    color: #000;
+  }
+  .hero-cta__text p {
+    margin: 0 0 0.5em;
+  }
+  .hero-cta__text p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* CTA button */
+  .hero-cta__button-wrap {
+    margin-top: 0.25rem;
+  }
+  .hero-cta__button,
+  a.hero-cta__button.btn.btn--hero {
+    font-family: var(--button-font-family-primary) !important;
+    display: inline-block;
+    background-color: #FF5000;
+    color: #FFFFFF;
+    font-size: 24px;
+    line-height: 1;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 16px 48px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: opacity 0.2s ease, background-color 0.2s ease;
+  }
+  .hero-cta__button:hover,
+  a.hero-cta__button.btn.btn--hero:hover {
+    background-color: #e64800;
+    color: #FFFFFF;
+    opacity: 0.95;
+  }
+
+  /* Mobile: alinhamento fixo (topo, centro, textos centralizados) – !important para sobrescrever Theme Editor */
+  @media screen and (max-width: 749px) {
+    .hero-cta {
+      min-height: 50vh;
+      padding: 170px 16px;
+    }
+    .hero-cta__bg {
+      background-image: var(--hero-cta-bg-image-mobile, var(--hero-cta-bg-image)) !important;
+    }
+    .hero-cta__inner {
+      padding: 0 !important;
+      align-items: flex-start !important;
+      justify-content: center !important;
+    }
+    .hero-cta__box {
+      max-width: 100% !important;
+      gap: 0.75rem !important;
+      padding: 0 !important;
+      align-items: center !important;
+    }
+    .hero-cta__trust-badge {
+      justify-content: center !important;
+    }
+    .hero-cta__heading {
+      font-size: var(--hero-cta-fs-m, 24px) !important;
+      line-height: var(--hero-cta-lh-m, 1.25) !important;
+      text-align: center !important;
+    }
+    .hero-cta__text {
+      font-size: var(--hero-cta-text-fs-m, 16px) !important;
+      line-height: var(--hero-cta-text-lh-m, 1.5) !important;
+      text-align: center !important;
+    }
+    .hero-cta__button-wrap {
+      display: flex !important;
+      justify-content: center !important;
+    }
+    .hero-cta__button,
+    a.hero-cta__button.btn.btn--hero {
+      font-size: 18px !important;
+      padding: 0.875rem 1.25rem !important;
+    }
+    .hero-cta__trust-text {
+      font-size: 12px !important;
+    }
+    .hero-cta__star {
+      width: 16px !important;
+      height: 16px !important;
+    }
+    .hero-cta__decorative-svg {
+      width: 190%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Hero CTA",
+    "tag": "section",
+    "class": "section-hero-cta",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section background"
+      },
+      {
+        "type": "color",
+        "id": "section_background_color",
+        "label": "Section background color",
+        "default": "#f0f0f0"
+      },
+      {
+        "type": "image_picker",
+        "id": "section_background_image",
+        "label": "Section background image",
+        "info": "If set, image is used instead of section background color. Default: bg-last.png"
+      },
+      {
+        "type": "image_picker",
+        "id": "section_background_image_mobile",
+        "label": "Section background image (mobile)",
+        "info": "Optional. If set, this image is used on mobile instead of the section background image above."
+      },
+      {
+        "type": "header",
+        "content": "Content box background"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Box background color",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Box background image",
+        "info": "If set, image is used instead of box background color."
+      },
+      {
+        "type": "header",
+        "content": "Content box alignment"
+      },
+      {
+        "type": "select",
+        "id": "box_h_align",
+        "label": "Horizontal alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+            "default": "center"
+          },
+          {
+            "type": "select",
+            "id": "box_v_align",
+            "label": "Vertical alignment",
+            "options": [
+              {
+                "value": "top",
+                "label": "Top"
+              },
+              {
+                "value": "middle",
+                "label": "Middle"
+              },
+              {
+                "value": "bottom",
+                "label": "Bottom"
+              }
+            ],
+            "default": "middle"
+          }
+    ],
+    "blocks": [
+      {
+        "type": "trust_badge",
+        "name": "Trust badge",
+        "settings": [
+          {
+            "type": "inline_richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "Trusted by <strong>1000+</strong> happy customers"
+          },
+          {
+            "type": "select",
+            "id": "badge_align",
+            "label": "Badge alignment",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ],
+              "default": "center"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+        "name": "Heading",
+        "settings": [
+          {
+            "type": "inline_richtext",
+            "id": "content",
+            "label": "Content",
+            "default": "Fob on pests, channel where it matters."
+          },
+          {
+            "type": "select",
+            "id": "tag",
+            "label": "HTML tag",
+            "options": [
+              {
+                "value": "h1",
+                "label": "H1"
+              },
+              {
+                "value": "h2",
+                "label": "H2"
+              },
+              {
+                "value": "h3",
+                "label": "H3"
+              },
+              {
+                "value": "h4",
+                "label": "H4"
+              },
+              {
+                "value": "h5",
+                "label": "H5"
+              },
+              {
+                "value": "p",
+                "label": "P"
+              },
+              {
+                "value": "span",
+                "label": "Span"
+              }
+            ],
+            "default": "h2"
+          },
+          {
+            "type": "range",
+            "id": "font_size_desktop",
+            "label": "Font size (desktop)",
+            "min": 12,
+            "max": 72,
+            "step": 1,
+            "unit": "px",
+            "default": 32
+          },
+          {
+            "type": "range",
+            "id": "font_size_mobile",
+            "label": "Font size (mobile)",
+            "min": 12,
+            "max": 48,
+            "step": 1,
+            "unit": "px",
+            "default": 24
+          },
+          {
+            "type": "range",
+            "id": "line_height_desktop",
+            "label": "Line height (desktop)",
+            "min": 0.8,
+            "max": 2.5,
+            "step": 0.1,
+            "default": 1.2
+          },
+          {
+            "type": "range",
+            "id": "line_height_mobile",
+            "label": "Line height (mobile)",
+            "min": 0.8,
+            "max": 2.5,
+            "step": 0.1,
+            "default": 1.3
+          },
+          {
+            "type": "select",
+            "id": "font_weight",
+            "label": "Font weight",
+            "options": [
+              {
+                "value": "400",
+                "label": "400"
+              },
+              {
+                "value": "500",
+                "label": "500"
+              },
+              {
+                "value": "600",
+                "label": "600"
+              },
+              {
+                "value": "700",
+                "label": "700"
+              }
+            ],
+            "default": "700"
+          },
+          {
+            "type": "select",
+            "id": "text_align",
+            "label": "Text alignment",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ],
+              "default": "center"
+            }
+          ]
+        },
+        {
+          "type": "text",
+        "name": "Text",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content",
+            "default": "<p>Powerful, natural solutions that help you take back your home, without harsh chemicals or hassle.</p>"
+          },
+          {
+            "type": "range",
+            "id": "font_size_desktop",
+            "label": "Font size (desktop)",
+            "min": 12,
+            "max": 32,
+            "step": 1,
+            "unit": "px",
+            "default": 18
+          },
+          {
+            "type": "range",
+            "id": "font_size_mobile",
+            "label": "Font size (mobile)",
+            "min": 12,
+            "max": 24,
+            "step": 1,
+            "unit": "px",
+            "default": 16
+          },
+          {
+            "type": "range",
+            "id": "line_height_desktop",
+            "label": "Line height (desktop)",
+            "min": 0.8,
+            "max": 2.5,
+            "step": 0.1,
+            "default": 1.5
+          },
+          {
+            "type": "range",
+            "id": "line_height_mobile",
+            "label": "Line height (mobile)",
+            "min": 0.8,
+            "max": 2.5,
+            "step": 0.1,
+            "default": 1.5
+          },
+          {
+            "type": "select",
+            "id": "font_weight",
+            "label": "Font weight",
+            "options": [
+              {
+                "value": "400",
+                "label": "400"
+              },
+              {
+                "value": "500",
+                "label": "500"
+              },
+              {
+                "value": "600",
+                "label": "600"
+              },
+              {
+                "value": "700",
+                "label": "700"
+              }
+            ],
+            "default": "400"
+          },
+          {
+            "type": "select",
+            "id": "text_align",
+            "label": "Text alignment",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ],
+            "default": "left"
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "name": "Button",
+        "settings": [
+          {
+            "type": "text",
+            "id": "label",
+            "label": "Label",
+            "default": "Shop now"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "Link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Hero CTA",
+        "blocks": [
+          {
+            "type": "trust_badge",
+            "settings": {
+              "text": "Trusted by <strong>1000+</strong> happy customers",
+              "badge_align": "center"
+            }
+          },
+          {
+            "type": "heading",
+            "settings": {
+              "content": "Fob on pests, channel where it matters.",
+              "tag": "h2",
+              "font_size_desktop": 32,
+              "font_size_mobile": 24,
+              "line_height_desktop": 1.2,
+              "line_height_mobile": 1.3,
+              "font_weight": "700",
+              "text_align": "center"
+            }
+          },
+          {
+            "type": "text",
+            "settings": {
+              "content": "<p>Powerful, natural solutions that help you take back your home, without harsh chemicals or hassle.</p>",
+              "font_size_desktop": 18,
+              "font_size_mobile": 16,
+              "line_height_desktop": 1.5,
+              "line_height_mobile": 1.5,
+              "font_weight": "400",
+              "text_align": "center"
+            }
+          },
+          {
+            "type": "button",
+            "settings": {
+              "label": "Shop now",
+              "url": ""
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

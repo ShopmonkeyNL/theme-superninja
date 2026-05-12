@@ -1,0 +1,107 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "blog_hero": {
+      "type": "simple-hero-heading",
+      "settings": {
+        "default_background_asset": "blog-heading.png",
+        "background_color": "#ffffff",
+        "title": "super ninja blog",
+        "title_font_size_desktop": 72,
+        "title_font_size_mobile": 40,
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "decorative_left_asset": "bee.png",
+        "decorative_right_asset": "moth.png"
+      }
+    },
+    "blog_posts_cards": {
+      "type": "blog-post-cards",
+      "settings": {
+        "blog_handle": "blog",
+        "posts_limit": 12,
+        "padding_top": 40,
+        "padding_bottom": 72
+      }
+    },
+    "benefits_ticker_fqkyHM": {
+      "type": "benefits_ticker",
+      "blocks": {
+        "benefit_item_DwbM9A": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "outperforms",
+            "icon_asset": "",
+            "text": "<p>Outperforms common<br>DIY solutions</p>"
+          }
+        },
+        "benefit_item_ECgcUe": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "safe_around_food",
+            "icon_asset": "",
+            "text": "<p>Safe around food,<br>kids & pets</p>"
+          }
+        },
+        "benefit_item_jmy4Yc": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "set_and_forget",
+            "icon_asset": "",
+            "text": "<p>Set-and-forget,<br>no maintenance</p>"
+          }
+        },
+        "benefit_item_33BbJV": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "visible_results",
+            "icon_asset": "",
+            "text": "<p>Visible results<br/>within 24 hours</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_item_DwbM9A",
+        "benefit_item_ECgcUe",
+        "benefit_item_jmy4Yc",
+        "benefit_item_33BbJV"
+      ],
+      "settings": {
+        "background_color": "#94d357",
+        "text_color": "#000000",
+        "border_color": "#ffffff",
+        "divider_opacity": 3,
+        "rotate_deg": 2,
+        "invert_rotation": true,
+        "scale": 110,
+        "padding_y": 16,
+        "speed_seconds": 18,
+        "pause_on_hover": false,
+        "duplicate_count": "3",
+        "wrap_background_color": "",
+        "section_padding_top": 24,
+        "section_padding_bottom": 40,
+        "bar_background_type": "solid",
+        "bar_background_color": "#94d357",
+        "bar_gradient_start": "#43c241",
+        "bar_gradient_end": "#319130",
+        "bar_background_gradient": "",
+        "bar_border_color": "#ffffff",
+        "bar_border_width": 0
+      }
+    }
+  },
+  "order": [
+    "blog_hero",
+    "blog_posts_cards",
+    "benefits_ticker_fqkyHM"
+  ]
+}

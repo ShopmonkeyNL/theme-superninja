@@ -1,0 +1,238 @@
+{% comment %}
+  Simple hero heading – background image + background color, centered title.
+  Used for blog and other simple page headers.
+{% endcomment %}
+
+{% liquid
+  assign heading_text = section.settings.title | default: 'Super Ninja Blog'
+  assign bg_image = section.settings.background_image
+  assign bg_color = section.settings.background_color | default: '#ffffff'
+  assign default_bg_asset = section.settings.default_background_asset | default: 'blog-heading.png'
+  if bg_image != blank
+    assign bg_image_url = bg_image | image_url: width: 1920
+  else
+    assign bg_image_url = default_bg_asset | asset_url
+  endif
+  assign title_fs_d = section.settings.title_font_size_desktop | default: 72
+  assign title_fs_m = section.settings.title_font_size_mobile | default: 40
+  assign padding_top = section.settings.padding_top | default: 70
+  assign padding_bottom = section.settings.padding_bottom | default: 70
+  assign deco_left = section.settings.decorative_left_asset | strip
+  assign deco_right = section.settings.decorative_right_asset | strip
+%}
+
+<section
+  class="simple-hero-heading"
+  style="
+    --shh-bg-color: {{ bg_color }};
+    --shh-bg-image: url({{ bg_image_url }});
+    --shh-title-fs-d: {{ title_fs_d }}px;
+    --shh-title-fs-m: {{ title_fs_m }}px;
+    --shh-pt: {{ padding_top }}px;
+    --shh-pb: {{ padding_bottom }}px;
+  "
+  {{ section.shopify_attributes }}
+>
+  <div class="simple-hero-heading__inner">
+    {% if deco_left != blank %}
+      <img
+        src="{{ deco_left | asset_url }}"
+        alt=""
+        width="120"
+        height="120"
+        class="simple-hero-heading__deco simple-hero-heading__deco--left"
+        loading="lazy"
+        aria-hidden="true">
+    {% endif %}
+    {% if deco_right != blank %}
+      <img
+        src="{{ deco_right | asset_url }}"
+        alt=""
+        width="120"
+        height="120"
+        class="simple-hero-heading__deco simple-hero-heading__deco--right"
+        loading="lazy"
+        aria-hidden="true">
+    {% endif %}
+    {% if heading_text != blank %}
+      <h1 class="simple-hero-heading__title">{{ heading_text }}</h1>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .simple-hero-heading {
+    background-color: var(--shh-bg-color);
+    background-image: var(--shh-bg-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: var(--shh-pt) 16px var(--shh-pb);
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .simple-hero-heading__inner {
+    max-width: 1312px;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    position: relative;
+  }
+
+  .simple-hero-heading__deco {
+    position: absolute;
+    width: 120px;
+    height: auto;
+    pointer-events: none;
+  }
+
+  .simple-hero-heading__deco--left {
+    top: -60px;
+    left: 0;
+    filter: brightness(0)!important; 
+  }
+
+  .simple-hero-heading__deco--right {
+    bottom: -60px;
+    right: 0;
+    transform: rotate(180deg);
+  }
+
+  .simple-hero-heading__title {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-weight: 700;
+    font-style: var(--font-heading--style, normal);
+    font-size: var(--shh-title-fs-d);
+    line-height: 100%;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #1C1C1C;
+  }
+
+  @media (max-width: 768px) {
+    .simple-hero-heading__title {
+      font-size: var(--shh-title-fs-m);
+    }
+
+    .simple-hero-heading__deco--left {
+      transform: scale(0.7);
+    }
+
+    .simple-hero-heading__deco--right {
+      transform: scale(0.7) rotate(180deg);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Simple hero heading",
+  "tag": "section",
+  "class": "section-simple-hero-heading",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image",
+      "info": "Leave blank to use the default image."
+    },
+    {
+      "type": "text",
+      "id": "default_background_asset",
+      "label": "Default background (asset filename)",
+      "default": "blog-heading.png",
+      "info": "Used when no image is selected."
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff",
+      "info": "Shows behind the image (e.g. if PNG has transparency)."
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Super Ninja Blog"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_desktop",
+      "label": "Title font size (desktop)",
+      "min": 32,
+      "max": 96,
+      "step": 2,
+      "unit": "px",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Title font size (mobile)",
+      "min": 24,
+      "max": 56,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 72
+    },
+    {
+      "type": "header",
+      "content": "Decorative images (optional)"
+    },
+    {
+      "type": "text",
+      "id": "decorative_left_asset",
+      "label": "Top-left image (asset filename)",
+      "info": "e.g. bee.png. Leave blank to hide."
+    },
+    {
+      "type": "text",
+      "id": "decorative_right_asset",
+      "label": "Bottom-right image (asset filename)",
+      "info": "e.g. moth.png. Shown mirrored 180°. Leave blank to hide."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Simple hero heading"
+    }
+  ]
+}
+{% endschema %}

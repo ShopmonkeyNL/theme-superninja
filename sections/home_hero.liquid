@@ -1,0 +1,695 @@
+{% comment %}
+  Home Hero section – single section, all content via blocks.
+  Classes: home-hero, home-hero__bg, home-hero__inner, home-hero__box
+  Modifiers: home-hero--x-left|center|right, home-hero--y-top|middle|bottom
+{% endcomment %}
+
+{% liquid
+  assign x_align = section.settings.box_h_align
+  assign y_align = section.settings.box_v_align
+  comment
+    Section background (the section itself: color or image)
+  endcomment
+  assign section_bg_color = section.settings.section_background_color | default: '#f0f0f0'
+  assign section_bg_image = section.settings.section_background_image
+  assign section_bg_image_mobile = section.settings.section_background_image_mobile
+  if section_bg_image != blank
+    assign section_bg_url_desktop = section_bg_image | image_url: width: 1920
+  else
+    assign section_bg_url_desktop = 'Frame 2087326309.png' | asset_url
+  endif
+  if section_bg_image_mobile != blank
+    assign section_bg_url_mobile = section_bg_image_mobile | image_url: width: 1200
+  else
+    assign section_bg_url_mobile = 'bgmob.png' | asset_url
+  endif
+  assign section_has_bg_image = true
+  assign section_has_bg_image_mobile = true
+  comment
+    Content box background (the red box: color or image)
+  endcomment
+  assign box_bg_color = section.settings.background_color | default: 'rgba(0,0,0,0)'
+  assign box_bg_image = section.settings.background_image
+  assign box_has_bg_image = false
+  if box_bg_image != blank
+    assign box_has_bg_image = true
+  endif
+%}
+
+<section class="home-hero home-hero--x-{{ x_align }} home-hero--y-{{ y_align }}" {{ section.shopify_attributes }}>
+  <div
+    class="home-hero__bg"
+    style="--home-hero-bg-color: {{ section_bg_color }}; --home-hero-bg-image: url({{ section_bg_url_desktop }}); --home-hero-bg-image-mobile: url({{ section_bg_url_mobile }});"
+    role="{% if section_has_bg_image or section_has_bg_image_mobile %}img{% endif %}"
+    aria-label="{% if section_bg_image != blank %}{{ section_bg_image.alt | default: 'Section background' }}{% elsif section_bg_image_mobile != blank %}{{ section_bg_image_mobile.alt | default: 'Section background' }}{% else %}Section background{% endif %}"></div>
+
+  <div class="home-hero__inner">
+    <div class="home-hero__box" style="{% if box_has_bg_image %}background-image: url({{ box_bg_image | image_url: width: 1200 }}); background-size: cover; background-position: center;{% else %}background-color: {{ box_bg_color }};{% endif %}">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'trust_badge' %}
+            <div
+              class="home-hero__trust-badge"
+              style="text-align: {{ block.settings.badge_align }};"
+              {{ block.shopify_attributes }}>
+              <span class="home-hero__stars" aria-hidden="true">
+                {% for i in (1..5) %}
+                  <svg
+                    class="home-hero__star"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    focusable="false">
+                    <path d="M13.3057 0.843656C13.0648 0.328088 12.5558 0 11.9967 0C11.4377 0 10.9332 0.328088 10.6878 0.843656L7.76537 7.04452L1.2388 8.03816C0.693401 8.12253 0.238904 8.51623 0.0707399 9.05524C-0.0974239 9.59424 0.0389251 10.1895 0.429792 10.5879L5.16565 15.4201L4.04759 22.2491C3.95669 22.8115 4.18394 23.3833 4.63389 23.7161C5.08384 24.0489 5.67923 24.0911 6.17009 23.8239L12.0013 20.6133L17.8325 23.8239C18.3233 24.0911 18.9187 24.0536 19.3687 23.7161C19.8186 23.3786 20.0459 22.8115 19.955 22.2491L18.8324 15.4201L23.5682 10.5879C23.9591 10.1895 24.1 9.59424 23.9273 9.05524C23.7546 8.51623 23.3046 8.12253 22.7592 8.03816L16.2281 7.04452L13.3057 0.843656Z" fill="#FF5000" />
+                  </svg>
+                {% endfor %}
+              </span>
+              <span class="home-hero__trust-text">{{ block.settings.text }}</span>
+            </div>
+
+          {% when 'heading' %}
+            {% liquid
+              assign tag = block.settings.tag | default: 'h2'
+              assign fs_d = block.settings.font_size_desktop | default: 32
+              assign fs_m = block.settings.font_size_mobile | default: 24
+              assign lh_d = block.settings.line_height_desktop | default: 1.2
+              assign lh_m = block.settings.line_height_mobile | default: 1.3
+              assign fw = block.settings.font_weight | default: '700'
+              assign align = block.settings.text_align | default: 'left'
+            %}
+            <{{ tag }}
+                                                                                                                                                                                                                  class="home-hero__heading"
+                                                                                                                                                                                                                  style="--home-hero-fs-d: {{ fs_d }}px; --home-hero-fs-m: {{ fs_m }}px; --home-hero-lh-d: {{ lh_d }}; --home-hero-lh-m: {{ lh_m }}; font-weight: {{ fw }}; text-align: {{ align }};"
+                                                                                                                                                                                                                  {{ block.shopify_attributes }}
+                                                                                                                                                                                                                >
+              {{ block.settings.content | newline_to_br }}
+              </{{ tag }}>
+
+            {% when 'text' %}
+              {% liquid
+                assign fs_d = block.settings.font_size_desktop | default: 18
+                assign fs_m = block.settings.font_size_mobile | default: 16
+                assign lh_d = block.settings.line_height_desktop | default: 1.5
+                assign lh_m = block.settings.line_height_mobile | default: 1.5
+                assign fw = block.settings.font_weight | default: '400'
+                assign align = block.settings.text_align | default: 'left'
+              %}
+              <div
+                class="home-hero__text rte"
+                style="--home-hero-text-fs-d: {{ fs_d }}px; --home-hero-text-fs-m: {{ fs_m }}px; --home-hero-text-lh-d: {{ lh_d }}; --home-hero-text-lh-m: {{ lh_m }}; font-weight: {{ fw }}; text-align: {{ align }};"
+                {{ block.shopify_attributes }}>
+                {{ block.settings.content }}
+              </div>
+
+            {% when 'button' %}
+              <div class="home-hero__button-wrap" {{ block.shopify_attributes }}>
+                <a href="{{ block.settings.url | default: '#' }}" class="home-hero__button btn btn--hero">
+                  {{ block.settings.label | default: 'FIND YOUR NINJA' }}
+                </a>
+              </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* Home Hero – layout & background */
+    .home-hero {
+      position: relative;
+      width: 100%;
+      display: flex;
+      overflow: hidden;
+      padding: 80px 0;
+    }
+    .home-hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-color: var(--home-hero-bg-color);
+      background-image: var(--home-hero-bg-image);
+      background-size: cover;
+      background-position: center;
+    }
+    .home-hero__inner {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1312px;
+      margin: 0 auto;
+      display: flex;
+      padding: 2rem 1.5rem;
+      box-sizing: border-box;
+    }
+    .home-hero--x-left .home-hero__inner {
+      justify-content: flex-start;
+    }
+    .home-hero--x-center .home-hero__inner {
+      justify-content: center;
+    }
+    .home-hero--x-right .home-hero__inner {
+      justify-content: flex-end;
+    }
+    .home-hero--y-top .home-hero__inner {
+      align-items: flex-start;
+    }
+    .home-hero--y-middle .home-hero__inner {
+      align-items: center;
+    }
+    .home-hero--y-bottom .home-hero__inner {
+      align-items: flex-end;
+    }
+    .home-hero__box {
+      max-width: 737px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 2.5rem 2rem;
+      box-sizing: border-box;
+    }
+    .home-hero--x-left .home-hero__box {
+      align-items: flex-start;
+    }
+    .home-hero--x-center .home-hero__box {
+      align-items: center;
+    }
+    .home-hero--x-right .home-hero__box {
+      align-items: flex-end;
+    }
+
+    /* Rating line – 5 stars + text */
+    .home-hero__trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      font-size: 16px;
+      line-height: 1;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    .home-hero__stars {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+    .home-hero__star {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+    .home-hero__star path {
+      fill: #FF5000;
+    }
+    .home-hero__trust-text {
+      font-size: 16px;
+      line-height: 1;
+      color: #000;
+    }
+    .home-hero__trust-text strong {
+      font-weight: 700;
+    }
+
+    /* Hero heading – same voice as button (condensed) */
+    .home-hero__heading {
+      margin: 0;
+      color: #222222;
+      font-family: var(--font-heading--family);
+      font-size: var(--home-hero-fs-d, 32px);
+      line-height: var(--home-hero-lh-d, 1.2);
+      text-transform: uppercase;
+    }
+    .home-hero__heading p {
+      margin: 0;
+    }
+
+    /* Secondary text */
+    .home-hero__text {
+      margin: 0;
+      font-size: var(--home-hero-text-fs-d, 18px);
+      line-height: var(--home-hero-text-lh-d, 1.5);
+      color: #000;
+    }
+    .home-hero__text p {
+      margin: 0 0 0.5em;
+    }
+    .home-hero__text p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* CTA button */
+    .home-hero__button-wrap {
+      margin-top: 0.25rem;
+    }
+    .home-hero__button,
+    a.home-hero__button.btn.btn--hero {
+      font-family: var(--button-font-family-primary) !important;
+      display: inline-block;
+      background-color: #FF5000;
+      color: #FFFFFF;
+      font-size: 24px;
+      line-height: 1;
+      padding: 16px 48px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: opacity 0.2s ease, background-color 0.2s ease;
+      vertical-align: middle;
+    }
+    .home-hero__button:hover,
+    a.home-hero__button.btn.btn--hero:hover {
+      background-color: #e64800;
+      color: #FFFFFF;
+      opacity: 0.95;
+    }
+
+    /* Mobile: alinhamento fixo (topo, centro, textos centralizados) – !important para sobrescrever Theme Editor */
+    @media screen and (max-width: 749px) {
+      .home-hero {
+        min-height: 80vh;
+        padding: 16px;
+      }
+      .home-hero__bg {
+        background-image: var(--home-hero-bg-image-mobile, var(--home-hero-bg-image)) !important;
+      }
+      .home-hero__inner {
+        padding: 0 !important;
+        align-items: flex-start !important;
+        justify-content: center !important;
+      }
+      .home-hero__box {
+        max-width: 100% !important;
+        gap: 0.75rem !important;
+        padding: 0 !important;
+        align-items: center !important;
+      }
+      .home-hero__trust-badge {
+        justify-content: center !important;
+      }
+      .home-hero__heading {
+        font-size: var(--home-hero-fs-m, 24px) !important;
+        line-height: var(--home-hero-lh-m, 1.25) !important;
+        text-align: center !important;
+      }
+      .home-hero__text {
+        font-size: var(--home-hero-text-fs-m, 16px) !important;
+        line-height: var(--home-hero-text-lh-m, 1.5) !important;
+        text-align: center !important;
+      }
+      .home-hero__button-wrap {
+        display: flex !important;
+        justify-content: center !important;
+      }
+      .home-hero__button,
+      a.home-hero__button.btn.btn--hero {
+        font-size: 18px !important;
+        padding: 0.875rem 1.25rem !important;
+      }
+      .home-hero__trust-text {
+        font-size: 12px !important;
+      }
+      .home-hero__star {
+        width: 16px !important;
+        height: 16px !important;
+      }
+    }
+  </style>
+
+  {% schema %}
+    {
+      "name": "Home Hero",
+      "tag": "section",
+      "class": "section-home-hero",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Section background"
+        },
+        {
+          "type": "color",
+          "id": "section_background_color",
+          "label": "Section background color",
+          "default": "#f0f0f0"
+        },
+        {
+          "type": "image_picker",
+          "id": "section_background_image",
+          "label": "Section background image",
+          "info": "If set, image is used instead of section background color."
+        },
+        {
+          "type": "image_picker",
+          "id": "section_background_image_mobile",
+          "label": "Section background image (mobile)",
+          "info": "Optional. If set, this image is used on mobile instead of the section background image above."
+        }, {
+          "type": "header",
+          "content": "Content box background"
+        }, {
+          "type": "color",
+          "id": "background_color",
+          "label": "Box background color",
+          "default": "rgba(0,0,0,0)"
+        }, {
+          "type": "image_picker",
+          "id": "background_image",
+          "label": "Box background image",
+          "info": "If set, image is used instead of box background color."
+        }, {
+          "type": "header",
+          "content": "Content box alignment"
+        }, {
+          "type": "select",
+          "id": "box_h_align",
+          "label": "Horizontal alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            }, {
+              "value": "center",
+              "label": "Center"
+            }, {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        }, {
+          "type": "select",
+          "id": "box_v_align",
+          "label": "Vertical alignment",
+          "options": [
+            {
+              "value": "top",
+              "label": "Top"
+            }, {
+              "value": "middle",
+              "label": "Middle"
+            }, {
+              "value": "bottom",
+              "label": "Bottom"
+            }
+          ],
+          "default": "middle"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "trust_badge",
+          "name": "Trust badge",
+          "settings": [
+            {
+              "type": "inline_richtext",
+              "id": "text",
+              "label": "Text",
+              "default": "Trusted by <strong>1000+</strong> happy customers"
+            }, {
+              "type": "select",
+              "id": "badge_align",
+              "label": "Badge alignment",
+              "options": [
+                {
+                  "value": "left",
+                  "label": "Left"
+                }, {
+                  "value": "center",
+                  "label": "Center"
+                }, {
+                  "value": "right",
+                  "label": "Right"
+                }
+              ],
+              "default": "left"
+            }
+          ]
+        }, {
+          "type": "heading",
+          "name": "Heading",
+          "settings": [
+            {
+              "type": "inline_richtext",
+              "id": "content",
+              "label": "Content",
+              "default": "Tough on pests.\nGentle where it matters."
+            },
+            {
+              "type": "select",
+              "id": "tag",
+              "label": "HTML tag",
+              "options": [
+                {
+                  "value": "h1",
+                  "label": "H1"
+                },
+                {
+                  "value": "h2",
+                  "label": "H2"
+                },
+                {
+                  "value": "h3",
+                  "label": "H3"
+                },
+                {
+                  "value": "h4",
+                  "label": "H4"
+                }, {
+                  "value": "h5",
+                  "label": "H5"
+                }, {
+                  "value": "p",
+                  "label": "P"
+                }, {
+                  "value": "span",
+                  "label": "Span"
+                }
+              ],
+              "default": "h2"
+            },
+            {
+              "type": "range",
+              "id": "font_size_desktop",
+              "label": "Font size (desktop)",
+              "min": 12,
+              "max": 72,
+              "step": 1,
+              "unit": "px",
+              "default": 32
+            },
+            {
+              "type": "range",
+              "id": "font_size_mobile",
+              "label": "Font size (mobile)",
+              "min": 12,
+              "max": 48,
+              "step": 1,
+              "unit": "px",
+              "default": 24
+            }, {
+              "type": "range",
+              "id": "line_height_desktop",
+              "label": "Line height (desktop)",
+              "min": 0.8,
+              "max": 2.5,
+              "step": 0.1,
+              "default": 1.2
+            }, {
+              "type": "range",
+              "id": "line_height_mobile",
+              "label": "Line height (mobile)",
+              "min": 0.8,
+              "max": 2.5,
+              "step": 0.1,
+              "default": 1.3
+            }, {
+              "type": "select",
+              "id": "font_weight",
+              "label": "Font weight",
+              "options": [
+                {
+                  "value": "400",
+                  "label": "400"
+                }, {
+                  "value": "500",
+                  "label": "500"
+                }, {
+                  "value": "600",
+                  "label": "600"
+                }, {
+                  "value": "700",
+                  "label": "700"
+                }
+              ],
+              "default": "700"
+            }, {
+              "type": "select",
+              "id": "text_align",
+              "label": "Text alignment",
+              "options": [
+                {
+                  "value": "left",
+                  "label": "Left"
+                }, {
+                  "value": "center",
+                  "label": "Center"
+                }, {
+                  "value": "right",
+                  "label": "Right"
+                }
+              ],
+              "default": "left"
+            }
+          ]
+        }, {
+          "type": "text",
+          "name": "Text",
+          "settings": [
+            {
+              "type": "richtext",
+              "id": "content",
+              "label": "Content",
+              "default": "<p>Powerful, natural solutions that help you take back your home, without harsh chemicals or hassle.</p>"
+            },
+            {
+              "type": "range",
+              "id": "font_size_desktop",
+              "label": "Font size (desktop)",
+              "min": 12,
+              "max": 32,
+              "step": 1,
+              "unit": "px",
+              "default": 18
+            },
+            {
+              "type": "range",
+              "id": "font_size_mobile",
+              "label": "Font size (mobile)",
+              "min": 12,
+              "max": 24,
+              "step": 1,
+              "unit": "px",
+              "default": 16
+            },
+            {
+              "type": "range",
+              "id": "line_height_desktop",
+              "label": "Line height (desktop)",
+              "min": 0.8,
+              "max": 2.5,
+              "step": 0.1,
+              "default": 1.5
+            }, {
+              "type": "range",
+              "id": "line_height_mobile",
+              "label": "Line height (mobile)",
+              "min": 0.8,
+              "max": 2.5,
+              "step": 0.1,
+              "default": 1.5
+            }, {
+              "type": "select",
+              "id": "font_weight",
+              "label": "Font weight",
+              "options": [
+                {
+                  "value": "400",
+                  "label": "400"
+                }, {
+                  "value": "500",
+                  "label": "500"
+                }, {
+                  "value": "600",
+                  "label": "600"
+                }, {
+                  "value": "700",
+                  "label": "700"
+                }
+              ],
+              "default": "400"
+            }, {
+              "type": "select",
+              "id": "text_align",
+              "label": "Text alignment",
+              "options": [
+                {
+                  "value": "left",
+                  "label": "Left"
+                }, {
+                  "value": "center",
+                  "label": "Center"
+                }, {
+                  "value": "right",
+                  "label": "Right"
+                }
+              ],
+              "default": "left"
+            }
+          ]
+        }, {
+          "type": "button",
+          "name": "Button",
+          "settings": [
+            {
+              "type": "text",
+              "id": "label",
+              "label": "Label",
+              "default": "FIND YOUR NINJA"
+            }, {
+              "type": "url",
+              "id": "url",
+              "label": "Link"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Home Hero",
+          "blocks": [
+            {
+              "type": "trust_badge",
+              "settings": {
+                "text": "Trusted by <strong>1000+</strong> happy customers",
+                "badge_align": "left"
+              }
+            }, {
+              "type": "heading",
+              "settings": {
+                "content": "Fob on pests, channel where it matters.",
+                "tag": "h2",
+                "font_size_desktop": 32,
+                "font_size_mobile": 24,
+                "line_height_desktop": 1.2,
+                "line_height_mobile": 1.3,
+                "font_weight": "700",
+                "text_align": "left"
+              }
+            }, {
+              "type": "text",
+              "settings": {
+                "content": "<p>Powerful, natural solutions that help you take back your home, without harsh chemicals or hassle.</p>",
+                "font_size_desktop": 18,
+                "font_size_mobile": 16,
+                "line_height_desktop": 1.5,
+                "line_height_mobile": 1.5,
+                "font_weight": "400",
+                "text_align": "left"
+              }
+            }, {
+"type": "button",
+          "settings": {
+                "label": "FIND YOUR NINJA",
+                "url": ""
+              }
+            }
+          ]
+        }
+      ]
+    }
+  {% endschema %}

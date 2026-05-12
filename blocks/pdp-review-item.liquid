@@ -1,0 +1,113 @@
+{%- doc -%}
+  Renders a single review item
+  Multiple blocks of this type can be added to create a carousel
+{%- enddoc -%}
+
+<div class="pdp-review-item" data-review-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+  <div class="pdp-review-item__header">
+    <div class="pdp-review-item__name">{{ block.settings.customer_name | default: 'SARAH M.' }}</div>
+    <div class="pdp-review-item__stars" aria-label="{{ block.settings.rating | default: 5 }} stars">
+      {%- assign rating = block.settings.rating | default: 5 -%}
+      {%- for i in (1..5) -%}
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M8 0L10.1631 5.52786L16 6.11146L12 10.0557L12.9443 16L8 13.1631L3.05573 16L4 10.0557L0 6.11146L5.83686 5.52786L8 0Z" fill="{% if i <= rating %}#FF5000{% else %}#E5E5E5{% endif %}"/>
+        </svg>
+      {%- endfor -%}
+    </div>
+  </div>
+  <div class="pdp-review-item__message">
+    {%- if block.settings.message != blank -%}
+      {{ block.settings.message }}
+    {%- else -%}
+      "Worked overnight! I couldn't believe how fast the fruit flies disappeared. So much better than those vinegar traps."
+    {%- endif -%}
+  </div>
+</div>
+
+<style>
+  .pdp-review-item {
+    padding: 24px;
+    background: #FFFFFF;
+  }
+
+  .pdp-review-item__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    gap: 12px;
+  }
+
+  .pdp-review-item__name {
+    font-family: var(--font-heading--family);
+    font-weight: 700;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+    color: #1C1C1C;
+  }
+
+  .pdp-review-item__stars {
+    display: flex;
+    gap: 2px;
+    flex-shrink: 0;
+  }
+
+  .pdp-review-item__message {
+    font-family: Tahoma, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: 0%;
+    color: #1C1C1C;
+  }
+
+  @media screen and (min-width: 750px) {
+    .pdp-review-item__name {
+      font-size: 22px;
+    }
+
+    .pdp-review-item__message {
+      font-size: 18px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "PDP Review Item",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "customer_name",
+      "label": "Customer Name",
+      "default": "SARAH M."
+    },
+    {
+      "type": "range",
+      "id": "rating",
+      "label": "Rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "textarea",
+      "id": "message",
+      "label": "Review Message",
+      "default": "\"Worked overnight! I couldn't believe how fast the fruit flies disappeared. So much better than those vinegar traps.\""
+    }
+  ],
+  "presets": [
+    {
+      "name": "PDP Review Item",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}

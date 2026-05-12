@@ -1,0 +1,75 @@
+{% liquid
+  assign card_product = product
+  assign card_title = title
+  assign card_price = price
+  assign card_reviews = reviews_text | default: '(1,247 reviews)'
+  assign card_button = button_label | default: 'SHOP NOW'
+  assign card_url = button_url
+  assign card_image = image
+
+  if card_title == blank and card_product != blank
+    assign card_title = card_product.title
+  endif
+  if card_title == blank
+    assign card_title = 'PRODUCT NAME'
+  endif
+
+  if card_price == blank and card_product != blank
+    assign card_price = card_product.price | money_without_trailing_zeros
+  endif
+  if card_price == blank
+    assign card_price = '$0.00'
+  endif
+
+  if card_url == blank and card_product != blank
+    assign card_url = card_product.url
+  endif
+  if card_url == blank
+    assign card_url = '#'
+  endif
+
+  if card_image == blank and card_product != blank
+    assign card_image = card_product.featured_image
+  endif
+%}
+
+<a href="{{ card_url }}" class="official-product-card-collection__link" {% if block %}{{ block.shopify_attributes }}{% endif %}>
+  <article class="official-product-card-collection">
+    <div class="official-product-card-collection__info">
+      <div class="official-product-card-collection__reviews">
+        <span class="official-product-card-collection__stars" aria-hidden="true">
+          {% for _i in (1..5) %}
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" focusable="false">
+              <path d="M12 2.2L14.99 8.26L21.68 9.23L16.84 13.95L17.98 20.62L12 17.48L6.02 20.62L7.16 13.95L2.32 9.23L9.01 8.26L12 2.2Z" fill="currentColor" />
+            </svg>
+          {% endfor %}
+        </span>
+        <span class="official-product-card-collection__reviews-text">{{ card_reviews }}</span>
+      </div>
+
+      <div class="official-product-card-collection__head">
+        <h3 class="official-product-card-collection__title">{{ card_title }}</h3>
+        <span class="official-product-card-collection__price">{{ card_price }}</span>
+      </div>
+    </div>
+
+    <div class="official-product-card-collection__media">
+      {% if card_image != blank %}
+        {{
+          card_image
+          | image_url: width: 1600
+          | image_tag:
+            loading: 'lazy',
+            class: 'official-product-card-collection__image',
+            widths: '320, 480, 720, 960, 1200, 1600',
+            sizes: '(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw',
+            alt: card_title
+        }}
+      {% else %}
+        <div class="official-product-card-collection__placeholder" aria-hidden="true"></div>
+      {% endif %}
+    </div>
+
+    <span class="official-product-card-collection__button">{{ card_button }}</span>
+  </article>
+</a>

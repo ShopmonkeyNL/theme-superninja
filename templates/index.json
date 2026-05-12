@@ -1,0 +1,611 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "home_hero",
+      "blocks": {
+        "trust_badge": {
+          "type": "trust_badge",
+          "settings": {
+            "text": "Trusted by <strong>1000+</strong> happy customers",
+            "badge_align": "left"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "content": "ON A MISSION TO GREEN PEST CONTROL",
+            "tag": "h2",
+            "font_size_desktop": 72,
+            "font_size_mobile": 48,
+            "line_height_desktop": 1.2,
+            "line_height_mobile": 1.3,
+            "font_weight": "700",
+            "text_align": "left"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "content": "<p>Proven effective and sustainable pest control products, made from natural ingredients</p>",
+            "font_size_desktop": 24,
+            "font_size_mobile": 16,
+            "line_height_desktop": 1.5,
+            "line_height_mobile": 1.5,
+            "font_weight": "400",
+            "text_align": "left"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "label": "FIND YOUR BUG",
+            "url": "/collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "trust_badge",
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "section_background_color": "#f0f0f0",
+        "background_color": "rgba(0,0,0,0)",
+        "box_h_align": "left",
+        "box_v_align": "middle"
+      }
+    },
+    "benefits_ticker": {
+      "type": "benefits_ticker",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "outperforms",
+            "icon_asset": "",
+            "text": "<p>Outperforms common<br>DIY solutions</p>"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "safe_around_food",
+            "icon_asset": "",
+            "text": "<p>Safe around food,<br>kids & pets</p>"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "set_and_forget",
+            "icon_asset": "",
+            "text": "<p>Set-and-forget,<br>no maintenance</p>"
+          }
+        },
+        "benefit_4": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "visible_results",
+            "icon_asset": "",
+            "text": "<p>Visible results<br/>within 24 hours</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4"
+      ],
+      "settings": {
+        "background_color": "#ff5000",
+        "text_color": "#1c1c1c",
+        "border_color": "#ffffff",
+        "divider_opacity": 3,
+        "rotate_deg": -2,
+        "invert_rotation": false,
+        "scale": 110,
+        "padding_y": 16,
+        "speed_seconds": 18,
+        "pause_on_hover": false,
+        "duplicate_count": "3",
+        "wrap_background_color": "",
+        "section_padding_top": 24,
+        "section_padding_bottom": 24,
+        "bar_background_type": "solid",
+        "bar_background_color": "#94d357",
+        "bar_gradient_start": "#43c241",
+        "bar_gradient_end": "#319130",
+        "bar_background_gradient": "",
+        "bar_border_color": "#ffffff",
+        "bar_border_width": 0
+      }
+    },
+    "pest_selector": {
+      "type": "pest-selector",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "content": "WHICH PEST IS BUGGING YOU?",
+            "tag": "h2",
+            "font_size_desktop": 64,
+            "font_size_mobile": 32,
+            "line_height_desktop": 1.2,
+            "line_height_mobile": 1.3,
+            "font_weight": "700",
+            "text_align": "center"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "content": "<p>Choose your problem, we'll handle the rest.</p>",
+            "font_size_desktop": 24,
+            "font_size_mobile": 16,
+            "line_height_desktop": 1.5,
+            "line_height_mobile": 1.5,
+            "font_weight": "400",
+            "text_align": "center"
+          }
+        },
+        "pest_1": {
+          "type": "pest_item",
+          "settings": {
+            "label": "FRUIT FLIES",
+            "link": "",
+            "label_color": "#1c1c1c",
+            "show_arrow": true,
+            "arrow_color": "#7ac943"
+          }
+        },
+        "pest_2": {
+          "type": "pest_item",
+          "settings": {
+            "label": "FUNGUS GNATS",
+            "link": "",
+            "label_color": "#1c1c1c",
+            "show_arrow": true,
+            "arrow_color": "#7ac943"
+          }
+        },
+        "pest_3": {
+          "type": "pest_item",
+          "settings": {
+            "label": "MOTHS",
+            "link": "",
+            "label_color": "#1c1c1c",
+            "show_arrow": true,
+            "arrow_color": "#7ac943"
+          }
+        },
+        "pest_4": {
+          "type": "pest_item",
+          "settings": {
+            "label": "SILVERFISH",
+            "link": "",
+            "label_color": "#1c1c1c",
+            "show_arrow": true,
+            "arrow_color": "#7ac943"
+          }
+        },
+        "pest_5": {
+          "type": "pest_item",
+          "settings": {
+            "label": "COCKROACHES",
+            "link": "",
+            "label_color": "#1c1c1c",
+            "show_arrow": true,
+            "arrow_color": "#7ac943"
+          }
+        },
+        "pest_6": {
+          "type": "pest_item",
+          "settings": {
+            "label": "MOSQUITOES",
+            "link": "",
+            "label_color": "#1c1c1c",
+            "show_arrow": true,
+            "arrow_color": "#7ac943"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "pest_1",
+        "pest_2",
+        "pest_3",
+        "pest_4",
+        "pest_5",
+        "pest_6"
+      ],
+      "settings": {
+        "background_color": "#f0f2f1",
+        "padding_top": 89,
+        "padding_bottom": 70,
+        "max_width": "1312",
+        "items_per_row_desktop": "6"
+      }
+    },
+    "most_trusted_solutions": {
+      "type": "most-trusted-solutions",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "content": "Our Most Trusted Solutions",
+            "tag": "h2"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "content": "<p>Proven by thousands of households dealing with the same problem as you.</p>"
+          }
+        },
+        "card_1": {
+          "type": "product-card",
+          "settings": {
+            "product": "super-ninja-fruit-fly-trap"
+          }
+        },
+        "card_2": {
+          "type": "product-card",
+          "settings": {
+            "product": "super-ninja-fruit-fly-trap"
+          }
+        },
+        "card_3": {
+          "type": "product-card",
+          "settings": {
+            "product": "super-ninja-fruit-fly-trap"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "card_1",
+        "card_2",
+        "card_3"
+      ],
+      "settings": {
+        "background_color": "#ffffff"
+      }
+    },
+    "why_super_ninja_works": {
+      "type": "why-super-ninja-works",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "content": "Why Super Ninja Works When Others Don't",
+            "tag": "h2",
+            "font_size_desktop": 64,
+            "font_size_mobile": 40,
+            "line_height_desktop": 1.2,
+            "line_height_mobile": 1.3,
+            "font_weight": "700",
+            "text_align": "center"
+          }
+        },
+        "dropdown_1": {
+          "type": "dropdown_item",
+          "settings": {
+            "title": "Proven effectiveness",
+            "content": "<p>Super Ninja has been tested and proven to work where other solutions fall short. Real results you can count on.</p>"
+          }
+        },
+        "dropdown_2": {
+          "type": "dropdown_item",
+          "settings": {
+            "title": "Smart, discreet design",
+            "content": "<p>Fits naturally in your kitchen or pantry without drawing attention. Effective without the clutter.</p>"
+          }
+        },
+        "dropdown_3": {
+          "type": "dropdown_item",
+          "settings": {
+            "title": "Safe Formulations",
+            "content": "<p>Developed with safety in mind, so you can use it around food, family and animals with confidence.</p>"
+          }
+        },
+        "dropdown_4": {
+          "type": "dropdown_item",
+          "settings": {
+            "title": "Effortless and mess-free",
+            "content": "<p>Simple to set up and replace. No fuss, no sticky mess—just results.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "dropdown_1",
+        "dropdown_2",
+        "dropdown_3",
+        "dropdown_4"
+      ],
+      "settings": {
+        "background_color": "#f0f2f1"
+      }
+    },
+    "customers_feedback": {
+      "type": "customers-feedback",
+      "blocks": {
+        "trust_badge_N83tqR": {
+          "type": "trust_badge",
+          "settings": {
+            "text": "Trusted by <strong>1000+</strong> happy customers",
+            "badge_align": "center"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "content": "It Worked for Them. It'll Work for You.",
+            "tag": "h2",
+            "font_size_desktop": 64,
+            "font_size_mobile": 40,
+            "line_height_desktop": 1.2,
+            "line_height_mobile": 1.3,
+            "font_weight": "700",
+            "text_align": "center"
+          }
+        },
+        "video_1": {
+          "type": "video",
+          "settings": {
+            "source": "url",
+            "video_url": "https://www.youtube.com/watch?v=u31qwQUeGuM"
+          }
+        },
+        "video_8rDU3x": {
+          "type": "video",
+          "settings": {
+            "source": "url",
+            "video_url": "https://www.youtube.com/watch?v=u31qwQUeGuM"
+          }
+        },
+        "video_B8UdMR": {
+          "type": "video",
+          "settings": {
+            "source": "url",
+            "video_url": "https://www.youtube.com/watch?v=u31qwQUeGuM"
+          }
+        },
+        "video_9nNJ68": {
+          "type": "video",
+          "settings": {
+            "source": "url",
+            "video_url": "https://www.youtube.com/watch?v=u31qwQUeGuM"
+          }
+        }
+      },
+      "block_order": [
+        "trust_badge_N83tqR",
+        "heading",
+        "video_1",
+        "video_8rDU3x",
+        "video_B8UdMR",
+        "video_9nNJ68"
+      ],
+      "disabled": true,
+      "settings": {
+        "background_color": "#ffffff"
+      }
+    },
+    "customers_feedback_YrqKJW": {
+      "type": "customers-feedback",
+      "blocks": {
+        "heading_P8UccP": {
+          "type": "heading",
+          "settings": {
+            "content": "THE WALL OF WINS: STORIES OF VICTORY OVER THE TINY INVADERS",
+            "tag": "h2",
+            "font_size_desktop": 64,
+            "font_size_mobile": 40,
+            "line_height_desktop": 1.2,
+            "line_height_mobile": 1.3,
+            "font_weight": "700",
+            "text_align": "center"
+          }
+        },
+        "video_K33Eck": {
+          "type": "video",
+          "settings": {
+            "source": "uploaded",
+            "video": "shopify://files/videos/Wins1.mp4",
+            "video_url": "https://www.youtube.com/watch?v=u31qwQUeGuM"
+          }
+        },
+        "video_ymGBi9": {
+          "type": "video",
+          "settings": {
+            "source": "uploaded",
+            "video": "shopify://files/videos/Wins2.mp4",
+            "video_url": "https://www.youtube.com/watch?v=u31qwQUeGuM"
+          }
+        },
+        "video_9bDKpn": {
+          "type": "video",
+          "settings": {
+            "source": "uploaded",
+            "video": "shopify://files/videos/wins3.mp4",
+            "video_url": "https://www.youtube.com/watch?v=u31qwQUeGuM"
+          }
+        },
+        "video_fYTcbW": {
+          "type": "video",
+          "settings": {
+            "source": "uploaded",
+            "video": "shopify://files/videos/wins4.mp4",
+            "video_url": "https://www.youtube.com/watch?v=u31qwQUeGuM"
+          }
+        },
+        "video_4MH3pU": {
+          "type": "video",
+          "settings": {
+            "source": "uploaded",
+            "video": "shopify://files/videos/wins5.mp4",
+            "video_url": "https://www.youtube.com/watch?v=u31qwQUeGuM"
+          }
+        }
+      },
+      "block_order": [
+        "heading_P8UccP",
+        "video_K33Eck",
+        "video_ymGBi9",
+        "video_9bDKpn",
+        "video_fYTcbW",
+        "video_4MH3pU"
+      ],
+      "settings": {
+        "background_color": "#ffffff"
+      }
+    },
+    "benefits_ticker_rEDXYM": {
+      "type": "benefits_ticker",
+      "blocks": {
+        "benefit_item_WWx47i": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "outperforms",
+            "icon_asset": "",
+            "text": "<p>Outperforms common<br>DIY solutions</p>"
+          }
+        },
+        "benefit_item_dtVLhE": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "safe_around_food",
+            "icon_asset": "",
+            "text": "<p>Safe around food,<br>kids & pets</p>"
+          }
+        },
+        "benefit_item_axrxwW": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "set_and_forget",
+            "icon_asset": "",
+            "text": "<p>Set-and-forget,<br/>no maintenance</p>"
+          }
+        },
+        "benefit_item_fgdfxe": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "visible_results",
+            "icon_asset": "",
+            "text": "<p>Visible results<br/>within 24 hours</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_item_WWx47i",
+        "benefit_item_dtVLhE",
+        "benefit_item_axrxwW",
+        "benefit_item_fgdfxe"
+      ],
+      "settings": {
+        "background_color": "#ff5000",
+        "text_color": "#1c1c1c",
+        "border_color": "#ffffff",
+        "divider_opacity": 3,
+        "rotate_deg": -2,
+        "invert_rotation": true,
+        "scale": 110,
+        "padding_y": 16,
+        "speed_seconds": 18,
+        "pause_on_hover": false,
+        "duplicate_count": "3",
+        "wrap_background_color": "",
+        "section_padding_top": 24,
+        "section_padding_bottom": 24,
+        "bar_background_type": "solid",
+        "bar_background_color": "#94d357",
+        "bar_gradient_start": "#43c241",
+        "bar_gradient_end": "#319130",
+        "bar_background_gradient": "",
+        "bar_border_color": "#ffffff",
+        "bar_border_width": 0
+      }
+    },
+    "hero_cta": {
+      "type": "hero-cta",
+      "blocks": {
+        "trust_badge": {
+          "type": "trust_badge",
+          "settings": {
+            "text": "Trusted by <strong>1000+</strong> happy customers",
+            "badge_align": "center"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "content": "Pest Control That respects Your Home",
+            "tag": "h2",
+            "font_size_desktop": 72,
+            "font_size_mobile": 48,
+            "line_height_desktop": 1.2,
+            "line_height_mobile": 1.3,
+            "font_weight": "700",
+            "text_align": "center"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "content": "<p>Super Ninja was created to prove one thing: You shouldn't have to choose between effectiveness and sustainability.</p>",
+            "font_size_desktop": 24,
+            "font_size_mobile": 16,
+            "line_height_desktop": 1.5,
+            "line_height_mobile": 1.5,
+            "font_weight": "400",
+            "text_align": "center"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "label": "FIND YOUR BUG",
+            "url": "/collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "trust_badge",
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "section_background_color": "#f0f0f0",
+        "background_color": "rgba(0,0,0,0)",
+        "box_h_align": "center",
+        "box_v_align": "middle"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "benefits_ticker",
+    "pest_selector",
+    "most_trusted_solutions",
+    "why_super_ninja_works",
+    "customers_feedback",
+    "customers_feedback_YrqKJW",
+    "benefits_ticker_rEDXYM",
+    "hero_cta"
+  ]
+}

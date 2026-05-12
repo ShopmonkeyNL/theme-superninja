@@ -1,0 +1,310 @@
+{%- doc -%}
+  Renders benefits badges below ATC button on PDP
+  Icon + text from product metafields: custom.benefit_badge_icon_1/2/3, custom.benefit_badge_text_1/2/3
+  Falls back to block settings, then to hardcoded defaults
+{%- enddoc -%}
+
+{%- liquid
+  assign product_ref = product | default: closest.product
+
+  comment
+    Metafields: Benefit Badge Icon 1/2/3, Benefit Badge Text 1/2/3 (namespace custom, keys benefit_badge_icon_1, benefit_badge_text_1, etc.)
+  endcomment
+  assign mf_icon_1 = product_ref.metafields.custom.benefit_badge_icon_1
+  assign mf_text_1 = product_ref.metafields.custom.benefit_badge_text_1
+  assign mf_icon_2 = product_ref.metafields.custom.benefit_badge_icon_2
+  assign mf_text_2 = product_ref.metafields.custom.benefit_badge_text_2
+  assign mf_icon_3 = product_ref.metafields.custom.benefit_badge_icon_3
+  assign mf_text_3 = product_ref.metafields.custom.benefit_badge_text_3
+
+  if mf_icon_1 != blank and mf_text_1 != blank
+    assign badge_1_icon = mf_icon_1
+    assign badge_1_text = mf_text_1.value | default: mf_text_1
+  else
+    assign badge_1_icon = block.settings.badge_1_icon
+    assign badge_1_text = block.settings.badge_1_text
+  endif
+  if mf_icon_2 != blank and mf_text_2 != blank
+    assign badge_2_icon = mf_icon_2
+    assign badge_2_text = mf_text_2.value | default: mf_text_2
+  else
+    assign badge_2_icon = block.settings.badge_2_icon
+    assign badge_2_text = block.settings.badge_2_text
+  endif
+
+  if mf_icon_3 != blank and mf_text_3 != blank
+    assign badge_3_icon = mf_icon_3
+    assign badge_3_text = mf_text_3.value | default: mf_text_3
+  else
+    assign badge_3_icon = block.settings.badge_3_icon
+    assign badge_3_text = block.settings.badge_3_text
+  endif
+
+  assign use_defaults = false
+  if badge_1_icon == blank and badge_1_text == blank and badge_2_icon == blank and badge_2_text == blank and badge_3_icon == blank and badge_3_text == blank
+    assign use_defaults = true
+  endif
+-%}
+
+<div class="pdp-benefits-badges" {{ block.shopify_attributes }}>
+  <div class="pdp-benefits-badges__container">
+    {%- if use_defaults -%}
+      <div class="pdp-benefits-badge">
+        <div class="pdp-benefits-badge__icon">
+          <img src="{{ 'shield.svg' | asset_url }}" loading="lazy" width="48" height="48" alt="" />
+        </div>
+        <div class="pdp-benefits-badge__text">EASY TO USE</div>
+      </div>
+      
+      <div class="pdp-benefits-badge">
+        <div class="pdp-benefits-badge__icon">
+          <img src="{{ 'pet.svg' | asset_url }}" loading="lazy" width="50" height="48" alt="" />
+        </div>
+        <div class="pdp-benefits-badge__text">SAFE AROUND PETS & KIDS</div>
+      </div>
+      
+      <div class="pdp-benefits-badge">
+        <div class="pdp-benefits-badge__icon">
+          <img src="{{ 'fruit.svg' | asset_url }}" loading="lazy" width="50" height="48" alt="" />
+        </div>
+        <div class="pdp-benefits-badge__text">EFFECTIVE ONLY ON FRUIT FLIES</div>
+      </div>
+    {%- else -%}
+      {%- if badge_1_icon != blank and badge_1_text != blank -%}
+        <div class="pdp-benefits-badge">
+          <div class="pdp-benefits-badge__icon">
+            {%- if badge_1_icon.value != blank and badge_1_icon.type != 'single_line_text_field' -%}
+              <img src="{{ badge_1_icon.value | image_url: width: 96 }}" loading="lazy" width="48" height="48" alt="" />
+            {%- else -%}
+              {%- assign icon_1_key = badge_1_icon.value | default: badge_1_icon -%}
+              {%- case icon_1_key -%}
+                {%- when 'shield' -%}<img src="{{ 'shield.svg' | asset_url }}" loading="lazy" width="48" height="48" alt="" />
+                {%- when 'pet' -%}<img src="{{ 'pet.svg' | asset_url }}" loading="lazy" width="50" height="48" alt="" />
+                {%- when 'fruit' -%}<img src="{{ 'fruit.svg' | asset_url }}" loading="lazy" width="50" height="48" alt="" />
+                {%- else -%}<img src="{{ icon_1_key | asset_url }}" loading="lazy" width="48" height="48" alt="" />
+              {%- endcase -%}
+            {%- endif -%}
+          </div>
+          <div class="pdp-benefits-badge__text">{{ badge_1_text.value | default: badge_1_text }}</div>
+        </div>
+      {%- endif -%}
+
+      {%- if badge_2_icon != blank and badge_2_text != blank -%}
+        <div class="pdp-benefits-badge">
+          <div class="pdp-benefits-badge__icon">
+            {%- if badge_2_icon.value != blank and badge_2_icon.type != 'single_line_text_field' -%}
+              <img src="{{ badge_2_icon.value | image_url: width: 96 }}" loading="lazy" width="48" height="48" alt="" />
+            {%- else -%}
+              {%- assign icon_2_key = badge_2_icon.value | default: badge_2_icon -%}
+              {%- case icon_2_key -%}
+                {%- when 'shield' -%}<img src="{{ 'shield.svg' | asset_url }}" loading="lazy" width="48" height="48" alt="" />
+                {%- when 'pet' -%}<img src="{{ 'pet.svg' | asset_url }}" loading="lazy" width="50" height="48" alt="" />
+                {%- when 'fruit' -%}<img src="{{ 'fruit.svg' | asset_url }}" loading="lazy" width="50" height="48" alt="" />
+                {%- else -%}<img src="{{ icon_2_key | asset_url }}" loading="lazy" width="48" height="48" alt="" />
+              {%- endcase -%}
+            {%- endif -%}
+          </div>
+          <div class="pdp-benefits-badge__text">{{ badge_2_text.value | default: badge_2_text }}</div>
+        </div>
+      {%- endif -%}
+
+      {%- if badge_3_icon != blank and badge_3_text != blank -%}
+        <div class="pdp-benefits-badge">
+          <div class="pdp-benefits-badge__icon">
+            {%- if badge_3_icon.value != blank and badge_3_icon.type != 'single_line_text_field' -%}
+              <img src="{{ badge_3_icon.value | image_url: width: 96 }}" loading="lazy" width="48" height="48" alt="" />
+            {%- else -%}
+              {%- assign icon_3_key = badge_3_icon.value | default: badge_3_icon -%}
+              {%- case icon_3_key -%}
+                {%- when 'shield' -%}<img src="{{ 'shield.svg' | asset_url }}" loading="lazy" width="48" height="48" alt="" />
+                {%- when 'pet' -%}<img src="{{ 'pet.svg' | asset_url }}" loading="lazy" width="50" height="48" alt="" />
+                {%- when 'fruit' -%}<img src="{{ 'fruit.svg' | asset_url }}" loading="lazy" width="50" height="48" alt="" />
+                {%- else -%}<img src="{{ icon_3_key | asset_url }}" loading="lazy" width="48" height="48" alt="" />
+              {%- endcase -%}
+            {%- endif -%}
+          </div>
+          <div class="pdp-benefits-badge__text">{{ badge_3_text.value | default: badge_3_text }}</div>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</div>
+
+<style>
+  .pdp-benefits-badges {
+    width: 100%;
+  }
+
+  .pdp-benefits-badges__container {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .pdp-benefits-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .pdp-benefits-badge__icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pdp-benefits-badge__icon img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+  }
+
+  .pdp-benefits-badge__text {
+    font-family: var(--font-heading--family);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+    color: #1C1C1C;
+    min-width: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .pdp-benefits-badge__text {
+      font-size: 22px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+
+    .pdp-benefits-badge {
+      width: 100%;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "PDP Benefits Badges",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Product metafields (custom) take priority: benefit_badge_icon_1/2/3 (file or text: shield|pet|fruit), benefit_badge_text_1/2/3. Below are fallbacks when metafields are blank."
+    },
+    {
+      "type": "header",
+      "content": "Badge 1 (fallback)"
+    },
+    {
+      "type": "select",
+      "id": "badge_1_icon",
+      "label": "Icon",
+      "options": [
+        {
+          "value": "",
+          "label": "None"
+        },
+        {
+          "value": "shield",
+          "label": "Shield"
+        },
+        {
+          "value": "pet",
+          "label": "Pet"
+        },
+        {
+          "value": "fruit",
+          "label": "Fruit"
+        }
+      ],
+      "default": "shield"
+    },
+    {
+      "type": "text",
+      "id": "badge_1_text",
+      "label": "Text",
+      "default": "EASY TO USE"
+    },
+    {
+      "type": "header",
+      "content": "Badge 2 (fallback)"
+    },
+    {
+      "type": "select",
+      "id": "badge_2_icon",
+      "label": "Icon",
+      "options": [
+        {
+          "value": "",
+          "label": "None"
+        },
+        {
+          "value": "shield",
+          "label": "Shield"
+        },
+        {
+          "value": "pet",
+          "label": "Pet"
+        },
+        {
+          "value": "fruit",
+          "label": "Fruit"
+        }
+      ],
+      "default": "pet"
+    },
+    {
+      "type": "text",
+      "id": "badge_2_text",
+      "label": "Text",
+      "default": "SAFE AROUND PETS & KIDS"
+    },
+    {
+      "type": "header",
+      "content": "Badge 3 (fallback)"
+    },
+    {
+      "type": "select",
+      "id": "badge_3_icon",
+      "label": "Icon",
+      "options": [
+        {
+          "value": "",
+          "label": "None"
+        },
+        {
+          "value": "shield",
+          "label": "Shield"
+        },
+        {
+          "value": "pet",
+          "label": "Pet"
+        },
+        {
+          "value": "fruit",
+          "label": "Fruit"
+        }
+      ],
+      "default": "fruit"
+    },
+    {
+      "type": "text",
+      "id": "badge_3_text",
+      "label": "Text",
+      "default": "EFFECTIVE ONLY ON FRUIT FLIES"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PDP Benefits Badges",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}

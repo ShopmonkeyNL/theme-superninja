@@ -1,0 +1,36 @@
+{%- doc -%}
+  Renders a single tab item
+  Multiple blocks of this type can be added to create tabs
+{%- enddoc -%}
+
+{%- comment -%}
+  This block is collected by pdp-tabs-wrapper
+  Individual tab items don't render their own HTML
+{%- endcomment -%}
+
+{% schema %}
+{
+  "name": "PDP Tab Item",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Tab Title",
+      "default": "BEST FOR:"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Tab Content",
+      "default": "<ul><li>Kitchens with fruit bowls or produce</li><li>Trash and compost areas</li><li>Homes with kids and pets</li></ul>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PDP Tab Item",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}

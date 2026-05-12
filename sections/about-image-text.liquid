@@ -1,0 +1,328 @@
+{% comment %}
+  About Us – imagem de um lado, conteúdo do outro (título, subtítulo, rich text).
+  Desktop: duas colunas; mobile: conteúdo em cima, imagem em baixo, tudo centralizado.
+{% endcomment %}
+
+{% liquid
+  assign img = section.settings.image
+  assign default_asset = section.settings.default_image_asset | default: 'image-1.png'
+  if img != blank
+    assign img_url = img | image_url: width: 1200
+  else
+    assign img_url = default_asset | asset_url
+  endif
+  assign image_position = section.settings.image_position | default: 'left'
+  assign title = section.settings.title | default: 'Born from Frustration, Driven by Results'
+  assign subtitle = section.settings.subtitle
+  assign body = section.settings.body
+  assign padding_top = section.settings.padding_top | default: 48
+  assign padding_bottom = section.settings.padding_bottom | default: 64
+%}
+
+<section class="about-image-text about-image-text--image-{{ image_position }}" style="--about-pt: {{ padding_top }}px; --about-pb: {{ padding_bottom }}px;" {{ section.shopify_attributes }}>
+  <div class="about-image-text__inner">
+    <div class="about-image-text__media">
+      <img
+        src="{{ img_url }}"
+        alt="{{ img.alt | default: title | escape }}"
+        width="1200"
+        height="800"
+        class="about-image-text__image"
+        loading="lazy"
+      >
+    </div>
+    <div class="about-image-text__content">
+      {% if title != blank %}
+        <h2 class="about-image-text__title">{{ title }}</h2>
+      {% endif %}
+      {% if subtitle != blank %}
+        <p class="about-image-text__subtitle">{{ subtitle }}</p>
+      {% endif %}
+      {% if body != blank %}
+        <div class="about-image-text__body rte">{{ body }}</div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-image-text {
+    background: #F0F2F1;
+    padding: var(--about-pt, 48px) 16px var(--about-pb, 64px);
+  }
+
+  .about-image-text__inner {
+    max-width: 1312px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .about-image-text--image-right .about-image-text__inner {
+    direction: rtl;
+  }
+
+  .about-image-text--image-right .about-image-text__inner > * {
+    direction: ltr;
+  }
+
+  .about-image-text__media {
+    width: 100%;
+  }
+
+  .about-image-text__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  .about-image-text__content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .about-image-text__title {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-style: var(--font-heading--style, normal);
+    font-weight: 700;
+    font-size: {{ section.settings.title_font_size_desktop | default: 50 }}px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: justify;
+    text-transform: uppercase;
+    color: #1C1C1C;
+  }
+
+  .about-image-text__subtitle {
+    margin: 0;
+    font-family: Tahoma, sans-serif;
+    font-weight: 400;
+    font-size: {{ section.settings.subtitle_font_size_desktop | default: 24 }}px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: justify;
+    color: #1C1C1C;
+  }
+
+  .about-image-text__body {
+    margin: 0;
+    font-family: Tahoma, sans-serif;
+    font-weight: 400;
+    font-size: {{ section.settings.body_font_size_desktop | default: 20 }}px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: justify;
+    color: #1C1C1C;
+    opacity: 0.8;
+  }
+
+  .about-image-text__body p {
+    margin: 0 0 20px;
+  }
+
+  .about-image-text__body p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    .about-image-text {
+      padding: 32px 16px 48px;
+    }
+
+    .about-image-text__inner {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      direction: ltr;
+      text-align: center;
+    }
+
+    .about-image-text--image-right .about-image-text__inner {
+      direction: ltr;
+    }
+
+    .about-image-text__content {
+      order: 1;
+      align-items: center;
+    }
+
+    .about-image-text__media {
+      order: 2;
+    }
+
+    .about-image-text__title {
+      font-size: {{ section.settings.title_font_size_mobile | default: 36 }}px;
+      text-align: center;
+    }
+
+    .about-image-text__subtitle {
+      font-size: {{ section.settings.subtitle_font_size_mobile | default: 18 }}px;
+      text-align: center;
+    }
+
+    .about-image-text__body {
+      font-size: {{ section.settings.body_font_size_mobile | default: 16 }}px;
+      text-align: center;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "About - Image & Text",
+  "tag": "section",
+  "class": "section-about-image-text",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "If empty, uses the default asset below."
+    },
+    {
+      "type": "text",
+      "id": "default_image_asset",
+      "label": "Default image filename (when no image selected)",
+      "default": "image-1.png",
+      "info": "e.g. image-1.png or image-2.png from theme assets."
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position (desktop)",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Title"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Born from Frustration, Driven by Results"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_desktop",
+      "label": "Title font size (desktop)",
+      "min": 24,
+      "max": 72,
+      "step": 1,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Title font size (mobile)",
+      "min": 18,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Subtitle"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Super Ninja was created out of a simple frustration: traditional pest control solutions were either ineffective, toxic, or both."
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size_desktop",
+      "label": "Subtitle font size (desktop)",
+      "min": 14,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size_mobile",
+      "label": "Subtitle font size (mobile)",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Body text"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body (rich text)",
+      "default": "<p>As eco-conscious consumers ourselves, we knew there had to be a better way.</p><p>Our mission is to combine innovative design with natural ingredients to create products that deliver quick, visible results while remaining safe for families, pets, and the environment.</p>"
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_desktop",
+      "label": "Body font size (desktop)",
+      "min": 14,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_mobile",
+      "label": "Body font size (mobile)",
+      "min": 14,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    }
+  ],
+  "presets": [
+    {
+      "name": "About - Image & Text"
+    }
+  ]
+}
+{% endschema %}

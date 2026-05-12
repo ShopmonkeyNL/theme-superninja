@@ -1,0 +1,553 @@
+{% comment %}
+  Image Cards Section – heading + text (same block types as customers-feedback) + image cards
+{% endcomment %}
+
+{% liquid
+  assign section_bg = section.settings.background_color | default: '#F0F2F1'
+  assign border_color = section.settings.border_color | default: '#FF5000'
+  assign image_card_blocks = section.blocks | where: 'type', 'image_card'
+%}
+
+<section
+  class="image-cards-section image-cards-section--{{ section.id }}"
+  style="--ics-bg: {{ section_bg }}; --ics-border-color: {{ border_color }};"
+  {{ section.shopify_attributes }}>
+  <div class="image-cards-section__inner">
+    <div class="image-cards-section__content">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'heading' %}
+            {% liquid
+              assign tag = block.settings.tag | default: 'h2'
+              assign fs_d = block.settings.font_size_desktop | default: 64
+              assign fs_m = block.settings.font_size_mobile | default: 40
+              assign lh_d = block.settings.line_height_desktop | default: 1.2
+              assign lh_m = block.settings.line_height_mobile | default: 1.3
+              assign fw = block.settings.font_weight | default: '700'
+              assign align = block.settings.text_align | default: 'center'
+            %}
+            <{{ tag }}
+              class="image-cards-section__heading"
+              style="--ics-fs-d: {{ fs_d }}px; --ics-fs-m: {{ fs_m }}px; --ics-lh-d: {{ lh_d }}; --ics-lh-m: {{ lh_m }}; font-weight: {{ fw }}; text-align: {{ align }};"
+              {{ block.shopify_attributes }}>
+              {{ block.settings.content }}
+            </{{ tag }}>
+
+          {% when 'text' %}
+            {% liquid
+              assign fs_d = block.settings.font_size_desktop | default: 18
+              assign fs_m = block.settings.font_size_mobile | default: 16
+              assign lh_d = block.settings.line_height_desktop | default: 1.5
+              assign lh_m = block.settings.line_height_mobile | default: 1.5
+              assign fw = block.settings.font_weight | default: '400'
+              assign align = block.settings.text_align | default: 'left'
+            %}
+            <div
+              class="image-cards-section__text rte"
+              style="--ics-text-fs-d: {{ fs_d }}px; --ics-text-fs-m: {{ fs_m }}px; --ics-text-lh-d: {{ lh_d }}; --ics-text-lh-m: {{ lh_m }}; font-weight: {{ fw }}; text-align: {{ align }};"
+              {{ block.shopify_attributes }}>
+              {{ block.settings.content }}
+            </div>
+
+          {% when 'image_card' %}
+            {% comment %} image cards rendered below {% endcomment %}
+        {% endcase %}
+      {% endfor %}
+    </div>
+
+    {% if image_card_blocks.size > 0 %}
+      <div class="image-cards-section__cards">
+        {% for block in image_card_blocks %}
+          <div class="image-cards-section__card" {{ block.shopify_attributes }}>
+            <div class="image-cards-section__card-image-wrapper">
+              {% if block.settings.image != blank %}
+                {{ block.settings.image | image_url: width: 400 | image_tag: loading: 'lazy', alt: block.settings.label, class: 'image-cards-section__card-image' }}
+              {% elsif block.settings.asset_image != blank %}
+                {% assign image_url = block.settings.asset_image | asset_url %}
+                <img src="{{ image_url }}" alt="{{ block.settings.label }}" class="image-cards-section__card-image" loading="lazy" width="200" height="160">
+              {% else %}
+                {{ 'image' | placeholder_svg_tag: class: 'image-cards-section__card-image' }}
+              {% endif %}
+            </div>
+            <div class="image-cards-section__card-label">{{ block.settings.label }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .image-cards-section {
+    padding-top: 48px;
+    padding-bottom: 128px;
+    padding-inline: 1.5rem;
+    background: var(--ics-bg);
+  }
+
+  .image-cards-section__inner {
+    max-width: 1312px;
+    margin: 0 auto;
+  }
+
+  .image-cards-section__content {
+    max-width: 100%;
+    margin-bottom: 48px;
+  }
+
+  .image-cards-section__heading {
+    margin: 0;
+    color: #1C1C1C;
+    font-family: var(--font-heading--family);
+    font-size: var(--ics-fs-d, 64px);
+    line-height: var(--ics-lh-d, 1.2);
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .image-cards-section__heading p {
+    margin: 0;
+  }
+
+  .image-cards-section__text {
+    margin: 0.5em 0 0;
+    font-family: Tahoma, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: center;
+    vertical-align: middle;
+    color: #000;
+  }
+
+  .image-cards-section__text p {
+    margin: 0 0 0.5em;
+  }
+
+  .image-cards-section__text p:last-child {
+    margin-bottom: 0;
+    opacity: 0.8;
+  }
+
+  .image-cards-section__cards {
+    display: flex;
+    gap: 48px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .image-cards-section__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 313px;
+    width: 100%;
+  }
+
+  .image-cards-section__card-image-wrapper {
+    position: relative;
+    max-width: 199.99998807907104px;
+    width: 100%;
+    height: 159.99999046325684px;
+    z-index: 2;
+    margin-bottom: -30px;
+    
+  }
+
+  .image-cards-section__card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 4px solid var(--ics-border-color, #FF5000);
+    display: block;
+  }
+
+  .image-cards-section__card-label {
+    max-width: 313px;
+    width: 100%;
+    padding: 38px 0 24px 0;
+    font-family: var(--font-heading--family);
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #1C1C1C;
+    position: relative;
+    z-index: 1;
+    background: #F0F2F1;
+  }
+
+  @media screen and (max-width: 768px) {
+    .image-cards-section {
+      padding-inline: 1rem;
+    }
+    .image-cards-section__heading {
+      font-size: var(--ics-fs-m, 40px) !important;
+      line-height: var(--ics-lh-m, 1.3) !important;
+      text-align: center !important;
+    }
+    .image-cards-section__text {
+      font-size: 14px !important;
+      line-height: 100% !important;
+    }
+    .image-cards-section__cards {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 24px;
+      max-width: 82%;
+      margin: 0 auto
+    }
+    .image-cards-section__card {
+      max-width: 100%;
+      flex-direction: row;
+      align-items: center;
+      gap: 16px;
+    }
+    .image-cards-section__card-image-wrapper {
+      position: relative;
+      left: 0;
+      margin: 0;
+      margin-bottom: 0;
+      flex-shrink: 0;
+      max-width: 120px;
+      height: 96px;
+    }
+    .image-cards-section__card-label {
+      max-width: none;
+      flex: 1;
+      font-size: 20px;
+      padding: 0;
+      background: transparent;
+      text-align: left;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Image Cards Section",
+  "tag": "section",
+  "class": "section-image-cards",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#F0F2F1"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Image border color",
+      "default": "#FF5000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "DISCREET & VERSATILE"
+        },
+        {
+          "type": "select",
+          "id": "tag",
+          "label": "HTML tag",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            },
+            {
+              "value": "h5",
+              "label": "H5"
+            },
+            {
+              "value": "p",
+              "label": "P"
+            },
+            {
+              "value": "span",
+              "label": "Span"
+            }
+          ],
+          "default": "h2"
+        },
+        {
+          "type": "range",
+          "id": "font_size_desktop",
+          "label": "Font size (desktop)",
+          "min": 12,
+          "max": 72,
+          "step": 1,
+          "unit": "px",
+          "default": 64
+        },
+        {
+          "type": "range",
+          "id": "font_size_mobile",
+          "label": "Font size (mobile)",
+          "min": 12,
+          "max": 48,
+          "step": 1,
+          "unit": "px",
+          "default": 40
+        },
+        {
+          "type": "range",
+          "id": "line_height_desktop",
+          "label": "Line height (desktop)",
+          "min": 0.8,
+          "max": 2.5,
+          "step": 0.1,
+          "default": 1.2
+        },
+        {
+          "type": "range",
+          "id": "line_height_mobile",
+          "label": "Line height (mobile)",
+          "min": 0.8,
+          "max": 2.5,
+          "step": 0.1,
+          "default": 1.3
+        },
+        {
+          "type": "select",
+          "id": "font_weight",
+          "label": "Font weight",
+          "options": [
+            {
+              "value": "400",
+              "label": "400"
+            },
+            {
+              "value": "500",
+              "label": "500"
+            },
+            {
+              "value": "600",
+              "label": "600"
+            },
+            {
+              "value": "700",
+              "label": "700"
+            }
+          ],
+          "default": "700"
+        },
+        {
+          "type": "select",
+          "id": "text_align",
+          "label": "Text alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Effective without making your home look gross.</p>"
+        },
+        {
+          "type": "range",
+          "id": "font_size_desktop",
+          "label": "Font size (desktop)",
+          "min": 12,
+          "max": 32,
+          "step": 1,
+          "unit": "px",
+          "default": 18
+        },
+        {
+          "type": "range",
+          "id": "font_size_mobile",
+          "label": "Font size (mobile)",
+          "min": 12,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "range",
+          "id": "line_height_desktop",
+          "label": "Line height (desktop)",
+          "min": 0.8,
+          "max": 2.5,
+          "step": 0.1,
+          "default": 1.5
+        },
+        {
+          "type": "range",
+          "id": "line_height_mobile",
+          "label": "Line height (mobile)",
+          "min": 0.8,
+          "max": 2.5,
+          "step": 0.1,
+          "default": 1.5
+        },
+        {
+          "type": "select",
+          "id": "font_weight",
+          "label": "Font weight",
+          "options": [
+            {
+              "value": "400",
+              "label": "400"
+            },
+            {
+              "value": "500",
+              "label": "500"
+            },
+            {
+              "value": "600",
+              "label": "600"
+            },
+            {
+              "value": "700",
+              "label": "700"
+            }
+          ],
+          "default": "400"
+        },
+        {
+          "type": "select",
+          "id": "text_align",
+          "label": "Text alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        }
+      ]
+    },
+    {
+      "type": "image_card",
+      "name": "Image Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image (Shopify)"
+        },
+        {
+          "type": "text",
+          "id": "asset_image",
+          "label": "Asset Image (filename from assets folder)",
+          "info": "Enter filename from assets folder (e.g., 'image.png'). This will be used if no Shopify image is selected."
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "NEAR FRUIT BOWLS"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Cards Section",
+      "blocks": [
+        {
+          "type": "heading",
+          "settings": {
+            "content": "DISCREET & VERSATILE",
+            "tag": "h2",
+            "font_size_desktop": 64,
+            "font_size_mobile": 40,
+            "line_height_desktop": 1.2,
+            "line_height_mobile": 1.3,
+            "font_weight": "700",
+            "text_align": "center"
+          }
+        },
+        {
+          "type": "text",
+          "settings": {
+            "content": "<p>Effective without making your home look gross.</p>",
+            "font_size_desktop": 18,
+            "font_size_mobile": 16,
+            "line_height_desktop": 1.5,
+            "line_height_mobile": 1.5,
+            "font_weight": "400",
+            "text_align": "center"
+          }
+        },
+        {
+          "type": "image_card",
+          "settings": {
+            "label": "NEAR FRUIT BOWLS"
+          }
+        },
+        {
+          "type": "image_card",
+          "settings": {
+            "label": "BY TRASH CANS"
+          }
+        },
+        {
+          "type": "image_card",
+          "settings": {
+            "label": "MOUNT WITH ADHESIVE"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,851 @@
+{% comment %}
+  Pest Selector – blocos heading, text, button (como Home Hero) + pest_item (imagem, label, link, cores).
+  BEM: pest-selector, pest-selector__inner, pest-selector__header, pest-selector__slider, pest-selector__image-wrap, pest-selector__label, pest-selector__arrow.
+{% endcomment %}
+
+{% liquid
+  assign bg_color = section.settings.background_color | default: '#F0F2F1'
+  assign max_w = section.settings.max_width | default: '1312'
+  assign per_row = section.settings.items_per_row_desktop | default: 6
+  assign padding_top = section.settings.padding_top | default: 89
+  assign padding_bottom = section.settings.padding_bottom | default: 70
+  assign pest_blocks = section.blocks | where: 'type', 'pest_item'
+%}
+
+<section
+  class="pest-selector"
+  style="background-color: {{ bg_color }}; --pest-selector-padding-top: {{ padding_top }}px; --pest-selector-padding-bottom: {{ padding_bottom }}px;"
+  {{ section.shopify_attributes }}>
+  <div class="pest-selector__inner" style="max-width: {{ max_w }}px;">
+    <div class="pest-selector__header">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'heading' %}
+            {% liquid
+              assign tag = block.settings.tag | default: 'h2'
+              assign fs_d = block.settings.font_size_desktop | default: 32
+              assign fs_m = block.settings.font_size_mobile | default: 24
+              assign lh_d = block.settings.line_height_desktop | default: 1.2
+              assign lh_m = block.settings.line_height_mobile | default: 1.3
+              assign fw = block.settings.font_weight | default: '700'
+              assign align = block.settings.text_align | default: 'left'
+              assign content_plain = block.settings.content | strip_html
+              assign last_char = content_plain | slice: -1, 1
+              assign rest_len = content_plain.size | minus: 1
+              assign content_without_last = content_plain | slice: 0, rest_len
+            %}
+            <{{ tag }}
+                                                                                                                                            class="home-hero__heading pest-selector__heading-with-icon"
+                                                                                                                                            style="--home-hero-fs-d: {{ fs_d }}px; --home-hero-fs-m: {{ fs_m }}px; --home-hero-lh-d: {{ lh_d }}; --home-hero-lh-m: {{ lh_m }}; font-size: {{ fs_d }}px; line-height: {{ lh_d }}; font-weight: {{ fw }}; text-align: {{ align }};"
+                                                                                                                                            {{ block.shopify_attributes }}>
+              {% if content_plain.size > 0 %}
+                {{ content_without_last }}<span class="pest-selector__last-char">{{ last_char }}
+                  <svg
+                    width="72"
+                    height="72"
+                    viewBox="0 0 72 72"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    focusable="false"
+                    aria-hidden="true">
+                    <path d="M9.99994 35.4751C8.72352 35.2624 8.21598 34.3344 7.88628 33.3457C7.04575 30.7925 8.00074 28.7013 9.76384 26.9138C11.4622 25.1889 13.4805 24.1978 15.9418 25.0176C16.7576 25.2861 17.0219 25.1279 17.3808 24.4056C19.1593 20.8787 22.2672 19.4464 26.0078 19.4748C31.488 19.5186 35.4827 22.069 37.7301 27.1426C38.0093 27.7767 38.245 28.0495 39.0378 28.0064C44.8497 27.674 49.3024 32.8134 48.2558 38.623C48.1228 39.3774 48.1664 39.7247 48.9671 40.0495C51.1374 40.9281 52.1381 42.798 52.4969 44.9823C53.0929 48.6063 52.1196 51.7722 49.3333 54.2566C48.8235 54.7076 48.747 55.0457 48.9339 55.6995C49.8894 58.976 46.8636 63.0687 43.4383 63.2084C42.2069 63.2582 41.2105 62.8027 40.4343 61.8702C40.268 61.6693 40.0255 61.3752 40.2421 61.1102C40.495 60.7962 40.7663 61.0625 40.9829 61.2147C43.3039 62.7959 47.1471 60.5418 47.5181 57.4434C47.6167 56.6389 47.4099 55.9069 46.99 55.2279C46.57 54.5631 46.768 54.1492 47.3837 53.7071C50.5187 51.5116 51.7401 47.8973 50.5344 44.3619C49.9416 42.6262 48.9023 41.3639 46.8589 41.3361C45.8832 41.3195 45.7294 40.8006 46.0199 39.9357C47.9229 34.0912 43.8888 29.2842 37.8334 30.2136C36.7343 30.3858 36.4242 29.9067 36.1352 29.0178C34.3993 23.8115 29.5797 20.6954 24.3425 21.3347C21.1887 21.7265 19.122 23.4876 18.2851 26.5356C18.0741 27.2958 17.8232 27.9139 16.8775 27.3815C14.4752 26.004 12.5624 26.1977 10.6682 28.2093C9.22773 29.7406 8.16542 31.4905 8.96188 33.7247C9.18472 34.3438 9.62802 34.8888 9.97884 35.4676L9.99994 35.4751Z" fill="#FF5000" />
+                    <path d="M58.449 34.3058C56.2444 35.4351 54.0327 36.5714 51.8213 37.6936C51.4718 37.8644 51.0752 37.9001 50.8339 37.5353C50.5652 37.1135 50.8881 36.8432 51.2167 36.6508C53.3596 35.4001 55.5023 34.1636 57.6661 32.9346C58.1231 32.6736 58.5528 32.7729 58.7989 33.2721C59.0108 33.7072 58.8492 34.058 58.449 34.3058Z" fill="#FF5000" />
+                    <path d="M14.3551 13.0885C14.4162 13.2381 14.5327 13.4593 14.5995 13.6868C15.1945 15.7124 15.7822 17.7451 16.3699 19.7777C16.4634 20.1046 16.6889 20.5681 16.2124 20.7227C15.7573 20.8705 15.624 20.3873 15.4951 20.0669C14.6876 18.0659 13.8942 16.0651 13.0867 14.0641C12.89 13.5728 12.9462 13.1848 13.4034 12.9097C13.7179 12.717 14.028 12.7788 14.3551 13.0885Z" fill="#FF5000" />
+                    <path d="M59.4019 57.2493C59.1287 57.5133 58.7973 57.4582 58.4871 57.3964C56.6542 57.054 54.8143 56.7044 52.9889 56.3409C52.5941 56.2635 52.0654 56.1625 52.1307 55.6544C52.2038 55.097 52.7387 55.2475 53.127 55.2895C54.9839 55.4696 56.8405 55.6639 58.7044 55.8513C59.1209 55.8937 59.5226 55.9784 59.6345 56.4682C59.7071 56.7736 59.6179 57.0266 59.4091 57.2423L59.4019 57.2493Z" fill="#FF5000" />
+                  </svg>
+                </span>
+              {% else %}
+                {{ block.settings.content }}
+              {% endif %}
+            </{{ tag }}>
+
+          {% when 'text' %}
+            {% liquid
+              assign fs_d = block.settings.font_size_desktop | default: 18
+              assign fs_m = block.settings.font_size_mobile | default: 16
+              assign lh_d = block.settings.line_height_desktop | default: 1.5
+              assign lh_m = block.settings.line_height_mobile | default: 1.5
+              assign fw = block.settings.font_weight | default: '400'
+              assign align = block.settings.text_align | default: 'left'
+            %}
+            <div
+              class="home-hero__text rte"
+              style="--home-hero-text-fs-d: {{ fs_d }}px; --home-hero-text-fs-m: {{ fs_m }}px; --home-hero-text-lh-d: {{ lh_d }}; --home-hero-text-lh-m: {{ lh_m }}; font-size: {{ fs_d }}px; line-height: {{ lh_d }}; font-weight: {{ fw }}; text-align: {{ align }};"
+              {{ block.shopify_attributes }}>
+              {{ block.settings.content }}
+            </div>
+
+          {% when 'button' %}
+            <div class="home-hero__button-wrap" {{ block.shopify_attributes }}>
+              <a href="{{ block.settings.url | default: '#' }}" class="home-hero__button btn btn--hero">
+                {{ block.settings.label | default: 'Shop now' }}
+              </a>
+            </div>
+
+          {% when 'pest_item' %}
+          {% comment %} pest_item blocks are rendered in the list below {% endcomment %}
+          {% endcase %}
+        {% endfor %}
+      </div>
+
+      {% if pest_blocks.size > 0 %}
+        <div class="pest-selector__slider">
+          <button
+            type="button"
+            class="swiper-button-pest-prev"
+            id="pest-prev-{{ section.id }}"
+            aria-label="Previous">
+            <svg
+              width="50"
+              height="50"
+              viewBox="0 0 50 50"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"><path d="M32.3547 39.5194C32.4999 39.6646 32.6151 39.8369 32.6936 40.0266C32.7722 40.2163 32.8126 40.4196 32.8126 40.6249C32.8126 40.8302 32.7722 41.0335 32.6936 41.2232C32.6151 41.4128 32.4999 41.5852 32.3547 41.7304C32.2096 41.8755 32.0372 41.9907 31.8476 42.0693C31.6579 42.1478 31.4546 42.1883 31.2493 42.1883C31.044 42.1883 30.8407 42.1478 30.651 42.0693C30.4613 41.9907 30.289 41.8755 30.1438 41.7304L14.5188 26.1054C14.3735 25.9602 14.2583 25.7879 14.1797 25.5982C14.101 25.4086 14.0605 25.2052 14.0605 24.9999C14.0605 24.7946 14.101 24.5912 14.1797 24.4015C14.2583 24.2119 14.3735 24.0395 14.5188 23.8944L30.1438 8.26942C30.437 7.97623 30.8346 7.81152 31.2493 7.81152C31.6639 7.81152 32.0616 7.97623 32.3547 8.26942C32.6479 8.56261 32.8126 8.96026 32.8126 9.37489C32.8126 9.78952 32.6479 10.1872 32.3547 10.4804L17.8333 24.9999L32.3547 39.5194Z" fill="currentColor" /></svg>
+          </button>
+          <div id="pest-selector-swiper-{{ section.id }}" class="swiper pest-selector-swiper">
+            <div class="swiper-wrapper">
+              {% for block in pest_blocks %}
+                {% liquid
+                  assign label_key = block.settings.label | upcase | strip
+                  assign default_asset = nil
+                  case label_key
+                    when 'FRUIT FLIES'
+                      assign default_asset = 'fruit flies.png'
+                    when 'FUNGUS GNATS'
+                      assign default_asset = 'fungus gnat.png'
+                    when 'MOTHS'
+                      assign default_asset = 'moths.png'
+                    when 'SILVERFISH'
+                      assign default_asset = 'silverfish.png'
+                    when 'COCKROACHES'
+                      assign default_asset = 'cockroaches.png'
+                    when 'MOSQUITOES'
+                      assign default_asset = 'mosquitoes.png'
+                  endcase
+                %}
+                <div class="swiper-slide" {{ block.shopify_attributes }}>
+                  <a
+                    href="{{ block.settings.link | default: '/collections/all' }}"
+                    class="pest-selector__link"
+                    aria-label="View {{ block.settings.label | escape }}">
+                    <span class="pest-selector__image-wrap">
+                      {% if block.settings.image != blank %}
+                        {{ block.settings.image | image_url: width: 360 | image_tag: loading: 'lazy', alt: block.settings.label, class: 'pest-selector__image' }}
+                      {% elsif default_asset != nil %}
+                        <img
+                          class="pest-selector__image"
+                          src="{{ default_asset | asset_url }}"
+                          alt="{{ block.settings.label | escape }}"
+                          loading="lazy"
+                          width="180"
+                          height="180">
+                      {% else %}
+                        <span class="pest-selector__placeholder" aria-hidden="true"></span>
+                      {% endif %}
+                    </span>
+                    <span class="pest-selector__label-wrap">
+                      <span class="pest-selector__label" style="color: {{ block.settings.label_color | default: '#1C1C1C' }};">
+                        {{ block.settings.label }}
+                      </span>
+                      {% if block.settings.show_arrow %}
+                        <span
+                          class="pest-selector__arrow"
+                          style="color: {{ block.settings.arrow_color | default: '#94D357' }};"
+                          aria-hidden="true">
+                          <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            focusable="false">
+                            <path d="M11.9998 23.9038C5.42541 23.9038 0.0958102 18.5742 0.0958102 11.9998C0.0958102 5.42541 5.42541 0.0958102 11.9998 0.0958102C18.5742 0.0958102 23.9038 5.42541 23.9038 11.9998C23.9038 18.5742 18.5742 23.9038 11.9998 23.9038ZM10.0478 6.81101L8.80461 8.05581L12.7342 11.9806L8.77581 15.9438L10.0206 17.187L15.2222 11.979L10.0478 6.81101Z" fill="currentColor" />
+                          </svg>
+                        </span>
+                      {% endif %}
+                    </span>
+                  </a>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+          <button
+            type="button"
+            class="swiper-button-pest-next"
+            id="pest-next-{{ section.id }}"
+            aria-label="Next">
+            <svg
+              width="50"
+              height="50"
+              viewBox="0 0 50 50"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"><path d="M32.3547 39.5194C32.4999 39.6646 32.6151 39.8369 32.6936 40.0266C32.7722 40.2163 32.8126 40.4196 32.8126 40.6249C32.8126 40.8302 32.7722 41.0335 32.6936 41.2232C32.6151 41.4128 32.4999 41.5852 32.3547 41.7304C32.2096 41.8755 32.0372 41.9907 31.8476 42.0693C31.6579 42.1478 31.4546 42.1883 31.2493 42.1883C31.044 42.1883 30.8407 42.1478 30.651 42.0693C30.4613 41.9907 30.289 41.8755 30.1438 41.7304L14.5188 26.1054C14.3735 25.9602 14.2583 25.7879 14.1797 25.5982C14.101 25.4086 14.0605 25.2052 14.0605 24.9999C14.0605 24.7946 14.101 24.5912 14.1797 24.4015C14.2583 24.2119 14.3735 24.0395 14.5188 23.8944L30.1438 8.26942C30.437 7.97623 30.8346 7.81152 31.2493 7.81152C31.6639 7.81152 32.0616 7.97623 32.3547 8.26942C32.6479 8.56261 32.8126 8.96026 32.8126 9.37489C32.8126 9.78952 32.6479 10.1872 32.3547 10.4804L17.8333 24.9999L32.3547 39.5194Z" fill="currentColor" /></svg>
+          </button>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+
+  {% if pest_blocks.size > 0 %}
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+      media="print"
+      onload="this.media='all'">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    <script>
+      (function() {
+        var sectionId = '{{ section.id }}';
+        var perRow = {{ per_row | default: 6 }};
+        function initPestSwiper() {
+          var el = document.getElementById('pest-selector-swiper-' + sectionId);
+          if (!el) return;
+          if (typeof Swiper === 'undefined') return;
+          if (el._pestSwiper) {
+            el._pestSwiper.destroy(true, true);
+            el._pestSwiper = null;
+          }
+          var nextBtn = document.getElementById('pest-next-' + sectionId);
+          var prevBtn = document.getElementById('pest-prev-' + sectionId);
+          var totalSlides = el.querySelectorAll('.swiper-slide').length;
+          function slidesForLoop(target) {
+            if (totalSlides <= 1) return 1;
+            return Math.max(1, Math.min(target, totalSlides - 1));
+          }
+          el._pestSwiper = new Swiper(el, {
+            loop: true,
+            loopedSlides: totalSlides,
+            watchOverflow: false,
+            speed: 400,
+            slidesPerView: slidesForLoop(2),
+            spaceBetween: 24,
+            navigation: {
+              nextEl: nextBtn,
+              prevEl: prevBtn
+            },
+            breakpoints: {
+              750: { slidesPerView: slidesForLoop(perRow >= 4 ? 4 : 3), spaceBetween: 24 },
+              1024: { slidesPerView: slidesForLoop(perRow >= 5 ? 5 : perRow), spaceBetween: 24 },
+              1280: { slidesPerView: slidesForLoop(perRow), spaceBetween: 24 }
+            }
+          });
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initPestSwiper);
+        } else {
+          initPestSwiper();
+        }
+        document.addEventListener('shopify:section:load', function(e) {
+          if (e.detail.sectionId === sectionId) setTimeout(initPestSwiper, 50);
+        });
+      })();
+    </script>
+  {% endif %}
+
+  <style>
+    .pest-selector {
+      padding: var(--pest-selector-padding-top) 16px var(--pest-selector-padding-bottom);
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .pest-selector__inner {
+      margin: 0 auto;
+     
+    }
+    /* Blocos de título/texto/botão = mesmos do hero (home-hero__heading, home-hero__text) */
+    .pest-selector__header {
+      margin-bottom: 50px;
+      text-align: center;
+    }
+    .pest-selector__heading-with-icon {
+      margin-top: 0;
+      margin-bottom: 16px;
+    }
+    /* Última letra = span com position relative; SVG dentro, absolute → sempre grudado na última letra */
+    .pest-selector__last-char {
+      position: relative;
+    }
+    .pest-selector__last-char svg {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      display: block;
+      width: 72px !important;
+      min-width: 72px;
+      height: 72px !important;
+      min-height: 72px;
+      flex-shrink: 0;
+    }
+    .pest-selector__header .home-hero__heading p,
+    .pest-selector__header .home-hero__text p {
+      margin: 0 0 0.5em;
+    }
+    .pest-selector__header .home-hero__text p:last-child {
+      margin-bottom: 0;
+    }
+    .pest-selector__slider {
+      position: relative;
+      padding: 0 48px;
+    }
+    .pest-selector-swiper {
+      overflow: hidden;
+    }
+    .pest-selector__link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: inherit;
+    }
+    .pest-selector__image-wrap {
+      width: 160px;
+      height: 160px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      box-sizing: border-box;
+    }
+    .pest-selector__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .pest-selector__placeholder {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: #f5f5f5;
+    }
+    .pest-selector__label-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .pest-selector__label {
+      font-size: 22px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      font-family: "Bahnschrift"
+      , sans-serif;
+    }
+    .pest-selector__arrow {
+      width: 24px;
+      height: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.25s ease;
+    }
+    .pest-selector__arrow svg {
+      display: block;
+      width: 24px;
+      height: 24px;
+    }
+    .pest-selector__link:hover .pest-selector__arrow {
+      transform: rotate(-45deg);
+    }
+    .swiper-button-pest-prev,
+    .swiper-button-pest-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      margin: 0;
+      padding: 0;
+      border: none;
+      background: none;
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+      transition: color 0.2s
+      , opacity 0.2s;
+    }
+    .swiper-button-pest-prev:hover,
+    .swiper-button-pest-next:hover {
+      color: #FF5000;
+      opacity: 0.9;
+    }
+    .swiper-button-pest-prev {
+      left: 0;
+    }
+    .swiper-button-pest-next {
+      right: 0;
+    }
+    .swiper-button-pest-next svg {
+      transform: rotate(180deg);
+    }
+    .swiper-button-pest-prev svg,
+    .swiper-button-pest-next svg {
+      display: block;
+      width: 50px;
+      height: 50px;
+    }
+    .swiper-button-pest-prev svg path,
+    .swiper-button-pest-next svg path {
+      fill: currentColor;
+    }
+
+    @media screen and (max-width: 749px) {
+      .pest-selector {
+        padding: var(--pest-selector-padding-top) 16px var(--pest-selector-padding-bottom);
+      }
+     
+      .pest-selector__slider {
+        padding: 0 8px;
+        position: relative;
+      }
+      .pest-selector__slider .swiper-button-pest-prev,
+      .pest-selector__slider .swiper-button-pest-next {
+        width: 36px;
+        height: 36px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .pest-selector__slider .swiper-button-pest-prev svg,
+      .pest-selector__slider .swiper-button-pest-next svg {
+        width: 36px;
+        height: 36px;
+      }
+      .pest-selector__slider .swiper-button-pest-prev {
+        left: -4px;
+      }
+      .pest-selector__slider .swiper-button-pest-next {
+        right: -4px;
+      }
+      .pest-selector__slider .pest-selector-swiper {
+        padding: 0 32px;
+      }
+      .pest-selector__image-wrap {
+        width: 95px;
+        height: 95px;
+      }
+      .pest-selector__last-char svg {
+        width: 48px !important;
+        height: 48px !important;
+        min-width: 48px !important;
+        top: -25px;
+      }
+      .pest-selector__label,.pest-selector__header .home-hero__text p:last-child {
+        font-size: 14px!important;
+      }
+      .pest-selector__label {
+        white-space: nowrap;
+      }
+      h2.home-hero__heading.pest-selector__heading-with-icon{
+        font-size: 40px!important;
+      }
+    }
+  </style>
+
+  {% schema %}
+    {
+      "name": "Pest Selector",
+      "tag": "section",
+      "class": "section-pest-selector",
+      "settings": [
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background color",
+          "default": "#F0F2F1"
+        },
+        {
+          "type": "range",
+          "id": "padding_top",
+          "label": "Padding top",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "default": 89
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom",
+          "label": "Padding bottom",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "default": 70
+        }, {
+          "type": "select",
+          "id": "max_width",
+          "label": "Max width (px)",
+          "options": [
+            {
+              "value": "1100",
+              "label": "1100"
+            }, {
+              "value": "1200",
+              "label": "1200"
+            }, {
+              "value": "1280",
+              "label": "1280"
+            }, {
+              "value": "1312",
+              "label": "1312"
+            }
+          ],
+          "default": "1312"
+        }, {
+          "type": "select",
+          "id": "items_per_row_desktop",
+          "label": "Items per row (desktop)",
+          "options": [
+            {
+              "value": "4",
+              "label": "4"
+            }, {
+              "value": "5",
+              "label": "5"
+            }, {
+              "value": "6",
+              "label": "6"
+            }
+          ],
+          "default": "6"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "heading",
+          "name": "Heading",
+          "settings": [
+            {
+              "type": "inline_richtext",
+              "id": "content",
+              "label": "Content",
+              "default": "Fob on pests, channel where it matters."
+            },
+            {
+              "type": "select",
+              "id": "tag",
+              "label": "HTML tag",
+              "options": [
+                {
+                  "value": "h1",
+                  "label": "H1"
+                },
+                {
+                  "value": "h2",
+                  "label": "H2"
+                },
+                {
+                  "value": "h3",
+                  "label": "H3"
+                },
+                {
+                  "value": "h4",
+                  "label": "H4"
+                }, {
+                  "value": "h5",
+                  "label": "H5"
+                }, {
+                  "value": "p",
+                  "label": "P"
+                }, {
+                  "value": "span",
+                  "label": "Span"
+                }
+              ],
+              "default": "h2"
+            },
+            {
+              "type": "range",
+              "id": "font_size_desktop",
+              "label": "Font size (desktop)",
+              "min": 12,
+              "max": 72,
+              "step": 1,
+              "unit": "px",
+              "default": 32
+            },
+            {
+              "type": "range",
+              "id": "font_size_mobile",
+              "label": "Font size (mobile)",
+              "min": 12,
+              "max": 48,
+              "step": 1,
+              "unit": "px",
+              "default": 24
+            }, {
+              "type": "range",
+              "id": "line_height_desktop",
+              "label": "Line height (desktop)",
+              "min": 0.8,
+              "max": 2.5,
+              "step": 0.1,
+              "default": 1.2
+            }, {
+              "type": "range",
+              "id": "line_height_mobile",
+              "label": "Line height (mobile)",
+              "min": 0.8,
+              "max": 2.5,
+              "step": 0.1,
+              "default": 1.3
+            }, {
+              "type": "select",
+              "id": "font_weight",
+              "label": "Font weight",
+              "options": [
+                {
+                  "value": "400",
+                  "label": "400"
+                }, {
+                  "value": "500",
+                  "label": "500"
+                }, {
+                  "value": "600",
+                  "label": "600"
+                }, {
+                  "value": "700",
+                  "label": "700"
+                }
+              ],
+              "default": "700"
+            }, {
+              "type": "select",
+              "id": "text_align",
+              "label": "Text alignment",
+              "options": [
+                {
+                  "value": "left",
+                  "label": "Left"
+                }, {
+                  "value": "center",
+                  "label": "Center"
+                }, {
+                  "value": "right",
+                  "label": "Right"
+                }
+              ],
+              "default": "left"
+            }
+          ]
+        }, {
+          "type": "text",
+          "name": "Text",
+          "settings": [
+            {
+              "type": "richtext",
+              "id": "content",
+              "label": "Content",
+              "default": "<p>Powerful, natural solutions that help you take back your home, without harsh chemicals or hassle.</p>"
+            },
+            {
+              "type": "range",
+              "id": "font_size_desktop",
+              "label": "Font size (desktop)",
+              "min": 12,
+              "max": 32,
+              "step": 1,
+              "unit": "px",
+              "default": 18
+            },
+            {
+              "type": "range",
+              "id": "font_size_mobile",
+              "label": "Font size (mobile)",
+              "min": 12,
+              "max": 24,
+              "step": 1,
+              "unit": "px",
+              "default": 16
+            },
+            {
+              "type": "range",
+              "id": "line_height_desktop",
+              "label": "Line height (desktop)",
+              "min": 0.8,
+              "max": 2.5,
+              "step": 0.1,
+              "default": 1.5
+            }, {
+              "type": "range",
+              "id": "line_height_mobile",
+              "label": "Line height (mobile)",
+              "min": 0.8,
+              "max": 2.5,
+              "step": 0.1,
+              "default": 1.5
+            }, {
+              "type": "select",
+              "id": "font_weight",
+              "label": "Font weight",
+              "options": [
+                {
+                  "value": "400",
+                  "label": "400"
+                }, {
+                  "value": "500",
+                  "label": "500"
+                }, {
+                  "value": "600",
+                  "label": "600"
+                }, {
+                  "value": "700",
+                  "label": "700"
+                }
+              ],
+              "default": "400"
+            }, {
+              "type": "select",
+              "id": "text_align",
+              "label": "Text alignment",
+              "options": [
+                {
+                  "value": "left",
+                  "label": "Left"
+                }, {
+                  "value": "center",
+                  "label": "Center"
+                }, {
+                  "value": "right",
+                  "label": "Right"
+                }
+              ],
+              "default": "left"
+            }
+          ]
+        }, {
+          "type": "button",
+          "name": "Button",
+          "settings": [
+            {
+              "type": "text",
+              "id": "label",
+              "label": "Label",
+              "default": "Shop now"
+            }, {
+              "type": "url",
+              "id": "url",
+              "label": "Link"
+            }
+          ]
+        }, {
+          "type": "pest_item",
+          "name": "Pest item",
+          "settings": [
+            {
+              "type": "image_picker",
+              "id": "image",
+              "label": "Image",
+              "info": "Optional. If empty, default image is used for known labels (e.g. FRUIT FLIES, MOTHS)."
+            },
+            {
+              "type": "text",
+              "id": "label",
+              "label": "Label",
+              "default": "FRUIT FLIES"
+            },
+            {
+              "type": "url",
+              "id": "link",
+              "label": "Link",
+              "default": "/collections/all"
+            },
+            {
+              "type": "color",
+              "id": "label_color",
+              "label": "Label color",
+              "default": "#1C1C1C"
+            }, {
+              "type": "checkbox",
+              "id": "show_arrow",
+              "label": "Show arrow icon",
+              "default": true
+            }, {
+              "type": "color",
+              "id": "arrow_color",
+              "label": "Arrow icon color",
+              "default": "#7AC943"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Pest Selector",
+          "blocks": [
+            {
+              "type": "heading",
+              "settings": {
+                "content": "Fob on pests, channel where it matters.",
+                "tag": "h2",
+                "font_size_desktop": 32,
+                "font_size_mobile": 24,
+                "line_height_desktop": 1.2,
+                "line_height_mobile": 1.3,
+                "font_weight": "700",
+                "text_align": "left"
+              }
+            },
+            {
+              "type": "text",
+              "settings": {
+                "content": "<p>Powerful, natural solutions that help you take back your home, without harsh chemicals or hassle.</p>",
+                "font_size_desktop": 18,
+                "font_size_mobile": 16,
+                "line_height_desktop": 1.5,
+                "line_height_mobile": 1.5,
+                "font_weight": "400",
+                "text_align": "left"
+              }
+            },
+            {
+              "type": "pest_item",
+              "settings": {
+                "label": "FRUIT FLIES",
+                "show_arrow": true
+              }
+            },
+            {
+              "type": "pest_item",
+              "settings": {
+                "label": "FUNGUS GNATS",
+                "show_arrow": true
+              }
+            }, {
+              "type": "pest_item",
+              "settings": {
+                "label": "MOTHS",
+                "show_arrow": true
+              }
+            }, {
+              "type": "pest_item",
+              "settings": {
+                "label": "SILVERFISH",
+                "show_arrow": true
+              }
+            }, {
+              "type": "pest_item",
+              "settings": {
+                "label": "COCKROACHES",
+                "show_arrow": true
+              }
+            }, {
+              "type": "pest_item",
+              "settings": {
+                "label": "MOSQUITOES",
+                "show_arrow": true
+              }
+            }
+          ]
+        }
+      ]
+    }
+  {% endschema %}

@@ -1,0 +1,636 @@
+{% comment %}
+  Why Super Ninja Works – heading + text (same block types as home hero).
+{% endcomment %}
+
+{% liquid
+  assign section_bg = section.settings.background_color | default: '#F0F2F1'
+  assign img_desk = section.settings.image_desktop
+  assign img_mob = section.settings.image_mobile
+  if img_desk == blank
+    assign img_desk_url = 'dropdesk.png' | asset_url
+  else
+    assign img_desk_url = img_desk | image_url: width: 1200
+  endif
+  if img_mob == blank
+    assign img_mob_url = 'dropmob.png' | asset_url
+  else
+    assign img_mob_url = img_mob | image_url: width: 800
+  endif
+  assign dropdown_blocks = section.blocks | where: 'type', 'dropdown_item'
+%}
+
+<section
+  class="why-super-ninja-works why-super-ninja-works--{{ section.id }}"
+  style="--wsn-bg: {{ section_bg }};"
+  {{ section.shopify_attributes }}>
+  <div class="why-super-ninja-works__inner">
+    <div class="why-super-ninja-works__content">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'heading' %}
+            {% liquid
+              assign tag = block.settings.tag | default: 'h2'
+              assign fs_d = block.settings.font_size_desktop | default: 64
+              assign fs_m = block.settings.font_size_mobile | default: 40
+              assign lh_d = block.settings.line_height_desktop | default: 1.2
+              assign lh_m = block.settings.line_height_mobile | default: 1.3
+              assign fw = block.settings.font_weight | default: '700'
+              assign align = block.settings.text_align | default: 'center'
+            %}
+            <{{ tag }}
+                            class="why-super-ninja-works__heading"
+                            style="--wsn-fs-d: {{ fs_d }}px; --wsn-fs-m: {{ fs_m }}px; --wsn-lh-d: {{ lh_d }}; --wsn-lh-m: {{ lh_m }}; font-weight: {{ fw }}; text-align: {{ align }};"
+                            {{ block.shopify_attributes }}>
+              {{ block.settings.content }}
+              </{{ tag }}>
+
+            {% when 'text' %}
+              {% liquid
+                assign fs_d = block.settings.font_size_desktop | default: 18
+                assign fs_m = block.settings.font_size_mobile | default: 16
+                assign lh_d = block.settings.line_height_desktop | default: 1.5
+                assign lh_m = block.settings.line_height_mobile | default: 1.5
+                assign fw = block.settings.font_weight | default: '400'
+                assign align = block.settings.text_align | default: 'left'
+              %}
+              <div
+                class="why-super-ninja-works__text rte"
+                style="--wsn-text-fs-d: {{ fs_d }}px; --wsn-text-fs-m: {{ fs_m }}px; --wsn-text-lh-d: {{ lh_d }}; --wsn-text-lh-m: {{ lh_m }}; font-weight: {{ fw }}; text-align: {{ align }};"
+                {{ block.shopify_attributes }}>
+                {{ block.settings.content }}
+              </div>
+
+          {% when 'dropdown_item' %}
+            {% comment %} dropdown items rendered in main block below {% endcomment %}
+          {% endcase %}
+        {% endfor %}
+      </div>
+
+      {% if dropdown_blocks.size > 0 %}
+        <div class="why-super-ninja-works__main">
+          <div class="why-super-ninja-works__main-image">
+            <picture>
+              <source media="(max-width: 749px)" srcset="{{ img_mob_url }}">
+              <img src="{{ img_desk_url }}" alt="" width="1200" height="auto" loading="lazy" class="why-super-ninja-works__img">
+            </picture>
+          </div>
+          <div class="why-super-ninja-works__main-content">
+            <div class="wsn-dropdown">
+              {% for block in dropdown_blocks %}
+                <div class="wsn-dropdown__item" {{ block.shopify_attributes }}>
+                  <details class="wsn-dropdown__details">
+                    <summary class="wsn-dropdown__trigger">
+                      <span class="wsn-dropdown__icon-wrap">
+                        {% if block.settings.icon != blank %}
+                          <img src="{{ block.settings.icon | image_url: width: 44, height: 44 }}" alt="" width="44" height="44" class="wsn-dropdown__icon" loading="lazy">
+                        {% else %}
+                          <img src="{{ 'icon-dropdown.svg' | asset_url }}" alt="" width="44" height="44" class="wsn-dropdown__icon wsn-dropdown__icon--svg" loading="lazy">
+                        {% endif %}
+                      </span>
+                      <h3 class="wsn-dropdown__title">{{ block.settings.title }}</h3>
+                      <span class="wsn-dropdown__arrow" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.6C6.70655 21.6 2.4 17.2935 2.4 12C2.4 6.70655 6.70655 2.4 12 2.4C17.293 2.4 21.6 6.70655 21.6 12C21.6 17.2935 17.293 21.6 12 21.6Z" fill="#94D357"/><path d="M8.85551 10.406L12.7468 10.4057L8.00698 15.1455L9.70404 16.8426L14.4438 12.1028L14.4436 15.9941H16.8439L16.8435 8.00603L8.85551 8.0057L8.85551 10.406Z" fill="#F0F2F1"/></svg>
+                      </span>
+                    </summary>
+                    <div class="wsn-dropdown__panel rte">
+                      {{ block.settings.content }}
+                    </div>
+                  </details>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+  <style>
+    .why-super-ninja-works {
+      padding-top: 48px;
+      padding-bottom: 0;
+      padding-inline: 0;
+      background: var(--wsn-bg);
+    }
+
+    .why-super-ninja-works__inner {
+      max-width: 100% ;
+      margin: 0 auto;
+    }
+
+    .why-super-ninja-works__content {
+      max-width: 100%;
+    }
+
+    .why-super-ninja-works__heading {
+      margin: 0;
+      color: #1C1C1C;
+      font-family: var(--font-heading--family);
+      font-size: var(--wsn-fs-d, 64px);
+      line-height: var(--wsn-lh-d, 1.2);
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .why-super-ninja-works__heading p {
+      margin: 0;
+    }
+
+    .why-super-ninja-works__text {
+      margin: 0.5em 0 0;
+      font-size: var(--wsn-text-fs-d, 18px);
+      line-height: var(--wsn-text-lh-d, 1.5);
+      color: #000;
+    }
+
+    .why-super-ninja-works__text p {
+      margin: 0 0 0.5em;
+    }
+
+    .why-super-ninja-works__text p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Main block: [imagem][conteudo] */
+    .why-super-ninja-works__main {
+      display: flex;
+      align-items: stretch;
+      gap: 2rem;
+      margin-top: 50px;
+      max-width:1510px;
+      align-items: center;
+    } 
+
+    .why-super-ninja-works__main-image {
+      flex: 0 0 50%;
+      min-width: 0;
+    }
+
+    .why-super-ninja-works__img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .why-super-ninja-works__main-content {
+      flex: 1;
+      min-width: 0;
+      padding-right:16px;
+    }
+
+    /* Dropdown */
+    .wsn-dropdown {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wsn-dropdown__item {
+      border-bottom: 1px solid #FF5000;
+    }
+
+    .wsn-dropdown__item:first-child {
+      border-top: 1px solid #FF5000;
+    }
+
+    .wsn-dropdown__details {
+      margin: 0;
+    }
+
+    .wsn-dropdown__trigger {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      padding: 1rem 0;
+      cursor: pointer;
+      list-style: none;
+      color: #1C1C1C;
+      font-family: var(--font-heading--family);
+      font-size: 48px;
+      line-height: 1.2;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-align: left;
+      border: none;
+      background: none;
+    }
+
+    .wsn-dropdown__trigger::-webkit-details-marker {
+      display: none;
+    }
+
+    .wsn-dropdown__icon-wrap {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wsn-dropdown__icon {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      object-fit: contain;
+    }
+
+    .wsn-dropdown__icon--svg {
+      width: 44px;
+      height: 44px;
+    }
+
+    .wsn-dropdown__title {
+      margin: 0;
+      flex: 1;
+      text-transform: uppercase;
+      font-family: var(--font-heading--family)!important;
+      font-weight: 700!important;
+      font-size: 48px;
+      line-height: 100%;
+      letter-spacing: 0px;
+      text-transform: uppercase;
+      vertical-align: middle;
+    }
+
+    .wsn-dropdown__arrow {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .wsn-dropdown__arrow svg {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+
+    .wsn-dropdown__details:not([open]) .wsn-dropdown__icon-wrap {
+      display: none;
+    }
+
+    .wsn-dropdown__details:not([open]) .wsn-dropdown__title {
+      opacity: 0.6;
+      
+    }
+
+    .wsn-dropdown__details:not([open]) .wsn-dropdown__arrow {
+      transform: rotate(90deg);
+      opacity: 0.5;
+    }
+
+    .wsn-dropdown__panel {
+      padding: 0 0 1rem 0;
+      font-size: 24px;
+      line-height: 1.5;
+      color: #1C1C1C;
+    }
+
+    .wsn-dropdown__panel p {
+      margin: 0 0 0.5em;
+    }
+
+    .wsn-dropdown__panel p:last-child {
+      margin-bottom: 0;
+    }
+
+    @media screen and (max-width: 749px) {
+      .why-super-ninja-works {
+        padding-inline: 1rem;
+      }
+      .why-super-ninja-works__heading {
+        font-size: var(--wsn-fs-m, 40px) !important;
+        line-height: var(--wsn-lh-m, 1.3) !important;
+      }
+      .why-super-ninja-works__text {
+        font-size: var(--wsn-text-fs-m, 16px) !important;
+        line-height: var(--wsn-text-lh-m, 1.5) !important;
+      }
+      .why-super-ninja-works__main {
+        flex-direction: column;
+        margin-top: 1.5rem;
+      }
+      .why-super-ninja-works__main-image {
+        order: 2;
+        flex-basis: auto;
+      }
+      .why-super-ninja-works__main-content {
+        order: 1;
+        padding-right: 0;
+        width: 100%;
+      }
+      .wsn-dropdown__trigger {
+        font-size: 32px;
+      }
+      .wsn-dropdown__panel {
+        font-size: 20px;
+      }
+    }
+  </style>
+
+  {% schema %}
+    {
+      "name": "Why Super Ninja Works",
+      "tag": "section",
+      "class": "section-why-super-ninja-works",
+      "settings": [
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background color",
+          "default": "#F0F2F1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_desktop",
+          "label": "Main image (desktop)",
+          "info": "Default: dropdesk.png"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Main image (mobile)",
+          "info": "Default: dropmob.png"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "heading",
+          "name": "Heading",
+          "settings": [
+            {
+              "type": "inline_richtext",
+              "id": "content",
+              "label": "Content",
+              "default": "Why Super Ninja Works When Others Don't"
+            },
+            {
+              "type": "select",
+              "id": "tag",
+              "label": "HTML tag",
+              "options": [
+                {
+                  "value": "h1",
+                  "label": "H1"
+                },
+                {
+                  "value": "h2",
+                  "label": "H2"
+                },
+                {
+                  "value": "h3",
+                  "label": "H3"
+                },
+                {
+                  "value": "h4",
+                  "label": "H4"
+                }, {
+                  "value": "h5",
+                  "label": "H5"
+                }, {
+                  "value": "p",
+                  "label": "P"
+                }, {
+                  "value": "span",
+                  "label": "Span"
+                }
+              ],
+              "default": "h2"
+            },
+            {
+              "type": "range",
+              "id": "font_size_desktop",
+              "label": "Font size (desktop)",
+              "min": 12,
+              "max": 72,
+              "step": 1,
+              "unit": "px",
+              "default": 64
+            },
+            {
+              "type": "range",
+              "id": "font_size_mobile",
+              "label": "Font size (mobile)",
+              "min": 12,
+              "max": 48,
+              "step": 1,
+              "unit": "px",
+              "default": 40
+            }, {
+              "type": "range",
+              "id": "line_height_desktop",
+              "label": "Line height (desktop)",
+              "min": 0.8,
+              "max": 2.5,
+              "step": 0.1,
+              "default": 1.2
+            }, {
+              "type": "range",
+              "id": "line_height_mobile",
+              "label": "Line height (mobile)",
+              "min": 0.8,
+              "max": 2.5,
+              "step": 0.1,
+              "default": 1.3
+            }, {
+              "type": "select",
+              "id": "font_weight",
+              "label": "Font weight",
+              "options": [
+                {
+                  "value": "400",
+                  "label": "400"
+                }, {
+                  "value": "500",
+                  "label": "500"
+                }, {
+                  "value": "600",
+                  "label": "600"
+                }, {
+                  "value": "700",
+                  "label": "700"
+                }
+              ],
+              "default": "700"
+            }, {
+              "type": "select",
+              "id": "text_align",
+              "label": "Text alignment",
+              "options": [
+                {
+                  "value": "left",
+                  "label": "Left"
+                }, {
+                  "value": "center",
+                  "label": "Center"
+                }, {
+                  "value": "right",
+                  "label": "Right"
+                }
+              ],
+              "default": "center"
+            }
+          ]
+        }, {
+          "type": "text",
+          "name": "Text",
+          "settings": [
+            {
+              "type": "richtext",
+              "id": "content",
+              "label": "Content",
+              "default": "<p>Powerful pest control that works effectively, without compromising the safety of your home or family.</p>"
+            },
+            {
+              "type": "range",
+              "id": "font_size_desktop",
+              "label": "Font size (desktop)",
+              "min": 12,
+              "max": 32,
+              "step": 1,
+              "unit": "px",
+              "default": 18
+            },
+            {
+              "type": "range",
+              "id": "font_size_mobile",
+              "label": "Font size (mobile)",
+              "min": 12,
+              "max": 24,
+              "step": 1,
+              "unit": "px",
+              "default": 16
+            },
+            {
+              "type": "range",
+              "id": "line_height_desktop",
+              "label": "Line height (desktop)",
+              "min": 0.8,
+              "max": 2.5,
+              "step": 0.1,
+              "default": 1.5
+            }, {
+              "type": "range",
+              "id": "line_height_mobile",
+              "label": "Line height (mobile)",
+              "min": 0.8,
+              "max": 2.5,
+              "step": 0.1,
+              "default": 1.5
+            }, {
+              "type": "select",
+              "id": "font_weight",
+              "label": "Font weight",
+              "options": [
+                {
+                  "value": "400",
+                  "label": "400"
+                }, {
+                  "value": "500",
+                  "label": "500"
+                }, {
+                  "value": "600",
+                  "label": "600"
+                }, {
+                  "value": "700",
+                  "label": "700"
+                }
+              ],
+              "default": "400"
+            }, {
+              "type": "select",
+              "id": "text_align",
+              "label": "Text alignment",
+              "options": [
+                {
+                  "value": "left",
+                  "label": "Left"
+                }, {
+                  "value": "center",
+                  "label": "Center"
+                }, {
+                  "value": "right",
+                  "label": "Right"
+                }
+              ],
+              "default": "left"
+            }
+          ]
+        },
+        {
+          "type": "dropdown_item",
+          "name": "Dropdown item",
+          "settings": [
+            {
+              "type": "image_picker",
+              "id": "icon",
+              "label": "Icon",
+              "info": "Optional. Recommended size: 44×44px. Icons are displayed at 44×44px. If blank, uses default icon."
+            },
+            {
+              "type": "text",
+              "id": "title",
+              "label": "Title (H3)",
+              "default": "Proven effectiveness"
+            },
+            {
+              "type": "richtext",
+              "id": "content",
+              "label": "Content",
+              "default": "<p>Super Ninja has been tested and proven to work where other solutions fall short. Real results you can count on.</p>"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Why Super Ninja Works",
+          "blocks": [
+            {
+              "type": "heading",
+              "settings": {
+                "content": "Why Super Ninja Works When Others Don't",
+                "tag": "h2",
+                "font_size_desktop": 64,
+                "font_size_mobile": 40,
+                "line_height_desktop": 1.2,
+                "line_height_mobile": 1.3,
+                "font_weight": "700",
+                "text_align": "center"
+              }
+            },
+            {
+              "type": "dropdown_item",
+              "settings": {
+                "title": "Proven effectiveness",
+                "content": "<p>Super Ninja has been tested and proven to work where other solutions fall short. Real results you can count on.</p>"
+              }
+            },
+            {
+              "type": "dropdown_item",
+              "settings": {
+                "title": "Smart, discreet design",
+                "content": "<p>Fits naturally in your kitchen or pantry without drawing attention. Effective without the clutter.</p>"
+              }
+            },
+            {
+              "type": "dropdown_item",
+              "settings": {
+                "title": "Safe Formulations",
+                "content": "<p>Developed with safety in mind, so you can use it around food and family with confidence.</p>"
+              }
+            },
+            {
+              "type": "dropdown_item",
+              "settings": {
+                "title": "Effortless and mess-free",
+                "content": "<p>Simple to set up and replace. No fuss, no sticky mess—just results.</p>"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  {% endschema %}

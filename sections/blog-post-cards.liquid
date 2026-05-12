@@ -1,0 +1,413 @@
+{% comment %}
+  Blog posts cards section.
+  - Pulls posts from a selected blog handle (default: "blog")
+  - Custom card design for Super Ninja blog listing
+{% endcomment %}
+
+{% liquid
+  assign selected_blog = blogs[section.settings.blog_handle]
+  if selected_blog == blank and blog != blank
+    assign selected_blog = blog
+  endif
+
+  assign posts_limit = section.settings.posts_limit | default: 12
+%}
+
+<section
+  class="blog-post-cards"
+  data-bpc-root
+  style="
+    --bpc-pt: {{ section.settings.padding_top | default: 56 }}px;
+    --bpc-pb: {{ section.settings.padding_bottom | default: 72 }}px;
+  "
+  {{ section.shopify_attributes }}
+>
+  <div class="blog-post-cards__inner">
+    {% if selected_blog != blank and selected_blog.articles_count > 0 %}
+      <div class="blog-post-cards__categories">
+        <h3 class="blog-post-cards__categories-title">Categories</h3>
+        <div class="blog-post-cards__categories-track" role="tablist" aria-label="Blog categories">
+          <button
+            type="button"
+            class="blog-post-cards__category is-active"
+            data-bpc-tag="all"
+            aria-pressed="true"
+          >
+            All Categories
+          </button>
+          {% for tag in selected_blog.all_tags %}
+            <button
+              type="button"
+              class="blog-post-cards__category"
+              data-bpc-tag="{{ tag | handleize }}"
+              aria-pressed="false"
+            >
+              {{ tag }}
+            </button>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="blog-post-cards__grid">
+        {% for article in selected_blog.articles limit: posts_limit %}
+          {% liquid
+            assign reading_source = article.content | strip_html | strip_newlines
+            assign words = reading_source | split: ' ' | size
+            assign read_minutes = words | plus: 199 | divided_by: 200
+            if read_minutes < 1
+              assign read_minutes = 1
+            endif
+
+            assign excerpt_text = article.excerpt
+            if excerpt_text == blank
+              assign excerpt_text = article.content
+            endif
+          %}
+
+          <article
+            class="blog-post-cards__card"
+            data-bpc-card
+            data-tags="{% for tag in article.tags %}{{ tag | handleize }}{% unless forloop.last %},{% endunless %}{% endfor %}"
+          >
+            <a class="blog-post-cards__image-link" href="{{ article.url }}" aria-label="{{ article.title | escape }}">
+              {% if article.image != blank %}
+                <img
+                  class="blog-post-cards__image"
+                  src="{{ article.image | image_url: width: 820 }}"
+                  alt="{{ article.image.alt | default: article.title | escape }}"
+                  width="820"
+                  height="520"
+                  loading="lazy"
+                >
+              {% endif %}
+            </a>
+
+            <div class="blog-post-cards__meta">
+              <span class="blog-post-cards__clock" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g opacity="0.5">
+                    <mask id="bpc-clock-mask-{{ section.id }}-{{ article.id }}" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="16" height="16">
+                      <path d="M0 9.53674e-07H16V16H0V9.53674e-07Z" fill="white"/>
+                    </mask>
+                    <g mask="url(#bpc-clock-mask-{{ section.id }}-{{ article.id }})">
+                      <path d="M15.5312 8C15.5312 12.1421 12.1421 15.5312 8 15.5312C3.85787 15.5312 0.46875 12.1421 0.46875 8C0.46875 3.85788 3.85787 0.468751 8 0.468751C12.1421 0.468751 15.5312 3.85788 15.5312 8Z" stroke="#1C1C1C" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M8 2.375V3.3125" stroke="#1C1C1C" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M8 12.6875V13.625" stroke="#1C1C1C" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M2.375 8H3.3125" stroke="#1C1C1C" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M12.6875 8H13.625" stroke="#1C1C1C" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M8 5.1875V8L10.8125 10.8125" stroke="#1C1C1C" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    </g>
+                  </g>
+                </svg>
+              </span>
+              <span class="blog-post-cards__read-time">{{ read_minutes }} minute{% if read_minutes > 1 %}s{% endif %} to read</span>
+            </div>
+
+            <h2 class="blog-post-cards__title">
+              <a href="{{ article.url }}">{{ article.title }}</a>
+            </h2>
+
+            <p class="blog-post-cards__excerpt">{{ excerpt_text | strip_html | strip_newlines }}</p>
+
+            <a class="blog-post-cards__read-more" href="{{ article.url }}">
+              Continue reading <span aria-hidden="true">→</span>
+            </a>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="blog-post-cards__empty">No posts found.</div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .blog-post-cards {
+    padding: var(--bpc-pt, 56px) 16px var(--bpc-pb, 72px);
+    background: #fff;
+  }
+
+  .blog-post-cards__inner {
+    max-width: 1312px;
+    margin: 0 auto;
+  }
+
+  .blog-post-cards__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 36px 32px;
+  }
+
+  .blog-post-cards__categories {
+    margin-bottom: 28px;
+  }
+
+  .blog-post-cards__categories-title {
+    margin: 0 0 14px;
+    font-family: var(--font-heading--family);
+    font-style: var(--font-heading--style, normal);
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #FF5000;
+  }
+
+  .blog-post-cards__categories-track {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 2px;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+  }
+
+  .blog-post-cards__category {
+    flex: 0 0 calc((100% - 90px) / 10);
+    min-height: 42px;
+    border: 1px solid #FF5000;
+    background: #F0F2F1;
+    color: #FF5000;
+    padding: 10px 16px;
+    font-family: Tahoma, sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 0;
+    white-space: nowrap;
+    text-align: center;
+    cursor: pointer;
+    scroll-snap-align: start;
+  }
+
+  .blog-post-cards__category.is-active {
+    background: #FF5000;
+    color: #F0F2F1;
+    font-weight: 700;
+  }
+
+  .blog-post-cards__card {
+    width: 100%;
+    max-width: 410px;
+  }
+
+  .blog-post-cards__image-link {
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .blog-post-cards__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  .blog-post-cards__meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 11px;
+    opacity: 0.5;
+  }
+
+  .blog-post-cards__clock {
+    line-height: 0;
+    flex-shrink: 0;
+  }
+
+  .blog-post-cards__read-time {
+    font-family: Tahoma, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0;
+    color: #1C1C1C;
+  }
+
+  .blog-post-cards__title {
+    margin: 0 0 10px;
+    font-family: var(--font-heading--family);
+    font-style: var(--font-heading--style, normal);
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #FF5000;
+  }
+
+  .blog-post-cards__title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .blog-post-cards__excerpt {
+    margin: 0 0 30px;
+    font-family: Tahoma, sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0;
+    color: #1C1C1C;
+    opacity: 0.8;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .blog-post-cards__read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-heading--family);
+    font-style: var(--font-heading--style, normal);
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #94D357;
+    text-decoration: none;
+  }
+
+  .blog-post-cards__empty {
+    font-family: Tahoma, sans-serif;
+    font-size: 16px;
+    color: #1C1C1C;
+    opacity: 0.7;
+  }
+
+  @media (max-width: 768px) {
+    .blog-post-cards__categories-title {
+      font-size: 20px;
+    }
+
+    .blog-post-cards__category {
+      flex-basis: calc((100% - 30px) / 3.5);
+      font-size: 14px;
+    }
+
+    .blog-post-cards__grid {
+      gap: 28px;
+      justify-content: center;
+    }
+
+    .blog-post-cards__card {
+      max-width: 410px;
+    }
+
+    .blog-post-cards__read-time {
+      font-size: 12px;
+    }
+
+    .blog-post-cards__title {
+      font-size: 20px;
+    }
+
+    .blog-post-cards__excerpt {
+      font-size: 14px;
+    }
+
+    .blog-post-cards__read-more {
+      font-size: 20px;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    const sectionRoot = document.getElementById('shopify-section-{{ section.id }}');
+    if (!sectionRoot) return;
+
+    const root = sectionRoot.querySelector('[data-bpc-root]');
+    if (!root) return;
+
+    const filterButtons = root.querySelectorAll('[data-bpc-tag]');
+    const cards = root.querySelectorAll('[data-bpc-card]');
+    if (!filterButtons.length || !cards.length) return;
+
+    const setActive = (activeTag) => {
+      filterButtons.forEach((button) => {
+        const isActive = button.dataset.bpcTag === activeTag;
+        button.classList.toggle('is-active', isActive);
+        button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+    };
+
+    const filterCards = (activeTag) => {
+      cards.forEach((card) => {
+        if (activeTag === 'all') {
+          card.hidden = false;
+          return;
+        }
+
+        const cardTags = (card.dataset.tags || '').split(',').filter(Boolean);
+        card.hidden = !cardTags.includes(activeTag);
+      });
+    };
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const activeTag = button.dataset.bpcTag || 'all';
+        setActive(activeTag);
+        filterCards(activeTag);
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Blog posts cards",
+  "tag": "section",
+  "class": "section-blog-post-cards",
+  "settings": [
+    {
+      "type": "text",
+      "id": "blog_handle",
+      "label": "Blog handle",
+      "default": "blog",
+      "info": "Example: blog"
+    },
+    {
+      "type": "range",
+      "id": "posts_limit",
+      "label": "Posts to show",
+      "min": 1,
+      "max": 24,
+      "step": 1,
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 72
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog posts cards"
+    }
+  ]
+}
+{% endschema %}

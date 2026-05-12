@@ -1,0 +1,563 @@
+{% comment %}
+  Cards with text - reusable numbered cards with image, title, text and auto number.
+{% endcomment %}
+
+{% liquid
+  assign section_bg = section.settings.background_color | default: '#F0F2F1'
+  assign card_blocks = section.blocks | where: 'type', 'numbered_card'
+%}
+
+<section
+  id="simple-to-use"
+  class="reusable-cards-section reusable-cards-section--{{ section.id }}"
+  style="--rcs-bg: {{ section_bg }};"
+  {{ section.shopify_attributes }}
+>
+  <div class="reusable-cards-section__inner">
+    <div class="reusable-cards-section__content">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'heading' %}
+            {% liquid
+              assign tag = block.settings.tag | default: 'h2'
+              assign fs_d = block.settings.font_size_desktop | default: 64
+              assign fs_m = block.settings.font_size_mobile | default: 40
+              assign lh_d = block.settings.line_height_desktop | default: 1.2
+              assign lh_m = block.settings.line_height_mobile | default: 1.3
+              assign fw = block.settings.font_weight | default: '700'
+              assign align = block.settings.text_align | default: 'center'
+            %}
+            <{{ tag }}
+              class="reusable-cards-section__heading"
+              style="--rcs-fs-d: {{ fs_d }}px; --rcs-fs-m: {{ fs_m }}px; --rcs-lh-d: {{ lh_d }}; --rcs-lh-m: {{ lh_m }}; font-weight: {{ fw }}; text-align: {{ align }};"
+              {{ block.shopify_attributes }}
+            >
+              {{ block.settings.content }}
+            </{{ tag }}>
+
+          {% when 'text' %}
+            {% liquid
+              assign fs_d = block.settings.font_size_desktop | default: 18
+              assign fs_m = block.settings.font_size_mobile | default: 16
+              assign lh_d = block.settings.line_height_desktop | default: 1.5
+              assign lh_m = block.settings.line_height_mobile | default: 1.5
+              assign fw = block.settings.font_weight | default: '400'
+              assign align = block.settings.text_align | default: 'center'
+            %}
+            <div
+              class="reusable-cards-section__text rte"
+              style="--rcs-text-fs-d: {{ fs_d }}px; --rcs-text-fs-m: {{ fs_m }}px; --rcs-text-lh-d: {{ lh_d }}; --rcs-text-lh-m: {{ lh_m }}; font-weight: {{ fw }}; text-align: {{ align }};"
+              {{ block.shopify_attributes }}
+            >
+              {{ block.settings.content }}
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+
+    {% if card_blocks.size > 0 %}
+      <div class="reusable-cards-section__cards">
+        {% for block in card_blocks %}
+          <article class="reusable-cards-section__card" {{ block.shopify_attributes }}>
+            <div class="reusable-cards-section__card-image-wrapper">
+              {% if block.settings.image != blank %}
+                {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.title, class: 'reusable-cards-section__card-image' }}
+              {% elsif block.settings.asset_image != blank %}
+                <img
+                  src="{{ block.settings.asset_image | asset_url }}"
+                  alt="{{ block.settings.title }}"
+                  class="reusable-cards-section__card-image"
+                  loading="lazy"
+                  width="360"
+                  height="280"
+                >
+              {% else %}
+                {{ 'image' | placeholder_svg_tag: class: 'reusable-cards-section__card-image' }}
+              {% endif %}
+            </div>
+
+            <div class="reusable-cards-section__card-body">
+              <div class="reusable-cards-section__card-copy">
+                <h3 class="reusable-cards-section__card-title">
+                  {{ block.settings.title | default: 'STEP' }}
+                </h3>
+                <div class="reusable-cards-section__card-text rte">
+                  {{ block.settings.content }}
+                </div>
+              </div>
+              <div class="reusable-cards-section__card-number">{{ forloop.index }}</div>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .reusable-cards-section {
+    padding: 48px 16px 96px;
+    background: var(--rcs-bg);
+  }
+
+  .reusable-cards-section__inner {
+    max-width: 1312px;
+    margin: 0 auto;
+  }
+
+  .reusable-cards-section__content {
+    margin-bottom: 40px;
+  }
+
+  .reusable-cards-section__heading {
+    margin: 0;
+    color: #1C1C1C;
+    font-family: var(--font-heading--family);
+    font-size: var(--rcs-fs-d, 64px);
+    line-height: var(--rcs-lh-d, 1.2);
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .reusable-cards-section__heading p {
+    margin: 0;
+  }
+
+  .reusable-cards-section__text {
+    margin: 12px 0 0;
+    font-size: var(--rcs-text-fs-d, 18px);
+    line-height: var(--rcs-text-lh-d, 1.5);
+    color: #1C1C1C;
+  }
+
+  .reusable-cards-section__text p {
+    margin: 0;
+  }
+
+  .reusable-cards-section__cards {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 24px;
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  .reusable-cards-section__card {
+    background: #F0F2F1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 0!important;
+    max-width: 313px;
+    width: 100%;
+  }
+
+  .reusable-cards-section__card-image-wrapper {
+    max-width: 200px;
+    height: 180px;
+    border: none;
+    background: transparent;
+    overflow: hidden;
+    margin: 0;
+    position:relative;
+    top:20px;
+  }
+
+  .reusable-cards-section__card-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+  }
+
+  .reusable-cards-section__card-body {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 8px 8px;
+    background: #fff;
+  }
+
+  .reusable-cards-section__card-copy {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .reusable-cards-section__card-title {
+    margin: 0;
+    color: #1C1C1C;
+    font-family: var(--font-heading--family);
+    font-size: 36px;
+    line-height: 1;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .reusable-cards-section__card-text {
+    margin: 10px 0 0;
+    color: #4A4A4A;
+    font-family: Tahoma, sans-serif;
+    font-size: 19px;
+    line-height: 1.15;
+    font-weight: 400;
+  }
+
+  .reusable-cards-section__card-text p {
+    margin: 0;
+    font-size: 20px!important;
+  }
+
+  .reusable-cards-section__card-number {
+    color: #FF5000;
+    font-family: var(--font-heading--family);
+    font-size: 126px;
+    line-height: 1;
+    font-weight: 700;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .reusable-cards-section__cards {
+    flex-wrap: wrap;
+  }
+  }
+
+  @media screen and (max-width: 768px) {
+    .reusable-cards-section__heading {
+      font-size: var(--rcs-fs-m, 40px) !important;
+      line-height: var(--rcs-lh-m, 1.3) !important;
+    }
+
+    .reusable-cards-section__text {
+      font-size: var(--rcs-text-fs-m, 16px) !important;
+      line-height: var(--rcs-text-lh-m, 1.5) !important;
+    }
+
+    .reusable-cards-section__cards {
+      flex-direction: column;
+      gap: 0;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .reusable-cards-section__card {
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
+
+    .reusable-cards-section__card {
+      background: transparent;
+      align-items: stretch;
+      margin: 0 !important;
+    }
+
+    .reusable-cards-section__card-image-wrapper,
+    .reusable-cards-section__card-text {
+      display: none;
+    }
+
+    .reusable-cards-section__card-body {
+      background: transparent;
+      padding: 18px 0;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 18px;
+      border-bottom: 3px solid #1C1C1C;
+    }
+
+    .reusable-cards-section__card-copy {
+      flex: initial;
+      order: 1;
+    }
+
+    .reusable-cards-section__card-title {
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .reusable-cards-section__card-number {
+      order: 0;
+      font-size: 48px;
+      line-height: 1;
+      min-width: 48px;
+      text-align: left;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Cards with text",
+  "tag": "section",
+  "class": "section-reusable-cards",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#F0F2F1"
+    },
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Section anchor ID",
+      "info": "Optional. e.g. simple-to-use — used for in-page links (e.g. footer « How It Works » on PDP)."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "HOW TO USE"
+        },
+        {
+          "type": "select",
+          "id": "tag",
+          "label": "HTML tag",
+          "options": [
+            { "value": "h1", "label": "H1" },
+            { "value": "h2", "label": "H2" },
+            { "value": "h3", "label": "H3" },
+            { "value": "h4", "label": "H4" },
+            { "value": "h5", "label": "H5" },
+            { "value": "p", "label": "P" },
+            { "value": "span", "label": "Span" }
+          ],
+          "default": "h2"
+        },
+        {
+          "type": "range",
+          "id": "font_size_desktop",
+          "label": "Font size (desktop)",
+          "min": 12,
+          "max": 72,
+          "step": 1,
+          "unit": "px",
+          "default": 64
+        },
+        {
+          "type": "range",
+          "id": "font_size_mobile",
+          "label": "Font size (mobile)",
+          "min": 12,
+          "max": 48,
+          "step": 1,
+          "unit": "px",
+          "default": 40
+        },
+        {
+          "type": "range",
+          "id": "line_height_desktop",
+          "label": "Line height (desktop)",
+          "min": 0.8,
+          "max": 2.5,
+          "step": 0.1,
+          "default": 1.2
+        },
+        {
+          "type": "range",
+          "id": "line_height_mobile",
+          "label": "Line height (mobile)",
+          "min": 0.8,
+          "max": 2.5,
+          "step": 0.1,
+          "default": 1.3
+        },
+        {
+          "type": "select",
+          "id": "font_weight",
+          "label": "Font weight",
+          "options": [
+            { "value": "400", "label": "400" },
+            { "value": "500", "label": "500" },
+            { "value": "600", "label": "600" },
+            { "value": "700", "label": "700" }
+          ],
+          "default": "700"
+        },
+        {
+          "type": "select",
+          "id": "text_align",
+          "label": "Text alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "center"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Follow these quick steps.</p>"
+        },
+        {
+          "type": "range",
+          "id": "font_size_desktop",
+          "label": "Font size (desktop)",
+          "min": 12,
+          "max": 32,
+          "step": 1,
+          "unit": "px",
+          "default": 18
+        },
+        {
+          "type": "range",
+          "id": "font_size_mobile",
+          "label": "Font size (mobile)",
+          "min": 12,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "range",
+          "id": "line_height_desktop",
+          "label": "Line height (desktop)",
+          "min": 0.8,
+          "max": 2.5,
+          "step": 0.1,
+          "default": 1.5
+        },
+        {
+          "type": "range",
+          "id": "line_height_mobile",
+          "label": "Line height (mobile)",
+          "min": 0.8,
+          "max": 2.5,
+          "step": 0.1,
+          "default": 1.5
+        },
+        {
+          "type": "select",
+          "id": "font_weight",
+          "label": "Font weight",
+          "options": [
+            { "value": "400", "label": "400" },
+            { "value": "500", "label": "500" },
+            { "value": "600", "label": "600" },
+            { "value": "700", "label": "700" }
+          ],
+          "default": "400"
+        },
+        {
+          "type": "select",
+          "id": "text_align",
+          "label": "Text alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "center"
+        }
+      ]
+    },
+    {
+      "type": "numbered_card",
+      "name": "Numbered card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image (Shopify)"
+        },
+        {
+          "type": "text",
+          "id": "asset_image",
+          "label": "Asset image (filename)",
+          "info": "Use filename from assets folder if no Shopify image is selected."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Remove"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Remove the source or smell - either the fruits or trash.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cards with text",
+      "blocks": [
+        {
+          "type": "heading",
+          "settings": {
+            "content": "HOW TO USE"
+          }
+        },
+        {
+          "type": "text",
+          "settings": {
+            "content": "<p>Follow these quick steps.</p>"
+          }
+        },
+        {
+          "type": "numbered_card",
+          "settings": {
+            "asset_image": "Rectangle 16-1.png",
+            "title": "Remove",
+            "content": "<p>Remove the source or smell - either the fruits or trash.</p>"
+          }
+        },
+        {
+          "type": "numbered_card",
+          "settings": {
+            "asset_image": "Rectangle 16.png",
+            "title": "shake",
+            "content": "<p>Shake the bottle for a consistent mixage.</p>"
+          }
+        },
+        {
+          "type": "numbered_card",
+          "settings": {
+            "asset_image": "Rectangle 17.png",
+            "title": "Open",
+            "content": "<p>Shake the bottle for a consistent mixage.</p>"
+          }
+        },
+        {
+          "type": "numbered_card",
+          "settings": {
+            "asset_image": "Rectangle 18.png",
+            "title": "Clean",
+            "content": "<p>Clean the excess liquid from the yellow funnel.</p>"
+          }
+        },
+        {
+          "type": "numbered_card",
+          "settings": {
+            "asset_image": "Rectangle 19.png",
+            "title": "place & go",
+            "content": "<p>Place it near your<br>fruits and let it<br>work its magic.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

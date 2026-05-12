@@ -1,0 +1,241 @@
+{% liquid
+  assign section_bg = section.settings.background_color | default: '#F0F2F1'
+  assign logo = section.settings.logo
+  if logo != blank
+    assign logo_url = logo | image_url: width: 900
+  else
+    assign logo_url = 'Logo_Super_Ninja_2025 2.svg' | asset_url
+  endif
+%}
+
+<section
+  class="ally-home-pdp ally-home-pdp--{{ section.id }}"
+  style="--ahp-bg: {{ section_bg }};"
+  {{ section.shopify_attributes }}
+>
+  <div class="ally-home-pdp__inner">
+    <div class="ally-home-pdp__logo-col">
+      <img
+        src="{{ logo_url }}"
+        alt="{{ section.settings.logo_alt | default: 'Super Ninja' }}"
+        class="ally-home-pdp__logo"
+        loading="lazy"
+        width="700"
+        height="220"
+      >
+    </div>
+
+    <div class="ally-home-pdp__content-col">
+      <h2 class="ally-home-pdp__heading">{{ section.settings.heading }}</h2>
+      <p class="ally-home-pdp__text">{{ section.settings.text }}</p>
+
+      {% if section.settings.bullet_1 != blank or section.settings.bullet_2 != blank or section.settings.bullet_3 != blank %}
+        <div class="ally-home-pdp__bullets">
+          {% if section.settings.bullet_1 != blank %}
+            <div class="ally-home-pdp__bullet">
+              <span class="ally-home-pdp__bullet-icon" aria-hidden="true">
+                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15 0L17.5081 3.29837L21.1341 1.31199L22.0935 5.35014L26.2114 5.01907L25.4512 9.10218L29.3455 10.4796L27 13.9006L30 16.7534L26.4756 18.9155L28.065 22.7493L23.9675 23.2847L23.8659 27.4373L19.9106 26.252L18.1382 30L15 27.2984L11.8659 30L10.0935 26.252L6.13414 27.4373L6.03252 23.2847L1.93903 22.7493L3.52439 18.9155L0 16.7534L3 13.9006L0.654478 10.4796L4.55285 9.10218L3.79269 5.01907L7.90651 5.35014L8.86585 1.31199L12.4919 3.29837L15 0Z" fill="#FF5000"/>
+                  <path d="M22.5 11L13.0152 18L8.5 14.6677" stroke="#F0F2F1" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="ally-home-pdp__bullet-label">{{ section.settings.bullet_1 }}</span>
+            </div>
+          {% endif %}
+
+          {% if section.settings.bullet_2 != blank %}
+            <div class="ally-home-pdp__bullet">
+              <span class="ally-home-pdp__bullet-icon" aria-hidden="true">
+                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15 0L17.5081 3.29837L21.1341 1.31199L22.0935 5.35014L26.2114 5.01907L25.4512 9.10218L29.3455 10.4796L27 13.9006L30 16.7534L26.4756 18.9155L28.065 22.7493L23.9675 23.2847L23.8659 27.4373L19.9106 26.252L18.1382 30L15 27.2984L11.8659 30L10.0935 26.252L6.13414 27.4373L6.03252 23.2847L1.93903 22.7493L3.52439 18.9155L0 16.7534L3 13.9006L0.654478 10.4796L4.55285 9.10218L3.79269 5.01907L7.90651 5.35014L8.86585 1.31199L12.4919 3.29837L15 0Z" fill="#FF5000"/>
+                  <path d="M22.5 11L13.0152 18L8.5 14.6677" stroke="#F0F2F1" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="ally-home-pdp__bullet-label">{{ section.settings.bullet_2 }}</span>
+            </div>
+          {% endif %}
+
+          {% if section.settings.bullet_3 != blank %}
+            <div class="ally-home-pdp__bullet">
+              <span class="ally-home-pdp__bullet-icon" aria-hidden="true">
+                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15 0L17.5081 3.29837L21.1341 1.31199L22.0935 5.35014L26.2114 5.01907L25.4512 9.10218L29.3455 10.4796L27 13.9006L30 16.7534L26.4756 18.9155L28.065 22.7493L23.9675 23.2847L23.8659 27.4373L19.9106 26.252L18.1382 30L15 27.2984L11.8659 30L10.0935 26.252L6.13414 27.4373L6.03252 23.2847L1.93903 22.7493L3.52439 18.9155L0 16.7534L3 13.9006L0.654478 10.4796L4.55285 9.10218L3.79269 5.01907L7.90651 5.35014L8.86585 1.31199L12.4919 3.29837L15 0Z" fill="#FF5000"/>
+                  <path d="M22.5 11L13.0152 18L8.5 14.6677" stroke="#F0F2F1" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="ally-home-pdp__bullet-label">{{ section.settings.bullet_3 }}</span>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .ally-home-pdp {
+    background: var(--ahp-bg);
+    padding: 48px 16px 56px;
+  }
+
+  .ally-home-pdp__inner {
+    max-width: 1312px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    align-items: center;
+    gap: 48px;
+  }
+
+  .ally-home-pdp__logo {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    display: block;
+  }
+
+  .ally-home-pdp__heading {
+    margin: 0;
+    color: #1C1C1C;
+    font-family: var(--font-heading--family);
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .ally-home-pdp__text {
+    margin: 18px 0 0;
+    color: #1C1C1C;
+    font-family: Tahoma, sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .ally-home-pdp__bullets {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 28px;
+  }
+
+  .ally-home-pdp__bullet {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .ally-home-pdp__bullet-label {
+    color: #1C1C1C;
+    font-family: var(--font-heading--family);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  @media screen and (max-width: 768px) {
+    .ally-home-pdp__inner {
+      grid-template-columns: 1fr;
+      gap: 26px;
+      text-align: center;
+    }
+
+    .ally-home-pdp__logo-col {
+      display: flex;
+      justify-content: center;
+    }
+
+    .ally-home-pdp__logo {
+      max-width: 520px;
+    }
+
+    .ally-home-pdp__heading {
+      font-size: 40px;
+      text-align: center;
+    }
+
+    .ally-home-pdp__text {
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .ally-home-pdp__bullets {
+      margin-top: 20px;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .ally-home-pdp__bullet-label {
+      font-size: 20px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Ally Home PDP",
+  "tag": "section",
+  "class": "section-ally-home-pdp",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#F0F2F1"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image",
+      "info": "Default: Logo_Super_Ninja_2025 2.svg"
+    },
+    {
+      "type": "text",
+      "id": "logo_alt",
+      "label": "Logo alt text",
+      "default": "Super Ninja"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Your ally in a safe, comfortable home"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "Performance-led pest control without harsh chemicals or waste."
+    },
+    {
+      "type": "text",
+      "id": "bullet_1",
+      "label": "Bullet 1",
+      "default": "Built to perform"
+    },
+    {
+      "type": "text",
+      "id": "bullet_2",
+      "label": "Bullet 2",
+      "default": "Safe by nature"
+    },
+    {
+      "type": "text",
+      "id": "bullet_3",
+      "label": "Bullet 3",
+      "default": "Designed for daily life"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ally Home PDP"
+    }
+  ]
+}
+{% endschema %}

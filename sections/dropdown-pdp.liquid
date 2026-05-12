@@ -1,0 +1,703 @@
+{% comment %}
+  Dropdown PDP – heading + text (same block types as customers-feedback) + dropdown
+{% endcomment %}
+
+{% liquid
+  assign section_bg = section.settings.background_color | default: '#F0F2F1'
+  assign img_desk = section.settings.image_desktop
+  assign img_mob = section.settings.image_mobile
+  if img_desk == blank
+    if section.settings.asset_image_desktop != blank
+      assign img_desk_url = section.settings.asset_image_desktop | asset_url
+    else
+      assign img_desk_url = 'dropdesk.png' | asset_url
+    endif
+  else
+    assign img_desk_url = img_desk | image_url: width: 1200
+  endif
+  if img_mob == blank
+    if section.settings.asset_image_mobile != blank
+      assign img_mob_url = section.settings.asset_image_mobile | asset_url
+    else
+      assign img_mob_url = 'dropmob.png' | asset_url
+    endif
+  else
+    assign img_mob_url = img_mob | image_url: width: 800
+  endif
+  assign dropdown_blocks = section.blocks | where: 'type', 'dropdown_item'
+%}
+
+<section
+  class="dropdown-pdp dropdown-pdp--{{ section.id }}"
+  style="--ddpdp-bg: {{ section_bg }};"
+  {{ section.shopify_attributes }}>
+  <div class="dropdown-pdp__inner">
+    {% if dropdown_blocks.size > 0 %}
+      <div class="dropdown-pdp__main">
+        <div class="dropdown-pdp__main-content">
+          <div class="dropdown-pdp__content">
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'heading' %}
+                  {% liquid
+                    assign tag = block.settings.tag | default: 'h2'
+                    assign fs_d = block.settings.font_size_desktop | default: 64
+                    assign fs_m = block.settings.font_size_mobile | default: 40
+                    assign lh_d = block.settings.line_height_desktop | default: 1.2
+                    assign lh_m = block.settings.line_height_mobile | default: 1.3
+                    assign fw = block.settings.font_weight | default: '700'
+                    assign align = block.settings.text_align | default: 'left'
+                  %}
+                  <{{ tag }}
+                    class="dropdown-pdp__heading"
+                    style="--ddpdp-fs-d: {{ fs_d }}px; --ddpdp-fs-m: {{ fs_m }}px; --ddpdp-lh-d: {{ lh_d }}; --ddpdp-lh-m: {{ lh_m }}; font-weight: {{ fw }}; text-align: {{ align }};"
+                    {{ block.shopify_attributes }}>
+                    {{ block.settings.content }}
+                  </{{ tag }}>
+
+                {% when 'text' %}
+                  {% liquid
+                    assign fs_d = block.settings.font_size_desktop | default: 18
+                    assign fs_m = block.settings.font_size_mobile | default: 16
+                    assign lh_d = block.settings.line_height_desktop | default: 1.5
+                    assign lh_m = block.settings.line_height_mobile | default: 1.5
+                    assign fw = block.settings.font_weight | default: '400'
+                    assign align = block.settings.text_align | default: 'left'
+                  %}
+                  <div
+                    class="dropdown-pdp__text rte"
+                    style="--ddpdp-text-fs-d: {{ fs_d }}px; --ddpdp-text-fs-m: {{ fs_m }}px; --ddpdp-text-lh-d: {{ lh_d }}; --ddpdp-text-lh-m: {{ lh_m }}; font-weight: {{ fw }}; text-align: {{ align }};"
+                    {{ block.shopify_attributes }}>
+                    {{ block.settings.content }}
+                  </div>
+
+                {% when 'dropdown_item' %}
+                  {% comment %} dropdown items rendered below {% endcomment %}
+              {% endcase %}
+            {% endfor %}
+          </div>
+          <div class="ddpdp-dropdown">
+            {% for block in dropdown_blocks %}
+              <div class="ddpdp-dropdown__item" {{ block.shopify_attributes }}>
+                <details class="ddpdp-dropdown__details">
+                  <summary class="ddpdp-dropdown__trigger">
+                    <span class="ddpdp-dropdown__icon-wrap">
+                      {% if block.settings.icon != blank %}
+                        <img src="{{ block.settings.icon | image_url: width: 96 }}" alt="" width="48" height="48" class="ddpdp-dropdown__icon" loading="lazy">
+                      {% else %}
+                        <img src="{{ 'icon-dropdown.svg' | asset_url }}" alt="" width="48" height="48" class="ddpdp-dropdown__icon ddpdp-dropdown__icon--svg" loading="lazy">
+                      {% endif %}
+                    </span>
+                    <h3 class="ddpdp-dropdown__title">{{ block.settings.title }}</h3>
+                    <span class="ddpdp-dropdown__arrow" aria-hidden="true">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.6C6.70655 21.6 2.4 17.2935 2.4 12C2.4 6.70655 6.70655 2.4 12 2.4C17.293 2.4 21.6 6.70655 21.6 12C21.6 17.2935 17.293 21.6 12 21.6Z" fill="#94D357"/><path d="M8.85551 10.406L12.7468 10.4057L8.00698 15.1455L9.70404 16.8426L14.4438 12.1028L14.4436 15.9941H16.8439L16.8435 8.00603L8.85551 8.0057L8.85551 10.406Z" fill="#F0F2F1"/></svg>
+                    </span>
+                  </summary>
+                  <div class="ddpdp-dropdown__panel rte">
+                    {{ block.settings.content }}
+                  </div>
+                </details>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="dropdown-pdp__main-image">
+          <picture>
+            <source media="(max-width: 749px)" srcset="{{ img_mob_url }}">
+            <img src="{{ img_desk_url }}" alt="" width="1200" height="auto" loading="lazy" class="dropdown-pdp__img">
+          </picture>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .dropdown-pdp {
+    padding-top: 48px;
+    padding-bottom: 128px;
+    padding-inline: 1.5rem;
+    background: var(--ddpdp-bg);
+  }
+
+  .dropdown-pdp__inner {
+    max-width: 1312px;
+    margin: 0 auto;
+  }
+
+  .dropdown-pdp__content {
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .dropdown-pdp__heading {
+    margin: 0;
+    color: #1C1C1C;
+    font-family: var(--font-heading--family);
+    font-size: var(--ddpdp-fs-d, 64px);
+    line-height: var(--ddpdp-lh-d, 1.2);
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: left;
+  }
+
+  .dropdown-pdp__heading p {
+    margin: 0;
+  }
+
+  .dropdown-pdp__text {
+    margin: 0.5em 0 0;
+    font-size: var(--ddpdp-text-fs-d, 18px);
+    line-height: var(--ddpdp-text-lh-d, 1.5);
+    color: #000;
+  }
+
+  .dropdown-pdp__text p {
+    margin: 0 0 0.5em;
+  }
+
+  .dropdown-pdp__text p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Main block: [conteudo][imagem] - imagem à direita */
+  .dropdown-pdp__main {
+    display: flex;
+    align-items: stretch;
+    gap: 2rem;
+    margin-top: 50px;
+    max-width: 1340px;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+  }
+
+  .dropdown-pdp__main-content {
+    flex: 1;
+    min-width: 0;
+    padding-left: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dropdown-pdp__main-image {
+    flex: 0 0 50%;
+    min-width: 0;
+  }
+
+  .dropdown-pdp__img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  /* Dropdown */
+  .ddpdp-dropdown {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ddpdp-dropdown__item {
+    border-bottom: 1px solid #FF5000;
+  }
+
+  .ddpdp-dropdown__item:first-child {
+    border-top: 1px solid #FF5000;
+  }
+
+  .ddpdp-dropdown__details {
+    margin: 0;
+  }
+
+  .ddpdp-dropdown__trigger {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem 0;
+    cursor: pointer;
+    list-style: none;
+    color: #1C1C1C;
+    font-family: var(--font-heading--family);
+    font-size: 48px;
+    line-height: 1.2;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: left;
+    border: none;
+    background: none;
+  }
+
+  .ddpdp-dropdown__trigger::-webkit-details-marker {
+    display: none;
+  }
+
+  .ddpdp-dropdown__icon-wrap {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ddpdp-dropdown__icon {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+  }
+
+  .ddpdp-dropdown__icon--svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .ddpdp-dropdown__title {
+    margin: 0;
+    flex: 1;
+    font-family: var(--font-heading--family)!important;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+
+  .ddpdp-dropdown__arrow {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  .ddpdp-dropdown__arrow svg {
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+
+  .ddpdp-dropdown__details:not([open]) .ddpdp-dropdown__icon-wrap {
+    display: none;
+  }
+
+  .ddpdp-dropdown__details:not([open]) .ddpdp-dropdown__title {
+    opacity: 0.6;
+  }
+
+  .ddpdp-dropdown__details:not([open]) .ddpdp-dropdown__arrow {
+    transform: rotate(90deg);
+    opacity: 0.5;
+  }
+
+  .ddpdp-dropdown__panel {
+    padding: 0 0 1rem 0;
+    font-size: 24px;
+    line-height: 1.5;
+    color: #1C1C1C;
+  }
+
+  .ddpdp-dropdown__panel p {
+    margin: 0 0 0.5em;
+  }
+
+  .ddpdp-dropdown__panel p:last-child {
+    margin-bottom: 0;
+  }
+@media (max-width: 1024px){
+  .dropdown-pdp__main {
+      flex-direction: column;
+      margin-top: 1.5rem;
+    }
+    .dropdown-pdp__main-image{
+      flex:initial;
+      width:100%;
+      max-width:100%;
+    }
+}
+  @media screen and (max-width: 768px) {
+    .dropdown-pdp {
+      padding-inline: 1rem;
+    }
+    .dropdown-pdp__heading {
+      font-size: var(--ddpdp-fs-m, 40px) !important;
+      line-height: var(--ddpdp-lh-m, 1.3) !important;
+      text-align: center !important;
+    }
+    .dropdown-pdp__text {
+      font-size: var(--ddpdp-text-fs-m, 16px) !important;
+      line-height: var(--ddpdp-text-lh-m, 1.5) !important;
+    }
+    .dropdown-pdp__main {
+      flex-direction: column;
+      margin-top: 1.5rem;
+    }
+    .dropdown-pdp__main-content {
+      order: 1;
+      padding-left: 0;
+      width: 100%;
+    }
+    .dropdown-pdp__main-image {
+      order: 2;
+      flex-basis: auto;
+    }
+    .ddpdp-dropdown__trigger {
+      font-size: 32px;
+    }
+    .ddpdp-dropdown__panel {
+      font-size: 20px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Dropdown PDP",
+  "tag": "section",
+  "class": "section-dropdown-pdp",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#F0F2F1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Main image (desktop)",
+      "info": "Default: dropdesk.png"
+    },
+    {
+      "type": "text",
+      "id": "asset_image_desktop",
+      "label": "Asset image desktop (filename)",
+      "info": "Optional fallback from assets folder when desktop image is not selected."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Main image (mobile)",
+      "info": "Default: dropmob.png"
+    },
+    {
+      "type": "text",
+      "id": "asset_image_mobile",
+      "label": "Asset image mobile (filename)",
+      "info": "Optional fallback from assets folder when mobile image is not selected."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "Why Super Ninja Works When Others Don't"
+        },
+        {
+          "type": "select",
+          "id": "tag",
+          "label": "HTML tag",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            },
+            {
+              "value": "h5",
+              "label": "H5"
+            },
+            {
+              "value": "p",
+              "label": "P"
+            },
+            {
+              "value": "span",
+              "label": "Span"
+            }
+          ],
+          "default": "h2"
+        },
+        {
+          "type": "range",
+          "id": "font_size_desktop",
+          "label": "Font size (desktop)",
+          "min": 12,
+          "max": 72,
+          "step": 1,
+          "unit": "px",
+          "default": 64
+        },
+        {
+          "type": "range",
+          "id": "font_size_mobile",
+          "label": "Font size (mobile)",
+          "min": 12,
+          "max": 48,
+          "step": 1,
+          "unit": "px",
+          "default": 40
+        },
+        {
+          "type": "range",
+          "id": "line_height_desktop",
+          "label": "Line height (desktop)",
+          "min": 0.8,
+          "max": 2.5,
+          "step": 0.1,
+          "default": 1.2
+        },
+        {
+          "type": "range",
+          "id": "line_height_mobile",
+          "label": "Line height (mobile)",
+          "min": 0.8,
+          "max": 2.5,
+          "step": 0.1,
+          "default": 1.3
+        },
+        {
+          "type": "select",
+          "id": "font_weight",
+          "label": "Font weight",
+          "options": [
+            {
+              "value": "400",
+              "label": "400"
+            },
+            {
+              "value": "500",
+              "label": "500"
+            },
+            {
+              "value": "600",
+              "label": "600"
+            },
+            {
+              "value": "700",
+              "label": "700"
+            }
+          ],
+          "default": "700"
+        },
+        {
+          "type": "select",
+          "id": "text_align",
+          "label": "Text alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Powerful pest control that works effectively, without compromising the safety of your home or family.</p>"
+        },
+        {
+          "type": "range",
+          "id": "font_size_desktop",
+          "label": "Font size (desktop)",
+          "min": 12,
+          "max": 32,
+          "step": 1,
+          "unit": "px",
+          "default": 18
+        },
+        {
+          "type": "range",
+          "id": "font_size_mobile",
+          "label": "Font size (mobile)",
+          "min": 12,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "range",
+          "id": "line_height_desktop",
+          "label": "Line height (desktop)",
+          "min": 0.8,
+          "max": 2.5,
+          "step": 0.1,
+          "default": 1.5
+        },
+        {
+          "type": "range",
+          "id": "line_height_mobile",
+          "label": "Line height (mobile)",
+          "min": 0.8,
+          "max": 2.5,
+          "step": 0.1,
+          "default": 1.5
+        },
+        {
+          "type": "select",
+          "id": "font_weight",
+          "label": "Font weight",
+          "options": [
+            {
+              "value": "400",
+              "label": "400"
+            },
+            {
+              "value": "500",
+              "label": "500"
+            },
+            {
+              "value": "600",
+              "label": "600"
+            },
+            {
+              "value": "700",
+              "label": "700"
+            }
+          ],
+          "default": "400"
+        },
+        {
+          "type": "select",
+          "id": "text_align",
+          "label": "Text alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        }
+      ]
+    },
+    {
+      "type": "dropdown_item",
+      "name": "Dropdown item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon",
+          "info": "Optional. If blank, uses default icon."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title (H3)",
+          "default": "Proven effectiveness"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Super Ninja has been tested and proven to work where other solutions fall short. Real results you can count on.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dropdown PDP",
+      "blocks": [
+        {
+          "type": "heading",
+          "settings": {
+            "content": "Why Super Ninja Works When Others Don't",
+            "tag": "h2",
+            "font_size_desktop": 64,
+            "font_size_mobile": 40,
+            "line_height_desktop": 1.2,
+            "line_height_mobile": 1.3,
+            "font_weight": "700",
+            "text_align": "center"
+          }
+        },
+        {
+          "type": "text",
+          "settings": {
+            "content": "<p>Powerful pest control that works effectively, without compromising the safety of your home or family.</p>",
+            "font_size_desktop": 18,
+            "font_size_mobile": 16,
+            "line_height_desktop": 1.5,
+            "line_height_mobile": 1.5,
+            "font_weight": "400",
+            "text_align": "center"
+          }
+        },
+        {
+          "type": "dropdown_item",
+          "settings": {
+            "title": "Proven effectiveness",
+            "content": "<p>Super Ninja has been tested and proven to work where other solutions fall short. Real results you can count on.</p>"
+          }
+        },
+        {
+          "type": "dropdown_item",
+          "settings": {
+            "title": "Smart, discreet design",
+            "content": "<p>Fits naturally in your kitchen or pantry without drawing attention. Effective without the clutter.</p>"
+          }
+        },
+        {
+          "type": "dropdown_item",
+          "settings": {
+            "title": "Safe Formulations",
+            "content": "<p>Developed with safety in mind, so you can use it around food and family with confidence.</p>"
+          }
+        },
+        {
+          "type": "dropdown_item",
+          "settings": {
+            "title": "Effortless and mess-free",
+            "content": "<p>Simple to set up and replace. No fuss, no sticky mess—just results.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

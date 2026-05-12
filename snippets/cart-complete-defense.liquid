@@ -1,0 +1,358 @@
+{%- doc -%}
+  Renders the "Complete Your Defense" recommendation block for cart drawer.
+
+  @param {string} [section_id] - Current section id used by product-form-component.
+{%- enddoc -%}
+
+{%- liquid
+  assign defense_product_handle = 'super-ninja-fruit-fly-trap'
+  assign defense_product = all_products[defense_product_handle]
+-%}
+
+{%- if defense_product != blank -%}
+  {%- liquid
+    assign defense_variant = defense_product.selected_or_first_available_variant
+  -%}
+
+  <div class="cart-complete-defense">
+    <h3 class="cart-complete-defense__title">COMPLETE YOUR DEFENSE:</h3>
+
+    <div class="cart-complete-defense__list">
+      {%- for _i in (1..3) -%}
+        {%- assign defense_form_id = 'CartCompleteDefense-ProductForm-' | append: section_id | append: '-' | append: defense_product.id | append: '-' | append: forloop.index -%}
+        <div class="cart-complete-defense__card">
+          <a
+            href="{{ defense_product.url }}"
+            class="cart-complete-defense__media"
+            aria-label="{{ defense_product.title | escape }}"
+          >
+            {%- if defense_product.featured_image != blank -%}
+              {{ defense_product.featured_image | image_url: width: 220 | image_tag: loading: 'lazy', alt: defense_product.title }}
+            {%- else -%}
+              {{ 'product-1' | placeholder_svg_tag: class: 'placeholder-svg' }}
+            {%- endif -%}
+          </a>
+
+          <div class="cart-complete-defense__content">
+            <a
+              href="{{ defense_product.url }}"
+              class="cart-complete-defense__name"
+            >
+              {{ defense_product.title | upcase }}
+            </a>
+            <p class="cart-complete-defense__price">
+              {{ defense_variant.price | money }}
+            </p>
+          </div>
+
+          <product-form-component
+            data-section-id="{{ section_id }}"
+            data-product-id="{{ defense_product.id }}"
+            data-product-url="{{ defense_product.url }}"
+            on:submit="/handleSubmit"
+            class="cart-complete-defense__form"
+          >
+            <div
+              class="visually-hidden"
+              aria-live="assertive"
+              role="status"
+              aria-atomic="true"
+              ref="liveRegion"
+            ></div>
+            {%- form 'product', defense_product, id: defense_form_id, novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+              <input
+                type="hidden"
+                name="id"
+                ref="variantId"
+                value="{{ defense_variant.id }}"
+                {% if defense_variant.available == false %}
+                  disabled
+                {% endif %}
+              >
+              <input
+                type="hidden"
+                name="quantity"
+                value="1"
+              >
+              <button
+                type="submit"
+                name="add"
+                class="cart-complete-defense__add button"
+                ref="addToCartButton"
+                {% if defense_variant.available == false %}
+                  disabled
+                {% endif %}
+              >
+                + ADD
+              </button>
+            {%- endform -%}
+          </product-form-component>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% style %}
+  .cart-complete-defense {
+    width: 100%;
+    margin-top: auto;
+    padding: 16px var(--cart-drawer-padding);
+
+    @media screen and (min-width: 750px) {
+      padding-inline: var(--cart-drawer-padding-desktop);
+    }
+  }
+
+  .cart-complete-defense__title {
+    margin: 0 0 12px;
+    color: #1c1c1c;
+    font-family: Bahnschrift;
+    font-size: 20px;
+    font-weight: 700;
+    font-stretch: condensed;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: uppercase;
+
+    @media screen and (min-width: 750px) {
+      font-size: 30px;
+    }
+  }
+
+  .cart-complete-defense__list {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+    cursor: grab;
+  }
+
+  .cart-complete-defense__list:active {
+    cursor: grabbing;
+  }
+
+  .cart-complete-defense__list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cart-complete-defense__card {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 290px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: #fff;
+  }
+
+  .cart-complete-defense__media {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f5f5;
+    flex-shrink: 0;
+    
+    @media screen and (min-width: 750px) {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  .cart-complete-defense__media img,
+  .cart-complete-defense__media .placeholder-svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #f5f5f5;
+
+  }
+
+  .cart-complete-defense__content {
+    min-width: 0;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .cart-complete-defense__name {
+    margin: 0;
+    color: #ff5000;
+    font-family: Bahnschrift;
+    font-size: 16px;
+    font-weight: 700;
+    font-stretch: condensed;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .cart-complete-defense__price {
+    margin: 0;
+    color: #1c1c1c;
+    font-family: Bahnschrift;
+    font-size: 16px;
+    font-weight: 700;
+    font-stretch: condensed;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .cart-complete-defense__form .shopify-product-form {
+    display: flex;
+  }
+
+  .cart-complete-defense__add {
+    min-height: 40px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 0;
+    background: #94d357;
+    color: #1c1c1c;
+    font-family: Bahnschrift;
+    font-size: 16px;
+    font-weight: 700;
+    font-stretch: condensed;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    box-shadow: none;
+    white-space: nowrap;
+  }
+
+  .cart-complete-defense__add:hover:not(:disabled) {
+    background: #94d357;
+    color: #1c1c1c;
+    opacity: 0.9;
+  }
+
+  .cart-complete-defense__add:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+{% endstyle %}
+
+<script>
+  (function() {
+    function getClientX(e) {
+      if (e.touches && e.touches.length) return e.touches[0].clientX;
+      return e.clientX;
+    }
+
+    function initSwipe(list) {
+      if (list.dataset.cartDefenseSwipeInit) return;
+      list.dataset.cartDefenseSwipeInit = '1';
+
+      var dragging = false;
+      var startX = 0;
+      var startScroll = 0;
+      var hasMoved = false;
+      var dragStartButton = null;
+      var justDragged = false;
+
+      list.addEventListener('click', function(e) {
+        if (justDragged) {
+          e.preventDefault();
+          e.stopPropagation();
+          justDragged = false;
+        }
+      }, true);
+
+      list.addEventListener('mousedown', function(e) {
+        dragStartButton = e.target.closest('button') || null;
+        hasMoved = false;
+        dragging = true;
+        startX = e.clientX;
+        startScroll = list.scrollLeft;
+        list.style.cursor = 'grabbing';
+        list.style.userSelect = 'none';
+        e.preventDefault();
+      }, { passive: false });
+
+      function onMouseMove(e) {
+        if (!dragging) return;
+        var diff = Math.abs(startX - e.clientX);
+        if (diff > 3) {
+          hasMoved = true;
+          list.scrollLeft = startScroll + (startX - e.clientX);
+        }
+        e.preventDefault();
+      }
+      list.addEventListener('mousemove', onMouseMove, { passive: false });
+      document.addEventListener('mousemove', onMouseMove, { passive: false });
+
+      function endDrag(mayTriggerClick) {
+        if (!dragging) return;
+        var btn = dragStartButton;
+        dragging = false;
+        dragStartButton = null;
+        list.style.cursor = 'grab';
+        list.style.userSelect = '';
+        if (hasMoved) {
+          hasMoved = false;
+          justDragged = true;
+          setTimeout(function() { justDragged = false; }, 200);
+          return;
+        }
+        if (mayTriggerClick && btn && !btn.disabled) {
+          setTimeout(function() { btn.click(); }, 10);
+        }
+      }
+
+      list.addEventListener('mouseup', function() {
+        endDrag(true);
+      }, { passive: false });
+      list.addEventListener('mouseleave', function() {
+        endDrag(false);
+      }, { passive: false });
+      document.addEventListener('mouseup', function() {
+        endDrag(false);
+      }, { passive: false });
+
+      list.addEventListener('dragstart', function(e) {
+        e.preventDefault();
+      }, { passive: false });
+
+      list.addEventListener('touchstart', function(e) {
+        if (e.target.closest('button')) return;
+        dragging = true;
+        startX = getClientX(e);
+        startScroll = list.scrollLeft;
+      }, { passive: true });
+
+      list.addEventListener('touchmove', function(e) {
+        if (!dragging) return;
+        list.scrollLeft = startScroll + (startX - getClientX(e));
+        e.preventDefault();
+      }, { passive: false });
+
+      list.addEventListener('touchend', function() {
+        dragging = false;
+      }, { passive: true });
+      list.addEventListener('touchcancel', function() {
+        dragging = false;
+      }, { passive: true });
+    }
+
+    function run() {
+      document.querySelectorAll('.cart-complete-defense__list').forEach(initSwipe);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', run);
+    } else {
+      run();
+    }
+    document.body.addEventListener('cart-drawer:open', run);
+  })();
+</script>

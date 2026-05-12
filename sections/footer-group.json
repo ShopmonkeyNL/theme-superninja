@@ -1,0 +1,166 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "footer_m9NzUG": {
+      "type": "footer",
+      "blocks": {
+        "column_UqnGHi": {
+          "type": "column",
+          "settings": {
+            "title": "SHOP",
+            "link_text_1": "All Products",
+            "link_url_1": "/collections/all",
+            "link_text_2": "Best Sellers",
+            "link_url_2": "/collections/all?sort_by=best-selling",
+            "link_text_3": "Bundles",
+            "link_url_3": "/collections/bundles",
+            "link_text_4": "",
+            "link_url_4": "",
+            "link_text_5": "",
+            "link_url_5": "",
+            "link_text_6": "",
+            "link_url_6": "",
+            "link_text_7": "",
+            "link_url_7": "",
+            "link_text_8": "",
+            "link_url_8": "",
+            "link_text_9": "",
+            "link_url_9": "",
+            "link_text_10": "",
+            "link_url_10": ""
+          }
+        },
+        "column_GdaEHb": {
+          "type": "column",
+          "settings": {
+            "title": "SUPPORT",
+            "link_text_1": "How It Works",
+            "link_url_1": "/pages/how-it-works",
+            "link_text_2": "FAQ",
+            "link_url_2": "/pages/contact#faq",
+            "link_text_3": "Contact Us",
+            "link_url_3": "/pages/contact",
+            "link_text_4": "",
+            "link_url_4": "",
+            "link_text_5": "",
+            "link_url_5": "",
+            "link_text_6": "",
+            "link_url_6": "",
+            "link_text_7": "",
+            "link_url_7": "",
+            "link_text_8": "",
+            "link_url_8": "",
+            "link_text_9": "",
+            "link_url_9": "",
+            "link_text_10": "",
+            "link_url_10": ""
+          }
+        },
+        "column_EpdReU": {
+          "type": "column",
+          "settings": {
+            "title": "COMPANY",
+            "link_text_1": "About",
+            "link_url_1": "/pages/about-us",
+            "link_text_2": "Reviews",
+            "link_url_2": "/pages/reviews",
+            "link_text_3": "Blog",
+            "link_url_3": "/blogs/blog",
+            "link_text_4": "",
+            "link_url_4": "",
+            "link_text_5": "",
+            "link_url_5": "",
+            "link_text_6": "",
+            "link_url_6": "",
+            "link_text_7": "",
+            "link_url_7": "",
+            "link_text_8": "",
+            "link_url_8": "",
+            "link_text_9": "",
+            "link_url_9": "",
+            "link_text_10": "",
+            "link_url_10": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_UqnGHi",
+        "column_GdaEHb",
+        "column_EpdReU"
+      ],
+      "name": "t:names.footer",
+      "settings": {
+        "background_color": "#f0f2f1"
+      }
+    },
+    "footer_utilities_jLGE8U": {
+      "type": "footer-utilities",
+      "blocks": {
+        "footer_copyright_jweRK8": {
+          "type": "footer-copyright",
+          "settings": {
+            "show_powered_by": true,
+            "font_size": "0.75rem",
+            "case": "none"
+          },
+          "blocks": {}
+        },
+        "footer_policy_list_VCdnpa": {
+          "type": "footer-policy-list",
+          "settings": {
+            "font_size": "0.75rem",
+            "case": "none"
+          },
+          "blocks": {}
+        },
+        "social_links_Ew63Kq": {
+          "type": "social-links",
+          "settings": {
+            "facebook_url": "https://www.facebook.com/",
+            "instagram_url": "https://www.instagram.com/",
+            "youtube_url": "https://www.youtube.com/",
+            "tiktok_url": "https://www.tiktok.com/",
+            "twitter_url": "https://x.com/",
+            "threads_url": "",
+            "linkedin_url": "",
+            "bluesky_url": "",
+            "snapchat_url": "",
+            "pinterest_url": "",
+            "tumblr_url": "",
+            "vimeo_url": "",
+            "custom_url": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "footer_copyright_jweRK8",
+        "footer_policy_list_VCdnpa",
+        "social_links_Ew63Kq"
+      ],
+      "name": "t:names.utilities",
+      "settings": {
+        "section_width": "page-width",
+        "gap": 24,
+        "divider_thickness": 0,
+        "color_scheme": "",
+        "padding-block-start": 20,
+        "padding-block-end": 48
+      }
+    }
+  },
+  "order": [
+    "footer_m9NzUG",
+    "footer_utilities_jLGE8U"
+  ]
+}

@@ -1,0 +1,12 @@
+{% comment %}
+  Adobe Typekit (Ninja fonts): Bahnschrift + Tahoma.
+  Load when Typekit fonts are enabled in theme settings.
+{% endcomment %}
+{% comment %}
+  Adobe Typekit – Ninja fonts (Bahnschrift + Tahoma).
+  Load when "Use Typekit fonts" is enabled in Theme settings > Typography.
+{% endcomment %}
+{% # theme-check-disable AssetUrlFilters %}
+{% if settings.use_typekit_fonts != false %}
+  <link rel="stylesheet" href="https://use.typekit.net/xnd0icu.css">
+{% endif %}

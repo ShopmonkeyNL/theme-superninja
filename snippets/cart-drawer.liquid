@@ -1,0 +1,243 @@
+{%- doc -%}
+  Renders the cart drawer, a slide-out panel that displays the contents of the cart. It includes the cart icon that acts as a trigger.
+
+  @param {object} [settings] - An object containing theme settings.
+
+  @param {boolean} [settings.auto_open_cart_drawer] - If `true`, the cart drawer opens automatically after an item is
+  added.
+  @param {string} [settings.drawer_color_scheme] - The color scheme for the drawer.
+{%- enddoc -%}
+
+<script
+  src="{{ 'cart-drawer.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+
+<cart-drawer-component
+  class="cart-drawer"
+  {{ block.shopify_attributes }}
+  {% if settings.auto_open_cart_drawer %}
+    auto-open
+  {% endif %}
+>
+  <button
+    class="button header-actions__action button-unstyled"
+    on:click="/open"
+    aria-haspopup="dialog"
+    aria-label="{{ 'accessibility.cart' | t }}"
+    aria-describedby="cart-bubble-text"
+    data-testid="cart-drawer-trigger"
+  >
+    {% render 'cart-icon-component' %}
+  </button>
+
+  <dialog
+    ref="dialog"
+    class="cart-drawer__dialog dialog-modal dialog-drawer color-{{ settings.drawer_color_scheme }}{% if cart.empty? %} cart-drawer--empty{%endif%}"
+    aria-labelledby="{% if cart.empty? %}cart-drawer-heading-empty{% else %}cart-drawer-heading{% endif %}"
+    scroll-lock
+  >
+    <div class="cart-drawer__inner">
+      <cart-items-component
+        class="cart-items-component"
+        data-section-id="{{ section.id }}"
+      >
+        {%- if cart.empty? -%}
+          <div class="cart-drawer__header">
+            <div class="cart-drawer__header-title">
+              <span
+                class="cart-drawer__header-icon"
+                aria-hidden="true"
+              >
+                {{- 'cart.svg' | inline_asset_content -}}
+              </span>
+              <h2
+                class="cart-drawer__heading"
+                id="cart-drawer-heading-empty"
+              >
+                Your shopping cart
+              </h2>
+            </div>
+
+            <button
+              ref="closeButton"
+              on:click="cart-drawer-component/close"
+              class="button close-button cart-drawer__close-button button-unstyled"
+              aria-label="{{ 'actions.close_dialog' | t }}"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <g clip-path="url(#clip0_324_12263)">
+                  <path d="M11.8293 10.0001L19.6209 2.20843C19.7416 2.0883 19.8373 1.94543 19.9023 1.78808C19.9674 1.63073 20.0007 1.46204 20.0001 1.29176C20.0022 1.12188 19.9697 0.953348 19.9045 0.796458C19.8393 0.639567 19.7428 0.497612 19.6209 0.379265C19.5026 0.257369 19.3606 0.160879 19.2037 0.0956866C19.0468 0.0304945 18.8783 -0.00203048 18.7084 9.81194e-05C18.5382 -0.000457068 18.3695 0.0327693 18.2121 0.0978537C18.0548 0.162938 17.9119 0.258588 17.7918 0.379265L10.0001 8.17093L2.20843 0.379265C2.0883 0.258588 1.94543 0.162938 1.78808 0.0978537C1.63073 0.0327693 1.46204 -0.000457068 1.29176 9.81194e-05C1.12188 -0.00203048 0.953348 0.0304945 0.796458 0.0956866C0.639567 0.160879 0.497612 0.257369 0.379265 0.379265C0.257369 0.497612 0.160879 0.639567 0.0956866 0.796458C0.0304945 0.953348 -0.00203048 1.12188 9.81194e-05 1.29176C-0.000457068 1.46204 0.0327693 1.63073 0.0978537 1.78808C0.162938 1.94543 0.258588 2.0883 0.379265 2.20843L8.17093 10.0001L0.379265 17.7918C0.258588 17.9119 0.162938 18.0548 0.0978537 18.2121C0.0327693 18.3695 -0.000457068 18.5382 9.81194e-05 18.7084C-0.00203048 18.8783 0.0304945 19.0468 0.0956866 19.2037C0.160879 19.3606 0.257369 19.5026 0.379265 19.6209C0.497612 19.7428 0.639567 19.8393 0.796458 19.9045C0.953348 19.9697 1.12188 20.0022 1.29176 20.0001C1.46204 20.0007 1.63073 19.9674 1.78808 19.9023C1.94543 19.8373 2.0883 19.7416 2.20843 19.6209L10.0001 11.8293L17.7918 19.6209C17.9119 19.7416 18.0548 19.8373 18.2121 19.9023C18.3695 19.9674 18.5382 20.0007 18.7084 20.0001C19.0507 19.999 19.3786 19.8626 19.6206 19.6206C19.8626 19.3786 19.999 19.0507 20.0001 18.7084C20.0007 18.5382 19.9674 18.3695 19.9023 18.2121C19.8373 18.0548 19.7416 17.9119 19.6209 17.7918L11.8293 10.0001Z" fill="#FF5000"/>
+                </g>
+                <defs>
+                  <clipPath id="clip0_324_12263">
+                    <rect
+                      width="20"
+                      height="20"
+                      fill="white"
+                    />
+                  </clipPath>
+                </defs>
+              </svg>
+            </button>
+          </div>
+
+          <div
+            class="cart-drawer__content motion-reduce"
+            aria-label="{{ 'accessibility.cart' | t }}"
+          >
+            <h2
+              class="cart-drawer__heading h3 cart-drawer__heading--empty"
+            >
+              {{ 'content.your_cart_is_empty' | t }}
+            </h2>
+
+            <div class="cart-drawer__items">
+              {% render 'cart-products', drawer_context: 'drawer' %}
+            </div>
+          </div>
+        {%- else -%}
+          <div
+            class="cart-drawer__header"
+            id="cart-drawer-header"
+          >
+            <div class="cart-drawer__header-title">
+              <span
+                class="cart-drawer__header-icon"
+                aria-hidden="true"
+              >
+                {{- 'cart.svg' | inline_asset_content -}}
+              </span>
+              <h2
+                class="cart-drawer__heading"
+                id="cart-drawer-heading"
+              >
+                Your shopping cart
+              </h2>
+            </div>
+
+            <button
+              ref="closeButton"
+              on:click="cart-drawer-component/close"
+              class="button close-button cart-drawer__close-button button-unstyled"
+              aria-label="{{ 'actions.close_dialog' | t }}"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <g clip-path="url(#clip0_324_12263)">
+                  <path d="M11.8293 10.0001L19.6209 2.20843C19.7416 2.0883 19.8373 1.94543 19.9023 1.78808C19.9674 1.63073 20.0007 1.46204 20.0001 1.29176C20.0022 1.12188 19.9697 0.953348 19.9045 0.796458C19.8393 0.639567 19.7428 0.497612 19.6209 0.379265C19.5026 0.257369 19.3606 0.160879 19.2037 0.0956866C19.0468 0.0304945 18.8783 -0.00203048 18.7084 9.81194e-05C18.5382 -0.000457068 18.3695 0.0327693 18.2121 0.0978537C18.0548 0.162938 17.9119 0.258588 17.7918 0.379265L10.0001 8.17093L2.20843 0.379265C2.0883 0.258588 1.94543 0.162938 1.78808 0.0978537C1.63073 0.0327693 1.46204 -0.000457068 1.29176 9.81194e-05C1.12188 -0.00203048 0.953348 0.0304945 0.796458 0.0956866C0.639567 0.160879 0.497612 0.257369 0.379265 0.379265C0.257369 0.497612 0.160879 0.639567 0.0956866 0.796458C0.0304945 0.953348 -0.00203048 1.12188 9.81194e-05 1.29176C-0.000457068 1.46204 0.0327693 1.63073 0.0978537 1.78808C0.162938 1.94543 0.258588 2.0883 0.379265 2.20843L8.17093 10.0001L0.379265 17.7918C0.258588 17.9119 0.162938 18.0548 0.0978537 18.2121C0.0327693 18.3695 -0.000457068 18.5382 9.81194e-05 18.7084C-0.00203048 18.8783 0.0304945 19.0468 0.0956866 19.2037C0.160879 19.3606 0.257369 19.5026 0.379265 19.6209C0.497612 19.7428 0.639567 19.8393 0.796458 19.9045C0.953348 19.9697 1.12188 20.0022 1.29176 20.0001C1.46204 20.0007 1.63073 19.9674 1.78808 19.9023C1.94543 19.8373 2.0883 19.7416 2.20843 19.6209L10.0001 11.8293L17.7918 19.6209C17.9119 19.7416 18.0548 19.8373 18.2121 19.9023C18.3695 19.9674 18.5382 20.0007 18.7084 20.0001C19.0507 19.999 19.3786 19.8626 19.6206 19.6206C19.8626 19.3786 19.999 19.0507 20.0001 18.7084C20.0007 18.5382 19.9674 18.3695 19.9023 18.2121C19.8373 18.0548 19.7416 17.9119 19.6209 17.7918L11.8293 10.0001Z" fill="#FF5000"/>
+                </g>
+                <defs>
+                  <clipPath id="clip0_324_12263">
+                    <rect
+                      width="20"
+                      height="20"
+                      fill="white"
+                    />
+                  </clipPath>
+                </defs>
+              </svg>
+            </button>
+          </div>
+
+          <div
+            class="cart-drawer__content motion-reduce"
+            aria-label="{{ 'accessibility.cart' | t }}"
+            style="--header-height: 60px;"
+          >
+            <scroll-hint
+              class="cart-drawer__items"
+            >
+              {% render 'cart-products', drawer_context: 'drawer' %}
+            </scroll-hint>
+
+            {% render 'cart-complete-defense', section_id: section.id %}
+
+            <div
+              class="cart-drawer__summary"
+            >
+              {% render 'cart-summary' %}
+            </div>
+          </div>
+        {%- endif -%}
+      </cart-items-component>
+    </div>
+  </dialog>
+</cart-drawer-component>
+
+{% style %}
+  .cart-items-component {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cart-drawer__heading .cart-bubble {
+    width: fit-content;
+    border-radius: var(--style-border-radius-buttons-primary);
+    aspect-ratio: auto;
+    padding: var(--cart-padding);
+  }
+
+  .cart-drawer__heading .cart-bubble[data-maintain-ratio] {
+    aspect-ratio: 1;
+    min-width: 26px;
+  }
+
+  .cart-drawer__header {
+    background-color: var(--color-background);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: var(--cart-drawer-padding);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
+
+
+    @media screen and (min-width: 750px) {
+      padding: var(--cart-drawer-padding-desktop);
+    }
+  }
+
+  .cart-drawer__dialog {
+    overflow: hidden;
+  }
+
+  .cart-drawer__inner {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .cart-drawer__content {
+    height: calc(100% - var(--header-height));
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cart-drawer__summary {
+    background-color: var(--color-background);
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+  }
+{% endstyle %}

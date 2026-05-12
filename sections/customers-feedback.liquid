@@ -1,0 +1,1050 @@
+{% comment %}
+  Customers feedback – heading (same style as Why Super Ninja Works).
+{% endcomment %}
+
+{% liquid
+  assign section_bg = section.settings.background_color | default: '#F0F2F1'
+  assign video_blocks = section.blocks | where: 'type', 'video'
+%}
+
+<section
+  class="customers-feedback customers-feedback--{{ section.id }}"
+  style="--cf-bg: {{ section_bg }};"
+  {{ section.shopify_attributes }}>
+  <div class="customers-feedback__inner">
+    <div class="customers-feedback__content">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'trust_badge' %}
+            <div
+              class="customers-feedback__trust-badge"
+              style="text-align: {{ block.settings.badge_align }};"
+              {{ block.shopify_attributes }}>
+              <span class="customers-feedback__stars" aria-hidden="true">
+                {% for i in (1..5) %}
+                  <svg
+                    class="customers-feedback__star"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    focusable="false">
+                    <path d="M13.3057 0.843656C13.0648 0.328088 12.5558 0 11.9967 0C11.4377 0 10.9332 0.328088 10.6878 0.843656L7.76537 7.04452L1.2388 8.03816C0.693401 8.12253 0.238904 8.51623 0.0707399 9.05524C-0.0974239 9.59424 0.0389251 10.1895 0.429792 10.5879L5.16565 15.4201L4.04759 22.2491C3.95669 22.8115 4.18394 23.3833 4.63389 23.7161C5.08384 24.0489 5.67923 24.0911 6.17009 23.8239L12.0013 20.6133L17.8325 23.8239C18.3233 24.0911 18.9187 24.0536 19.3687 23.7161C19.8186 23.3786 20.0459 22.8115 19.955 22.2491L18.8324 15.4201L23.5682 10.5879C23.9591 10.1895 24.1 9.59424 23.9273 9.05524C23.7546 8.51623 23.3046 8.12253 22.7592 8.03816L16.2281 7.04452L13.3057 0.843656Z" fill="#FF5000" />
+                  </svg>
+                {% endfor %}
+              </span>
+              <span class="customers-feedback__trust-text">{{ block.settings.text }}</span>
+            </div>
+
+          {% when 'heading' %}
+            {% liquid
+              assign tag = block.settings.tag | default: 'h2'
+              assign fs_d = block.settings.font_size_desktop | default: 64
+              assign fs_m = block.settings.font_size_mobile | default: 40
+              assign lh_d = block.settings.line_height_desktop | default: 1.2
+              assign lh_m = block.settings.line_height_mobile | default: 1.3
+              assign fw = block.settings.font_weight | default: '700'
+              assign align = block.settings.text_align | default: 'center'
+            %}
+            <{{ tag }}
+                            class="customers-feedback__heading"
+                            style="--cf-fs-d: {{ fs_d }}px; --cf-fs-m: {{ fs_m }}px; --cf-lh-d: {{ lh_d }}; --cf-lh-m: {{ lh_m }}; font-weight: {{ fw }}; text-align: {{ align }};"
+                            {{ block.shopify_attributes }}>
+              {{ block.settings.content }}
+              </{{ tag }}>
+
+            {% when 'text' %}
+              {% liquid
+                assign fs_d = block.settings.font_size_desktop | default: 18
+                assign fs_m = block.settings.font_size_mobile | default: 16
+                assign lh_d = block.settings.line_height_desktop | default: 1.5
+                assign lh_m = block.settings.line_height_mobile | default: 1.5
+                assign fw = block.settings.font_weight | default: '400'
+                assign align = block.settings.text_align | default: 'left'
+              %}
+              <div
+                class="customers-feedback__text rte"
+                style="--cf-text-fs-d: {{ fs_d }}px; --cf-text-fs-m: {{ fs_m }}px; --cf-text-lh-d: {{ lh_d }}; --cf-text-lh-m: {{ lh_m }}; font-weight: {{ fw }}; text-align: {{ align }};"
+                {{ block.shopify_attributes }}>
+                {{ block.settings.content }}
+              </div>
+
+          {% when 'video' %}
+            {% comment %} Rendered in carousel below {% endcomment %}
+          {% endcase %}
+        {% endfor %}
+      </div>
+
+      {% if video_blocks.size > 0 %}
+        <div class="customers-feedback__videos-wrap">
+          <div class="customers-feedback__videos" id="cf-carousel-{{ section.id }}" role="region" aria-label="{{ 'sections.customers_feedback.video_carousel' | t | default: 'Video carousel' }}">
+            <div class="customers-feedback__videos-track" data-cf-track data-cf-count="{{ video_blocks.size }}">
+              {% for block in video_blocks %}
+                {% liquid
+                  assign vid = block.settings.video
+                  assign vid_url = block.settings.video_url
+                  assign use_url = false
+                  assign preview_img = nil
+                  if block.settings.source == 'url' and vid_url != blank
+                    assign use_url = true
+                    if block.settings.cover_image != blank
+                      assign preview_img = block.settings.cover_image
+                    elsif vid_url.type == 'youtube' and vid_url.id != blank
+                      assign youtube_thumb = 'https://img.youtube.com/vi/' | append: vid_url.id | append: '/maxresdefault.jpg'
+                      assign preview_img = youtube_thumb
+                    elsif vid_url.preview_image != blank
+                      assign preview_img = vid_url.preview_image
+                    endif
+                  elsif vid != blank
+                    if vid.preview_image != blank
+                    assign preview_img = vid.preview_image
+                    elsif vid.thumbnail != blank
+                      assign preview_img = vid.thumbnail
+                    elsif vid.host == 'youtube' and vid.id != blank
+                      assign youtube_thumb = 'https://img.youtube.com/vi/' | append: vid.id | append: '/maxresdefault.jpg'
+                      assign preview_img = youtube_thumb
+                    endif
+                  endif
+                  assign has_video = false
+                  if use_url and vid_url != blank
+                    assign has_video = true
+                  elsif vid != blank
+                    assign has_video = true
+                  endif
+                %}
+                <div class="customers-feedback__video-card" {{ block.shopify_attributes }} data-block-id="{{ block.id }}" data-cf-has-video="{{ has_video }}">
+                  <button type="button" class="customers-feedback__video-trigger" aria-label="{{ 'sections.customers_feedback.play_video' | t | default: 'Play video' }}" data-cf-open-modal="{{ section.id }}" {% unless has_video %}disabled{% endunless %}>
+                    <span class="customers-feedback__video-poster">
+                      {% if preview_img != blank %}
+                        {% if preview_img contains 'http://' or preview_img contains 'https://' %}
+                          <img src="{{ preview_img }}" loading="lazy" width="626" height="auto" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                        {% else %}
+                        {{ preview_img | image_url: width: 626 | image_tag: loading: 'lazy', widths: '340, 626', sizes: '(max-width: 749px) 170px, 313px', alt: '' }}
+                        {% endif %}
+                      {% else %}
+                        <span class="customers-feedback__video-placeholder"></span>
+                      {% endif %}
+                    </span>
+                    <span class="customers-feedback__video-play" aria-hidden="true">
+                      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="36" fill="#FF5000"/><path d="M26 18L12 26L12 10L26 18Z" fill="#F0F2F1"/></svg>
+                    </span>
+                  </button>
+                  {% if has_video %}
+                    <div class="customers-feedback__video-embed" hidden data-cf-embed>
+                      {% if use_url and vid_url != blank %}
+                        {% if vid_url.type == 'youtube' %}
+                          <iframe src="https://www.youtube.com/embed/{{ vid_url.id }}?autoplay=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube"></iframe>
+                        {% elsif vid_url.type == 'vimeo' %}
+                          <iframe src="https://player.vimeo.com/video/{{ vid_url.id }}?autoplay=1" allow="autoplay; fullscreen" allowfullscreen title="Vimeo"></iframe>
+                        {% endif %}
+                      {% elsif vid != blank %}
+                        {% if vid.host == 'youtube' %}
+                          {{ vid | external_video_url: autoplay: true | external_video_tag: class: 'customers-feedback__video-tag' }}
+                        {% elsif vid.host == 'vimeo' %}
+                          {{ vid | external_video_url: autoplay: true | external_video_tag: class: 'customers-feedback__video-tag' }}
+                        {% else %}
+                          {{ vid | video_tag: autoplay: true, controls: true, class: 'customers-feedback__video-tag' }}
+                        {% endif %}
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                </div>
+              {% endfor %}
+              {% comment %} Duplicate for infinite loop {% endcomment %}
+              {% for block in video_blocks %}
+                {% liquid
+                  assign vid = block.settings.video
+                  assign vid_url = block.settings.video_url
+                  assign use_url = false
+                  assign preview_img = nil
+                  if block.settings.source == 'url' and vid_url != blank
+                    assign use_url = true
+                    if block.settings.cover_image != blank
+                      assign preview_img = block.settings.cover_image
+                    elsif vid_url.type == 'youtube' and vid_url.id != blank
+                      assign youtube_thumb = 'https://img.youtube.com/vi/' | append: vid_url.id | append: '/maxresdefault.jpg'
+                      assign preview_img = youtube_thumb
+                    elsif vid_url.preview_image != blank
+                      assign preview_img = vid_url.preview_image
+                    endif
+                  elsif vid != blank
+                    if vid.preview_image != blank
+                    assign preview_img = vid.preview_image
+                    elsif vid.thumbnail != blank
+                      assign preview_img = vid.thumbnail
+                    elsif vid.host == 'youtube' and vid.id != blank
+                      assign youtube_thumb = 'https://img.youtube.com/vi/' | append: vid.id | append: '/maxresdefault.jpg'
+                      assign preview_img = youtube_thumb
+                    endif
+                  endif
+                  assign has_video = false
+                  if use_url and vid_url != blank
+                    assign has_video = true
+                  elsif vid != blank
+                    assign has_video = true
+                  endif
+                %}
+                <div class="customers-feedback__video-card customers-feedback__video-card--clone" data-block-id="{{ block.id }}" data-cf-has-video="{{ has_video }}">
+                  <button type="button" class="customers-feedback__video-trigger" aria-label="{{ 'sections.customers_feedback.play_video' | t | default: 'Play video' }}" data-cf-open-modal="{{ section.id }}" {% unless has_video %}disabled{% endunless %}>
+                    <span class="customers-feedback__video-poster">
+                      {% if preview_img != blank %}
+                        {% if preview_img contains 'http://' or preview_img contains 'https://' %}
+                          <img src="{{ preview_img }}" loading="lazy" width="626" height="auto" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                        {% else %}
+                        {{ preview_img | image_url: width: 626 | image_tag: loading: 'lazy', widths: '340, 626', sizes: '(max-width: 749px) 170px, 313px', alt: '' }}
+                        {% endif %}
+                      {% else %}
+                        <span class="customers-feedback__video-placeholder"></span>
+                      {% endif %}
+                    </span>
+                    <span class="customers-feedback__video-play" aria-hidden="true">
+                      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="36" fill="#FF5000"/><path d="M26 18L12 26L12 10L26 18Z" fill="#F0F2F1"/></svg>
+                    </span>
+                  </button>
+                  {% if has_video %}
+                    <div class="customers-feedback__video-embed" hidden data-cf-embed>
+                      {% if use_url and vid_url != blank %}
+                        {% if vid_url.type == 'youtube' %}
+                          <iframe src="https://www.youtube.com/embed/{{ vid_url.id }}?autoplay=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube"></iframe>
+                        {% elsif vid_url.type == 'vimeo' %}
+                          <iframe src="https://player.vimeo.com/video/{{ vid_url.id }}?autoplay=1" allow="autoplay; fullscreen" allowfullscreen title="Vimeo"></iframe>
+                        {% endif %}
+                      {% elsif vid != blank %}
+                        {% if vid.host == 'youtube' %}
+                          {{ vid | external_video_url: autoplay: true | external_video_tag: class: 'customers-feedback__video-tag' }}
+                        {% elsif vid.host == 'vimeo' %}
+                          {{ vid | external_video_url: autoplay: true | external_video_tag: class: 'customers-feedback__video-tag' }}
+                        {% else %}
+                          {{ vid | video_tag: autoplay: true, controls: true, class: 'customers-feedback__video-tag' }}
+                        {% endif %}
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <div class="customers-feedback__modal" id="cf-modal-{{ section.id }}" role="dialog" aria-modal="true" aria-label="{{ 'sections.customers_feedback.video_modal' | t | default: 'Video' }}" hidden>
+          <div class="customers-feedback__modal-backdrop" data-cf-close-modal="{{ section.id }}"></div>
+          <div class="customers-feedback__modal-content">
+            <button type="button" class="customers-feedback__modal-close" aria-label="{{ 'sections.customers_feedback.close' | t | default: 'Close' }}" data-cf-close-modal="{{ section.id }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <div class="customers-feedback__modal-body" data-cf-modal-body></div>
+          </div>
+        </div>
+      {% endif %}
+  </div>
+</section>
+
+  <style>
+    .customers-feedback {
+      padding-top: 48px;
+      padding-bottom: 128px;
+      padding-inline: 1.5rem;
+      background: var(--cf-bg);
+    }
+
+    .customers-feedback__inner {
+      max-width: 1312px;
+      margin: 0 auto;
+    }
+
+    .customers-feedback__content {
+      max-width: 100%;
+    }
+
+    .customers-feedback__trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: 16px;
+      line-height: 1;
+      color: #1C1C1C;
+      margin-bottom: 1rem;
+    }
+
+    .customers-feedback__stars {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .customers-feedback__star {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .customers-feedback__trust-text {
+      font-size: 16px;
+      line-height: 1.2;
+      font-weight: 400;
+    }
+
+    .customers-feedback__heading {
+      margin: 0;
+      color: #1C1C1C;
+      font-family: var(--font-heading--family);
+      font-size: var(--cf-fs-d, 64px);
+      line-height: var(--cf-lh-d, 1.2);
+      font-weight: 700;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .customers-feedback__heading p {
+      margin: 0;
+    }
+
+    .customers-feedback__text {
+      margin: 0.5em 0 0;
+      font-size: var(--cf-text-fs-d, 18px);
+      line-height: var(--cf-text-lh-d, 1.5);
+      color: #000;
+    }
+
+    .customers-feedback__text p {
+      margin: 0 0 0.5em;
+    }
+
+    .customers-feedback__text p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Video carousel */
+    .customers-feedback__videos-wrap {
+      margin-top: 2rem;
+      overflow: hidden;
+    }
+
+    .customers-feedback__videos {
+      overflow: hidden;
+      --cf-card-w: 313px;
+      --cf-card-h: 556px;
+      --cf-gap: 16px;
+    }
+
+    .customers-feedback__videos-track {
+      display: flex;
+      gap: var(--cf-gap);
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      cursor: grab;
+      user-select: none;
+    }
+    .customers-feedback__videos-track:active {
+      cursor: grabbing;
+    }
+
+    .customers-feedback__videos-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .customers-feedback__video-card {
+      flex: 0 0 var(--cf-card-w);
+      width: var(--cf-card-w);
+      height: var(--cf-card-h);
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+
+    .customers-feedback__video-trigger {
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      background: #000;
+      overflow: hidden;
+    }
+    .customers-feedback__video-trigger:disabled {
+      cursor: default;
+    }
+    .customers-feedback__video-trigger:disabled .customers-feedback__video-play {
+      opacity: 0.6;
+    }
+
+    .customers-feedback__video-poster {
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+    }
+
+    .customers-feedback__video-poster img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .customers-feedback__video-placeholder {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: #ddd;
+    }
+
+    .customers-feedback__video-play {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .customers-feedback__video-play svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Modal */
+    .customers-feedback__modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .customers-feedback__modal[hidden] {
+      display: none !important;
+    }
+
+    .customers-feedback__modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      cursor: pointer;
+    }
+
+    .customers-feedback__modal-content {
+      position: relative;
+      width: 100%;
+      max-width: 90vw;
+      max-height: 90vh;
+      aspect-ratio: 9 / 16;
+      background: #000;
+    }
+
+    .customers-feedback__modal-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      width: 36px;
+      height: 36px;
+      border: none;
+      background: none;
+      color: #fff;
+      cursor: pointer;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .customers-feedback__modal-close svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .customers-feedback__modal-body {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .customers-feedback__modal-body iframe,
+    .customers-feedback__modal-body .customers-feedback__video-tag {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .customers-feedback__modal-body video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    @media screen and (max-width: 749px) {
+      .customers-feedback{
+        padding: 48px 16px 84px 16px!important;
+      }
+      .customers-feedback__heading {
+        font-size: var(--cf-fs-m, 40px) !important;
+        line-height: var(--cf-lh-m, 1.3) !important;
+        text-align: center !important;
+      }
+      .customers-feedback__text {
+        font-size: var(--cf-text-fs-m, 16px) !important;
+        line-height: var(--cf-text-lh-m, 1.5) !important;
+      }
+      .customers-feedback__trust-badge {
+        justify-content: center !important;
+      }
+      .customers-feedback__trust-text {
+        font-size: 12px !important;
+      }
+      .customers-feedback__star {
+        width: 16px !important;
+        height: 16px !important;
+      }
+      .customers-feedback__videos {
+        --cf-card-w: 170px;
+        --cf-card-h: 300px;
+        --cf-gap: 12px;
+        margin: 0 auto;
+      }
+      .customers-feedback__videos-track {
+        padding-right: 0;
+      }
+    }
+  </style>
+
+  <script>
+    (function() {
+      const section = document.getElementById('cf-carousel-{{ section.id }}');
+      if (!section) return;
+      const track = section.querySelector('[data-cf-track]');
+      if (!track) return;
+      const count = parseInt(track.getAttribute('data-cf-count') || '0', 10);
+      if (count === 0) return;
+
+      const modal = document.getElementById('cf-modal-{{ section.id }}');
+      const modalBody = modal ? modal.querySelector('[data-cf-modal-body]') : null;
+
+      let interval;
+      let dragging = false;
+      let justDragged = false;
+      let startX = 0;
+      let startScroll = 0;
+      let hasMoved = false;
+      let startedOnButton = false;
+
+      function getCardWidth() { return window.innerWidth <= 749 ? 170 : 313; }
+      function getGap() { return window.innerWidth <= 749 ? 12 : 16; }
+      function getStep() { return getCardWidth() + getGap(); }
+      function getOneSetWidth() { return count * getStep() - getGap(); }
+
+      function snapAndWrap() {
+        const step = getStep();
+        const oneSet = getOneSetWidth();
+        let scroll = track.scrollLeft;
+        if (scroll >= oneSet) scroll = scroll - oneSet;
+        if (scroll < 0) scroll = scroll + oneSet;
+        const index = Math.round(scroll / step);
+        const wrapped = ((index % count) + count) % count;
+        track.scrollTo({ left: wrapped * step, behavior: 'smooth' });
+      }
+
+      function advance() {
+        const step = getStep();
+        const oneSet = getOneSetWidth();
+        const next = track.scrollLeft + step;
+        if (next >= oneSet) {
+          track.scrollLeft = 0;
+        } else {
+          track.scrollTo({ left: next, behavior: 'smooth' });
+        }
+      }
+
+      function startInterval() { interval = setInterval(advance, 3000); }
+      function stopInterval() { if (interval) { clearInterval(interval); interval = null; } }
+
+      startInterval();
+      section.addEventListener('mouseenter', stopInterval);
+      section.addEventListener('mouseleave', startInterval);
+
+      function getClientX(e) {
+        if (e.touches && e.touches.length) return e.touches[0].clientX;
+        return e.clientX;
+      }
+
+      function handleMouseDown(e) {
+        const button = e.target.closest('button');
+        startedOnButton = !!button;
+        hasMoved = false;
+        dragging = true;
+        startX = e.clientX;
+        startScroll = track.scrollLeft;
+        stopInterval();
+        track.style.scrollBehavior = 'auto';
+        track.style.scrollSnapType = 'none';
+        track.style.cursor = 'grabbing';
+        track.style.overflowX = 'hidden';
+        track.style.userSelect = 'none';
+        if (button) {
+          button.setAttribute('data-cf-drag-start', 'true');
+        }
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      }
+
+      function handleMouseMove(e) {
+        if (!dragging) return;
+        const x = e.clientX;
+        const diff = Math.abs(startX - x);
+        if (diff > 3) {
+          hasMoved = true;
+          const scrollDiff = startX - x;
+          track.scrollLeft = startScroll + scrollDiff;
+        }
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      }
+
+      function handleMouseUp(e) {
+        if (!dragging) return;
+        const moved = hasMoved;
+        dragging = false;
+        hasMoved = false;
+        track.style.scrollBehavior = 'smooth';
+        track.style.scrollSnapType = 'x mandatory';
+        track.style.cursor = 'grab';
+        track.style.overflowX = 'auto';
+        track.style.userSelect = '';
+        
+        if (moved) {
+          justDragged = true;
+          setTimeout(function() { justDragged = false; }, 150);
+          snapAndWrap();
+          e.preventDefault();
+          e.stopPropagation();
+        } else if (startedOnButton) {
+          // Se não houve movimento e começou no botão, permitir o clique
+          const button = track.querySelector('button[data-cf-drag-start]');
+          if (button) {
+            button.removeAttribute('data-cf-drag-start');
+            // Pequeno delay para garantir que o evento de clique seja processado
+            setTimeout(function() {
+              if (button && !button.disabled) {
+                button.click();
+              }
+            }, 10);
+          }
+        } else {
+          // Limpar atributo se existir
+          const button = track.querySelector('button[data-cf-drag-start]');
+          if (button) {
+            button.removeAttribute('data-cf-drag-start');
+          }
+        }
+        
+        startInterval();
+        return false;
+      }
+
+      track.addEventListener('mousedown', handleMouseDown, { passive: false });
+      track.addEventListener('dragstart', function(e) {
+        e.preventDefault();
+        return false;
+      }, { passive: false });
+      track.addEventListener('selectstart', function(e) {
+        if (dragging) {
+          e.preventDefault();
+          return false;
+        }
+      }, { passive: false });
+      track.addEventListener('mousemove', handleMouseMove, { passive: false });
+      
+      document.addEventListener('mousemove', handleMouseMove, { passive: false });
+      document.addEventListener('mouseup', handleMouseUp, { passive: false });
+      document.addEventListener('mouseleave', handleMouseUp, { passive: false });
+
+      track.addEventListener('touchstart', function(e) {
+        if (e.target.closest('button')) return;
+        dragging = true;
+        startX = getClientX(e);
+        startScroll = track.scrollLeft;
+        stopInterval();
+      }, { passive: true });
+
+      track.addEventListener('touchmove', function(e) {
+        if (!dragging) return;
+        const x = getClientX(e);
+        track.scrollLeft = startScroll + (startX - x);
+        e.preventDefault();
+      }, { passive: false });
+
+      track.addEventListener('touchend', function() {
+        if (!dragging) return;
+        justDragged = true;
+        setTimeout(function() { justDragged = false; }, 150);
+        dragging = false;
+        snapAndWrap();
+        startInterval();
+      });
+      track.addEventListener('touchcancel', function() {
+        if (!dragging) return;
+        dragging = false;
+        snapAndWrap();
+        startInterval();
+      });
+
+      if (modal && modalBody) {
+        section.querySelectorAll('[data-cf-open-modal]').forEach(function(btn) {
+          btn.addEventListener('click', function(e) {
+            if (btn.disabled || justDragged) return;
+            const card = btn.closest('.customers-feedback__video-card');
+            const embed = card ? card.querySelector('[data-cf-embed]') : null;
+            if (embed && embed.innerHTML.trim() !== '') {
+              modalBody.innerHTML = '';
+              var clone = embed.cloneNode(true);
+              clone.removeAttribute('hidden');
+              modalBody.appendChild(clone);
+              modal.hidden = false;
+              document.body.style.overflow = 'hidden';
+            }
+          });
+        });
+        modal.querySelectorAll('[data-cf-close-modal]').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            modal.hidden = true;
+            document.body.style.overflow = '';
+            const iframe = modalBody.querySelector('iframe');
+            const video = modalBody.querySelector('video');
+            if (iframe) iframe.src = '';
+            if (video) { video.pause(); video.currentTime = 0; }
+            modalBody.innerHTML = '';
+          });
+        });
+      }
+    })();
+  </script>
+
+  {% schema %}
+    {
+      "name": "Customers feedback",
+      "tag": "section",
+      "class": "section-customers-feedback",
+      "settings": [
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background color",
+          "default": "#F0F2F1"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "trust_badge",
+          "name": "Trust badge",
+          "limit": 1,
+          "settings": [
+            {
+              "type": "inline_richtext",
+              "id": "text",
+              "label": "Text",
+              "default": "Trusted by <strong>1000+</strong> happy customers"
+            },
+            {
+              "type": "select",
+              "id": "badge_align",
+              "label": "Badge alignment",
+              "options": [
+                {
+                  "value": "left",
+                  "label": "Left"
+                },
+                {
+                  "value": "center",
+                  "label": "Center"
+                },
+                {
+                  "value": "right",
+                  "label": "Right"
+                }
+              ],
+              "default": "center"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "name": "Heading",
+          "limit": 1,
+          "settings": [
+            {
+              "type": "inline_richtext",
+              "id": "content",
+              "label": "Content",
+              "default": "It Worked for Them. It'll Work for You."
+            },
+            {
+              "type": "select",
+              "id": "tag",
+              "label": "HTML tag",
+              "options": [
+                {
+                  "value": "h1",
+                  "label": "H1"
+                },
+                {
+                  "value": "h2",
+                  "label": "H2"
+                },
+                {
+                  "value": "h3",
+                  "label": "H3"
+                },
+                {
+                  "value": "h4",
+                  "label": "H4"
+                }, {
+                  "value": "h5",
+                  "label": "H5"
+                }, {
+                  "value": "p",
+                  "label": "P"
+                }, {
+                  "value": "span",
+                  "label": "Span"
+                }
+              ],
+              "default": "h2"
+            },
+            {
+              "type": "range",
+              "id": "font_size_desktop",
+              "label": "Font size (desktop)",
+              "min": 12,
+              "max": 72,
+              "step": 1,
+              "unit": "px",
+              "default": 64
+            },
+            {
+              "type": "range",
+              "id": "font_size_mobile",
+              "label": "Font size (mobile)",
+              "min": 12,
+              "max": 48,
+              "step": 1,
+              "unit": "px",
+              "default": 40
+            }, {
+              "type": "range",
+              "id": "line_height_desktop",
+              "label": "Line height (desktop)",
+              "min": 0.8,
+              "max": 2.5,
+              "step": 0.1,
+              "default": 1.2
+            }, {
+              "type": "range",
+              "id": "line_height_mobile",
+              "label": "Line height (mobile)",
+              "min": 0.8,
+              "max": 2.5,
+              "step": 0.1,
+              "default": 1.3
+            }, {
+              "type": "select",
+              "id": "font_weight",
+              "label": "Font weight",
+              "options": [
+                {
+                  "value": "400",
+                  "label": "400"
+                }, {
+                  "value": "500",
+                  "label": "500"
+                }, {
+                  "value": "600",
+                  "label": "600"
+                }, {
+                  "value": "700",
+                  "label": "700"
+                }
+              ],
+              "default": "700"
+            }, {
+              "type": "select",
+              "id": "text_align",
+              "label": "Text alignment",
+              "options": [
+                {
+                  "value": "left",
+                  "label": "Left"
+                }, {
+                  "value": "center",
+                  "label": "Center"
+                }, {
+                  "value": "right",
+                  "label": "Right"
+                }
+              ],
+              "default": "center"
+            }
+          ]
+        }, {
+          "type": "text",
+          "name": "Text",
+          "limit": 1,
+          "settings": [
+            {
+              "type": "richtext",
+              "id": "content",
+              "label": "Content",
+              "default": "<p>Powerful pest control that works effectively, without compromising the safety of your home or family.</p>"
+            },
+            {
+              "type": "range",
+              "id": "font_size_desktop",
+              "label": "Font size (desktop)",
+              "min": 12,
+              "max": 32,
+              "step": 1,
+              "unit": "px",
+              "default": 18
+            },
+            {
+              "type": "range",
+              "id": "font_size_mobile",
+              "label": "Font size (mobile)",
+              "min": 12,
+              "max": 24,
+              "step": 1,
+              "unit": "px",
+              "default": 16
+            },
+            {
+              "type": "range",
+              "id": "line_height_desktop",
+              "label": "Line height (desktop)",
+              "min": 0.8,
+              "max": 2.5,
+              "step": 0.1,
+              "default": 1.5
+            }, {
+              "type": "range",
+              "id": "line_height_mobile",
+              "label": "Line height (mobile)",
+              "min": 0.8,
+              "max": 2.5,
+              "step": 0.1,
+              "default": 1.5
+            }, {
+              "type": "select",
+              "id": "font_weight",
+              "label": "Font weight",
+              "options": [
+                {
+                  "value": "400",
+                  "label": "400"
+                }, {
+                  "value": "500",
+                  "label": "500"
+                }, {
+                  "value": "600",
+                  "label": "600"
+                }, {
+                  "value": "700",
+                  "label": "700"
+                }
+              ],
+              "default": "400"
+            }, {
+              "type": "select",
+              "id": "text_align",
+              "label": "Text alignment",
+              "options": [
+                {
+                  "value": "left",
+                  "label": "Left"
+                }, {
+                  "value": "center",
+                  "label": "Center"
+                }, {
+                  "value": "right",
+                  "label": "Right"
+                }
+              ],
+              "default": "left"
+            }
+          ]
+        },
+        {
+          "type": "video",
+          "name": "Video",
+          "settings": [
+            {
+              "type": "select",
+              "id": "source",
+              "label": "Video source",
+              "options": [
+                { "value": "uploaded", "label": "Upload video" },
+                { "value": "url", "label": "YouTube or Vimeo URL" }
+              ],
+              "default": "uploaded"
+            },
+            {
+              "type": "video",
+              "id": "video",
+              "label": "Video",
+              "visible_if": "{{ block.settings.source == 'uploaded' }}"
+            },
+            {
+              "type": "video_url",
+              "id": "video_url",
+              "label": "Video URL",
+              "accept": ["youtube", "vimeo"],
+              "visible_if": "{{ block.settings.source == 'url' }}"
+            },
+            {
+              "type": "image_picker",
+              "id": "cover_image",
+              "label": "Cover image (optional)",
+              "info": "For external URL, optional custom thumbnail.",
+              "visible_if": "{{ block.settings.source == 'url' }}"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Customers feedback",
+          "blocks": [
+            {
+              "type": "heading",
+              "settings": {
+                "content": "It Worked for Them. It'll Work for You.",
+                "tag": "h2",
+                "font_size_desktop": 64,
+                "font_size_mobile": 40,
+                "line_height_desktop": 1.2,
+                "line_height_mobile": 1.3,
+                "font_weight": "700",
+                "text_align": "center"
+              }
+            },
+            { "type": "video", "settings": { "source": "uploaded" } },
+            { "type": "video", "settings": { "source": "uploaded" } },
+            { "type": "video", "settings": { "source": "uploaded" } },
+            { "type": "video", "settings": { "source": "uploaded" } }
+          ]
+        }
+      ]
+    }
+  {% endschema %}

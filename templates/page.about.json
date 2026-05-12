@@ -1,0 +1,412 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_cta": {
+      "type": "hero-cta",
+      "blocks": {
+        "trust_badge": {
+          "type": "trust_badge",
+          "settings": {
+            "text": "Trusted by <strong>1000+</strong> happy customers",
+            "badge_align": "center"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "content": "Super Ninja: The Natural\nSolution to Pests.",
+            "tag": "h2",
+            "font_size_desktop": 72,
+            "font_size_mobile": 40,
+            "line_height_desktop": 1.2,
+            "line_height_mobile": 1,
+            "font_weight": "700",
+            "text_align": "center"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "content": "<p>We believe pest control should be safe, effective, and responsible - for people, pets, and plants.</p>",
+            "font_size_desktop": 24,
+            "font_size_mobile": 16,
+            "line_height_desktop": 1.5,
+            "line_height_mobile": 1.5,
+            "font_weight": "400",
+            "text_align": "center"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "label": "FIND YOUR NINJA",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "trust_badge",
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "section_background_color": "#f0f0f0",
+        "background_color": "rgba(0,0,0,0)",
+        "box_h_align": "center",
+        "box_v_align": "middle"
+      }
+    },
+    "about_image_text": {
+      "type": "about-image-text",
+      "settings": {
+        "default_image_asset": "image-1.png",
+        "padding_top": 70,
+        "padding_bottom": 200,
+        "image_position": "left",
+        "title": "Born from Frustration, Driven by Results",
+        "title_font_size_desktop": 50,
+        "title_font_size_mobile": 36,
+        "subtitle": "Super Ninja was created out of a simple frustration: traditional pest control solutions were either ineffective, toxic, or both.",
+        "subtitle_font_size_desktop": 24,
+        "subtitle_font_size_mobile": 18,
+        "body": "<p>As eco-conscious consumers ourselves, we knew there had to be a better way.</p><p>Our mission is to combine innovative design with natural ingredients to create products that deliver quick, visible results while remaining safe for families, pets, and the environment.</p>",
+        "body_font_size_desktop": 20,
+        "body_font_size_mobile": 16
+      }
+    },
+    "about_image_text_2": {
+      "type": "about-image-text",
+      "settings": {
+        "default_image_asset": "image-2.png",
+        "padding_top": 0,
+        "padding_bottom": 70,
+        "image_position": "left",
+        "title": "Effectiveness + Responsibility.",
+        "title_font_size_desktop": 50,
+        "title_font_size_mobile": 36,
+        "subtitle": "Our goal is to make green pest control the modern standard.",
+        "subtitle_font_size_desktop": 24,
+        "subtitle_font_size_mobile": 18,
+        "body": "<p>We craft pest control products that outperform traditional solutions, without compromising on safety or sustainability.</p><p>Every Super Ninja product is designed with our customers' comfort in mind, ensuring a pest-free home without the use of harsh chemicals.</p>",
+        "body_font_size_desktop": 20,
+        "body_font_size_mobile": 16
+      }
+    },
+    "about_why_trust_us": {
+      "type": "about-trust-badges",
+      "blocks": {
+        "badge_1": {
+          "type": "badge",
+          "settings": {
+            "icon_asset": "clock-icon.svg",
+            "title": "Fast & Visible Results",
+            "text": "We prioritize performance, and our products deliver quick results.",
+            "title_font_size_desktop": 36,
+            "title_font_size_mobile": 20,
+            "text_font_size_desktop": 20,
+            "text_font_size_mobile": 14
+          }
+        },
+        "badge_2": {
+          "type": "badge",
+          "settings": {
+            "icon_asset": "check-icon.svg",
+            "title": "Easy to Use",
+            "text": "Super Ninja products use safe, eco-friendly ingredients for people, pets, and plants.",
+            "title_font_size_desktop": 36,
+            "title_font_size_mobile": 20,
+            "text_font_size_desktop": 20,
+            "text_font_size_mobile": 14
+          }
+        },
+        "badge_3": {
+          "type": "badge",
+          "settings": {
+            "icon_asset": "safe-icon.svg",
+            "title": "Safe for Family & Pets",
+            "text": "Our packaging is recycled, helping reduce our environmental footprint.",
+            "title_font_size_desktop": 36,
+            "title_font_size_mobile": 20,
+            "text_font_size_desktop": 20,
+            "text_font_size_mobile": 14
+          }
+        },
+        "badge_4": {
+          "type": "badge",
+          "settings": {
+            "icon_asset": "sustain-icon.svg",
+            "title": "Sustainable Materials",
+            "text": "Our solutions are ready-to-use; just place them and forget about cleaning.",
+            "title_font_size_desktop": 36,
+            "title_font_size_mobile": 20,
+            "text_font_size_desktop": 20,
+            "text_font_size_mobile": 14
+          }
+        }
+      },
+      "block_order": [
+        "badge_1",
+        "badge_2",
+        "badge_3",
+        "badge_4"
+      ],
+      "settings": {
+        "background_color": "#f0f2f1",
+        "title": "Why Our Customers Trust Us",
+        "heading_font_size_desktop": 64,
+        "heading_font_size_mobile": 40
+      }
+    },
+    "ally_home_pdp": {
+      "type": "ally-home-pdp",
+      "settings": {
+        "background_color": "#f0f2f1",
+        "logo_alt": "Super Ninja",
+        "heading": "We Stand Behind Every Product.",
+        "text": "We’re dedicated to providing top-notch pest control solutions. With user-friendly designs and a money-back guarantee, you can trust us for effective results. Our products eliminate pests safely and responsibly, without harsh chemicals or mess.",
+        "bullet_1": "",
+        "bullet_2": "",
+        "bullet_3": ""
+      }
+    },
+    "about_proof_carousel": {
+      "type": "about-proof-carousel",
+      "blocks": {
+        "testimonial_1": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Actually Works!",
+            "text": "I was skeptical, but this trap caught more flies in 24 hours than my vinegar trap did in a week. Worth every penny.",
+            "name": "David P."
+          }
+        },
+        "testimonial_2": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Safe and Effective",
+            "text": "Love that I can use this around my kids and dog. No harsh chemicals and it actually works better than the spray I was using before.",
+            "name": "Rachel T."
+          }
+        },
+        "testimonial_3": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Super Simple Setup",
+            "text": "Placed it in the kitchen and forgot about it. Two days later, no more fruit flies buzzing around.",
+            "name": "Mark L."
+          }
+        },
+        "testimonial_4": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Worth Every Penny",
+            "text": "I tried multiple DIY methods and none worked like this. Fast results and zero mess.",
+            "name": "Olivia N."
+          }
+        },
+        "testimonial_5": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Pet Friendly Win",
+            "text": "Finally, a product I can trust in a home with pets. Effective and stress-free.",
+            "name": "Kevin S."
+          }
+        },
+        "testimonial_6": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Bye-Bye Fruit Flies",
+            "text": "By the next morning we saw a huge difference. House feels clean and calm again.",
+            "name": "Sophia R."
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_1",
+        "testimonial_2",
+        "testimonial_3",
+        "testimonial_4",
+        "testimonial_5",
+        "testimonial_6"
+      ],
+      "settings": {
+        "trust_text": "<p>Trusted by <strong>1000+</strong> Happy Customers</p>",
+        "heading": "It Worked for Them. It'll Work for You.",
+        "padding_top": 70,
+        "padding_bottom": 90,
+        "desktop_cards_per_view": 3,
+        "card_max_width_desktop": 424,
+        "card_max_width_mobile": 288,
+        "card_gap": 16,
+        "card_padding": 24,
+        "card_border_radius": 0,
+        "trust_font_size_desktop": 16,
+        "trust_font_size_mobile": 12,
+        "heading_font_size_desktop": 64,
+        "heading_font_size_mobile": 40,
+        "card_title_font_size": 22,
+        "card_text_font_size": 18,
+        "card_name_font_size": 24,
+        "section_bg_color": "#f0f2f1",
+        "card_bg_color": "#e5e5e5",
+        "star_color": "#ff5000",
+        "arrow_bg_color": "#94d357",
+        "arrow_icon_color": "#f0f2f1",
+        "prev_label": "Previous testimonials",
+        "next_label": "Next testimonials"
+      }
+    },
+    "about_contact_form": {
+      "type": "section",
+      "blocks": {
+        "contact_form_UwiCkQ": {
+          "type": "contact-form",
+          "settings": {
+            "width": "custom",
+            "custom_width": 100,
+            "width_mobile": "custom",
+            "custom_width_mobile": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "padding-block-start": 0,
+            "padding-block-end": 100,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "submit-button": {
+              "type": "contact-form-submit-button",
+              "static": true,
+              "settings": {
+                "label": "Submit",
+                "style_class": "button",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": []
+        }
+      },
+      "block_order": [
+        "contact_form_UwiCkQ"
+      ],
+      "name": "t:names.contact_form",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 0,
+        "section_width": "full-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-1",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#1c1c1c26",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "benefits_ticker": {
+      "type": "benefits_ticker",
+      "blocks": {
+        "benefit_item_1": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "trending_up",
+            "icon_asset": "kid-about.svg",
+            "text": "<p>Outperforms common<br>DIY solutions</p>"
+          }
+        },
+        "benefit_item_2": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "trending_up",
+            "icon_asset": "clock-about.svg",
+            "text": "<p>Safe around food,<br>kids & pets</p>"
+          }
+        },
+        "benefit_item_3": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "trending_up",
+            "icon_asset": "check-about.svg",
+            "text": "<p>Set-and-forget,<br>no maintenance</p>"
+          }
+        },
+        "benefit_item_4": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "trending_up",
+            "icon_asset": "maintenance-about.svg",
+            "text": "<p>Visible results<br/>within 24 hours</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_item_1",
+        "benefit_item_2",
+        "benefit_item_3",
+        "benefit_item_4"
+      ],
+      "settings": {
+        "background_color": "#94d357",
+        "text_color": "#000000",
+        "border_color": "#ffffff",
+        "divider_opacity": 3,
+        "rotate_deg": -1,
+        "invert_rotation": true,
+        "scale": 110,
+        "padding_y": 16,
+        "speed_seconds": 18,
+        "pause_on_hover": false,
+        "duplicate_count": "3",
+        "wrap_background_color": "#f0f2f1",
+        "section_padding_top": 0,
+        "section_padding_bottom": 72,
+        "bar_background_type": "solid",
+        "bar_background_color": "#94d357",
+        "bar_gradient_start": "#94d357",
+        "bar_gradient_end": "#94d357",
+        "bar_background_gradient": "",
+        "bar_border_color": "#ffffff",
+        "bar_border_width": 0
+      }
+    }
+  },
+  "order": [
+    "hero_cta",
+    "about_image_text",
+    "about_image_text_2",
+    "about_why_trust_us",
+    "ally_home_pdp",
+    "about_proof_carousel",
+    "about_contact_form",
+    "benefits_ticker"
+  ]
+}

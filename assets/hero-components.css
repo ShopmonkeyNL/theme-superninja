@@ -1,0 +1,44 @@
+.hero-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.hero-stars__icons {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.hero-stars__star {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.hero-stars__text {
+  font-size: 16px;
+  line-height: normal;
+}
+
+.hero-stars__text strong {
+  font-weight: 700;
+}
+
+.rich-text-heading {
+  text-align: var(--rich-text-heading-text-align, left);
+}
+
+.rich-text-heading__inner {
+  font-size: var(--rich-text-heading-mobile-font-size);
+  line-height: var(--rich-text-heading-mobile-line-height);
+  font-weight: var(--rich-text-heading-font-weight);
+  margin: 0;
+}
+
+@media screen and (min-width: 750px) {
+  .rich-text-heading__inner {
+    font-size: var(--rich-text-heading-desktop-font-size);
+    line-height: var(--rich-text-heading-desktop-line-height);
+  }
+}

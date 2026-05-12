@@ -1,0 +1,742 @@
+{% comment %}
+  Benefits Ticker – diagonal marquee strip with icon + text items.
+  Repeats blocks N times for seamless loop. Respects prefers-reduced-motion.
+{% endcomment %}
+
+{% liquid
+  assign bg = section.settings.background_color | default: '#94D357'
+  assign text_color = section.settings.text_color | default: '#FFFFFF'
+  assign border_color = section.settings.border_color | default: text_color
+  assign bar_background_type = section.settings.bar_background_type | default: 'solid'
+  assign has_gradient = false
+  assign bar_bg_gradient = ''
+  
+  if bar_background_type == 'gradient'
+    assign gradient_start = section.settings.bar_gradient_start | default: '#43C241'
+    assign gradient_end = section.settings.bar_gradient_end | default: '#319130'
+    assign bar_bg_gradient = 'linear-gradient(180deg, ' | append: gradient_start | append: ' 0%, ' | append: gradient_end | append: ' 100%)'
+    assign has_gradient = true
+  elsif section.settings.bar_background_gradient != blank
+    assign bar_bg_gradient = section.settings.bar_background_gradient
+    assign has_gradient = true
+  endif
+  
+  if bar_background_type == 'solid'
+    assign bar_bg = section.settings.bar_background_color | default: bg
+  else
+    assign bar_bg = section.settings.bar_background_color | default: bg
+  endif
+  
+  assign bar_border_color = section.settings.bar_border_color | default: border_color
+  assign bar_border_width = section.settings.bar_border_width | default: 0
+  assign divider_opacity = section.settings.divider_opacity | default: 3 | times: 0.1
+  assign rotate_deg = section.settings.rotate_deg | default: -2
+  if section.settings.invert_rotation
+    assign rotate_deg = rotate_deg | times: -1
+  endif
+  assign scale_val = section.settings.scale | default: 110 | times: 0.01
+  assign pad_y = section.settings.padding_y | default: 16
+  assign section_padding_top = section.settings.section_padding_top | default: 24
+  assign section_padding_bottom = section.settings.section_padding_bottom | default: 24
+  assign wrap_bg = section.settings.wrap_background_color | default: 'transparent'
+  assign speed_sec = section.settings.speed_seconds | default: 18
+  assign duplicate_count = section.settings.duplicate_count | default: 3
+  assign pause_on_hover = section.settings.pause_on_hover
+  assign benefit_blocks = section.blocks | where: 'type', 'benefit_item'
+%}
+
+<section
+  class="benefits-ticker benefits-ticker--{{ section.id }}"
+  style="
+    --bt-bg: {{ bg }};
+    --bt-color: {{ text_color }};
+    --bt-border: {{ border_color }};
+    --bt-bar-bg: {{ bar_bg }};
+    --bt-bar-border-color: {{ bar_border_color }};
+    --bt-bar-border-width: {{ bar_border_width }}px;
+    --bt-divider-opacity: {{ divider_opacity }};
+    --bt-rotate: {{ rotate_deg }}deg;
+    --bt-scale: {{ scale_val }};
+    --bt-speed: {{ speed_sec }}s;
+    --bt-pad-y: {{ pad_y }}px;
+    --bt-section-padding-top: {{ section_padding_top }}px;
+    --bt-section-padding-bottom: {{ section_padding_bottom }}px;
+    --bt-wrap-bg: {{ wrap_bg }};
+    {% if has_gradient %}--bt-bar-bg-gradient: {{ bar_bg_gradient }};{% endif %}
+  "
+  {{ section.shopify_attributes }}>
+  <div class="benefits-ticker__wrap">
+    <div class="benefits-ticker__bar"{% if has_gradient %} style="background: {{ bar_bg_gradient }};"{% endif %}>
+      <div class="benefits-ticker__track" data-duplicate-count="{{ duplicate_count }}">
+        {% for i in (1..duplicate_count) %}
+          <div class="benefits-ticker__row" aria-hidden="{{ i | minus: 1 }}">
+            {% for block in benefit_blocks %}
+              <div class="benefits-ticker__item" {{ block.shopify_attributes }}>
+                <span class="benefits-ticker__icon-wrap">
+                  {% if block.settings.custom_icon != blank %}
+                    {{ block.settings.custom_icon | image_url: width: 44, height: 44 | image_tag: class: 'benefits-ticker__icon-img', loading: 'lazy', alt: '', width: 44, height: 44 }}
+                  {% elsif block.settings.icon_asset != blank %}
+                    <img
+                      class="benefits-ticker__icon-img"
+                      src="{{ block.settings.icon_asset | asset_url }}"
+                      alt=""
+                      width="44"
+                      height="44"
+                      loading="lazy">
+                  {% else %}
+                  {% case block.settings.icon %}
+                    {% when 'outperforms' %}
+                      <img
+                        class="benefits-ticker__icon-img"
+                        src="{{ 'outpermorms-commom-diy.svg' | asset_url }}"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy">
+                    {% when 'safe_around_food' %}
+                      <img
+                        class="benefits-ticker__icon-img"
+                        src="{{ 'safe-around-food-kids.svg' | asset_url }}"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy">
+                    {% when 'set_and_forget' %}
+                      <img
+                        class="benefits-ticker__icon-img"
+                        src="{{ 'set-and-forget.svg' | asset_url }}"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy">
+                    {% when 'visible_results' %}
+                      <img
+                        class="benefits-ticker__icon-img"
+                        src="{{ 'visible-results.svg' | asset_url }}"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy">
+                    {% when 'check' %}
+                      <img
+                        class="benefits-ticker__icon-img"
+                        src="{{ 'check.svg' | asset_url }}"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy">
+                    {% when 'kid' %}
+                      <img
+                        class="benefits-ticker__icon-img"
+                        src="{{ 'kid.svg' | asset_url }}"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy">
+                    {% when 'maintenance' %}
+                      <img
+                        class="benefits-ticker__icon-img"
+                        src="{{ 'maintenance.svg' | asset_url }}"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy">
+                    {% when 'time' %}
+                      <img
+                        class="benefits-ticker__icon-img"
+                        src="{{ 'time.svg' | asset_url }}"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy">
+                    {% when 'trending_up' %}
+                      <svg
+                        class="benefits-ticker__icon-svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6h-6z" fill="currentColor" /></svg>
+                    {% when 'shield_check' %}
+                      <svg
+                        class="benefits-ticker__icon-svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"><path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm-2 15l-3-3 1.41-1.41L10 14.17l4.59-4.58L16 11l-6 6z" fill="currentColor" /></svg>
+                    {% when 'thumbs_up' %}
+                      <svg
+                        class="benefits-ticker__icon-svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z" fill="currentColor" /></svg>
+                    {% when 'eye' %}
+                      <svg
+                        class="benefits-ticker__icon-svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor" /></svg>
+                    {% when 'zap' %}
+                      <svg
+                        class="benefits-ticker__icon-svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"><path d="M7 2v11h3v9l7-12h-4l4-8H7z" fill="currentColor" /></svg>
+                    {% when 'clock' %}
+                      <svg
+                        class="benefits-ticker__icon-svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z" fill="currentColor" /></svg>
+                    {% when 'kid_about' %}
+                      <img
+                        class="benefits-ticker__icon-img"
+                        src="{{ 'kid-about.svg' | asset_url }}"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy">
+                    {% when 'clock_about' %}
+                      <img
+                        class="benefits-ticker__icon-img"
+                        src="{{ 'clock-about.svg' | asset_url }}"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy">
+                    {% when 'check_about' %}
+                      <img
+                        class="benefits-ticker__icon-img"
+                        src="{{ 'check-about.svg' | asset_url }}"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy">
+                    {% when 'maintenance_about' %}
+                      <img
+                        class="benefits-ticker__icon-img"
+                        src="{{ 'maintenance-about.svg' | asset_url }}"
+                        alt=""
+                        width="44"
+                        height="44"
+                        loading="lazy">
+                    {% else %}
+                      <svg
+                        class="benefits-ticker__icon-svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6h-6z" fill="currentColor" /></svg>
+                  {% endcase %}
+                  {% endif %}
+                </span>
+                <div class="benefits-ticker__text rte">{{ block.settings.text | default: 'Benefit' | replace: '</br>', '<br>' | replace: '<br/>', '<br>' }}</div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Evita scroll horizontal na página (a section em si não usa overflow hidden) */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Section “floating”: no layout space, overlaps sections above and below */
+  .benefits-ticker {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    overflow: visible;
+    padding: var(--bt-section-padding-top, 1.5rem) 0 var(--bt-section-padding-bottom, 1.5rem);
+    margin-top: -4rem;
+    margin-bottom: -5rem;
+  }
+
+  .benefits-ticker__wrap {
+    width: 100%;
+    overflow: visible;
+    background: var(--bt-wrap-bg, transparent);
+  }
+
+  .benefits-ticker__bar {
+    background: var(--bt-bar-bg, #94D357);
+    color: var(--bt-color);
+    padding: var(--bt-pad-y) 0;
+    transform: rotate(var(--bt-rotate)) scale(var(--bt-scale));
+    transform-origin: center center;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    position: relative;
+    border-top: var(--bt-bar-border-width) solid var(--bt-bar-border-color);
+    border-bottom: var(--bt-bar-border-width) solid var(--bt-bar-border-color);
+  }
+  
+  {% if has_gradient %}
+  .benefits-ticker--{{ section.id }} .benefits-ticker__bar {
+    background: {{ bar_bg_gradient }} !important;
+    background-image: {{ bar_bg_gradient }} !important;
+  }
+  {% endif %}
+
+  .benefits-ticker__track {
+    display: flex;
+    width: max-content;
+    animation: benefits-ticker-marquee-3 var(--bt-speed) linear infinite;
+  }
+
+  .benefits-ticker--{{ section.id }}
+  [data-duplicate-count="2"] .benefits-ticker__track {
+    animation-name: benefits-ticker-marquee-2;
+  }
+
+  .benefits-ticker--{{ section.id }}
+  [data-duplicate-count="4"] .benefits-ticker__track {
+    animation-name: benefits-ticker-marquee-4;
+  }
+
+  .benefits-ticker--{{ section.id }}
+  .benefits-ticker--paused .benefits-ticker__track {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .benefits-ticker__track {
+      animation: none;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: auto;
+    }
+  }
+
+  {% if pause_on_hover %}
+    .benefits-ticker--{{ section.id }}:hover .benefits-ticker__track {
+      animation-play-state: paused;
+    }
+  {% endif %}
+
+  .benefits-ticker__row {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0;
+  }
+
+  .benefits-ticker__item {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 0.75rem;
+    padding: 0 1.5rem;
+    white-space: nowrap;
+  }
+
+  .benefits-ticker__icon-wrap {
+    width: 44px;
+    height: 44px;
+  }
+
+  .benefits-ticker__icon-img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+  }
+
+  .benefits-ticker__icon-svg {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    color: currentColor;
+    display: block;
+  }
+
+  .benefits-ticker__text {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    margin: 0;
+    font-size: 22px;
+    font-family: var(--font-heading--family);
+    color: var(--bt-color, #FFFFFF);
+  }
+  .benefits-ticker__text.rte p {
+    margin: 0;
+    display: inline;
+  }
+  .benefits-ticker__text.rte br {
+    display: block;
+    line-height: 0.5;
+  }
+
+
+  .benefits-ticker__item:last-child .benefits-ticker__divider {
+    display: none;
+  }
+
+  @keyframes benefits-ticker-marquee-2 {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes benefits-ticker-marquee-3 {
+    0% {
+      transform: translateX(-33.333%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes benefits-ticker-marquee-4 {
+    0% {
+      transform: translateX(-25%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Benefits Ticker",
+    "tag": "section",
+    "class": "section-benefits-ticker",
+    "settings": [
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background colour",
+        "default": "#94D357"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text and icon colour",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "border_color",
+        "label": "Icon border colour",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "range",
+        "id": "divider_opacity",
+        "min": 1,
+        "max": 10,
+        "step": 1,
+        "label": "Divider opacity",
+        "default": 3
+      },       {
+        "type": "range",
+        "id": "rotate_deg",
+        "min": -5,
+        "max": 5,
+        "step": 0.5,
+        "unit": "deg",
+        "label": "Bar rotation",
+        "default": -2
+      },
+      {
+        "type": "checkbox",
+        "id": "invert_rotation",
+        "label": "Invert rotation direction",
+        "default": false,
+        "info": "Check to flip the rotation to the opposite direction"
+      }, {
+        "type": "range",
+        "id": "scale",
+        "min": 100,
+        "max": 130,
+        "step": 5,
+        "label": "Bar scale",
+        "default": 110
+      }, {
+        "type": "range",
+        "id": "padding_y",
+        "min": 0,
+        "max": 40,
+        "step": 2,
+        "unit": "px",
+        "label": "Vertical padding",
+        "default": 16
+      }, {
+        "type": "range",
+        "id": "speed_seconds",
+        "min": 5,
+        "max": 40,
+        "step": 1,
+        "unit": "s",
+        "label": "Animation speed (duration)",
+        "default": 18
+      }, {
+        "type": "checkbox",
+        "id": "pause_on_hover",
+        "label": "Pause animation on hover",
+        "default": false
+      },       {
+        "type": "select",
+        "id": "duplicate_count",
+        "label": "Loop copies",
+        "options": [
+          {
+            "value": "2",
+            "label": "2"
+          }, {
+            "value": "3",
+            "label": "3"
+          }, {
+            "value": "4",
+            "label": "4"
+          }
+        ],
+        "default": "3"
+      },
+      {
+        "type": "header",
+        "content": "Wrap background"
+      },
+      {
+        "type": "color",
+        "id": "wrap_background_color",
+        "label": "Wrap background colour",
+        "info": "Background of the area around the bar. Leave unset for transparent (matches page)."
+      },
+      {
+        "type": "header",
+        "content": "Section spacing"
+      },
+      {
+        "type": "range",
+        "id": "section_padding_top",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding top",
+        "default": 24
+      },
+      {
+        "type": "range",
+        "id": "section_padding_bottom",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding bottom",
+        "default": 24
+      },
+      {
+        "type": "header",
+        "content": "Bar styling"
+      },
+      {
+        "type": "select",
+        "id": "bar_background_type",
+        "label": "Bar background type",
+        "options": [
+          {
+            "value": "solid",
+            "label": "Solid color"
+          },
+          {
+            "value": "gradient",
+            "label": "Linear gradient"
+          }
+        ],
+        "default": "solid",
+        "info": "Choose between a solid color or a linear gradient (top to bottom)"
+      },
+      {
+        "type": "color",
+        "id": "bar_background_color",
+        "label": "Bar background colour",
+        "default": "#94D357",
+        "info": "Background colour for the animated bar when using solid color. If not set, uses the section background colour."
+      },
+      {
+        "type": "color",
+        "id": "bar_gradient_start",
+        "label": "Gradient start color (top)",
+        "default": "#43C241",
+        "info": "Top color of the gradient. Only used when background type is 'Linear gradient'."
+      },
+      {
+        "type": "color",
+        "id": "bar_gradient_end",
+        "label": "Gradient end color (bottom)",
+        "default": "#319130",
+        "info": "Bottom color of the gradient. Only used when background type is 'Linear gradient'."
+      },
+      {
+        "type": "text",
+        "id": "bar_background_gradient",
+        "label": "Custom gradient (advanced)",
+        "info": "Optional: CSS gradient string (e.g., linear-gradient(180deg, #43C241 0%, #319130 100%)). If set, overrides the gradient colors above."
+      },
+      {
+        "type": "color",
+        "id": "bar_border_color",
+        "label": "Bar border colour",
+        "default": "#FFFFFF",
+        "info": "Colour for top and bottom borders of the bar."
+      },
+      {
+        "type": "range",
+        "id": "bar_border_width",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "unit": "px",
+        "label": "Bar border width",
+        "default": 0,
+        "info": "Width of top and bottom borders. Set to 0 to hide borders."
+      }
+    ],
+    "blocks": [
+      {
+        "type": "benefit_item",
+        "name": "Benefit item",
+        "settings": [
+          {
+            "type": "select",
+            "id": "icon",
+            "label": "Icon",
+            "options": [
+              {
+                "value": "outperforms",
+                "label": "Outperforms (custom)"
+              },
+              {
+                "value": "safe_around_food",
+                "label": "Safe around food, kids & pets"
+              },
+              {
+                "value": "set_and_forget",
+                "label": "Set and forget"
+              },
+              {
+                "value": "visible_results",
+                "label": "Visible results"
+              },
+              {
+                "value": "check",
+                "label": "Check"
+              },
+              {
+                "value": "kid",
+                "label": "Kid"
+              },
+              {
+                "value": "maintenance",
+                "label": "Maintenance"
+              },
+              {
+                "value": "time",
+                "label": "Time"
+              }, {
+                "value": "trending_up",
+                "label": "Trending up"
+              }, {
+                "value": "shield_check",
+                "label": "Shield check"
+              }, {
+                "value": "thumbs_up",
+                "label": "Thumbs up"
+              }, {
+                "value": "eye",
+                "label": "Eye"
+              }, {
+                "value": "zap",
+                "label": "Zap"
+              }, {
+                "value": "clock",
+                "label": "Clock"
+              },
+              {
+                "value": "kid_about",
+                "label": "Kid (About)"
+              },
+              {
+                "value": "clock_about",
+                "label": "Clock (About)"
+              },
+              {
+                "value": "check_about",
+                "label": "Check (About)"
+              },
+              {
+                "value": "maintenance_about",
+                "label": "Maintenance (About)"
+              }
+            ],
+            "default": "trending_up"
+          },
+          {
+            "type": "text",
+            "id": "icon_asset",
+            "label": "Icon asset filename",
+            "info": "e.g. kid-about.svg. Use a file from Assets. Overrides the icon select above."
+          },
+          {
+            "type": "image_picker",
+            "id": "custom_icon",
+            "label": "Custom icon",
+            "info": "Upload a custom icon image (recommended size: 44×44px). If provided, this will override the selected icon above. Icons are displayed at 44×44px."
+          }, {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>BENEFIT TEXT</p>"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Benefits Ticker",
+        "blocks": [
+          {
+            "type": "benefit_item",
+            "settings": {
+              "icon": "outperforms",
+              "text": "<p>Outperforms common<br>DIY solutions</p>"
+            }
+          }, {
+            "type": "benefit_item",
+            "settings": {
+              "icon": "safe_around_food",
+              "text": "<p>Safe around food,<br>kids & pets</p>"
+            }
+          }, {
+            "type": "benefit_item",
+            "settings": {
+              "icon": "set_and_forget",
+              "text": "<p>Set-and-forget,<br>no maintenance</p>"
+            }
+          }, {
+            "type": "benefit_item",
+            "settings": {
+              "icon": "visible_results",
+              "text": "<p>Visible results<br>within 24 hours</p>"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

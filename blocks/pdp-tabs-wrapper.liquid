@@ -1,0 +1,419 @@
+{%- doc -%}
+  Wrapper for tabs system
+  Collects all pdp-tab-item blocks and creates tabbed interface
+{%- enddoc -%}
+
+{%- liquid
+  # Get all tab items from the section
+  assign tab_items = section.blocks | where: 'type', 'pdp-tab-item'
+  
+  # Always show defaults - tabs will be added via editor
+  assign use_defaults = true
+  if tab_items.size > 0
+    assign use_defaults = false
+  endif
+  
+  # Active tab color
+  assign active_tab_bg = block.settings.active_tab_background_color | default: '#FF5000'
+
+  # Arrow asset: product.v2 template = green arrow-right.svg, else orange Capa_1.svg
+  if template.name == 'product' and template.suffix == 'v2'
+    assign arrow_asset = 'arrow-right.svg'
+  else
+    assign arrow_asset = 'Capa_1.svg'
+  endif
+-%}
+
+{%- comment -%} Always render tabs with default content {%- endcomment -%}
+
+<div class="pdp-tabs-wrapper" style="--pdp-tabs-active-bg: {{ active_tab_bg }};" {{ block.shopify_attributes }}>
+  <div class="pdp-tabs">
+    <div class="pdp-tabs__header">
+      {%- liquid
+        assign total_tabs = tab_items.size
+        if use_defaults
+          assign total_tabs = 5
+        endif
+        assign show_arrows = false
+        if total_tabs > 4
+          assign show_arrows = true
+        endif
+      -%}
+      
+      <div class="pdp-tabs__nav" data-tabs-nav>
+        {%- if use_defaults -%}
+          <button class="pdp-tabs__tab pdp-tabs__tab--active" data-tab-index="0" type="button">
+            BEST FOR:
+          </button>
+          <button class="pdp-tabs__tab" data-tab-index="1" type="button">
+            DESCRIPTION
+          </button>
+          <button class="pdp-tabs__tab" data-tab-index="2" type="button">
+            INGREDIENTS
+          </button>
+          <button class="pdp-tabs__tab" data-tab-index="3" type="button">
+            SHIPPING & RETURNS
+          </button>
+          <button class="pdp-tabs__tab" data-tab-index="4" type="button">
+            FAQ
+          </button>
+        {%- else -%}
+          {%- for tab_block in tab_items -%}
+            <button class="pdp-tabs__tab{% if forloop.first %} pdp-tabs__tab--active{% endif %}" data-tab-index="{{ forloop.index0 }}" type="button">
+              {{ tab_block.settings.title | default: 'Tab ' | append: forloop.index }}
+            </button>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+      
+      {%- if show_arrows -%}
+        <button class="pdp-tabs__arrow pdp-tabs__arrow--prev pdp-tabs__arrow--hidden" type="button" aria-label="Previous tabs">
+          <img src="{{ arrow_asset | asset_url }}" alt="" width="36" height="36" class="pdp-tabs__arrow-icon pdp-tabs__arrow-icon--prev" loading="lazy">
+        </button>
+        <button class="pdp-tabs__arrow pdp-tabs__arrow--next" type="button" aria-label="Next tabs">
+          <img src="{{ arrow_asset | asset_url }}" alt="" width="36" height="36" class="pdp-tabs__arrow-icon" loading="lazy">
+        </button>
+      {%- endif -%}
+    </div>
+    
+    <div class="pdp-tabs__content">
+      {%- if use_defaults -%}
+        <div class="pdp-tabs__panel pdp-tabs__panel--active" data-tab-panel="0">
+          <div class="pdp-tabs__panel-content">
+            <ul>
+              <li>Kitchens with fruit bowls or produce</li>
+              <li>Trash and compost areas</li>
+              <li>Homes with kids and pets</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pdp-tabs__panel" data-tab-panel="1">
+          <div class="pdp-tabs__panel-content">
+            <p>Product description content goes here.</p>
+          </div>
+        </div>
+        <div class="pdp-tabs__panel" data-tab-panel="2">
+          <div class="pdp-tabs__panel-content">
+            <p>Ingredients list goes here.</p>
+          </div>
+        </div>
+        <div class="pdp-tabs__panel" data-tab-panel="3">
+          <div class="pdp-tabs__panel-content">
+            <p>Shipping and returns information goes here.</p>
+          </div>
+        </div>
+        <div class="pdp-tabs__panel" data-tab-panel="4">
+          <div class="pdp-tabs__panel-content">
+            <p>Frequently asked questions about the product.</p>
+          </div>
+        </div>
+      {%- else -%}
+        {%- for tab_block in tab_items -%}
+          <div class="pdp-tabs__panel{% if forloop.first %} pdp-tabs__panel--active{% endif %}" data-tab-panel="{{ forloop.index0 }}">
+            <div class="pdp-tabs__panel-content">
+              {{ tab_block.settings.content }}
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+<style>
+  .pdp-tabs-wrapper {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .pdp-tabs {
+    width: 100%;
+    background-color: #fff!important;
+  }
+
+  .pdp-tabs__header {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border-bottom: 1px solid #E5E5E5;
+    position: relative;
+  }
+
+  .pdp-tabs__nav {
+    display: flex;
+    gap: 0;
+    flex: 1;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    position: relative;
+  }
+
+  .pdp-tabs__nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pdp-tabs__tab {
+    padding: 12px 24px;
+    background: #FFFFFF;
+    border: none;
+    border-bottom: 3px solid transparent;
+    font-family: var(--font-heading--family);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1;
+    text-transform: uppercase;
+    color: rgba(28, 28, 28, 0.5)!important;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .pdp-tabs__tab:hover {
+    background: #F5F5F5;
+  }
+
+  .pdp-tabs__tab--active {
+    background: var(--pdp-tabs-active-bg, #FF5000);
+    color: #FFFFFF!important;
+    border-bottom-color: var(--pdp-tabs-active-bg, #FF5000);
+  }
+
+  .pdp-tabs__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    z-index: 1000;
+  }
+
+  .pdp-tabs__arrow:hover {
+    opacity: 0.9;
+  }
+
+  .pdp-tabs__arrow-icon {
+    width: 36px;
+    height: 36px;
+    display: block;
+  }
+
+  .pdp-tabs__arrow-icon--prev {
+    transform: rotate(180deg);
+  }
+
+  .pdp-tabs__arrow--prev {
+    left: -18px;
+  }
+
+  .pdp-tabs__arrow--next {
+    right: -18px;
+  }
+
+  .pdp-tabs__arrow--hidden {
+    display: none;
+  }
+
+  .pdp-tabs__content {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .pdp-tabs__panel {
+    display: none;
+  }
+
+  .pdp-tabs__panel--active {
+    display: block;
+  }
+
+  .pdp-tabs__panel-content {
+    font-family: Tahoma, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #1C1C1C;
+  }
+
+  .pdp-tabs__panel-content ul,
+  .pdp-tabs__panel-content ol {
+    margin: 0;
+    padding-left: 0;
+  }
+
+  .pdp-tabs__panel-content li {
+    margin-bottom: 8px;
+    list-style: none;
+    position: relative;
+    padding-left: 20px;
+  }
+
+  .pdp-tabs__panel-content li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #FF5000;
+  }
+
+  .pdp-tabs__panel-content p {
+    margin: 0 0 16px 0;
+  }
+
+  .pdp-tabs__panel-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .pdp-tabs__tab {
+      font-size: 16px;
+      padding: 16px 32px;
+    }
+
+    .pdp-tabs__panel-content {
+      font-size: 18px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .pdp-tabs__arrow--next, .pdp-tabs__arrow--prev{
+     display:none!important
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    const tabsWrapper = document.querySelector('.pdp-tabs-wrapper');
+    if (!tabsWrapper) return;
+
+    const nav = tabsWrapper.querySelector('[data-tabs-nav]');
+    const tabs = tabsWrapper.querySelectorAll('.pdp-tabs__tab');
+    const panels = tabsWrapper.querySelectorAll('.pdp-tabs__panel');
+    const nextArrow = tabsWrapper.querySelector('.pdp-tabs__arrow--next');
+    const prevArrow = tabsWrapper.querySelector('.pdp-tabs__arrow--prev');
+
+    if (tabs.length === 0) return;
+
+    // Tab switching
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => {
+        // Update active tab
+        tabs.forEach(t => t.classList.remove('pdp-tabs__tab--active'));
+        tab.classList.add('pdp-tabs__tab--active');
+
+        // Update active panel
+        panels.forEach(p => p.classList.remove('pdp-tabs__panel--active'));
+        const targetPanel = tabsWrapper.querySelector(`[data-tab-panel="${index}"]`);
+        if (targetPanel) {
+          targetPanel.classList.add('pdp-tabs__panel--active');
+        }
+
+        // Keep scrolling constrained to the tabs nav only (avoid page jump)
+        const navRect = nav.getBoundingClientRect();
+        const tabRect = tab.getBoundingClientRect();
+        const targetLeft = nav.scrollLeft + (tabRect.left - navRect.left) - (navRect.width / 2 - tabRect.width / 2);
+        nav.scrollTo({ left: targetLeft, behavior: 'smooth' });
+
+        // Update arrow states
+        updateArrowStates();
+      });
+    });
+
+    // Arrow navigation
+    function updateArrowStates() {
+      if (!nextArrow && !prevArrow) return;
+
+      const scrollLeft = nav.scrollLeft;
+      const scrollWidth = nav.scrollWidth;
+      const clientWidth = nav.clientWidth;
+      const canScrollLeft = scrollLeft > 0;
+      const canScrollRight = scrollLeft < scrollWidth - clientWidth - 1;
+
+      if (prevArrow) {
+        if (canScrollLeft) {
+          prevArrow.classList.remove('pdp-tabs__arrow--hidden');
+        } else {
+          prevArrow.classList.add('pdp-tabs__arrow--hidden');
+        }
+      }
+
+      if (nextArrow) {
+        if (canScrollRight) {
+          nextArrow.classList.remove('pdp-tabs__arrow--hidden');
+        } else {
+          nextArrow.classList.add('pdp-tabs__arrow--hidden');
+        }
+      }
+    }
+
+    function scrollTabs(direction) {
+      const scrollAmount = 200;
+      nav.scrollBy({
+        left: direction === 'next' ? scrollAmount : -scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+
+    if (nextArrow) {
+      nextArrow.addEventListener('click', () => scrollTabs('next'));
+    }
+
+    if (prevArrow) {
+      prevArrow.addEventListener('click', () => scrollTabs('prev'));
+    }
+
+    // Update arrow states on scroll
+    nav.addEventListener('scroll', updateArrowStates);
+    
+    // Initial arrow state - check after a small delay to ensure layout is complete
+    setTimeout(() => {
+      updateArrowStates();
+    }, 100);
+    
+    // Also check on initial load
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updateArrowStates);
+    } else {
+      updateArrowStates();
+    }
+
+    // Check if arrows are needed on resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        updateArrowStates();
+      }, 250);
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "PDP Tabs Wrapper",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "color",
+      "id": "active_tab_background_color",
+      "label": "Active tab background colour",
+      "default": "#FF5000",
+      "info": "Background colour for the active tab"
+    }
+  ]
+}
+{% endschema %}

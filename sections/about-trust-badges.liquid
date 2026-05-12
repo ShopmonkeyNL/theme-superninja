@@ -1,0 +1,402 @@
+{% comment %}
+  About – "Why Our Customers Trust Us": título central + 4 badges (ícone, título, texto).
+  Desktop: 4 colunas em flex; mobile: 2x2, conteúdo centralizado.
+  Background: imagem ou cor (default: about-section-bg.png).
+{% endcomment %}
+
+{% liquid
+  assign heading = section.settings.title | default: 'Why Our Customers Trust Us'
+  assign bg_image = section.settings.background_image
+  assign bg_color = section.settings.background_color
+  assign default_bg_asset = 'about-section-bg.png'
+  if bg_image != blank
+    assign bg_image_url = bg_image | image_url: width: 1920
+  else
+    assign bg_image_url = default_bg_asset | asset_url
+  endif
+  assign heading_fs_d = section.settings.heading_font_size_desktop | default: 64
+  assign heading_fs_m = section.settings.heading_font_size_mobile | default: 40
+%}
+
+<section
+  class="about-trust-badges"
+  style="--atb-bg-image: url({{ bg_image_url }}); --atb-bg-color: {{ bg_color }}; --atb-heading-fs-d: {{ heading_fs_d }}px; --atb-heading-fs-m: {{ heading_fs_m }}px;"
+  {{ section.shopify_attributes }}
+>
+  <div class="about-trust-badges__inner">
+    <img
+      src="{{ 'moth-2.png' | asset_url }}"
+      alt=""
+      width="120"
+      height="120"
+      class="about-trust-badges__moth"
+      loading="lazy"
+      aria-hidden="true"
+      style="filter:brightness(10);">
+      
+    {% if heading != blank %}
+      <h2 class="about-trust-badges__heading">{{ heading }}</h2>
+    {% endif %}
+    <div class="about-trust-badges__grid">
+      {% for block in section.blocks %}
+        {% if block.type != 'badge' %}
+          {% continue %}
+        {% endif %}
+        {% liquid
+          assign icon_img = block.settings.icon
+          assign icon_asset = block.settings.icon_asset | default: ''
+          if icon_img != blank
+            assign icon_src = icon_img | image_url: width: 200
+          elsif icon_asset != blank
+            assign icon_src = icon_asset | asset_url
+          else
+            assign icon_src = ''
+          endif
+          assign badge_title = block.settings.title
+          assign badge_text = block.settings.text
+          assign card_title_fs_d = block.settings.title_font_size_desktop | default: 36
+          assign card_title_fs_m = block.settings.title_font_size_mobile | default: 20
+          assign card_text_fs_d = block.settings.text_font_size_desktop | default: 20
+          assign card_text_fs_m = block.settings.text_font_size_mobile | default: 14
+        %}
+        <div
+          class="about-trust-badges__card"
+          style="--atb-card-title-fs-d: {{ card_title_fs_d }}px; --atb-card-title-fs-m: {{ card_title_fs_m }}px; --atb-card-text-fs-d: {{ card_text_fs_d }}px; --atb-card-text-fs-m: {{ card_text_fs_m }}px;"
+          {{ block.shopify_attributes }}
+        >
+          {% if icon_src != blank %}
+            <div class="about-trust-badges__icon-wrap">
+              <img
+                src="{{ icon_src }}"
+                alt=""
+                width="100"
+                height="96"
+                class="about-trust-badges__icon"
+                loading="lazy"
+              >
+            </div>
+          {% endif %}
+          {% if badge_title != blank %}
+            <h3 class="about-trust-badges__card-title">{{ badge_title }}</h3>
+          {% endif %}
+          {% if badge_text != blank %}
+            <p class="about-trust-badges__card-text">{{ badge_text }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-trust-badges {
+    background-color: var(--atb-bg-color, #F0F2F1);
+    background-image: var(--atb-bg-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 64px 16px 80px;
+    color: #fff;
+  }
+
+  .about-trust-badges__inner {
+    max-width: 1312px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .about-trust-badges__moth {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: auto;
+    pointer-events: none;
+    animation: about-trust-badges-moth-float 4s ease-in-out infinite;
+  }
+
+  @keyframes about-trust-badges-moth-float {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-8px) rotate(2deg); }
+  }
+
+  .about-trust-badges__heading {
+    font-family: var(--font-heading--family);
+    font-weight: 700;
+    font-style: var(--font-heading--style, normal);
+    font-size: var(--atb-heading-fs-d, 64px);
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0 0 48px;
+  }
+
+  .about-trust-badges__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px 32px;
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  .about-trust-badges__card {
+    flex: 1 1 220px;
+    min-width: 0;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .about-trust-badges__icon-wrap {
+    margin-bottom: 16px;
+    line-height: 0;
+  }
+
+  .about-trust-badges__icon {
+    width: 80px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .about-trust-badges__card-title {
+    font-family: var(--font-heading--family);
+    font-weight: 700;
+    font-style: var(--font-heading--style, normal);
+    font-size: var(--atb-card-title-fs-d, 36px);
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0 0 12px;
+  }
+
+  .about-trust-badges__card-text {
+    font-family: Tahoma, sans-serif;
+    font-weight: 400;
+    font-size: var(--atb-card-text-fs-d, 20px);
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: center;
+    margin: 0;
+    opacity: 0.8;
+  }
+
+  @media (max-width: 768px) {
+    .about-trust-badges__moth {
+      width: 120px;
+      left: -40px;
+    }
+
+    .about-trust-badges {
+      padding: 48px 16px 56px;
+    }
+
+    .about-trust-badges__heading {
+      font-size: var(--atb-heading-fs-m, 40px);
+      margin-bottom: 32px;
+    }
+
+    .about-trust-badges__grid {
+      gap: 24px 16px;
+      justify-content: center;
+    }
+
+    .about-trust-badges__card {
+      flex: 1 1 calc(50% - 8px);
+      max-width: 280px;
+    }
+
+    .about-trust-badges__card-title {
+      font-size: var(--atb-card-title-fs-m, 20px);
+    }
+
+    .about-trust-badges__card-text {
+      font-size: var(--atb-card-text-fs-m, 14px);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "About - Why Trust Us",
+  "tag": "section",
+  "class": "section-about-trust-badges",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image",
+      "info": "Leave blank to use the default orange background."
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#F0F2F1",
+      "info": "Shows behind the image so the background is never white. Default: #F0F2F1."
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Why Our Customers Trust Us"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "label": "Heading font size (desktop)",
+      "min": 32,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Heading font size (mobile)",
+      "min": 24,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Trust badge",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon image",
+          "info": "Leave blank to use the default icon below."
+        },
+        {
+          "type": "text",
+          "id": "icon_asset",
+          "label": "Default icon (asset filename)",
+          "info": "e.g. clock-icon.svg. Used when no image is selected."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "range",
+          "id": "title_font_size_desktop",
+          "label": "Title font size (desktop)",
+          "min": 20,
+          "max": 48,
+          "step": 2,
+          "unit": "px",
+          "default": 36
+        },
+        {
+          "type": "range",
+          "id": "title_font_size_mobile",
+          "label": "Title font size (mobile)",
+          "min": 16,
+          "max": 28,
+          "step": 2,
+          "unit": "px",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "text_font_size_desktop",
+          "label": "Text font size (desktop)",
+          "min": 14,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "text_font_size_mobile",
+          "label": "Text font size (mobile)",
+          "min": 12,
+          "max": 18,
+          "step": 1,
+          "unit": "px",
+          "default": 14
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About - Why Trust Us",
+      "blocks": [
+        {
+          "type": "badge",
+          "settings": {
+            "icon_asset": "clock-icon.svg",
+            "title": "Fast & Visible Results",
+            "text": "We prioritize performance, and our products deliver quick results.",
+            "title_font_size_desktop": 36,
+            "title_font_size_mobile": 20,
+            "text_font_size_desktop": 20,
+            "text_font_size_mobile": 14
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "icon_asset": "check-icon.svg",
+            "title": "Easy to Use",
+            "text": "Super Ninja products use safe, eco-friendly ingredients for people, pets, and plants.",
+            "title_font_size_desktop": 36,
+            "title_font_size_mobile": 20,
+            "text_font_size_desktop": 20,
+            "text_font_size_mobile": 14
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "icon_asset": "safe-icon.svg",
+            "title": "Safe for Family & Pets",
+            "text": "Our packaging is recycled, helping reduce our environmental footprint.",
+            "title_font_size_desktop": 36,
+            "title_font_size_mobile": 20,
+            "text_font_size_desktop": 20,
+            "text_font_size_mobile": 14
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "icon_asset": "sustain-icon.svg",
+            "title": "Sustainable Materials",
+            "text": "Our solutions are ready-to-use; just place them and forget about cleaning.",
+            "title_font_size_desktop": 36,
+            "title_font_size_mobile": 20,
+            "text_font_size_desktop": 20,
+            "text_font_size_mobile": 14
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
