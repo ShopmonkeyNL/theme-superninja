@@ -15,6 +15,7 @@
       arrows_on_media: true,
       controls_on_media: true,
       pagination_position: 'center',
+      bottom_position: section.settings.controls_bottom_position,
       icon_style: section.settings.icons_style
     -%}
   {% endcapture %}
@@ -362,6 +363,13 @@
         }
       ],
       "default": "dots"
+    },
+    {
+      "type": "number",
+      "id": "controls_bottom_position",
+      "label": "Controls bottom position",
+      "default": 64,
+      "info": "When marquee is added underneath slideshow section - the controls will be cutoff without this setting."
     },
     {
       "type": "checkbox",
