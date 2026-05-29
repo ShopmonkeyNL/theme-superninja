@@ -39,6 +39,17 @@
   {% # theme-check-enable %}
 {% endif %}
 
+<script
+  src="{{ 'swiper-bundle.min.js' | asset_url }}"
+  defer
+  fetchpriority="low"
+></script>
+<script
+  src="{{ 'resource-list-swiper.js' | asset_url }}"
+  defer
+  fetchpriority="low"
+></script>
+
 <link
   rel="modulepreload"
   href="{{ 'utilities.js' | asset_url }}"

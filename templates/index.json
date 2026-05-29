@@ -402,7 +402,26 @@
       ],
       "disabled": true,
       "settings": {
-        "background_color": "#ffffff"
+        "background_color": "#ffffff",
+        "columns": 4,
+        "mobile_columns_carousel": 1.5,
+        "columns_gap": 16,
+        "gap": 32,
+        "border_radius": 0,
+        "section_width": "page-width",
+        "show_arrows": true,
+        "show_arrows_mobile": false,
+        "show_dots": false,
+        "show_dots_mobile": true,
+        "loop": false,
+        "autoplay": false,
+        "autoplay_timeout": 2500,
+        "icons_style": "arrow",
+        "icons_shape": "none",
+        "padding-block-start": 48,
+        "padding-block-end": 128,
+        "padding-inline-start": 24,
+        "padding-inline-end": 24
       }
     },
     "customers_feedback_YrqKJW": {
@@ -471,7 +490,26 @@
         "video_4MH3pU"
       ],
       "settings": {
-        "background_color": "#ffffff"
+        "background_color": "#ffffff",
+        "columns": 4,
+        "mobile_columns_carousel": 2.1,
+        "columns_gap": 16,
+        "gap": 32,
+        "border_radius": 0,
+        "section_width": "page-width",
+        "show_arrows": false,
+        "show_arrows_mobile": false,
+        "show_dots": false,
+        "show_dots_mobile": false,
+        "loop": true,
+        "autoplay": true,
+        "autoplay_timeout": 2500,
+        "icons_style": "none",
+        "icons_shape": "none",
+        "padding-block-start": 48,
+        "padding-block-end": 128,
+        "padding-inline-start": 24,
+        "padding-inline-end": 24
       }
     },
     "benefits_ticker_rEDXYM": {
