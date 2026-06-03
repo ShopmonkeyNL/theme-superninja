@@ -1,0 +1,72 @@
+{% assign custom_faqs = false %}
+
+{% if template == 'product' %}
+  {% if product.metafields.custom.faq %}
+    {% assign faq_metafield = product.metafields.custom.faq.value %}
+  {% endif %}
+{% endif %}
+
+{% if block.settings.custom_faqs and faq_metafield %}
+  {% assign custom_faqs = true %}
+{% endif %}
+
+<div class='faqs{% if custom_faqs %} accordion--{{ block.settings.accordion_icon }}{% endif %}'>
+  {% if custom_faqs %}
+    {% for item in faq_metafield %}
+      {% assign heading = item.question %}
+      {% assign answer = item.answer %}
+
+      {% render 'accordion-row', block: block, answer: answer, heading: heading %}
+    {% endfor %}
+  {% else %}
+    {% content_for 'blocks' %}
+  {% endif %}
+</div>
+
+{% style %}
+  .accordion--caret .icon-plus,
+  .accordion--plus .icon-caret {
+    display: none;
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "FAQs",
+  "blocks": [
+    {
+      "type": "accordion"
+    }
+  ],
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "custom_faqs",
+      "label": "Add custom FAQs",
+      "default": false,
+      "info": "Only if there's a FAQ metafield present."
+    },
+    {
+      "type": "select",
+      "id": "accordion_icon",
+      "label": "t:settings.icon",
+      "options": [
+        {
+          "value": "caret",
+          "label": "t:options.caret"
+        },
+        {
+          "value": "plus",
+          "label": "t:options.plus"
+        }
+      ],
+      "default": "caret"
+    },
+  ],
+  "presets": [
+    {
+      "name": "FAQs"
+    }
+  ]
+}
+{% endschema %}
