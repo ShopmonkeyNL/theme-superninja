@@ -1,0 +1,79 @@
+{% liquid
+  assign section_settings = section.settings
+
+  assign padding_mobile_bs = section_settings.padding_block_start_mobile
+  assign padding_mobile_be = section_settings.padding_block_end_mobile
+  assign padding_desktop_bs = section_settings.padding_block_start_desktop
+  assign padding_desktop_be = section_settings.padding_block_end_desktop
+%}
+
+<div class="section page-width-narrow">
+  <div
+    class='section-faq'
+    style='--padding-block-start-mobile: {{ padding_mobile_bs }}px; --padding-block-end-mobile: {{ padding_mobile_be }}px; --padding-block-start-desktop: {{ padding_desktop_bs }}px; --padding-block-end-desktop: {{ padding_desktop_be }}px'
+  >
+    <h1>this is a faq section</h1>
+  </div>
+</div>
+
+
+{% style %}
+  .section-faq {
+    padding-block-start: var(--padding-block-start-mobile);
+    padding-block-end: var(--padding-block-end-mobile);
+
+    @media (min-width: 992px) {
+      padding-block-start: var(--padding-block-start-desktop);
+      padding-block-end: var(--padding-block-end-desktop);
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "FAQ Section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Paddings desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_start_desktop",
+      "label": "Padding top",
+      "min": 0,
+      "max": 100,
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_block_end_desktop",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 100,
+      "default": 96
+    },
+    {
+      "type": "header",
+      "content": "Paddings mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_start_mobile",
+      "label": "Padding top",
+      "min": 0,
+      "max": 100,
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_block_end_mobile",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 100,
+      "default": 48
+    }
+  ],
+  "presets": [{ "name": "FAQ Section" }]
+}
+{% endschema %}
