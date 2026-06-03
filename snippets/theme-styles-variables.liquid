@@ -15,15 +15,15 @@
     endcomment
 
     if settings.custom_fonts == true
-      assign font_body_family = '"PT Sans", "Tahoma", ' | append: settings.type_body_font.fallback_families
-      assign font_subheading_family = '"Bangers", "Tahoma", ' | append: settings.type_subheading_font.fallback_families
-      assign font_heading_family = '"PT Sans Narrow", "bahnschrift-condensed", ' | append: settings.type_heading_font.fallback_families
+      assign font_body_family = '"PT Sans", "Tahoma", ' | append: settings.type_body_font.family | append: ', ' | append: settings.type_body_font.fallback_families
+      assign font_subheading_family = '"Bangers", "Tahoma", ' | append: settings.type_subheading_font.amily | append: ', ' | append: settings.type_subheading_font.fallback_families
+      assign font_heading_family = '"PT Sans Narrow", "bahnschrift-condensed", ' | append: settings.type_heading_font.family | append: ', ' | append: settings.type_heading_font.fallback_families
       assign font_accent_family = font_heading_family
       assign font_buttons_family = font_heading_family
       else 
-      assign font_body_family = '"Tahoma", ' | append: settings.type_body_font.fallback_families
-      assign font_subheading_family = '"Tahoma", ' | append: settings.type_subheading_font.fallback_families
-      assign font_heading_family = '"bahnschrift-condensed", ' | append: settings.type_heading_font.fallback_families
+      assign font_body_family = '"Tahoma", ' | append: settings.type_body_font.family  | append: ', ' | append: settings.type_body_font.fallback_families
+      assign font_subheading_family = '"Tahoma", ' | append: settings.type_subheading_font.family | append: ', ' | append: settings.type_subheading_font.fallback_families
+      assign font_heading_family = '"bahnschrift-condensed", ' | append: settings.type_heading_font.family | append: ', ' | append: settings.type_heading_font.fallback_families
       assign font_accent_family = font_heading_family
       assign font_buttons_family = font_heading_family
     endif
@@ -114,6 +114,13 @@
     --font-h4--color: var(--color-foreground-heading);
     --font-h5--color: var(--color-foreground-heading);
     --font-h6--color: var(--color-foreground-heading);
+
+    --font-h1--case: {{ settings.type_case_h1 }};
+    --font-h2--case: {{ settings.type_case_h2 }};
+    --font-h3--case: {{ settings.type_case_h3 }};
+    --font-h4--case: {{ settings.type_case_h4 }};
+    --font-h5--case: {{ settings.type_case_h5 }};
+    --font-h6--case: {{ settings.type_case_h6 }};
 
     /** Z-Index / Layering */
     --layer-section-background: -2;
