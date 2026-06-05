@@ -845,166 +845,154 @@
           },
           "blocks": {}
         },
-        "faqs_W7LJmc": {
-          "type": "faqs",
-          "name": "FAQs",
+        "accordion_W9x4h6": {
+          "type": "accordion",
+          "name": "t:names.accordion",
           "settings": {
             "custom_faqs": true,
-            "accordion_icon": "caret"
+            "icon": "caret",
+            "dividers": true,
+            "type_preset": "h4",
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
           },
           "blocks": {
-            "accordion_aaA9nb": {
-              "type": "accordion",
-              "name": "t:names.accordion",
+            "accordion_row_e9kBBC": {
+              "type": "_accordion-row",
               "settings": {
-                "icon": "caret",
-                "dividers": true,
-                "type_preset": "h6",
-                "inherit_color_scheme": true,
-                "color_scheme": "",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "heading": "Retourbeleid",
+                "open_by_default": true,
+                "icon": "none",
+                "width": 20
               },
               "blocks": {
-                "accordion_row_NqRn3q": {
-                  "type": "_accordion-row",
+                "text_X6rmCF": {
+                  "type": "text",
                   "settings": {
-                    "heading": "Retourbeleid",
-                    "open_by_default": true,
-                    "icon": "none",
-                    "width": 20
+                    "text": "<p>Ons doel is dat elke klant volledig tevreden is met zijn aankoop. Als dit niet het geval is, laat het ons dan weten. We doen ons best om samen met jou tot een goede oplossing te komen.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#1C1C1C26",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
                   },
-                  "blocks": {
-                    "text_3Y7FT3": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Ons doel is dat elke klant volledig tevreden is met zijn aankoop. Als dit niet het geval is, laat het ons dan weten. We doen ons best om samen met jou tot een goede oplossing te komen.</p>",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#1c1c1c26",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "text_3Y7FT3"
-                  ]
-                },
-                "accordion_row_C3kiy4": {
-                  "type": "_accordion-row",
-                  "settings": {
-                    "heading": "Verzending",
-                    "open_by_default": false,
-                    "icon": "none",
-                    "width": 20
-                  },
-                  "blocks": {
-                    "text_xjGFdp": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>We zullen je bestelling zo snel mogelijk verzenden. Zodra je bestelling is verzonden, ontvang je een e-mail met meer informatie. De levertijden zijn afhankelijk van je locatie.</p>",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#1c1c1c26",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "text_xjGFdp"
-                  ]
-                },
-                "accordion_row_iWNAfh": {
-                  "type": "_accordion-row",
-                  "settings": {
-                    "heading": "Productie",
-                    "open_by_default": false,
-                    "icon": "none",
-                    "width": 20
-                  },
-                  "blocks": {
-                    "text_Mk7jAP": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Onze producten worden zowel lokaal als wereldwijd geproduceerd. We selecteren onze productiepartners zorgvuldig om ervoor te zorgen dat onze producten van hoge kwaliteit zijn en een eerlijke prijs hebben.</p>",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#1c1c1c26",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "text_Mk7jAP"
-                  ]
+                  "blocks": {}
                 }
               },
               "block_order": [
-                "accordion_row_NqRn3q",
-                "accordion_row_C3kiy4",
-                "accordion_row_iWNAfh"
+                "text_X6rmCF"
+              ]
+            },
+            "accordion_row_YGgF9b": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "Verzending",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_jRgNLn": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>We zullen je bestelling zo snel mogelijk verzenden. Zodra je bestelling is verzonden, ontvang je een e-mail met meer informatie. De levertijden zijn afhankelijk van je locatie.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#1C1C1C26",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_jRgNLn"
+              ]
+            },
+            "accordion_row_dcV7Kz": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "Productie",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_XD8xUq": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Onze producten worden zowel lokaal als wereldwijd geproduceerd. We selecteren onze productiepartners zorgvuldig om ervoor te zorgen dat onze producten van hoge kwaliteit zijn en een eerlijke prijs hebben.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#1C1C1C26",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_XD8xUq"
               ]
             }
           },
           "block_order": [
-            "accordion_aaA9nb"
+            "accordion_row_e9kBBC",
+            "accordion_row_YGgF9b",
+            "accordion_row_dcV7Kz"
           ]
         }
       },
       "block_order": [
         "text_CFNn4P",
-        "faqs_W7LJmc"
+        "accordion_W9x4h6"
       ],
       "name": "FAQ Section",
       "settings": {
