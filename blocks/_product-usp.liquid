@@ -1,0 +1,16 @@
+{% assign protection_message = closest.product.metafields.custom.protection_message %}<h2 class="pdp-protection-message">{% if protection_message != blank and protection_message.value != blank %}{{ protection_message.value }}{% else %}More Traps = More Protection{% endif %}</h2>
+
+{% schema %}
+{
+  "name": "Product usp",
+  "tag": null,
+  "settings": [],
+  "presets": [
+    {
+      "name": "Product usp",
+      "category": "t:categories.product",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

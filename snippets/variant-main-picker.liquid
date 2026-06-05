@@ -33,6 +33,16 @@
     {% endif %}
   >
     <form class="variant-picker__form">
+      {%- liquid
+        assign use_pdp_variant_cards = false
+        if block_settings.variant_style == 'buttons'
+          assign use_pdp_variant_cards = true
+        endif
+      -%}
+
+      {%- if use_pdp_variant_cards -%}
+        {% render 'pdp-variant-cards', product_resource: product_resource, section_id: section.id, block_id: block.id %}
+      {%- else -%}
       {%- for product_option in product_resource.options_with_values -%}
         {%- liquid
           assign swatch_count = product_option.values | map: 'swatch' | compact | size
@@ -193,6 +203,7 @@
           </div>
         {%- endif -%}
       {%- endfor -%}
+      {%- endif -%}
 
       <script type="application/json">
         {{ product_resource.selected_or_first_available_variant | json }}

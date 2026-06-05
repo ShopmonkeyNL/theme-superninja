@@ -513,7 +513,19 @@ class ProductFormComponent extends Component {
       currentAddToCartButtonContainer.enable();
     }
 
-    const newAddToCartButton = event.detail.data.html.querySelector('product-form-component [ref="addToCartButton"]');
+    const newProductFormComponents = Array.from(event.detail.data.html.querySelectorAll('product-form-component'));
+    const matchingProductFormComponent =
+      newProductFormComponents.find(
+        (component) =>
+          component instanceof HTMLElement &&
+          component.dataset.productId === this.dataset.productId &&
+          component.dataset.sectionId === this.dataset.sectionId
+      ) ||
+      newProductFormComponents.find(
+        (component) => component instanceof HTMLElement && component.dataset.productId === this.dataset.productId
+      );
+
+    const newAddToCartButton = matchingProductFormComponent?.querySelector('[ref="addToCartButton"]');
     if (newAddToCartButton && currentAddToCartButton) {
       morph(currentAddToCartButton, newAddToCartButton);
     }

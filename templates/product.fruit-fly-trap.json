@@ -139,6 +139,29 @@
                 "text_xrnftG"
               ]
             },
+            "price_xYrUbK": {
+              "type": "price",
+              "name": "t:names.product_price",
+              "settings": {
+                "show_sale_price_first": false,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h3",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "color": "var(--color-foreground)",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
             "text_aEtTtq": {
               "type": "text",
               "name": "Product description",
@@ -165,18 +188,10 @@
               },
               "blocks": {}
             },
-            "custom_liquid_protection_message": {
-              "type": "custom-liquid",
-              "settings": {
-                "custom_liquid": "{% assign protection_message = closest.product.metafields.custom.protection_message %}<h2 class=\"pdp-protection-message\">{% if protection_message != blank and protection_message.value != blank %}{{ protection_message.value }}{% else %}More Traps = More Protection{% endif %}</h2>"
-              },
-              "blocks": {}
-            },
-            "custom_liquid_variant_cards": {
-              "type": "custom-liquid",
-              "settings": {
-                "custom_liquid": "{% render 'pdp-variant-cards', product_resource: closest.product, section_id: section.id %}"
-              },
+            "product_usp_7y3B8z": {
+              "type": "_product-usp",
+              "name": "Product usp",
+              "settings": {},
               "blocks": {}
             },
             "variant_picker_R3rGDr": {
@@ -259,9 +274,9 @@
           },
           "block_order": [
             "group_icgrde",
+            "price_xYrUbK",
             "text_aEtTtq",
-            "custom_liquid_protection_message",
-            "custom_liquid_variant_cards",
+            "product_usp_7y3B8z",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
             "pdp_benefits_badges",
@@ -489,7 +504,8 @@
         "card_5"
       ],
       "settings": {
-        "background_color": "#f0f2f1"
+        "background_color": "#f0f2f1",
+        "anchor_id": ""
       }
     },
     "video_cards": {
