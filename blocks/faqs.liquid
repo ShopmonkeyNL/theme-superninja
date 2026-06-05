@@ -1,6 +1,6 @@
 {% assign custom_faqs = false %}
 
-{% if template == 'product' %}
+{% if template contains 'product' %}
   {% if product.metafields.custom.faq %}
     {% assign faq_metafield = product.metafields.custom.faq.value %}
   {% endif %}
