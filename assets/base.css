@@ -860,7 +860,7 @@ h5,
 h6,
 .h6.h6,
 .text-block.h6 > * {
-  font-family: var(--font-h6--family);
+  font-family: var(--font-heading--family);
   font-style: var(--font-h6--style);
   font-weight: var(--font-h6--weight);
   font-size: var(--font-h6--size);
