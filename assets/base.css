@@ -1460,7 +1460,7 @@ summary {
   align-items: center;
   cursor: pointer;
   list-style: none;
-  padding-block: var(--padding-sm);
+  padding-block: var(--padding-lg);
 }
 
 summary:hover {
@@ -2692,7 +2692,8 @@ product-price.text-block:is(.h1, .h2, .h3, .h4, .h5, .h6) > *:not(.tax-note) {
   align-items: center;
   gap: var(--gap-sm);
   min-width: 48px;
-  padding: 6px 12px;
+  padding: 8px 16px;
+  font-weight: bold;
   border-radius: var(--style-border-radius-pills);
   cursor: pointer;
   background-color: var(--pills-pill-background-color);
