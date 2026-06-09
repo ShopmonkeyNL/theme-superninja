@@ -192,8 +192,8 @@
               "type": "_product-protection-message",
               "name": "Protection message",
               "settings": {
-                "color_scheme": "scheme-e56505e6-c941-4102-b4e9-2033b4b3d652",
-                "type_preset": "h4",
+                "color_scheme": "scheme-0862d5fd-36dc-491e-aca4-3407c2404010",
+                "type_preset": "h6",
                 "border": true,
                 "padding": 16,
                 "radius": 8
