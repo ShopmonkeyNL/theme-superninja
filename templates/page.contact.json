@@ -244,7 +244,7 @@
           "name": "t:names.accordion",
           "settings": {
             "custom_faqs": true,
-            "icon": "plus",
+            "icon": "caret",
             "dividers": true,
             "type_preset": "h4",
             "inherit_color_scheme": true,
