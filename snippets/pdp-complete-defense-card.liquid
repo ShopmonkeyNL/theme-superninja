@@ -1,0 +1,62 @@
+{%- doc -%}
+  Renders a single card for PDP Complete Defense carousel.
+
+  @param {object} card_product - Product object to render
+  @param {string} section_id - Parent section id for product-form-component
+  @param {string} form_id - Unique product form id
+{%- enddoc -%}
+
+{%- assign card_variant = card_product.selected_or_first_available_variant -%}
+
+<div class="pdp-complete-defense__card">
+  <div class="pdp-complete-defense__card-image">
+    {%- if card_product.featured_image != blank -%}
+      {{ card_product.featured_image | image_url: width: 200 | image_tag: loading: 'lazy', alt: card_product.title }}
+    {%- else -%}
+      {{ 'product-1' | placeholder_svg_tag: class: 'placeholder-svg' }}
+    {%- endif -%}
+  </div>
+  <div class="pdp-complete-defense__card-content">
+    <div class="pdp-complete-defense__card-reviews pdp-complete-defense__card-reviews--mobile">
+      <span class="pdp-complete-defense__card-stars" aria-hidden="true">
+        {% for i in (1..5) %}
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" focusable="false">
+            <path d="M12 2.2L14.99 8.26L21.68 9.23L16.84 13.95L17.98 20.62L12 17.48L6.02 20.62L7.16 13.95L2.32 9.23L9.01 8.26L12 2.2Z" fill="currentColor" />
+          </svg>
+        {% endfor %}
+      </span>
+      <span class="pdp-complete-defense__card-reviews-text">(1,247 reviews)</span>
+    </div>
+    <div class="pdp-complete-defense__card-name">{{ card_product.title | upcase }}</div>
+    <div class="pdp-complete-defense__card-price">{{ card_product.price | money }}</div>
+  </div>
+  <product-form-component
+    data-section-id="{{ section_id }}"
+    data-product-id="{{ card_product.id }}"
+    data-product-url="{{ card_product.url }}"
+    on:submit="/handleSubmit"
+    class="pdp-complete-defense__card-form"
+  >
+    <div class="visually-hidden" aria-live="assertive" role="status" aria-atomic="true" ref="liveRegion"></div>
+    {%- form 'product', card_product, id: form_id, novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+      <input
+        type="hidden"
+        name="id"
+        ref="variantId"
+        value="{{ card_variant.id }}"
+        {% if card_variant.available == false %}
+          disabled
+        {% endif %}
+      >
+      <input type="hidden" name="quantity" value="1">
+      {% render 'add-to-cart-button',
+        class: 'pdp-complete-defense__card-button add-to-cart-button',
+        add_to_cart_text: 'Add',
+        can_add_to_cart: card_variant.available,
+        product: card_product,
+        always_icon: true,
+        white_burst_icon: true
+      %}
+    {%- endform -%}
+  </product-form-component>
+</div>

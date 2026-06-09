@@ -38,41 +38,8 @@
           {%- for handle in default_product_handles limit: 3 -%}
             {%- assign default_prod = all_products[handle] -%}
             {%- if default_prod != blank -%}
-              <div class="pdp-complete-defense__card">
-                <div class="pdp-complete-defense__card-image">
-                  {%- if default_prod.featured_image != blank -%}
-                    {{ default_prod.featured_image | image_url: width: 200 | image_tag: loading: 'lazy', alt: default_prod.title }}
-                  {%- else -%}
-                    {{ 'product-1' | placeholder_svg_tag: class: 'placeholder-svg' }}
-                  {%- endif -%}
-                </div>
-                <div class="pdp-complete-defense__card-content">
-                  <div class="pdp-complete-defense__card-reviews pdp-complete-defense__card-reviews--mobile">
-                    <span class="pdp-complete-defense__card-stars" aria-hidden="true">
-                      {% for i in (1..5) %}
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" focusable="false">
-                          <path d="M12 2.2L14.99 8.26L21.68 9.23L16.84 13.95L17.98 20.62L12 17.48L6.02 20.62L7.16 13.95L2.32 9.23L9.01 8.26L12 2.2Z" fill="currentColor" />
-                        </svg>
-                      {% endfor %}
-                    </span>
-                    <span class="pdp-complete-defense__card-reviews-text">(1,247 reviews)</span>
-                  </div>
-                  <div class="pdp-complete-defense__card-name">{{ default_prod.title | upcase }}</div>
-                  <div class="pdp-complete-defense__card-price">{{ default_prod.price | money }}</div>
-                </div>
-                <a href="{{ default_prod.url }}" class="pdp-complete-defense__card-button">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g clip-path="url(#clip0_324_16783)">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M20.8767 2.86567C20.7244 1.75117 19.7727 0.920166 18.6469 0.920166C15.6552 0.920166 8.34568 0.920166 5.35393 0.920166C4.22818 0.920166 3.27643 1.75117 3.12418 2.86567C2.63518 6.45142 1.26568 16.4977 0.715932 20.5259C0.628182 21.1694 0.823182 21.8204 1.24993 22.3094C1.67743 22.7992 2.29543 23.0797 2.94568 23.0797H21.0552C21.7054 23.0797 22.3234 22.7992 22.7509 22.3094C23.1777 21.8204 23.3727 21.1694 23.2849 20.5259L20.8767 2.86567ZM15.4504 5.68942C15.4504 7.60792 13.8927 9.16566 11.9742 9.16566C10.0557 9.16566 8.49868 7.60792 8.49868 5.68942C8.49868 5.27542 8.16268 4.93942 7.74868 4.93942C7.33468 4.93942 6.99868 5.27542 6.99868 5.68942C6.99868 8.43592 9.22843 10.6657 11.9742 10.6657C14.7207 10.6657 16.9504 8.43592 16.9504 5.68942C16.9504 5.27542 16.6144 4.93942 16.2004 4.93942C15.7864 4.93942 15.4504 5.27542 15.4504 5.68942Z" fill="#fff"></path>
-                  </g>
-                  <defs>
-                  <clipPath id="clip0_324_16783">
-                  <rect width="24" height="24" fill="white"></rect>
-                  </clipPath>
-                  </defs>
-                  </svg>
-                </a>
-              </div>
+              {%- assign default_form_id = 'pdp-complete-defense-form-' | append: block.id | append: '-default-' | append: forloop.index0 -%}
+              {% render 'pdp-complete-defense-card', card_product: default_prod, section_id: section.id, form_id: default_form_id %}
             {%- endif -%}
           {%- endfor -%}
         {%- else -%}
@@ -82,42 +49,9 @@
             {%- if prod == blank -%}
               {%- continue -%}
             {%- endif -%}
-            
-            <div class="pdp-complete-defense__card">
-              <div class="pdp-complete-defense__card-image">
-                {%- if prod.featured_image != blank -%}
-                  {{ prod.featured_image | image_url: width: 200 | image_tag: loading: 'lazy', alt: prod.title }}
-                {%- else -%}
-                  {{ 'product-1' | placeholder_svg_tag: class: 'placeholder-svg' }}
-                {%- endif -%}
-              </div>
-              <div class="pdp-complete-defense__card-content">
-                <div class="pdp-complete-defense__card-reviews pdp-complete-defense__card-reviews--mobile">
-                  <span class="pdp-complete-defense__card-stars" aria-hidden="true">
-                    {% for i in (1..5) %}
-                      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" focusable="false">
-                        <path d="M12 2.2L14.99 8.26L21.68 9.23L16.84 13.95L17.98 20.62L12 17.48L6.02 20.62L7.16 13.95L2.32 9.23L9.01 8.26L12 2.2Z" fill="currentColor" />
-                      </svg>
-                    {% endfor %}
-                  </span>
-                  <span class="pdp-complete-defense__card-reviews-text">(1,247 reviews)</span>
-                </div>
-                <div class="pdp-complete-defense__card-name">{{ prod.title | upcase }}</div>
-                <div class="pdp-complete-defense__card-price">{{ prod.price | money }}</div>
-              </div>
-              <a href="{{ prod.url }}" class="pdp-complete-defense__card-button">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g clip-path="url(#clip0_324_16783)">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M20.8767 2.86567C20.7244 1.75117 19.7727 0.920166 18.6469 0.920166C15.6552 0.920166 8.34568 0.920166 5.35393 0.920166C4.22818 0.920166 3.27643 1.75117 3.12418 2.86567C2.63518 6.45142 1.26568 16.4977 0.715932 20.5259C0.628182 21.1694 0.823182 21.8204 1.24993 22.3094C1.67743 22.7992 2.29543 23.0797 2.94568 23.0797H21.0552C21.7054 23.0797 22.3234 22.7992 22.7509 22.3094C23.1777 21.8204 23.3727 21.1694 23.2849 20.5259L20.8767 2.86567ZM15.4504 5.68942C15.4504 7.60792 13.8927 9.16566 11.9742 9.16566C10.0557 9.16566 8.49868 7.60792 8.49868 5.68942C8.49868 5.27542 8.16268 4.93942 7.74868 4.93942C7.33468 4.93942 6.99868 5.27542 6.99868 5.68942C6.99868 8.43592 9.22843 10.6657 11.9742 10.6657C14.7207 10.6657 16.9504 8.43592 16.9504 5.68942C16.9504 5.27542 16.6144 4.93942 16.2004 4.93942C15.7864 4.93942 15.4504 5.27542 15.4504 5.68942Z" fill="#fff"></path>
-                  </g>
-                  <defs>
-                  <clipPath id="clip0_324_16783">
-                  <rect width="24" height="24" fill="white"></rect>
-                  </clipPath>
-                  </defs>
-                </svg>
-              </a>
-            </div>
+
+            {%- assign prod_form_id = 'pdp-complete-defense-form-' | append: block.id | append: '-product-' | append: forloop.index0 -%}
+            {% render 'pdp-complete-defense-card', card_product: prod, section_id: section.id, form_id: prod_form_id %}
           {%- endfor -%}
         {%- endif -%}
       </div>
@@ -228,6 +162,10 @@
     min-width: 0;
   }
 
+  .pdp-complete-defense__card-button {
+    position: relative;
+  }
+
   .pdp-complete-defense__card-reviews {
     display: none;
   }
@@ -267,6 +205,10 @@
     color: #1C1C1C;
   }
 
+  .pdp-complete-defense__card-form .shopify-product-form {
+    display: flex;
+  }
+
   .pdp-complete-defense__card-button {
     flex-shrink: 0;
     padding: 12px 24px;
@@ -279,8 +221,56 @@
     text-transform: uppercase;
     text-decoration: none;
     border-radius: 4px;
+    border: none;
     white-space: nowrap;
+    cursor: pointer;
     transition: opacity 0.2s ease;
+  }
+
+  .pdp-complete-defense__card-button .add-to-cart-text {
+    gap: 0;
+  }
+
+  .pdp-complete-defense__card-button .add-to-cart-text__content {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .pdp-complete-defense__card-button .add-to-cart-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .pdp-complete-defense__card-button .add-to-cart-icon svg {
+    display: none;
+  }
+
+  .pdp-complete-defense__card-button .add-to-cart-icon::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-color: #fff;
+    -webkit-mask-image: url('{{ 'icon-cart.svg' | asset_url }}');
+    mask-image: url('{{ 'icon-cart.svg' | asset_url }}');
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+  }
+
+  .pdp-complete-defense__card-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 
   .pdp-complete-defense__card-button:hover {
@@ -300,14 +290,10 @@
     align-items: center;
     justify-content: center;
     padding: 0;
-    transition: opacity 0.2s ease, visibility 0.2s ease;
+    transition: transform 0.2s ease-in-out, visibility 0.2s ease;
     z-index: 1000;
     border-radius: 100%;
     box-shadow: 0 1px 5px 0px rgb(0 0 0 / 7%);
-  }
-
-  .pdp-complete-defense__arrow:hover {
-    opacity: 0.9;
   }
 
   .pdp-complete-defense__arrow-icon {
@@ -326,6 +312,14 @@
 
   .pdp-complete-defense__arrow--next {
     right: -18px;
+  }
+
+  .pdp-complete-defense__arrow--next:hover {
+    transform: translateY(-50%) translateX(1px);
+  }
+
+  .pdp-complete-defense__arrow--prev:hover {
+    transform: translateY(-50%) translateX(-1px);
   }
 
   .pdp-complete-defense__arrow--hidden {

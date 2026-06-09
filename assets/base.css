@@ -4342,6 +4342,9 @@ text-component {
 .add-to-cart-icon{
   display: none!important;
 }
+.add-to-cart-icon.add-to-cart-icon--visible {
+  display: block !important;
+}
 
 .menu-list__link {
   position: relative;
