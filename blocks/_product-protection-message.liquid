@@ -1,0 +1,117 @@
+{% liquid
+  assign protection_message = closest.product.metafields.custom.protection_message
+  
+  assign padding = block.settings.padding
+  assign radius = block.settings.radius
+  assign border = block.settings.border
+%}
+
+{% if protection_message != blank and protection_message.value != blank -%}
+  <div class="protection-message color-{{ block.settings.color_scheme }}">
+    {% render 'text' fallback_text: protection_message.value %}
+  </div>
+  
+  {% style %}
+    .protection-message {
+      padding: {{ padding }}px; 
+      {% if border %}
+        border: 1px solid var(--color-foreground);
+      {% endif %}
+      border-radius: {{ radius }}px;
+      width: fit-content;
+      margin: 0; 
+    }
+  {% endstyle %}
+{%- endif %}
+
+{% schema %}
+{
+  "name": "Protection message",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Protection message",
+      "info": "Shown when Metafield: Protection message is filled."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colors"
+    },
+    {
+      "type": "select",
+      "id": "type_preset",
+      "label": "t:settings.preset",
+      "options": [
+        {
+          "value": "rte",
+          "label": "t:options.default"
+        },
+        {
+          "value": "paragraph",
+          "label": "t:options.paragraph"
+        },
+        {
+          "value": "h1",
+          "label": "t:options.h1"
+        },
+        {
+          "value": "h2",
+          "label": "t:options.h2"
+        },
+        {
+          "value": "h3",
+          "label": "t:options.h3"
+        },
+        {
+          "value": "h4",
+          "label": "t:options.h4"
+        },
+        {
+          "value": "h5",
+          "label": "t:options.h5"
+        },
+        {
+          "value": "h6",
+          "label": "t:options.h6"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.custom"
+        }
+      ],
+      "default": "rte",
+      "info": "t:info.edit_presets_in_theme_settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "border",
+      "label": "Add border?",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Padding",
+      "default": 16,
+      "min": 0,
+      "max": 40
+    },
+    {
+      "type": "range",
+      "id": "radius",
+      "label": "radius",
+      "default": 8,
+      "min": 0,
+      "max": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Protection message",
+      "category": "t:categories.product",
+    }
+  ]
+}
+{% endschema %}
