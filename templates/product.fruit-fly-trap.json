@@ -170,14 +170,14 @@
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "rte",
+                "type_preset": "paragraph",
                 "font": "var(--font-primary--family)",
                 "font_size": "",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
-                "color": "",
+                "color": "var(--color-foreground)",
                 "background": false,
                 "background_color": "#1c1c1c26",
                 "corner_radius": 0,
@@ -354,7 +354,7 @@
         "duplicate_count": "3",
         "wrap_background_color": "",
         "section_padding_top": 24,
-        "section_padding_bottom": 24,
+        "section_padding_bottom": 40,
         "bar_background_type": "solid",
         "bar_background_color": "#94d357",
         "bar_gradient_start": "#43c241",
@@ -396,21 +396,27 @@
           "type": "stat_item",
           "settings": {
             "number": "24HRS",
-            "label": "First Results"
+            "number_class": "h1",
+            "label": "First Results",
+            "label_class": "h3"
           }
         },
         "stat_2": {
           "type": "stat_item",
           "settings": {
             "number": "95% +",
-            "label": "Flies Eliminated"
+            "number_class": "h1",
+            "label": "Flies Eliminated",
+            "label_class": "h3"
           }
         },
         "stat_3": {
           "type": "stat_item",
           "settings": {
             "number": "30 DAYS",
-            "label": "Lasts Per Trap"
+            "number_class": "h1",
+            "label": "Lasts Per Trap",
+            "label_class": "h3"
           }
         }
       },
@@ -422,7 +428,9 @@
         "stat_3"
       ],
       "settings": {
-        "stat_number_color": "#ff5000"
+        "stat_number_color": "#ff5000",
+        "padding_top": 120,
+        "padding_bottom": 48
       }
     },
     "cards_with_text": {
@@ -505,6 +513,10 @@
       ],
       "settings": {
         "background_color": "#f0f2f1",
+        "padding_top": 48,
+        "padding_bottom": 60,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 64,
         "columns": 3,
         "mobile_columns_carousel": 1.5,
         "columns_gap": 24,

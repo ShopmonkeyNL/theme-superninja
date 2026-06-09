@@ -194,14 +194,10 @@
     align-items: center;
     justify-content: center;
     padding: 0;
-    transition: opacity 0.2s ease, visibility 0.2s ease;
+    transition: transform 0.2s ease-in-out, visibility 0.2s ease;
     z-index: 1000;
     border-radius: 100%;
     box-shadow: 0 1px 5px 0px rgb(0 0 0 / 7%);
-  }
-
-  .pdp-tabs__arrow:hover {
-    opacity: 0.9;
   }
 
   .pdp-tabs__arrow-icon {
@@ -220,6 +216,14 @@
 
   .pdp-tabs__arrow--next {
     right: -18px;
+  }
+
+  .pdp-tabs__arrow--next:hover {
+    transform: translateY(-50%) translateX(1px);
+  }
+
+  .pdp-tabs__arrow--prev:hover {
+    transform: translateY(-50%) translateX(-1px);
   }
 
   .pdp-tabs__arrow--hidden {
