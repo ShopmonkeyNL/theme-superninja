@@ -8,6 +8,12 @@
   {% endif %}
 {% endif %}
 
+{% if template contains 'contact' %}
+  {% if page.metafields.custom.faq %}
+    {% assign faq_metafield = page.metafields.custom.faq.value %}
+  {% endif %}
+{% endif %}
+
 {% if block.settings.custom_faqs and faq_metafield %}
   {% assign custom_faqs = true %}
 {% endif %}
