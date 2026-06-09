@@ -188,10 +188,16 @@
               },
               "blocks": {}
             },
-            "product_usp_7y3B8z": {
-              "type": "_product-usp",
-              "name": "Product usp",
-              "settings": {},
+            "product_protection_message_RqVkU8": {
+              "type": "_product-protection-message",
+              "name": "Protection message",
+              "settings": {
+                "color_scheme": "scheme-e56505e6-c941-4102-b4e9-2033b4b3d652",
+                "type_preset": "h4",
+                "border": true,
+                "padding": 16,
+                "radius": 8
+              },
               "blocks": {}
             },
             "variant_picker_R3rGDr": {
@@ -276,7 +282,7 @@
             "group_icgrde",
             "price_xYrUbK",
             "text_aEtTtq",
-            "product_usp_7y3B8z",
+            "product_protection_message_RqVkU8",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
             "pdp_benefits_badges",
