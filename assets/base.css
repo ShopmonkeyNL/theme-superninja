@@ -1448,6 +1448,10 @@ shopify-accelerated-checkout-cart {
   color: var(--color-primary-button-background);
 }
 
+.icon-plus svg {
+  color: var(--color-primary-button-background);
+}
+
 .icon-caret--forward svg {
   transform: rotate(-90deg);
 }
