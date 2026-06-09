@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "collection_list_Wfgh3m": {
       "type": "main-collection-list",
@@ -15,7 +16,6 @@
           "type": "group",
           "name": "t:names.header",
           "settings": {
-            "open_in_new_tab": false,
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
@@ -40,9 +40,12 @@
             "border_opacity": 100,
             "border_radius": 0,
             "toggle_overlay": false,
-            "overlay_color": "#1C1C1C26",
+            "overlay_color": "#1c1c1c26",
             "overlay_style": "solid",
             "gradient_direction": "to top",
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
             "padding-block-start": 0,
             "padding-block-end": 48,
             "padding-inline-start": 0,
@@ -57,7 +60,7 @@
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "h2",
+                "type_preset": "h1",
                 "font": "var(--font-primary--family)",
                 "font_size": "",
                 "line_height": "normal",
@@ -66,7 +69,7 @@
                 "wrap": "pretty",
                 "color": "",
                 "background": false,
-                "background_color": "#1C1C1C26",
+                "background_color": "#1c1c1c26",
                 "corner_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 16,
@@ -113,7 +116,7 @@
                 "wrap": "pretty",
                 "color": "var(--color-foreground)",
                 "background": false,
-                "background_color": "#1C1C1C26",
+                "background_color": "#1c1c1c26",
                 "corner_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
@@ -129,7 +132,7 @@
               "settings": {
                 "image_ratio": "adapt",
                 "toggle_overlay": false,
-                "overlay_color": "#1C1C1C26",
+                "overlay_color": "#1c1c1c26",
                 "overlay_style": "solid",
                 "gradient_direction": "to top",
                 "border": "none",
