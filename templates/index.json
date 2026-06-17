@@ -316,7 +316,11 @@
         "adaptive_accordion_anUXpQ": {
           "type": "_adaptive-accordion",
           "name": "Adaptive accordion",
-          "settings": {},
+          "settings": {
+            "icon": "plus",
+            "dividers": true,
+            "type_preset": "h4"
+          },
           "blocks": {}
         }
       },
