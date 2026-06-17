@@ -809,6 +809,7 @@
         "faq_4",
         "faq_5"
       ],
+      "disabled": true,
       "settings": {
         "background_color": "#f0f2f1",
         "border_color": "#ff5000",
@@ -849,7 +850,7 @@
           "type": "accordion",
           "name": "t:names.accordion",
           "settings": {
-            "custom_faqs": true,
+            "custom_faqs": false,
             "icon": "caret",
             "dividers": true,
             "type_preset": "h4",
@@ -890,7 +891,7 @@
                     "wrap": "pretty",
                     "color": "var(--color-foreground)",
                     "background": false,
-                    "background_color": "#1C1C1C26",
+                    "background_color": "#1c1c1c26",
                     "corner_radius": 0,
                     "padding-block-start": 0,
                     "padding-block-end": 0,
@@ -929,7 +930,7 @@
                     "wrap": "pretty",
                     "color": "var(--color-foreground)",
                     "background": false,
-                    "background_color": "#1C1C1C26",
+                    "background_color": "#1c1c1c26",
                     "corner_radius": 0,
                     "padding-block-start": 0,
                     "padding-block-end": 0,
@@ -968,7 +969,7 @@
                     "wrap": "pretty",
                     "color": "var(--color-foreground)",
                     "background": false,
-                    "background_color": "#1C1C1C26",
+                    "background_color": "#1c1c1c26",
                     "corner_radius": 0,
                     "padding-block-start": 0,
                     "padding-block-end": 0,
