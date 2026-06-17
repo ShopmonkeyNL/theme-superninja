@@ -1,48 +1,16 @@
+{% capture answer %}
+  {% content_for 'blocks' %}
+{% endcapture %}
 
-{% assign block_settings = block.settings %}
-
-<accordion-custom
-  {% if block_settings.open_by_default %}
-    open-by-default-on-desktop
-    open-by-default-on-mobile
-  {% endif %}
->
-  <details
-    class="details"
-    data-testid="accordion-details"
-    {% if block_settings.open_by_default %}
-      open
-    {% endif %}
-    {{ block.shopify_attributes }}
-  >
-    <summary class="details__header">
-      {% render 'icon-or-image',
-        icon: block_settings.icon,
-        image_upload: block_settings.image_upload,
-        width: block_settings.width,
-        class_name: 'details__icon'
-      %}
-      {{ block_settings.heading }}
-      <span class="svg-wrapper icon-caret icon-animated">
-        {{- 'icon-caret.svg' | inline_asset_content -}}
-      </span>
-      <span class="svg-wrapper icon-plus">
-        {{- 'icon-plus.svg' | inline_asset_content -}}
-      </span>
-    </summary>
-
-    <div class="details-content">
-      {% content_for 'blocks' %}
-    </div>
-  </details>
-</accordion-custom>
-
-{% style %}
-  .details__icon {
-    height: auto;
-    margin-inline-end: var(--margin-xs);
-  }
-{% endstyle %}
+{% render 'accordion-row',
+  block: block,
+  open_by_default: block.settings.open_by_default,
+  icon: block.settings.icon,
+  image_upload: block.settings.image_upload,
+  width: block.settings.width
+  heading: block.settings.heading,
+  answer: answer
+%}
 
 {% schema %}
 {
