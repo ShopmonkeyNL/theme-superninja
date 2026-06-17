@@ -1314,6 +1314,7 @@ input {
 textarea::placeholder,
 input::placeholder {
   color: var(--color-input-text);
+  opacity: 0.3;
 }
 
 textarea:not(:placeholder-shown)::placeholder,
@@ -1445,6 +1446,11 @@ shopify-accelerated-checkout-cart {
 
 .icon-caret svg {
   transition: transform var(--animation-speed) var(--animation-easing);
+  color: var(--color-primary-button-background);
+}
+
+.icon-plus svg {
+  color: var(--color-primary-button-background);
 }
 
 .icon-caret--forward svg {
@@ -1457,10 +1463,11 @@ shopify-accelerated-checkout-cart {
 
 summary {
   display: flex;
+  gap: 24px;
   align-items: center;
   cursor: pointer;
   list-style: none;
-  padding-block: var(--padding-sm);
+  padding-block: var(--padding-lg);
 }
 
 summary:hover {
@@ -1469,8 +1476,8 @@ summary:hover {
 
 summary .svg-wrapper {
   margin-inline-start: auto;
-  height: var(--icon-size-xs);
-  width: var(--icon-size-xs);
+  height: var(--icon-size-sm);
+  aspect-ratio: 1;
   transition: transform var(--animation-speed) var(--animation-easing);
 }
 
@@ -3491,8 +3498,6 @@ slideshow-component[disabled="true"] slideshow-arrows {
 slideshow-arrows .slideshow-control {
   pointer-events: auto;
   opacity: 0;
-  min-height: var(--minimum-touch-target);
-  min-width: var(--minimum-touch-target);
   padding: 0 var(--padding-xs);
   color: var(--color-white);
 }
