@@ -38,7 +38,9 @@
           "blocks": {}
         }
       },
-      "block_order": ["text_p4zfyx"],
+      "block_order": [
+        "text_p4zfyx"
+      ],
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
@@ -273,7 +275,10 @@
                   "blocks": {}
                 }
               },
-              "block_order": ["text_PeGEL7", "text_PMKPgF"]
+              "block_order": [
+                "text_PeGEL7",
+                "text_PMKPgF"
+              ]
             },
             "group_VhqmAH": {
               "type": "group",
@@ -394,7 +399,10 @@
                       "blocks": {}
                     }
                   },
-                  "block_order": ["icon_wP4wVB", "text_pcB7Wb"]
+                  "block_order": [
+                    "icon_wP4wVB",
+                    "text_pcB7Wb"
+                  ]
                 },
                 "group_jzNbMc": {
                   "type": "group",
@@ -475,13 +483,22 @@
                       "blocks": {}
                     }
                   },
-                  "block_order": ["icon_ejWFG6", "text_qxgtzV"]
+                  "block_order": [
+                    "icon_ejWFG6",
+                    "text_qxgtzV"
+                  ]
                 }
               },
-              "block_order": ["group_78AhfC", "group_jzNbMc"]
+              "block_order": [
+                "group_78AhfC",
+                "group_jzNbMc"
+              ]
             }
           },
-          "block_order": ["group_6pLn4b", "group_VhqmAH"]
+          "block_order": [
+            "group_6pLn4b",
+            "group_VhqmAH"
+          ]
         },
         "contact_form_UwiCkQ": {
           "type": "contact-form",
@@ -515,7 +532,10 @@
           "block_order": []
         }
       },
-      "block_order": ["group_eTLYph", "contact_form_UwiCkQ"],
+      "block_order": [
+        "group_eTLYph",
+        "contact_form_UwiCkQ"
+      ],
       "name": "t:names.contact_form",
       "settings": {
         "content_direction": "row",
@@ -544,7 +564,202 @@
         "padding-block-start": 96,
         "padding-block-end": 96
       }
+    },
+    "section_faq_xNpyft": {
+      "type": "section-faq",
+      "blocks": {
+        "text_6xY34D": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h2>Frequently Asked questions</h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground-heading)",
+            "background": false,
+            "background_color": "#1c1c1c26",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "accordion_HyGcwr": {
+          "type": "accordion",
+          "name": "t:names.accordion",
+          "settings": {
+            "custom_faqs": true,
+            "icon": "caret",
+            "dividers": true,
+            "type_preset": "h4",
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "accordion_row_F8zPw3": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "Retourbeleid",
+                "open_by_default": true,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_CMT3UR": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Ons doel is dat elke klant volledig tevreden is met zijn aankoop. Als dit niet het geval is, laat het ons dan weten. We doen ons best om samen met jou tot een goede oplossing te komen.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#1c1c1c26",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_CMT3UR"
+              ]
+            },
+            "accordion_row_pa3DJw": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "Verzending",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_pdhB9x": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>We zullen je bestelling zo snel mogelijk verzenden. Zodra je bestelling is verzonden, ontvang je een e-mail met meer informatie. De levertijden zijn afhankelijk van je locatie.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#1c1c1c26",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_pdhB9x"
+              ]
+            },
+            "accordion_row_7xtwP7": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "Productie",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_LDYbPn": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Onze producten worden zowel lokaal als wereldwijd geproduceerd. We selecteren onze productiepartners zorgvuldig om ervoor te zorgen dat onze producten van hoge kwaliteit zijn en een eerlijke prijs hebben.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#1c1c1c26",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_LDYbPn"
+              ]
+            }
+          },
+          "block_order": [
+            "accordion_row_F8zPw3",
+            "accordion_row_pa3DJw",
+            "accordion_row_7xtwP7"
+          ]
+        }
+      },
+      "block_order": [
+        "text_6xY34D",
+        "accordion_HyGcwr"
+      ],
+      "name": "FAQ Section",
+      "settings": {
+        "padding_block_start_desktop": 0,
+        "padding_block_end_desktop": 96,
+        "padding_block_start_mobile": 0,
+        "padding_block_end_mobile": 48,
+        "content_direction": "row",
+        "content_vertical_mobile": true,
+        "content_gap": 80,
+        "content_alignment": "start"
+      }
     }
   },
-  "order": ["hero_hH46bj", "benefits_ticker_above_faq", "form"]
+  "order": [
+    "hero_hH46bj",
+    "benefits_ticker_above_faq",
+    "form",
+    "section_faq_xNpyft"
+  ]
 }
