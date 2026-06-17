@@ -352,6 +352,20 @@
         "content": "t:content.fonts"
       },
       {
+        "type": "header",
+        "content": "Custom fonts"
+      },
+      {
+        "type": "checkbox",
+        "id": "custom_fonts",
+        "label": "Enable custom fonts",
+        "info": "Headings: PT Sans Narrow Bold, Body: PT Sans, Subtitle: BANGERS"
+      },
+      {
+        "type": "header",
+        "content": "Basic fonts"
+      },
+      {
         "type": "font_picker",
         "id": "type_body_font",
         "default": "work_sans_n4",
@@ -396,8 +410,14 @@
         "info": "Used for headings, accent and buttons when Typekit is enabled.",
         "options": [
           { "value": "bahnschrift", "label": "Bahnschrift" },
-          { "value": "bahnschrift-condensed", "label": "Bahnschrift Condensed" },
-          { "value": "bahnschrift-semicondensed", "label": "Bahnschrift SemiCondensed" }
+          {
+            "value": "bahnschrift-condensed",
+            "label": "Bahnschrift Condensed"
+          },
+          {
+            "value": "bahnschrift-semicondensed",
+            "label": "Bahnschrift SemiCondensed"
+          }
         ],
         "default": "bahnschrift"
       },
