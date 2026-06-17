@@ -15,6 +15,7 @@
   @param {number} [thumbnail_radius] - The border radius for thumbnails in pixels
   @param {string} [class] - Additional classes to apply to the controls
   @param {boolean} [secondary] - Whether the controls are secondary
+  @param {number} [bottom_position] - Determines how high the slideshow controls should be displayed
 
   @example
   {%- render 'slideshow-controls', style: 'dots', item_count: 10 -%}
@@ -66,9 +67,7 @@
     {% if class %}
       class="{{ class }}"
     {% endif %}
-    {% if thumbnail_radius %}
-      style="--thumbnail-radius: {{ thumbnail_radius }}px;"
-    {% endif %}
+    style="--bottom-position: {{ bottom_position }}px;{% if thumbnail_radius %} --thumbnail-radius: {{ thumbnail_radius }}px;{% endif %}"
   >
     {% if show_arrows_separately == false and show_arrows and pagination_position != 'left' %}
       <div class="slideshow-controls__arrows">
@@ -207,7 +206,7 @@
 
     &[controls-on-media] {
       position: absolute;
-      bottom: 0;
+      bottom: var(--bottom-position);
     }
   }
 

@@ -3498,8 +3498,6 @@ slideshow-component[disabled="true"] slideshow-arrows {
 slideshow-arrows .slideshow-control {
   pointer-events: auto;
   opacity: 0;
-  min-height: var(--minimum-touch-target);
-  min-width: var(--minimum-touch-target);
   padding: 0 var(--padding-xs);
   color: var(--color-white);
 }
