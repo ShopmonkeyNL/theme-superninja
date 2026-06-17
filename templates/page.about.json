@@ -73,6 +73,72 @@
         "padding-block-end": 40
       }
     },
+    "benefits_ticker_JcVb73": {
+      "type": "benefits_ticker",
+      "blocks": {
+        "benefit_item_7BwAKy": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "trending_up",
+            "icon_asset": "icon-check-border-orange.svg",
+            "text": "<p>Outperforms common<br>DIY solutions</p>"
+          }
+        },
+        "benefit_item_CLXN8e": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "trending_up",
+            "icon_asset": "icon-clock-border-orange.svg",
+            "text": "<p>Safe around food,<br>kids & pets</p>"
+          }
+        },
+        "benefit_item_zkTMzT": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "trending_up",
+            "icon_asset": "icon-kid-border-orange.svg",
+            "text": "<p>Set-and-forget,<br>no maintenance</p>"
+          }
+        },
+        "benefit_item_cpFhqr": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "trending_up",
+            "icon_asset": "icon-maintenance-border-orange.svg",
+            "text": "<p>Visible results<br/>within 24 hours</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_item_7BwAKy",
+        "benefit_item_CLXN8e",
+        "benefit_item_zkTMzT",
+        "benefit_item_cpFhqr"
+      ],
+      "settings": {
+        "background_color": "#ffffff",
+        "text_color": "#ff5000",
+        "border_color": "#ff5000",
+        "divider_opacity": 3,
+        "rotate_deg": 1,
+        "invert_rotation": false,
+        "scale": 110,
+        "padding_y": 16,
+        "speed_seconds": 40,
+        "pause_on_hover": false,
+        "duplicate_count": "3",
+        "wrap_background_color": "#f0f2f1",
+        "section_padding_top": 48,
+        "section_padding_bottom": 48,
+        "bar_background_type": "solid",
+        "bar_background_color": "#ffffff",
+        "bar_gradient_start": "#43c241",
+        "bar_gradient_end": "#319130",
+        "bar_background_gradient": "",
+        "bar_border_color": "#ff5000",
+        "bar_border_width": 2
+      }
+    },
     "hero_cta": {
       "type": "hero-cta",
       "blocks": {
@@ -130,6 +196,310 @@
         "box_v_align": "middle"
       }
     },
+    "slideshow_CwXfjE": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_ytVwej": {
+          "type": "_slide",
+          "settings": {
+            "media_type_1": "image",
+            "image_1": "shopify://shop_images/Frame_2087326838_1.jpg",
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "inherit_color_scheme": true,
+            "color_scheme": "scheme-58084d4c-a86e-4d0a-855e-a0966e5043f7",
+            "toggle_overlay": true,
+            "overlay_color": "#F6EDE9A3",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "padding-block-start": 96,
+            "padding-block-end": 64,
+            "padding-inline-start": 48,
+            "padding-inline-end": 48
+          },
+          "blocks": {
+            "group_Q3j9PL": {
+              "type": "group",
+              "name": "t:names.group",
+              "settings": {
+                "content_direction": "row",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "center",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 12,
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "scheme-58084d4c-a86e-4d0a-855e-a0966e5043f7",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#1C1C1C26",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "group_eXQcEK": {
+                  "type": "group",
+                  "name": "t:names.group",
+                  "settings": {
+                    "content_direction": "row",
+                    "vertical_on_mobile": false,
+                    "horizontal_alignment": "center",
+                    "vertical_alignment": "center",
+                    "align_baseline": false,
+                    "horizontal_alignment_flex_direction_column": "flex-start",
+                    "vertical_alignment_flex_direction_column": "center",
+                    "gap": 0,
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 100,
+                    "height": "fit",
+                    "custom_height": 100,
+                    "inherit_color_scheme": true,
+                    "color_scheme": "",
+                    "background_media": "none",
+                    "video_position": "cover",
+                    "background_image_position": "cover",
+                    "border": "none",
+                    "border_width": 1,
+                    "border_opacity": 100,
+                    "border_radius": 0,
+                    "toggle_overlay": false,
+                    "overlay_color": "#1C1C1C26",
+                    "overlay_style": "solid",
+                    "gradient_direction": "to top",
+                    "link": "",
+                    "open_in_new_tab": false,
+                    "placeholder": "",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {
+                    "icon_9ijzzw": {
+                      "type": "icon",
+                      "name": "t:names.icon",
+                      "settings": {
+                        "icon": "price_tag",
+                        "image_upload": "shopify://shop_images/star_24dp_FF5000_FILL1_wght500_GRAD0_opsz24.svg",
+                        "width": 24,
+                        "link": "",
+                        "open_in_new_tab": false
+                      },
+                      "blocks": {}
+                    },
+                    "icon_pQG3aJ": {
+                      "type": "icon",
+                      "name": "t:names.icon",
+                      "settings": {
+                        "icon": "price_tag",
+                        "image_upload": "shopify://shop_images/star_24dp_FF5000_FILL1_wght500_GRAD0_opsz24.svg",
+                        "width": 24,
+                        "link": "",
+                        "open_in_new_tab": false
+                      },
+                      "blocks": {}
+                    },
+                    "icon_XzMBJ4": {
+                      "type": "icon",
+                      "name": "t:names.icon",
+                      "settings": {
+                        "icon": "price_tag",
+                        "image_upload": "shopify://shop_images/star_24dp_FF5000_FILL1_wght500_GRAD0_opsz24.svg",
+                        "width": 24,
+                        "link": "",
+                        "open_in_new_tab": false
+                      },
+                      "blocks": {}
+                    },
+                    "icon_pHxRew": {
+                      "type": "icon",
+                      "name": "t:names.icon",
+                      "settings": {
+                        "icon": "price_tag",
+                        "image_upload": "shopify://shop_images/star_24dp_FF5000_FILL1_wght500_GRAD0_opsz24.svg",
+                        "width": 24,
+                        "link": "",
+                        "open_in_new_tab": false
+                      },
+                      "blocks": {}
+                    },
+                    "icon_EJQCcE": {
+                      "type": "icon",
+                      "name": "t:names.icon",
+                      "settings": {
+                        "icon": "price_tag",
+                        "image_upload": "shopify://shop_images/star_24dp_FF5000_FILL1_wght500_GRAD0_opsz24.svg",
+                        "width": 24,
+                        "link": "",
+                        "open_in_new_tab": false
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "icon_9ijzzw",
+                    "icon_pQG3aJ",
+                    "icon_XzMBJ4",
+                    "icon_pHxRew",
+                    "icon_EJQCcE"
+                  ]
+                },
+                "text_bVyGji": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Trusted by <strong>1000+</strong> happy customers</p>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "paragraph",
+                    "font": "var(--font-body--family)",
+                    "font_size": "0.75rem",
+                    "line_height": "normal",
+                    "letter_spacing": "tight",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#1C1C1C26",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "group_eXQcEK",
+                "text_bVyGji"
+              ]
+            },
+            "text_zm8kJi": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Super Ninja: The <br/>NaturalSolution to Pests.</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "h2",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground-heading)",
+                "background": false,
+                "background_color": "#1C1C1C26",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_yHPgme": {
+              "type": "text",
+              "settings": {
+                "text": "<p>We believe pest control should be safe, effective, and responsible - for people, pets, and plants.</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#1C1C1C26",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 20,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "button_GqpFe6": {
+              "type": "button",
+              "settings": {
+                "label": "Find your ninja",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style_class": "button",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "group_Q3j9PL",
+            "text_zm8kJi",
+            "text_yHPgme",
+            "button_GqpFe6"
+          ]
+        }
+      },
+      "block_order": [
+        "slide_ytVwej"
+      ],
+      "name": "t:names.slideshow_full_frame",
+      "settings": {
+        "display_mode": "full_frame",
+        "section_width": "full-width",
+        "full_frame_on_mobile": false,
+        "slideshow_gap": 12,
+        "corner_radius": 0,
+        "slide_height": "medium",
+        "content_position": "on-media",
+        "color_scheme": "",
+        "icons_style": "arrows_large",
+        "icons_shape": "none",
+        "slideshow_controls_style": "dots",
+        "autoplay": false,
+        "autoplay_speed": 4,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
     "section_UUHxbQ": {
       "type": "section",
       "blocks": {
@@ -137,7 +507,7 @@
           "type": "image",
           "name": "t:names.image",
           "settings": {
-            "image": "shopify://shop_images/image-1.png_v_19646990789231373141779801110.png",
+            "image": "shopify://shop_images/image-1_4ae02005-ff89-45ee-b0f5-8fa1052e10f3.png",
             "link": "",
             "image_ratio": "adapt",
             "width": "fill",
@@ -183,7 +553,7 @@
             "border_opacity": 100,
             "border_radius": 0,
             "toggle_overlay": false,
-            "overlay_color": "#1C1C1C26",
+            "overlay_color": "#1c1c1c26",
             "overlay_style": "solid",
             "gradient_direction": "to top",
             "link": "",
@@ -203,7 +573,7 @@
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "h3",
+                "type_preset": "h2",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
@@ -212,7 +582,7 @@
                 "wrap": "pretty",
                 "color": "var(--color-foreground-heading)",
                 "background": false,
-                "background_color": "#1C1C1C26",
+                "background_color": "#1c1c1c26",
                 "corner_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
@@ -237,7 +607,7 @@
                 "wrap": "pretty",
                 "color": "var(--color-foreground)",
                 "background": false,
-                "background_color": "#1C1C1C26",
+                "background_color": "#1c1c1c26",
                 "corner_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
@@ -279,11 +649,30 @@
         "border_opacity": 100,
         "border_radius": 0,
         "toggle_overlay": false,
-        "overlay_color": "#1C1C1C26",
+        "overlay_color": "#1c1c1c26",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 40,
+        "padding-block-start": 96,
         "padding-block-end": 40
+      }
+    },
+    "about_image_text": {
+      "type": "about-image-text",
+      "disabled": true,
+      "settings": {
+        "default_image_asset": "image-1.png",
+        "padding_top": 70,
+        "padding_bottom": 200,
+        "image_position": "left",
+        "title": "Born from Frustration, Driven by Results",
+        "title_font_size_desktop": 50,
+        "title_font_size_mobile": 36,
+        "subtitle": "Super Ninja was created out of a simple frustration: traditional pest control solutions were either ineffective, toxic, or both.",
+        "subtitle_font_size_desktop": 24,
+        "subtitle_font_size_mobile": 18,
+        "body": "<p>As eco-conscious consumers ourselves, we knew there had to be a better way.</p><p>Our mission is to combine innovative design with natural ingredients to create products that deliver quick, visible results while remaining safe for families, pets, and the environment.</p>",
+        "body_font_size_desktop": 20,
+        "body_font_size_mobile": 16
       }
     },
     "section_7NkwHn": {
@@ -316,7 +705,7 @@
             "border_opacity": 100,
             "border_radius": 0,
             "toggle_overlay": false,
-            "overlay_color": "#1C1C1C26",
+            "overlay_color": "#1c1c1c26",
             "overlay_style": "solid",
             "gradient_direction": "to top",
             "link": "",
@@ -336,7 +725,7 @@
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "h3",
+                "type_preset": "h2",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
@@ -345,7 +734,7 @@
                 "wrap": "pretty",
                 "color": "var(--color-foreground-heading)",
                 "background": false,
-                "background_color": "#1C1C1C26",
+                "background_color": "#1c1c1c26",
                 "corner_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
@@ -370,7 +759,7 @@
                 "wrap": "pretty",
                 "color": "var(--color-foreground)",
                 "background": false,
-                "background_color": "#1C1C1C26",
+                "background_color": "#1c1c1c26",
                 "corner_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
@@ -389,7 +778,7 @@
           "type": "image",
           "name": "t:names.image",
           "settings": {
-            "image": "shopify://shop_images/image-2.png_v_144684592701058337291779801110.png",
+            "image": "shopify://shop_images/image-2.png",
             "link": "",
             "image_ratio": "adapt",
             "width": "fill",
@@ -435,30 +824,11 @@
         "border_opacity": 100,
         "border_radius": 0,
         "toggle_overlay": false,
-        "overlay_color": "#1C1C1C26",
+        "overlay_color": "#1c1c1c26",
         "overlay_style": "solid",
         "gradient_direction": "to top",
         "padding-block-start": 40,
-        "padding-block-end": 40
-      }
-    },
-    "about_image_text": {
-      "type": "about-image-text",
-      "disabled": true,
-      "settings": {
-        "default_image_asset": "image-1.png",
-        "padding_top": 70,
-        "padding_bottom": 200,
-        "image_position": "left",
-        "title": "Born from Frustration, Driven by Results",
-        "title_font_size_desktop": 50,
-        "title_font_size_mobile": 36,
-        "subtitle": "Super Ninja was created out of a simple frustration: traditional pest control solutions were either ineffective, toxic, or both.",
-        "subtitle_font_size_desktop": 24,
-        "subtitle_font_size_mobile": 18,
-        "body": "<p>As eco-conscious consumers ourselves, we knew there had to be a better way.</p><p>Our mission is to combine innovative design with natural ingredients to create products that deliver quick, visible results while remaining safe for families, pets, and the environment.</p>",
-        "body_font_size_desktop": 20,
-        "body_font_size_mobile": 16
+        "padding-block-end": 96
       }
     },
     "about_image_text_2": {
@@ -491,7 +861,7 @@
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
-            "type_preset": "rte",
+            "type_preset": "h2",
             "font": "var(--font-body--family)",
             "font_size": "1rem",
             "line_height": "normal",
@@ -500,7 +870,7 @@
             "wrap": "pretty",
             "color": "var(--color-foreground)",
             "background": false,
-            "background_color": "#1C1C1C26",
+            "background_color": "#1c1c1c26",
             "corner_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
@@ -520,7 +890,7 @@
             "align_baseline": false,
             "horizontal_alignment_flex_direction_column": "flex-start",
             "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
+            "gap": 24,
             "width": "fill",
             "custom_width": 100,
             "width_mobile": "fill",
@@ -537,7 +907,7 @@
             "border_opacity": 100,
             "border_radius": 0,
             "toggle_overlay": false,
-            "overlay_color": "#1C1C1C26",
+            "overlay_color": "#1c1c1c26",
             "overlay_style": "solid",
             "gradient_direction": "to top",
             "link": "",
@@ -560,7 +930,7 @@
                 "align_baseline": false,
                 "horizontal_alignment_flex_direction_column": "flex-start",
                 "vertical_alignment_flex_direction_column": "center",
-                "gap": 12,
+                "gap": 8,
                 "width": "fill",
                 "custom_width": 100,
                 "width_mobile": "fill",
@@ -577,7 +947,7 @@
                 "border_opacity": 100,
                 "border_radius": 0,
                 "toggle_overlay": false,
-                "overlay_color": "#1C1C1C26",
+                "overlay_color": "#1c1c1c26",
                 "overlay_style": "solid",
                 "gradient_direction": "to top",
                 "link": "",
@@ -604,28 +974,28 @@
                     "custom_width": 100,
                     "width_mobile": "fill",
                     "custom_width_mobile": 100,
-                    "height": "fit",
+                    "height": "fill",
                     "custom_height": 100,
-                    "inherit_color_scheme": true,
-                    "color_scheme": "",
+                    "inherit_color_scheme": false,
+                    "color_scheme": "scheme-2",
                     "background_media": "none",
                     "video_position": "cover",
                     "background_image_position": "cover",
                     "border": "none",
                     "border_width": 1,
                     "border_opacity": 100,
-                    "border_radius": 0,
+                    "border_radius": 4,
                     "toggle_overlay": false,
-                    "overlay_color": "#1C1C1C26",
+                    "overlay_color": "#1c1c1c26",
                     "overlay_style": "solid",
                     "gradient_direction": "to top",
                     "link": "",
                     "open_in_new_tab": false,
                     "placeholder": "",
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
+                    "padding-block-start": 32,
+                    "padding-block-end": 32,
+                    "padding-inline-start": 16,
+                    "padding-inline-end": 16
                   },
                   "blocks": {
                     "icon_DAJKVw": {
@@ -666,7 +1036,7 @@
                         "border_opacity": 100,
                         "border_radius": 0,
                         "toggle_overlay": false,
-                        "overlay_color": "#1C1C1C26",
+                        "overlay_color": "#1c1c1c26",
                         "overlay_style": "solid",
                         "gradient_direction": "to top",
                         "link": "",
@@ -694,7 +1064,7 @@
                             "wrap": "pretty",
                             "color": "var(--color-foreground)",
                             "background": false,
-                            "background_color": "#1C1C1C26",
+                            "background_color": "#1c1c1c26",
                             "corner_radius": 0,
                             "padding-block-start": 0,
                             "padding-block-end": 0,
@@ -706,7 +1076,7 @@
                         "text_kqWwKG": {
                           "type": "text",
                           "settings": {
-                            "text": "<p> We prioritize performance, and our products deliver quick results.</p>",
+                            "text": "<p> We prioritize performance, and our products <br/>deliver quick results.</p>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "center",
@@ -719,7 +1089,7 @@
                             "wrap": "pretty",
                             "color": "var(--color-foreground)",
                             "background": false,
-                            "background_color": "#1C1C1C26",
+                            "background_color": "#1c1c1c26",
                             "corner_radius": 0,
                             "padding-block-start": 0,
                             "padding-block-end": 0,
@@ -755,28 +1125,28 @@
                     "custom_width": 100,
                     "width_mobile": "fill",
                     "custom_width_mobile": 100,
-                    "height": "fit",
+                    "height": "fill",
                     "custom_height": 100,
-                    "inherit_color_scheme": true,
-                    "color_scheme": "",
+                    "inherit_color_scheme": false,
+                    "color_scheme": "scheme-2",
                     "background_media": "none",
                     "video_position": "cover",
                     "background_image_position": "cover",
                     "border": "none",
                     "border_width": 1,
                     "border_opacity": 100,
-                    "border_radius": 0,
+                    "border_radius": 4,
                     "toggle_overlay": false,
-                    "overlay_color": "#1C1C1C26",
+                    "overlay_color": "#1c1c1c26",
                     "overlay_style": "solid",
                     "gradient_direction": "to top",
                     "link": "",
                     "open_in_new_tab": false,
                     "placeholder": "",
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
+                    "padding-block-start": 32,
+                    "padding-block-end": 32,
+                    "padding-inline-start": 16,
+                    "padding-inline-end": 16
                   },
                   "blocks": {
                     "icon_RMaj3Y": {
@@ -817,7 +1187,7 @@
                         "border_opacity": 100,
                         "border_radius": 0,
                         "toggle_overlay": false,
-                        "overlay_color": "#1C1C1C26",
+                        "overlay_color": "#1c1c1c26",
                         "overlay_style": "solid",
                         "gradient_direction": "to top",
                         "link": "",
@@ -845,7 +1215,7 @@
                             "wrap": "pretty",
                             "color": "var(--color-foreground)",
                             "background": false,
-                            "background_color": "#1C1C1C26",
+                            "background_color": "#1c1c1c26",
                             "corner_radius": 0,
                             "padding-block-start": 0,
                             "padding-block-end": 0,
@@ -857,7 +1227,7 @@
                         "text_LyqyTV": {
                           "type": "text",
                           "settings": {
-                            "text": "<p>Super Ninja products use safe, eco-friendly ingredients for people, pets, and plants.</p>",
+                            "text": "<p>Super Ninja products use safe, eco-friendly ingredients <br/>for people, pets, and plants.</p>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "center",
@@ -870,7 +1240,7 @@
                             "wrap": "pretty",
                             "color": "var(--color-foreground)",
                             "background": false,
-                            "background_color": "#1C1C1C26",
+                            "background_color": "#1c1c1c26",
                             "corner_radius": 0,
                             "padding-block-start": 0,
                             "padding-block-end": 0,
@@ -925,7 +1295,7 @@
                 "border_opacity": 100,
                 "border_radius": 0,
                 "toggle_overlay": false,
-                "overlay_color": "#1C1C1C26",
+                "overlay_color": "#1c1c1c26",
                 "overlay_style": "solid",
                 "gradient_direction": "to top",
                 "link": "",
@@ -952,28 +1322,28 @@
                     "custom_width": 100,
                     "width_mobile": "fill",
                     "custom_width_mobile": 100,
-                    "height": "fit",
+                    "height": "fill",
                     "custom_height": 100,
-                    "inherit_color_scheme": true,
-                    "color_scheme": "",
+                    "inherit_color_scheme": false,
+                    "color_scheme": "scheme-2",
                     "background_media": "none",
                     "video_position": "cover",
                     "background_image_position": "cover",
                     "border": "none",
                     "border_width": 1,
                     "border_opacity": 100,
-                    "border_radius": 0,
+                    "border_radius": 4,
                     "toggle_overlay": false,
-                    "overlay_color": "#1C1C1C26",
+                    "overlay_color": "#1c1c1c26",
                     "overlay_style": "solid",
                     "gradient_direction": "to top",
                     "link": "",
                     "open_in_new_tab": false,
                     "placeholder": "",
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
+                    "padding-block-start": 32,
+                    "padding-block-end": 32,
+                    "padding-inline-start": 16,
+                    "padding-inline-end": 16
                   },
                   "blocks": {
                     "icon_JQP9MM": {
@@ -1014,7 +1384,7 @@
                         "border_opacity": 100,
                         "border_radius": 0,
                         "toggle_overlay": false,
-                        "overlay_color": "#1C1C1C26",
+                        "overlay_color": "#1c1c1c26",
                         "overlay_style": "solid",
                         "gradient_direction": "to top",
                         "link": "",
@@ -1042,7 +1412,7 @@
                             "wrap": "pretty",
                             "color": "var(--color-foreground)",
                             "background": false,
-                            "background_color": "#1C1C1C26",
+                            "background_color": "#1c1c1c26",
                             "corner_radius": 0,
                             "padding-block-start": 0,
                             "padding-block-end": 0,
@@ -1054,7 +1424,7 @@
                         "text_kaDKhk": {
                           "type": "text",
                           "settings": {
-                            "text": "<p>Our packaging is recycled, helping reduce our environmental footprint.</p>",
+                            "text": "<p>Our packaging is recycled, helping reduce<br/>our environmental footprint.</p>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "center",
@@ -1067,7 +1437,7 @@
                             "wrap": "pretty",
                             "color": "var(--color-foreground)",
                             "background": false,
-                            "background_color": "#1C1C1C26",
+                            "background_color": "#1c1c1c26",
                             "corner_radius": 0,
                             "padding-block-start": 0,
                             "padding-block-end": 0,
@@ -1103,28 +1473,28 @@
                     "custom_width": 100,
                     "width_mobile": "fill",
                     "custom_width_mobile": 100,
-                    "height": "fit",
+                    "height": "fill",
                     "custom_height": 100,
-                    "inherit_color_scheme": true,
-                    "color_scheme": "",
+                    "inherit_color_scheme": false,
+                    "color_scheme": "scheme-2",
                     "background_media": "none",
                     "video_position": "cover",
                     "background_image_position": "cover",
                     "border": "none",
                     "border_width": 1,
                     "border_opacity": 100,
-                    "border_radius": 0,
+                    "border_radius": 4,
                     "toggle_overlay": false,
-                    "overlay_color": "#1C1C1C26",
+                    "overlay_color": "#1c1c1c26",
                     "overlay_style": "solid",
                     "gradient_direction": "to top",
                     "link": "",
                     "open_in_new_tab": false,
                     "placeholder": "",
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
+                    "padding-block-start": 32,
+                    "padding-block-end": 32,
+                    "padding-inline-start": 16,
+                    "padding-inline-end": 16
                   },
                   "blocks": {
                     "icon_UPW6Eq": {
@@ -1165,7 +1535,7 @@
                         "border_opacity": 100,
                         "border_radius": 0,
                         "toggle_overlay": false,
-                        "overlay_color": "#1C1C1C26",
+                        "overlay_color": "#1c1c1c26",
                         "overlay_style": "solid",
                         "gradient_direction": "to top",
                         "link": "",
@@ -1193,7 +1563,7 @@
                             "wrap": "pretty",
                             "color": "var(--color-foreground)",
                             "background": false,
-                            "background_color": "#1C1C1C26",
+                            "background_color": "#1c1c1c26",
                             "corner_radius": 0,
                             "padding-block-start": 0,
                             "padding-block-end": 0,
@@ -1205,7 +1575,7 @@
                         "text_YgQQ6b": {
                           "type": "text",
                           "settings": {
-                            "text": "<p>Our solutions are ready-to-use; just place them and forget about cleaning.</p>",
+                            "text": "<p>Our solutions are ready-to-use; just place them <br/>and forget about cleaning.</p>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "center",
@@ -1218,7 +1588,7 @@
                             "wrap": "pretty",
                             "color": "var(--color-foreground)",
                             "background": false,
-                            "background_color": "#1C1C1C26",
+                            "background_color": "#1c1c1c26",
                             "corner_radius": 0,
                             "padding-block-start": 0,
                             "padding-block-end": 0,
@@ -1278,11 +1648,11 @@
         "border_opacity": 100,
         "border_radius": 0,
         "toggle_overlay": false,
-        "overlay_color": "#1C1C1C26",
+        "overlay_color": "#1c1c1c26",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-start": 96,
+        "padding-block-end": 96
       }
     },
     "about_why_trust_us": {
@@ -1405,7 +1775,7 @@
             "border_opacity": 100,
             "border_radius": 0,
             "toggle_overlay": false,
-            "overlay_color": "#1C1C1C26",
+            "overlay_color": "#1c1c1c26",
             "overlay_style": "solid",
             "gradient_direction": "to top",
             "link": "",
@@ -1433,7 +1803,7 @@
                 "wrap": "pretty",
                 "color": "var(--color-foreground-heading)",
                 "background": false,
-                "background_color": "#1C1C1C26",
+                "background_color": "#1c1c1c26",
                 "corner_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
@@ -1459,7 +1829,7 @@
                 "wrap": "pretty",
                 "color": "var(--color-foreground)",
                 "background": false,
-                "background_color": "#1C1C1C26",
+                "background_color": "#1c1c1c26",
                 "corner_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
@@ -1501,11 +1871,11 @@
         "border_opacity": 100,
         "border_radius": 0,
         "toggle_overlay": false,
-        "overlay_color": "#1C1C1C26",
+        "overlay_color": "#1c1c1c26",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 64,
-        "padding-block-end": 64
+        "padding-block-start": 96,
+        "padding-block-end": 96
       }
     },
     "ally_home_pdp": {
@@ -1746,10 +2116,12 @@
   },
   "order": [
     "hero_NMhDP3",
+    "benefits_ticker_JcVb73",
     "hero_cta",
+    "slideshow_CwXfjE",
     "section_UUHxbQ",
-    "section_7NkwHn",
     "about_image_text",
+    "section_7NkwHn",
     "about_image_text_2",
     "section_Gmy67i",
     "about_why_trust_us",
