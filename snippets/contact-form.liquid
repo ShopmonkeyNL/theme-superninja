@@ -11,69 +11,24 @@
 {%- enddoc -%}
 
 <div
-  class="
+  class='
     contact-form
     spacing-style size-style
     {% if settings.inherit_color_scheme == false %}color-{{ settings.color_scheme }}{% endif %}
-  "
-  style="
+  '
+  style='
     {% render 'spacing-style', settings: settings %}
     {% render 'size-style', settings: settings %}
-  "
+  '
   {{ block.shopify_attributes }}
 >
   {% assign form_id = block.id | default: section.id | prepend: 'ContactForm-' %}
-  {% assign contact_bg_desktop = 'bg-about.png' | asset_url %}
-  {% assign contact_bg_mob = 'bg-about-mob.png' | asset_url %}
 
-  <div class="contact-form__container">
   {%- form 'contact', id: form_id, class: 'contact-form__form' -%}
-    <div class="contact-form__panel">
-      <h2 class="contact-form__title">GET IN TOUCH</h2>
-      <p class="contact-form__description">
-        Please fill out the form below, and a member of our team will get back to you as soon as possible.
-      </p>
-
-      <div class="contact-form__contact-links">
-        <a class="contact-form__contact-link" href="mailto:support@superninja.eco">
-          <span class="contact-form__contact-icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <mask id="contact-mail-mask" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
-                <path d="M0 0H24V24H0V0Z" fill="white"/>
-              </mask>
-              <g mask="url(#contact-mail-mask)">
-                <path d="M23.2969 20.4375H0.703125V3.5625H23.2969V20.4375Z" stroke="#FF5000" stroke-width="1.5" stroke-miterlimit="10"/>
-                <path d="M0.703125 3.5625L12 14.8125L23.2969 3.5625" stroke="#FF5000" stroke-width="1.5" stroke-miterlimit="10"/>
-              </g>
-            </svg>
-          </span>
-          <span>support@superninja.eco</span>
-        </a>
-        <a class="contact-form__contact-link" href="tel:+11234567890">
-          <span class="contact-form__contact-icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g clip-path="url(#contact-phone-clip)">
-                <path d="M13.6875 0.9375C18.8565 0.9375 23.0625 5.14345 23.0625 10.3125" stroke="#FF5000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M13.6875 4.6875C16.7893 4.6875 19.3125 7.21069 19.3125 10.3125" stroke="#FF5000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M13.6875 8.4375C14.723 8.4375 15.5625 9.27698 15.5625 10.3125" stroke="#FF5000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M8.61776 8.75313L6.8592 10.5117C7.73815 11.6608 8.77254 12.8854 9.94357 14.0564C11.114 15.2269 12.3379 16.2608 13.4886 17.1406L15.2469 15.3823C15.9791 14.6501 17.1663 14.6501 17.8985 15.3823L21.876 19.3598L19.8873 21.3485L19.2695 21.9663C18.0244 23.2114 16.0906 23.4158 14.6009 22.4771C12.6377 21.2398 9.86304 19.2792 7.29195 16.7081C4.72085 14.1371 2.76031 11.3624 1.52299 9.39912C0.58418 7.90948 0.788649 5.9756 2.03374 4.73055L2.65156 4.11274L4.64027 2.12402L8.61776 6.10151C9.34999 6.8337 9.34999 8.0209 8.61776 8.75313Z" stroke="#FF5000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-              </g>
-              <defs>
-                <clipPath id="contact-phone-clip">
-                  <rect width="24" height="24" fill="white"/>
-                </clipPath>
-              </defs>
-            </svg>
-          </span>
-          <span>+1 (123) 456-7890</span>
-        </a>
-      </div>
-    </div>
-
     {%- if form.errors -%}
       <div
-        class="contact-form__error"
-        tabindex="-1"
+        class='contact-form__error'
+        tabindex='-1'
         autofocus
       >
         {{- 'icon-error.svg' | inline_asset_content -}}
@@ -85,8 +40,8 @@
 
     {%- if form.posted_successfully? -%}
       <div
-        class="contact-form__success"
-        tabindex="-1"
+        class='contact-form__success'
+        tabindex='-1'
         autofocus
       >
         {{- 'icon-checkmark.svg' | inline_asset_content -}}
@@ -94,357 +49,159 @@
       </div>
     {%- endif -%}
 
-    <div class="contact-form__form-row">
+    <div class='contact-form__field'>
       <label
-        class="contact-form__label"
-        for="{{ form_id }}-name"
+        class='contact-form__label'
+        for='{{ form_id }}-name'
       >
-        FULL NAME
+        <h5>FULL NAME</h5>
       </label>
       <input
-        type="text"
-        id="{{ form_id }}-name"
-        class="contact-form__input"
-        autocomplete="name"
-        name="contact[name]"
-        value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
-        placeholder="John Smith"
+        type='text'
+        id='{{ form_id }}-name'
+        class='contact-form__input'
+        autocomplete='name'
+        name='contact[name]'
+        value='{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}'
+        placeholder='John Smith'
       >
     </div>
-    <div class="contact-form__form-row">
+
+    <div class='contact-form__field'>
       <label
-        class="contact-form__label"
-        for="{{ form_id }}-email"
+        class='contact-form__label'
+        for='{{ form_id }}-email'
       >
-        EMAIL ADDRESS
+        <h5>EMAIL ADDRESS</h5>
       </label>
       <input
-        type="email"
-        id="{{ form_id }}-email"
-        class="contact-form__input"
-        autocomplete="email"
-        name="contact[email]"
-        spellcheck="false"
-        autocapitalize="off"
-        value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
-        aria-required="true"
+        type='email'
+        id='{{ form_id }}-email'
+        class='contact-form__input'
+        autocomplete='email'
+        name='contact[email]'
+        spellcheck='false'
+        autocapitalize='off'
+        value='{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}'
+        aria-required='true'
         {% if form.errors contains 'email' %}
-          aria-invalid="true"
-          aria-describedby="{{ form_id }}-email-error"
+          aria-invalid='true'
+          aria-describedby='{{ form_id }}-email-error'
         {% endif %}
-        placeholder="john@example.com"
+        placeholder='john@example.com'
       >
     </div>
 
-    <div class="contact-form__form-row contact-form__form-row--single">
-      <label class="contact-form__label" for="{{ form_id }}-purchase-source">WHERE DID YOU MAKE THIS PURCHASE?</label>
-      <input
-        type="text"
-        id="{{ form_id }}-purchase-source"
-        class="contact-form__input"
-        name="contact[Purchase source]"
-        placeholder="Where did you make this purchase?"
-      >
-    </div>
-
-    <div class="contact-form__form-row">
-      <label class="contact-form__label" for="{{ form_id }}-country">COUNTRY</label>
-      <input
-        type="text"
-        id="{{ form_id }}-country"
-        class="contact-form__input"
-        name="contact[Country]"
-        placeholder="Germany"
-      >
-    </div>
-
-    <div class="contact-form__form-row">
-      <label class="contact-form__label" for="{{ form_id }}-order-number">ORDER NUMBER</label>
-      <input
-        type="text"
-        id="{{ form_id }}-order-number"
-        class="contact-form__input"
-        name="contact[Order number]"
-        placeholder="1234567890"
-      >
-    </div>
-
-    <div class="contact-form__form-row contact-form__form-row--single">
+    <div class='contact-form__field contact-form__form--where'>
       <label
-        class="contact-form__label"
-        for="{{ form_id }}-body"
+        class='contact-form__label'
+        for='{{ form_id }}-purchase-source'
       >
-        MESSAGE
+        <h5>WHERE DID YOU MAKE THIS PURCHASE?</h5>
+      </label>
+      <input
+        type='text'
+        id='{{ form_id }}-purchase-source'
+        class='contact-form__input'
+        name='contact[Purchase source]'
+        placeholder='Where did you make this purchase?'
+      >
+    </div>
+
+    <div class='contact-form__field'>
+      <label
+        class='contact-form__label'
+        for='{{ form_id }}-country'
+      >
+        <h5>COUNTRY</h5>
+      </label>
+      <input
+        type='text'
+        id='{{ form_id }}-country'
+        class='contact-form__input'
+        name='contact[Country]'
+        placeholder='Germany'
+      >
+    </div>
+
+    <div class='contact-form__field'>
+      <label
+        class='contact-form__label'
+        for='{{ form_id }}-order-number'
+      >
+        <h5>ORDER NUMBER</h5>
+      </label>
+      <input
+        type='text'
+        id='{{ form_id }}-order-number'
+        class='contact-form__input'
+        name='contact[Order number]'
+        placeholder='1234567890'
+      >
+    </div>
+
+    <div class='contact-form__field contact-form__form--message'>
+      <label
+        class='contact-form__label'
+        for='{{ form_id }}-body'
+      >
+        <h5>MESSAGE</h5>
       </label>
       <textarea
-        rows="10"
-        id="{{ form_id }}-body"
-        class="contact-form__input contact-form__input--textarea"
-        name="contact[body]"
-        placeholder="Tell us more about your inquiry..."
+        rows='10'
+        id='{{ form_id }}-body'
+        class='contact-form__input contact-form__input--textarea'
+        name='contact[body]'
+        placeholder='Tell us more about your inquiry...'
       >
         {{- form.body -}}
       </textarea>
     </div>
 
     {{ submit_button }}
-  {%- endform -%}
-  </div>
+  {% endform %}
 </div>
 
 {% style %}
   .contact-form {
-    position: relative;
-    width: 100%;
-    min-height: 60vh;
-    background-image: url({{ contact_bg_desktop }});
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: var(--padding-block-start, 36px) 16px 200px;
-    background-color: #F0F2F1;
-  }
+    background: transparent;
 
-  .contact-form__container {
-    max-width: 1312px;
-    margin: 80px auto 40px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-  }
-
-  .contact-form__panel {
-    margin-bottom: 28px;
-  }
-
-  .contact-form__title {
-    margin: 0 0 20px;
-    font-family: var(--font-heading--family);
-    font-style: var(--font-heading--style, normal);
-    font-weight: 700;
-    font-size: 72px;
-    line-height: 100%;
-    letter-spacing: 0;
-    text-transform: uppercase;
-    color: #13161c;
-  }
-
-  .contact-form__description {
-    margin: 0 0 20px;
-    max-width: 680px;
-    font-family: Tahoma, sans-serif;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 100%;
-    letter-spacing: 0;
-    color: #4b4f55;
-  }
-
-  .contact-form__contact-links {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .contact-form__contact-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-family: Tahoma, sans-serif;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 100%;
-    letter-spacing: 0;
-    color: #4b4f55;
-    text-decoration: underline;
-    text-decoration-thickness: 0;
-    text-underline-offset: 0;
-  }
-
-  .contact-form__contact-icon {
-    width: 24px;
-    height: 24px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .contact-form__form {
-    width: min(100%, 585px);
-    margin-inline-start: auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 18px 36px;
-    padding: 0;
-  }
-
-  .contact-form__form-row {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    width: calc(50% - 18px);
-
-    @media screen and (max-width: 989px) {
-      width: 100%;
-    }
-  }
-
-  .contact-form__form-row--single {
-    width: 100%;
-  }
-
-  .contact-form__label {
-    font-family: var(--font-heading--family);
-    font-style: var(--font-heading--style, normal);
-    font-weight: 700;
-    font-size: 22px;
-    line-height: 100%;
-    letter-spacing: 0;
-    text-transform: uppercase;
-    color: #ff5000;
-  }
-
-  .contact-form__input {
-    width: 100%;
-    color: #30343a;
-    background-color: #f8f8f8;
-    padding: 0 18px;
-    border-radius: 0;
-    border: 2px solid #cbcbcb;
-    -webkit-font-smoothing: antialiased;
-    font-family: Tahoma, sans-serif;
-    font-size: 18px;
-    line-height: 1.3;
-    min-height: 52px;
-    box-sizing: border-box;
-  }
-
-  .contact-form__input:hover,
-  .contact-form__input:focus {
-    background-color: #f8f8f8;
-  }
-
-  .contact-form__input::placeholder {
-    color: #b5b5b5;
-    opacity: 1;
-  }
-
-  .contact-form__input--textarea {
-    resize: vertical;
-    min-height: 160px;
-    width: 100%;
-    padding: 14px 18px;
-  }
-
-  .contact-form__error,
-  .contact-form__success {
-    display: flex;
-    align-items: center;
-    gap: var(--gap-xs);
-    width: 100%;
-  }
-
-  .contact-form .submit-button {
-    width: 100%;
-    min-height: 72px;
-    border: none;
-    border-radius: 0;
-    background: #9acc63;
-    color: #13161c;
-    font-family: var(--font-heading--family);
-    font-style: var(--font-heading--style, normal);
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 100%;
-    letter-spacing: 0;
-    text-transform: uppercase;
-    text-align: center;
-    padding: 16px 48px;
-  }
-
-  @media screen and (max-width: 1024px) {
-    .contact-form {
-      padding: 24px 16px 200px;
-      background-position: center center;
-    }
-
-    .contact-form__title {
-      font-size: 56px;
-    }
-
-    .contact-form__description {
-      font-size: 18px;
-    }
-
-    .contact-form__label {
-      font-size: 18px;
-    }
-
-    .contact-form__input {
-      font-size: 18px;
-      min-height: 52px;
-    }
-  }
-
-  @media screen and (max-width: 749px) {
-    .contact-form {
-      background-image: url({{ contact_bg_mob }});
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      padding: 20px 16px 400px;
-    }
-
-    .contact-form__container {
-      align-items: center;
-    }
-
-    .contact-form__panel {
-      margin-bottom: 18px;
-      text-align: center;
-    }
-
-    .contact-form__title {
-      font-size: 40px;
-      text-align: center;
-    }
-
-    .contact-form__description {
-      font-size: 14px;
-      margin-bottom: 16px;
-      text-align: center;
-    }
-
-    .contact-form__contact-links {
-      align-items: center;
-    }
-
-    .contact-form__contact-link {
-      font-size: 14px;
-    }
-
-    .contact-form__form {
-      gap: 16px;
-    }
-
-    .contact-form__label {
-      font-size: 20px;
-    }
-
-    .contact-form__input {
-      padding: 0px 14px;
-      min-height: 48px;
-    }
-
-    .contact-form__input--textarea {
-      min-height: 140px;
-      padding: 12px 14px;
-    }
-
-    .contact-form .submit-button {
-      padding: 10px;
-      font-size: 20px;
+    & .contact-form__form {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      
+      @media (min-width: 576px) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    
+        grid-template-areas:
+          'name email'
+          'where where'
+          'country order'
+          'message message';
+      }
+  
+      & .contact-form__field {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+  
+        & .contact-form__input {
+          padding: 16px;
+          border-radius: 4px;
+          border: none;
+        }
+      }
+  
+      & .contact-form__form--where {
+        grid-area: where;
+      }
+  
+      & .contact-form__form--message {
+        grid-area: message;
+      }
     }
   }
 {% endstyle %}
+
