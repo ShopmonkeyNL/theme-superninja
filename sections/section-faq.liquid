@@ -1,0 +1,164 @@
+{% liquid
+  assign section_settings = section.settings
+
+  assign padding_mobile_bs = section_settings.padding_block_start_mobile
+  assign padding_mobile_be = section_settings.padding_block_end_mobile
+  assign padding_desktop_bs = section_settings.padding_block_start_desktop
+  assign padding_desktop_be = section_settings.padding_block_end_desktop
+
+  assign content_direction = section_settings.content_direction
+  assign content_gap = section_settings.content_gap
+  assign content_alignment = section_settings.content_alignment
+%}
+
+<div class='section page-width-narrow'>
+  <div
+    class='section-faq{% if section_settings.content_vertical_mobile %} column-mobile{% endif %}'
+  >
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% style %}
+  .section-faq {
+    display: flex;
+    flex-direction: {{ content_direction }};
+    align-items: {{  content_alignment }};
+    gap: {{ content_gap | divided_by: 2 }}px;
+
+    & > * {
+      flex: 1;
+    }
+
+    & h1, h2, h3, h4, h5, h6 {
+      margin: 0;
+    }
+
+    padding-block-start: {{ padding_mobile_bs }}px;
+    padding-block-end: {{ padding_mobile_be }}px;
+
+    @media (min-width: 992px) {
+      padding-block-start: {{ padding_desktop_bs }}px;
+      padding-block-end: {{ padding_desktop_be }}px;
+      gap: {{ content_gap }}px;
+    }
+
+    &.column-mobile {
+      @media (max-width: 767px) {
+        flex-direction: column;
+      }
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "FAQ Section",
+  "blocks": [
+    {
+      "type": "text"
+    },
+    {
+      "type": "accordion"
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Paddings desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_start_desktop",
+      "label": "Padding top",
+      "min": 0,
+      "max": 100,
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_block_end_desktop",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 100,
+      "default": 96
+    },
+    {
+      "type": "header",
+      "content": "Paddings mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_start_mobile",
+      "label": "Padding top",
+      "min": 0,
+      "max": 100,
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_block_end_mobile",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 100,
+      "default": 48
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "content_direction",
+      "label": "Direction",
+      "options": [
+        {
+          "label": "Horizontal",
+          "value": "row"
+        },
+        {
+          "label": "Vertical",
+          "value": "column"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "content_vertical_mobile",
+      "label": "Vertical on mobile devices",
+      "default": true,
+      "visible_if": "{{ section.settings.content_direction == 'row' }}"
+    },  
+    {
+      "type": "range",
+      "id": "content_gap",
+      "label": "Gap",
+      "default": 80,
+      "min": 0,
+      "max": 100,
+      "info": "Mobile spacing is gap divided by 2"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "label": "Alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "end",
+          "label": "Bottom"
+        }
+      ],
+      "default": "start"
+    }
+  ],
+  "presets": [{ "name": "FAQ Section" }]
+}
+{% endschema %}

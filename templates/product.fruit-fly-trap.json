@@ -489,7 +489,8 @@
         "card_5"
       ],
       "settings": {
-        "background_color": "#f0f2f1"
+        "background_color": "#f0f2f1",
+        "anchor_id": ""
       }
     },
     "video_cards": {
@@ -815,6 +816,196 @@
         "title_color": "#1c1c1c"
       }
     },
+    "section_faq_efNww3": {
+      "type": "section-faq",
+      "blocks": {
+        "text_CFNn4P": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h2>Frequently Asked questions</h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h1",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground-heading)",
+            "background": false,
+            "background_color": "#1c1c1c26",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "accordion_W9x4h6": {
+          "type": "accordion",
+          "name": "t:names.accordion",
+          "settings": {
+            "custom_faqs": true,
+            "icon": "caret",
+            "dividers": true,
+            "type_preset": "h4",
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "accordion_row_e9kBBC": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "Retourbeleid",
+                "open_by_default": true,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_X6rmCF": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Ons doel is dat elke klant volledig tevreden is met zijn aankoop. Als dit niet het geval is, laat het ons dan weten. We doen ons best om samen met jou tot een goede oplossing te komen.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#1C1C1C26",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_X6rmCF"
+              ]
+            },
+            "accordion_row_YGgF9b": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "Verzending",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_jRgNLn": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>We zullen je bestelling zo snel mogelijk verzenden. Zodra je bestelling is verzonden, ontvang je een e-mail met meer informatie. De levertijden zijn afhankelijk van je locatie.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#1C1C1C26",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_jRgNLn"
+              ]
+            },
+            "accordion_row_dcV7Kz": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "Productie",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_XD8xUq": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Onze producten worden zowel lokaal als wereldwijd geproduceerd. We selecteren onze productiepartners zorgvuldig om ervoor te zorgen dat onze producten van hoge kwaliteit zijn en een eerlijke prijs hebben.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#1C1C1C26",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_XD8xUq"
+              ]
+            }
+          },
+          "block_order": [
+            "accordion_row_e9kBBC",
+            "accordion_row_YGgF9b",
+            "accordion_row_dcV7Kz"
+          ]
+        }
+      },
+      "block_order": [
+        "text_CFNn4P",
+        "accordion_W9x4h6"
+      ],
+      "name": "FAQ Section",
+      "settings": {
+        "padding_block_start_desktop": 96,
+        "padding_block_end_desktop": 96,
+        "padding_block_start_mobile": 48,
+        "padding_block_end_mobile": 48,
+        "content_direction": "row",
+        "content_vertical_mobile": true,
+        "content_gap": 80,
+        "content_alignment": "start"
+      }
+    },
     "benefits_ticker_footer": {
       "type": "benefits_ticker",
       "blocks": {
@@ -893,6 +1084,7 @@
     "image_cards_section",
     "ally_home_pdp",
     "faq_pdp",
+    "section_faq_efNww3",
     "benefits_ticker_footer"
   ]
 }
