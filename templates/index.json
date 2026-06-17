@@ -319,7 +319,7 @@
           "settings": {
             "icon": "plus",
             "dividers": true,
-            "type_preset": "h4"
+            "type_preset": "h3"
           },
           "blocks": {}
         }
