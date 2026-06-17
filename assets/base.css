@@ -1314,6 +1314,7 @@ input {
 textarea::placeholder,
 input::placeholder {
   color: var(--color-input-text);
+  opacity: 0.3;
 }
 
 textarea:not(:placeholder-shown)::placeholder,
