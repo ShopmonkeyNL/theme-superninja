@@ -38,9 +38,7 @@
           "blocks": {}
         }
       },
-      "block_order": [
-        "text_p4zfyx"
-      ],
+      "block_order": ["text_p4zfyx"],
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
@@ -275,10 +273,7 @@
                   "blocks": {}
                 }
               },
-              "block_order": [
-                "text_PeGEL7",
-                "text_PMKPgF"
-              ]
+              "block_order": ["text_PeGEL7", "text_PMKPgF"]
             },
             "group_VhqmAH": {
               "type": "group",
@@ -399,10 +394,7 @@
                       "blocks": {}
                     }
                   },
-                  "block_order": [
-                    "icon_wP4wVB",
-                    "text_pcB7Wb"
-                  ]
+                  "block_order": ["icon_wP4wVB", "text_pcB7Wb"]
                 },
                 "group_jzNbMc": {
                   "type": "group",
@@ -483,22 +475,13 @@
                       "blocks": {}
                     }
                   },
-                  "block_order": [
-                    "icon_ejWFG6",
-                    "text_qxgtzV"
-                  ]
+                  "block_order": ["icon_ejWFG6", "text_qxgtzV"]
                 }
               },
-              "block_order": [
-                "group_78AhfC",
-                "group_jzNbMc"
-              ]
+              "block_order": ["group_78AhfC", "group_jzNbMc"]
             }
           },
-          "block_order": [
-            "group_6pLn4b",
-            "group_VhqmAH"
-          ]
+          "block_order": ["group_6pLn4b", "group_VhqmAH"]
         },
         "contact_form_UwiCkQ": {
           "type": "contact-form",
@@ -532,10 +515,7 @@
           "block_order": []
         }
       },
-      "block_order": [
-        "group_eTLYph",
-        "contact_form_UwiCkQ"
-      ],
+      "block_order": ["group_eTLYph", "contact_form_UwiCkQ"],
       "name": "t:names.contact_form",
       "settings": {
         "content_direction": "row",
@@ -566,9 +546,5 @@
       }
     }
   },
-  "order": [
-    "hero_hH46bj",
-    "benefits_ticker_above_faq",
-    "form"
-  ]
+  "order": ["hero_hH46bj", "benefits_ticker_above_faq", "form"]
 }
