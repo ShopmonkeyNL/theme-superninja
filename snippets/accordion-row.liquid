@@ -3,6 +3,10 @@
     open-by-default-on-desktop
     open-by-default-on-mobile
   {% endif %}
+  {% if open_first and forloop.first %}
+    open-by-default-on-desktop
+    open-by-default-on-mobile
+  {% endif %}
 >
   <details
     class='details'
@@ -12,7 +16,7 @@
     {% endif %}
     {{ block.shopify_attributes }}
   >
-    <summary class='details__header'>
+    <summary class='details__header {{ custom_type }}'>
       {% if icon %}
         {% render 'icon-or-image',
           icon: icon,
