@@ -40,7 +40,7 @@
           "settings": {
             "icon": "outperforms",
             "icon_asset": "",
-            "text": "<p>Outperforms common<br>DIY solutions</p>"
+            "text": "<p>Beter dan<br/>DIY-middelen</p>"
           }
         },
         "benefit_item_ECgcUe": {
@@ -48,7 +48,7 @@
           "settings": {
             "icon": "safe_around_food",
             "icon_asset": "",
-            "text": "<p>Safe around food,<br>kids & pets</p>"
+            "text": "<p>Veilig voor kids<br/>& huisdieren</p>"
           }
         },
         "benefit_item_jmy4Yc": {
@@ -56,7 +56,7 @@
           "settings": {
             "icon": "set_and_forget",
             "icon_asset": "",
-            "text": "<p>Set-and-forget,<br>no maintenance</p>"
+            "text": "<p>Plaatsen en klaar,<br/>geen onderhoud</p>"
           }
         },
         "benefit_item_33BbJV": {
@@ -64,7 +64,7 @@
           "settings": {
             "icon": "visible_results",
             "icon_asset": "",
-            "text": "<p>Visible results<br/>within 24 hours</p>"
+            "text": "<p>Resultaat binnen<br/>24 uur</p>"
           }
         }
       },
