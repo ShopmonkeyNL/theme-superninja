@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "main": {
       "type": "main-404",
@@ -15,7 +16,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<h1>Page not found</h1>",
+            "text": "<h1>Pagina niet gevonden<br/><br/></h1>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -28,7 +29,7 @@
             "wrap": "pretty",
             "color": "",
             "background": false,
-            "background_color": "#1C1C1C26",
+            "background_color": "#1c1c1c26",
             "corner_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
@@ -41,7 +42,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>The link may be incorrect, or the page has been removed. </p>",
+            "text": "<p>De link klopt mogelijk niet, of de pagina is verwijderd.<br/><br/></p>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -54,7 +55,7 @@
             "wrap": "pretty",
             "color": "",
             "background": false,
-            "background_color": "#1C1C1C26",
+            "background_color": "#1c1c1c26",
             "corner_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 16,
@@ -67,7 +68,7 @@
           "type": "button",
           "name": "t:names.button",
           "settings": {
-            "label": "Continue shopping",
+            "label": "Verder winkelen",
             "link": "shopify://collections/all",
             "open_in_new_tab": false,
             "style_class": "button",
@@ -136,7 +137,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>Discover something new</p>",
+                "text": "<p>Ontdek iets nieuws<br/><br/></p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -149,7 +150,7 @@
                 "wrap": "pretty",
                 "color": "",
                 "background": false,
-                "background_color": "#1C1C1C26",
+                "background_color": "#1c1c1c26",
                 "corner_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
@@ -213,7 +214,7 @@
                 "wrap": "pretty",
                 "color": "var(--color-foreground)",
                 "background": false,
-                "background_color": "#1C1C1C26",
+                "background_color": "#1c1c1c26",
                 "corner_radius": 0,
                 "padding-block-start": 4,
                 "padding-block-end": 0,
