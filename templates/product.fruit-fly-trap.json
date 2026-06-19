@@ -604,75 +604,77 @@
         "other_row_5": "2-3 DAYS DURATION"
       }
     },
-    "dropdown_pdp": {
-      "type": "dropdown-pdp",
+    "section_fct9dz": {
+      "type": "section",
       "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "content": "Care you can trust around pets and kids",
-            "tag": "h2",
-            "font_size_desktop": 64,
-            "font_size_mobile": 40,
-            "line_height_desktop": 1.2,
-            "line_height_mobile": 1.3,
-            "font_weight": "700",
-            "text_align": "left"
-          }
-        },
-        "text": {
+        "text_kfMLx6": {
           "type": "text",
+          "name": "t:names.heading",
           "settings": {
-            "content": "<p>Powerful pest control that works effectively, without compromising the safety of your home or family.</p>",
-            "font_size_desktop": 18,
-            "font_size_mobile": 16,
-            "line_height_desktop": 1.5,
-            "line_height_mobile": 1.5,
-            "font_weight": "400",
-            "text_align": "left"
-          }
+            "text": "<h2>Why super ninja works when others don't</h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground-heading)",
+            "background": false,
+            "background_color": "#1c1c1c26",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         },
-        "dropdown_1": {
-          "type": "dropdown_item",
+        "adaptive_accordion_YmQDtj": {
+          "type": "_adaptive-accordion",
+          "name": "Adaptive accordion",
           "settings": {
-            "title": "Proven effectiveness",
-            "content": "<p>Super Ninja has been tested and proven to work where other solutions fall short. Real results you can count on.</p>"
-          }
-        },
-        "dropdown_2": {
-          "type": "dropdown_item",
-          "settings": {
-            "title": "Smart, discreet design",
-            "content": "<p>Fits naturally in your kitchen or pantry without drawing attention. Effective without the clutter.</p>"
-          }
-        },
-        "dropdown_3": {
-          "type": "dropdown_item",
-          "settings": {
-            "title": "Safe Formulations",
-            "content": "<p>Developed with safety in mind, so you can use it around food and family with confidence.</p>"
-          }
-        },
-        "dropdown_4": {
-          "type": "dropdown_item",
-          "settings": {
-            "title": "Effortless and mess-free",
-            "content": "<p>Simple to set up and replace. No fuss, no sticky mess—just results.</p>"
-          }
+            "icon": "plus",
+            "dividers": true,
+            "type_preset": "h3"
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "heading",
-        "text",
-        "dropdown_1",
-        "dropdown_2",
-        "dropdown_3",
-        "dropdown_4"
+        "text_kfMLx6",
+        "adaptive_accordion_YmQDtj"
       ],
+      "name": "t:names.custom_section",
       "settings": {
-        "background_color": "#f0f2f1",
-        "asset_image_desktop": "Screenshot 2026-02-15 at 12.37.51.png",
-        "asset_image_mobile": "Screenshot 2026-02-15 at 12.37.51.png"
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 64,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-d465d6aa-9326-4aad-940a-36f87b34f9bf",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#1c1c1c26",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 96,
+        "padding-block-end": 96
       }
     },
     "image_cards_section": {
@@ -1081,7 +1083,7 @@
     "cards_with_text",
     "video_cards",
     "super_ninja_vs_rest",
-    "dropdown_pdp",
+    "section_fct9dz",
     "image_cards_section",
     "ally_home_pdp",
     "faq_pdp",
