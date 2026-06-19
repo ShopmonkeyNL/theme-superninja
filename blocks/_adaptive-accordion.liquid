@@ -1,0 +1,241 @@
+{% comment %}
+  adaptive accordion where image changes and accordion closes.
+{% endcomment %}
+
+{% liquid
+  assign adaptive_accordion_metaobject = metaobjects.adaptive_accordion.values
+%}
+
+<div class='adaptive-accordion accordion--{{ block.settings.icon }}'>
+  <div class='adaptive-accordion__media'>
+    {% for item in adaptive_accordion_metaobject %}
+      <img
+        data-image-loop='{{ forloop.index0 }}'
+        {% unless forloop.first %}
+          class='hide-image'
+        {% endunless %}
+        src='{{ item.media | image_url: width: 500 }}'
+        alt='{{ item.media.alt }}'
+      >
+    {% endfor %}
+  </div>
+
+  <div class='adaptive-accordion__accordions{% if block.settings.dividers %} accordion--dividers{% endif %}'>
+    {% for item in adaptive_accordion_metaobject %}
+      <adaptive-accordion
+        data-accordion-loop='{{ forloop.index0 }}'
+      >
+        {% assign heading = item.accordion.value.question %}
+        {% assign answer = item.accordion.value.answer %}
+
+        {% render 'accordion-row',
+          forloop: forloop,
+          block: block,
+          answer: answer,
+          heading: heading,
+          custom_type: block.settings.type_preset,
+          open_first: true
+        %}
+      </adaptive-accordion>
+    {% endfor %}
+  </div>
+</div>
+
+{% style %}
+  #shopify-block-{{ block.id }} {
+    width: 100%;
+  }
+
+  .adaptive-accordion {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+
+    &.accordion--caret .icon-plus,
+      &.accordion--plus .icon-caret {
+        display: none;
+      }
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
+
+    & .adaptive-accordion__media {
+      flex: 0.5;
+
+      & img {
+        transition: all 0.4s ease;
+        border-radius: 4px;
+        
+        @media (max-width: 768px) {
+          height: 300px;
+          object-fit: contain;
+        }
+
+        &.hide-image {
+          opacity: 0;
+          height: 0;
+          transition: all 0.4s ease;
+        }
+      }
+
+    }
+
+    & .adaptive-accordion__accordions {
+      flex: 1;
+
+      &.accordion--dividers accordion-custom:not(:first-child) .details {
+      border-block-start: var(--style-border-width) solid var(--color-border);
+      }
+
+      /* When accordion borders are not set, show fallback borders */
+      &.accordion--dividers {
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list */
+        --show-fallback-borders: 0;
+      }
+
+      &.accordion--dividers:not([class*='color-'])[style*='--border-width: 0'],
+      &.accordion--dividers:not([class*='color-'])[style*='--border-style: none'] {
+        --show-fallback-borders: 1;
+      }
+
+      &.accordion--dividers accordion-custom:first-child .details {
+        border-block-start: var(--style-border-width) solid var(--color-border);
+      }
+
+      &.accordion--dividers accordion-custom:last-child .details {
+        border-block-end: var(--style-border-width) solid var(--color-border);
+      }
+
+      &.accordion--dividers .details-content {
+        padding-block-end: var(--padding-sm);
+      }
+    }
+
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Adaptive accordion",
+  "settings": [
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "t:settings.icon",
+      "options": [
+        {
+          "value": "caret",
+          "label": "t:options.caret"
+        },
+        {
+          "value": "plus",
+          "label": "t:options.plus"
+        }
+      ],
+      "default": "caret"
+    },
+    {
+      "type": "checkbox",
+      "id": "dividers",
+      "label": "t:settings.dividers",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "type_preset",
+      "label": "t:settings.heading_preset",
+      "options": [
+        {
+          "value": "",
+          "label": "t:options.default"
+        },
+        {
+          "value": "paragraph",
+          "label": "t:options.paragraph"
+        },
+        {
+          "value": "h1",
+          "label": "t:options.h1"
+        },
+        {
+          "value": "h2",
+          "label": "t:options.h2"
+        },
+        {
+          "value": "h3",
+          "label": "t:options.h3"
+        },
+        {
+          "value": "h4",
+          "label": "t:options.h4"
+        },
+        {
+          "value": "h5",
+          "label": "t:options.h5"
+        },
+        {
+          "value": "h6",
+          "label": "t:options.h6"
+        }
+      ],
+      "default": "h6",
+      "info": "t:info.edit_presets_in_theme_settings"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Adaptive accordion"
+    }
+  ]
+}
+{% endschema %}
+
+{% javascript %}
+  class AdaptiveAccordion extends HTMLElement {
+    constructor() {
+      super();
+    }
+
+    connectedCallback() {
+      const parentElem = this.closest('.adaptive-accordion');
+
+      this.addEventListener('click', () => {
+        this.closeActiveAccordion(parentElem);
+        this.showAccordionImage(parentElem);
+      });
+    }
+
+    closeActiveAccordion(parentElem) {
+      const accordions = parentElem.querySelectorAll('adaptive-accordion');
+
+      accordions.forEach((accordion) => {
+        if (accordion !== this) {
+          const accordionDetail = accordion.querySelector('details');
+          accordionDetail.removeAttribute('open');
+        }
+      });
+    }
+
+    showAccordionImage(parentElem) {
+      const { accordionLoop } = this.dataset;
+
+      const accordionImages = parentElem.querySelectorAll('[data-image-loop]');
+
+      accordionImages.forEach((image) => {
+        const { imageLoop } = image.dataset;
+
+        if (imageLoop === accordionLoop) {
+          image.classList.remove('hide-image');
+          return;
+        }
+
+        image.classList.add('hide-image');
+      });
+    }
+  }
+
+  customElements.define('adaptive-accordion', AdaptiveAccordion);
+{% endjavascript %}
