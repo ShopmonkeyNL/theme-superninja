@@ -1204,7 +1204,7 @@
             "align_baseline": false,
             "horizontal_alignment_flex_direction_column": "center",
             "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
+            "gap": 8,
             "width": "fit-content",
             "custom_width": 100,
             "width_mobile": "fit-content",
@@ -1311,7 +1311,7 @@
         "align_baseline": false,
         "horizontal_alignment_flex_direction_column": "center",
         "vertical_alignment_flex_direction_column": "center",
-        "gap": 12,
+        "gap": 40,
         "section_width": "page-width",
         "section_height": "small",
         "section_height_custom": 50,
@@ -1329,75 +1329,6 @@
         "gradient_direction": "to top",
         "padding-block-start": 0,
         "padding-block-end": 0
-      }
-    },
-    "customers_feedback_YrqKJW": {
-      "type": "customers-feedback",
-      "blocks": {
-        "heading_P8UccP": {
-          "type": "heading",
-          "settings": {
-            "content": "THE WALL OF WINS: STORIES OF VICTORY OVER THE TINY INVADERS",
-            "tag": "h2",
-            "font_size_desktop": 64,
-            "font_size_mobile": 40,
-            "line_height_desktop": 1.2,
-            "line_height_mobile": 1.3,
-            "font_weight": "700",
-            "text_align": "center"
-          }
-        },
-        "video_K33Eck": {
-          "type": "video",
-          "settings": {
-            "source": "uploaded",
-            "video": "shopify://files/videos/Wins1.mp4",
-            "video_url": "https://www.youtube.com/watch?v=u31qwQUeGuM"
-          }
-        },
-        "video_ymGBi9": {
-          "type": "video",
-          "settings": {
-            "source": "uploaded",
-            "video": "shopify://files/videos/Wins2.mp4",
-            "video_url": "https://www.youtube.com/watch?v=u31qwQUeGuM"
-          }
-        },
-        "video_9bDKpn": {
-          "type": "video",
-          "settings": {
-            "source": "uploaded",
-            "video": "shopify://files/videos/wins3.mp4",
-            "video_url": "https://www.youtube.com/watch?v=u31qwQUeGuM"
-          }
-        },
-        "video_fYTcbW": {
-          "type": "video",
-          "settings": {
-            "source": "uploaded",
-            "video": "shopify://files/videos/wins4.mp4",
-            "video_url": "https://www.youtube.com/watch?v=u31qwQUeGuM"
-          }
-        },
-        "video_4MH3pU": {
-          "type": "video",
-          "settings": {
-            "source": "uploaded",
-            "video": "shopify://files/videos/wins5.mp4",
-            "video_url": "https://www.youtube.com/watch?v=u31qwQUeGuM"
-          }
-        }
-      },
-      "block_order": [
-        "heading_P8UccP",
-        "video_K33Eck",
-        "video_ymGBi9",
-        "video_9bDKpn",
-        "video_fYTcbW",
-        "video_4MH3pU"
-      ],
-      "settings": {
-        "background_color": "#ffffff"
       }
     },
     "benefits_ticker_rEDXYM": {
@@ -1904,7 +1835,6 @@
     "section_gbCYgc",
     "customers_feedback",
     "section_rwL4W3",
-    "customers_feedback_YrqKJW",
     "benefits_ticker_rEDXYM",
     "hero_cta",
     "slideshow_ExTBLt",
