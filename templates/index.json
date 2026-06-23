@@ -1328,7 +1328,7 @@
         "overlay_style": "solid",
         "gradient_direction": "to top",
         "padding-block-start": 0,
-        "padding-block-end": 0
+        "padding-block-end": 96
       }
     },
     "benefits_ticker_rEDXYM": {
@@ -1386,7 +1386,7 @@
         "pause_on_hover": false,
         "duplicate_count": "3",
         "wrap_background_color": "",
-        "section_padding_top": 24,
+        "section_padding_top": 64,
         "section_padding_bottom": 24,
         "bar_background_type": "solid",
         "bar_background_color": "#94d357",
