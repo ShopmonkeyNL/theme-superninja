@@ -1,0 +1,85 @@
+{% assign video_metaobject = metaobjects.video_stories.values %}
+
+<div class='video-stories'>
+  <div class='swiper video-stories__slider'>
+    <div class='swiper-wrapper'>
+      {% for video in video_metaobject %}
+        <div class='swiper-slide'>
+          {% render 'video',
+            video: video.video.value,
+            video_autoplay: false,
+            video_loop: true,
+            section_id: section.id
+          %}
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="videos-stories__prev swiper-button-prev">
+      {%- render 'slideshow-arrow', action: 'previous', icon_style: icon_style, icon_shape: shape -%}
+    </div>
+    <div class="videos-stories__next swiper-button-next">
+      {%- render 'slideshow-arrow', action: 'next', icon_style: icon_style, icon_shape: shape -%}
+    </div>
+  </div>
+</div>
+
+{% style %}
+  #shopify-block-{{ block.id }} {
+    width: 100%;
+
+    .video-stories deferred-media img,
+    .video-stories deferred-media video {
+      border-radius: 4px;
+    }
+
+    .video-stories .icon-arrow,
+    .video-stories .icon-arrow svg {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .video-stories .swiper-button-disabled {
+      display: none;
+    }
+  }
+{% endstyle %}
+
+{% javascript %}
+  document.addEventListener('DOMContentLoaded', () => {
+    const videoStoriesSwiper = new Swiper('.swiper.video-stories__slider', {
+      slidesPerView: 1.5,
+      spaceBetween: 8,
+      breakpoints: {
+        420: {
+          slidesPerView: 2.5,
+        },
+        576: {
+          spaceBetween: 16,
+          slidesPerView: 3.5,
+        },
+        992: {
+          slidesPerView: 5,
+        }
+      },
+      autoplay: {
+        delay: 5000,
+      },
+      navigation: {
+        prevEl: '.videos-stories__prev',
+        nextEl: '.videos-stories__next',
+      }
+    });
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Videos stories",
+  "presets": [
+    {
+      "name": "Video stories"
+    }
+  ]
+}
+{% endschema %}

@@ -1190,6 +1190,147 @@
         "background_color": "#ffffff"
       }
     },
+    "section_fTREij": {
+      "type": "section",
+      "blocks": {
+        "group_k6LQJj": {
+          "type": "group",
+          "name": "t:names.group",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 0,
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#1c1c1c26",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_YBLKYX": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<p>The wall of wins: </p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h2",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground-heading)",
+                "background": false,
+                "background_color": "#1c1c1c26",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_NhXMwh": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<p>stories of victory over the tiny invaders</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h3",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground-heading)",
+                "background": false,
+                "background_color": "#1c1c1c26",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_YBLKYX",
+            "text_NhXMwh"
+          ]
+        },
+        "video_stories_84H7dd": {
+          "type": "_video-stories",
+          "name": "Video stories",
+          "settings": {},
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "group_k6LQJj",
+        "video_stories_84H7dd"
+      ],
+      "name": "t:names.custom_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 40,
+        "section_width": "page-width",
+        "section_height": "small",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#1c1c1c26",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 96
+      }
+    },
     "customers_feedback_YrqKJW": {
       "type": "customers-feedback",
       "blocks": {
@@ -1255,6 +1396,7 @@
         "video_fYTcbW",
         "video_4MH3pU"
       ],
+      "disabled": true,
       "settings": {
         "background_color": "#ffffff"
       }
@@ -1314,7 +1456,7 @@
         "pause_on_hover": false,
         "duplicate_count": "3",
         "wrap_background_color": "",
-        "section_padding_top": 24,
+        "section_padding_top": 64,
         "section_padding_bottom": 24,
         "bar_background_type": "solid",
         "bar_background_color": "#94d357",
@@ -1762,6 +1904,7 @@
     "most_trusted_solutions",
     "section_gbCYgc",
     "customers_feedback",
+    "section_fTREij",
     "customers_feedback_YrqKJW",
     "benefits_ticker_rEDXYM",
     "hero_cta",
