@@ -204,6 +204,7 @@
     transition: color var(--animation-speed) var(--animation-easing);
     text-decoration: none;
     display: flex;
+    gap: 4px;
     min-height: var(--minimum-touch-target);
     align-items: center;
     vertical-align: middle;
@@ -235,6 +236,11 @@
   .menu-list .menu-list__list-item:where(:hover, :focus-within) .menu-list__link,
   .menu-list .menu-list__list-item[slot='overflow'] .menu-list__link[aria-expanded='true'] {
     color: var(--menu-top-level-font-color);
+
+    & .icon-animated > svg {
+      transform: rotate( 180deg);
+      transition: transform 0.2s eae;
+    }
   }
 
   .overflow-menu::part(list) {
