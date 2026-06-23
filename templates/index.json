@@ -1267,7 +1267,7 @@
           "settings": {
             "icon": "outperforms",
             "icon_asset": "",
-            "text": "<p>Outperforms common<br>DIY solutions</p>"
+            "text": "<p>Outperforms common<br/>DIY solutions</p>"
           }
         },
         "benefit_item_dtVLhE": {
@@ -1310,7 +1310,7 @@
         "invert_rotation": true,
         "scale": 110,
         "padding_y": 16,
-        "speed_seconds": 18,
+        "speed_seconds": 40,
         "pause_on_hover": false,
         "duplicate_count": "3",
         "wrap_background_color": "",
