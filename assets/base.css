@@ -75,6 +75,10 @@ select {
     box-shadow var(--hover-transition-duration) var(--hover-transition-timing);
   will-change: transform, box-shadow;
   z-index: var(--layer-flat);
+
+  &:hover {
+    transform: scale(1.01);
+  }
 }
 
 .product-card__link {
@@ -995,6 +999,7 @@ body:has(.header[transparent]) #header-group > *:not(.header-section) {
 
 .product-grid__card.product-grid__card {
   display: flex;
+  justify-content: space-between;
   flex-flow: column nowrap;
   gap: var(--product-card-gap);
   align-items: var(--product-card-alignment);
