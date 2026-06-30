@@ -233,6 +233,7 @@
           "blocks": {}
         }
       },
+      "disabled": true,
       "settings": {
         "layout_type": "grid",
         "product_card_size": "large",
