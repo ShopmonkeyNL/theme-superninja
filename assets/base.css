@@ -1337,6 +1337,7 @@ input:not(:placeholder-shown)::placeholder {
 .button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  filter: grayscale(1);
 }
 
 .button,
