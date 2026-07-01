@@ -4,7 +4,7 @@
 {%- capture cart_summary_inner_class -%}
   cart__summary-inner
   {% if block_settings.extend_summary == false and block_settings.inherit_color_scheme == false -%}
-    color-{{ block_settings.color_scheme }} inherit-parent-scheme--mobile
+    color-{{ block_settings.color_scheme }}
   {%- endif %}
   {% if block_settings.extend_summary == false and block_settings.border_radius > 0 -%}
     has-border-radius
@@ -69,7 +69,8 @@
     position: sticky;
     top: 0;
     align-self: start;
-
+    padding: var(--padding-xl);
+    
     @media screen and (min-width: 750px) {
       padding: var(--padding-4xl);
       grid-row: 1 / -1;

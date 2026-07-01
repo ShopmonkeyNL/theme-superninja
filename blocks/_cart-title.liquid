@@ -22,13 +22,13 @@
     margin-block-end: 0;
     display: inline-flex;
     align-items: center;
-    gap: var(--gap-sm);
   }
 
   .cart-title .cart-bubble {
     width: fit-content;
     display: inline-flex;
     align-items: center;
+    align-self: end;
     justify-content: center;
     border-radius: var(--style-border-radius-buttons-primary);
     aspect-ratio: auto;
@@ -41,7 +41,7 @@
   }
 
   .cart-title .cart-bubble__background {
-    background-color: rgb(var(--color-foreground-rgb) / var(--opacity-10-25));
+    background: transparent;
   }
 
   .cart-title .cart-bubble__text {
