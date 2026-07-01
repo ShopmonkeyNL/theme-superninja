@@ -16,7 +16,7 @@
           "type": "_cart-title",
           "static": true,
           "settings": {
-            "title": "Winkelwagen",
+            "title": "Cart",
             "show_count": true,
             "type_preset": "h4",
             "alignment": "left",
@@ -46,9 +46,9 @@
           "type": "_cart-summary",
           "static": true,
           "settings": {
-            "extend_summary": true,
+            "extend_summary": false,
             "inherit_color_scheme": false,
-            "color_scheme": "scheme-2",
+            "color_scheme": "scheme-d465d6aa-9326-4aad-940a-36f87b34f9bf",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
@@ -57,7 +57,6 @@
           "blocks": {}
         }
       },
-      "disabled": true,
       "settings": {
         "section_width": "page-width",
         "color_scheme": "",
@@ -280,7 +279,7 @@
             "wrap": "pretty",
             "color": "var(--color-foreground)",
             "background": false,
-            "background_color": "#1C1C1C26",
+            "background_color": "#1c1c1c26",
             "corner_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
@@ -306,7 +305,7 @@
             "wrap": "pretty",
             "color": "var(--color-foreground)",
             "background": false,
-            "background_color": "#1C1C1C26",
+            "background_color": "#1c1c1c26",
             "corner_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
@@ -342,7 +341,7 @@
         "border_opacity": 100,
         "border_radius": 0,
         "toggle_overlay": false,
-        "overlay_color": "#1C1C1C26",
+        "overlay_color": "#1c1c1c26",
         "overlay_style": "solid",
         "gradient_direction": "to top",
         "padding-block-start": 0,
