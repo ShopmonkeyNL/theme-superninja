@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "section": {
       "type": "main-blog-post",
@@ -27,9 +28,9 @@
             "letter_spacing": "normal",
             "case": "none",
             "wrap": "pretty",
-            "color": "",
+            "color": "var(--color-foreground-heading)",
             "background": false,
-            "background_color": "#1C1C1C26",
+            "background_color": "#1c1c1c26",
             "corner_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
@@ -54,8 +55,7 @@
           "blocks": {}
         },
         "blog-post-image": {
-          "type": "image",
-          "name": "Featured image",
+          "type": "_blog-post-featured-image",
           "static": true,
           "settings": {
             "image_ratio": "landscape",
@@ -67,7 +67,7 @@
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
-            "border_radius": 0,
+            "border_radius": 8,
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,

@@ -18,11 +18,11 @@
           "type": "column",
           "settings": {
             "title": "SHOP",
-            "link_text_1": "All Products",
+            "link_text_1": "Alle Producten",
             "link_url_1": "/collections/all",
-            "link_text_2": "Best Sellers",
+            "link_text_2": "Bestsellers",
             "link_url_2": "/collections/all?sort_by=best-selling",
-            "link_text_3": "Bundles",
+            "link_text_3": "Bundels",
             "link_url_3": "/collections/bundles",
             "link_text_4": "",
             "link_url_4": "",
@@ -46,9 +46,9 @@
             "title": "SUPPORT",
             "link_text_1": "How It Works",
             "link_url_1": "/pages/how-it-works",
-            "link_text_2": "FAQ",
+            "link_text_2": "Veelgestelde vragen",
             "link_url_2": "/pages/contact#faq",
-            "link_text_3": "Contact Us",
+            "link_text_3": "Contacteer ons",
             "link_url_3": "/pages/contact",
             "link_text_4": "",
             "link_url_4": "",
@@ -69,10 +69,10 @@
         "column_EpdReU": {
           "type": "column",
           "settings": {
-            "title": "COMPANY",
-            "link_text_1": "About",
+            "title": "SUPER NINJA",
+            "link_text_1": "Over ons",
             "link_url_1": "/pages/about-us",
-            "link_text_2": "Reviews",
+            "link_text_2": "Beoordelingen",
             "link_url_2": "/pages/reviews",
             "link_text_3": "Blog",
             "link_url_3": "/blogs/blog",
@@ -100,7 +100,9 @@
       ],
       "name": "t:names.footer",
       "settings": {
-        "background_color": "#f0f2f1"
+        "background_color": "#f0f2f1",
+        "terms_url": "",
+        "privacy_url": ""
       }
     },
     "footer_utilities_jLGE8U": {

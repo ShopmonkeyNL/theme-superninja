@@ -9,13 +9,102 @@
  */
 {
   "sections": {
+    "section_w9e3xX": {
+      "type": "section",
+      "blocks": {
+        "text_UDitcC": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>Discover our collections</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h6",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#1c1c1c26",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_6MHmND": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h2>Coming soon</h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#1c1c1c26",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_UDitcC",
+        "text_6MHmND"
+      ],
+      "name": "t:names.custom_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "small",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-1",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#1c1c1c26",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
     "pest_selector": {
       "type": "pest-selector",
       "blocks": {
         "heading": {
           "type": "heading",
           "settings": {
-            "content": "SHOP SUPER NINJA COLLECTION",
+            "content": "DE SUPER NINJA COLLECTIE",
             "tag": "h2",
             "font_size_desktop": 64,
             "font_size_mobile": 32,
@@ -28,7 +117,7 @@
         "text": {
           "type": "text",
           "settings": {
-            "content": "<p>Choose your problem, we'll handle the rest.</p>",
+            "content": "<p>Kies je probleem, wij doen de rest.<br/></p>",
             "font_size_desktop": 24,
             "font_size_mobile": 16,
             "line_height_desktop": 1.5,
@@ -40,7 +129,7 @@
         "pest_1": {
           "type": "pest_item",
           "settings": {
-            "label": "FRUIT FLIES",
+            "label": "FRUITVLIEGJES",
             "link": "/collections/all",
             "label_color": "#1c1c1c",
             "show_arrow": true,
@@ -50,7 +139,7 @@
         "pest_2": {
           "type": "pest_item",
           "settings": {
-            "label": "FUNGUS GNATS",
+            "label": "ROUWVLIEGJES",
             "link": "/collections/all",
             "label_color": "#1c1c1c",
             "show_arrow": true,
@@ -60,7 +149,7 @@
         "pest_3": {
           "type": "pest_item",
           "settings": {
-            "label": "MOTHS",
+            "label": "MOTTEN",
             "link": "/collections/all",
             "label_color": "#1c1c1c",
             "show_arrow": true,
@@ -70,7 +159,7 @@
         "pest_4": {
           "type": "pest_item",
           "settings": {
-            "label": "SILVERFISH",
+            "label": "ZILVERVISJES",
             "link": "/collections/all",
             "label_color": "#1c1c1c",
             "show_arrow": true,
@@ -80,7 +169,7 @@
         "pest_5": {
           "type": "pest_item",
           "settings": {
-            "label": "COCKROACHES",
+            "label": "KAKKERLAKKEN",
             "link": "/collections/all",
             "label_color": "#1c1c1c",
             "show_arrow": true,
@@ -90,7 +179,7 @@
         "pest_6": {
           "type": "pest_item",
           "settings": {
-            "label": "MOSQUITOES",
+            "label": "MUGGEN",
             "link": "/collections/all",
             "label_color": "#1c1c1c",
             "show_arrow": true,
@@ -108,6 +197,7 @@
         "pest_5",
         "pest_6"
       ],
+      "disabled": true,
       "settings": {
         "background_color": "#f0f2f1",
         "padding_top": 40,
@@ -143,6 +233,7 @@
           "blocks": {}
         }
       },
+      "disabled": true,
       "settings": {
         "layout_type": "grid",
         "product_card_size": "large",
@@ -166,7 +257,7 @@
         "heading_BaKcit": {
           "type": "heading",
           "settings": {
-            "content": "THE WALL OF WINS: STORIES OF VICTORY OVER THE TINY INVADERS",
+            "content": "ZO PAK JE ZE AAN: ECHTE OVERWINNINGEN OP ONGEDIERTE",
             "tag": "h2",
             "font_size_desktop": 64,
             "font_size_mobile": 40,
@@ -225,6 +316,7 @@
         "video_LFHKdP",
         "video_p7Wb9f"
       ],
+      "disabled": true,
       "settings": {
         "background_color": "#ffffff"
       }
@@ -237,7 +329,7 @@
           "settings": {
             "icon": "outperforms",
             "icon_asset": "",
-            "text": "<p>Outperforms common<br>DIY solutions</p>"
+            "text": "<p>Beter dan<br/>DIY-middelen<br/></p>"
           }
         },
         "benefit_item_dtVLhE": {
@@ -245,7 +337,7 @@
           "settings": {
             "icon": "safe_around_food",
             "icon_asset": "",
-            "text": "<p>Safe around food,<br>kids & pets</p>"
+            "text": "<p>Veilig: kinderen<br/>& huisdieren<br/></p>"
           }
         },
         "benefit_item_axrxwW": {
@@ -253,7 +345,7 @@
           "settings": {
             "icon": "set_and_forget",
             "icon_asset": "",
-            "text": "<p>Set-and-forget,<br>no maintenance</p>"
+            "text": "<p>Plaatsen en klaar,<br/>geen onderhoud</p>"
           }
         },
         "benefit_item_fgdfxe": {
@@ -261,7 +353,7 @@
           "settings": {
             "icon": "visible_results",
             "icon_asset": "",
-            "text": "<p>Visible results<br/>within 24 hours</p>"
+            "text": "<p>Resultaat binnen<br/>24 uur</p>"
           }
         }
       },
@@ -271,6 +363,7 @@
         "benefit_item_axrxwW",
         "benefit_item_fgdfxe"
       ],
+      "disabled": true,
       "settings": {
         "background_color": "#94d357",
         "text_color": "#000000",
@@ -297,6 +390,7 @@
     }
   },
   "order": [
+    "section_w9e3xX",
     "pest_selector",
     "main",
     "customers_feedback_EeXwcP",
