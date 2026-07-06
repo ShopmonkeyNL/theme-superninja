@@ -1,8 +1,8 @@
-
-
-{% liquid
-  assign product = block.settings.product
--%}
+{% if block.settings.product != null %}
+  {% liquid
+    assign product = block.settings.product
+  -%} 
+{% endif %}
 
 {% capture children %}
   {% content_for 'blocks', closest.product: product %}
@@ -46,6 +46,9 @@
     },
     {
       "type": "@app"
+    },
+    {
+      "type": "buy-buttons"
     }
   ],
   "tag": null,
