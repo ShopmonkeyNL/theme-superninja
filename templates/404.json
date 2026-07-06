@@ -16,18 +16,18 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<h1>Pagina niet gevonden<br/><br/></h1>",
+            "text": "<h2>Pagina niet gevonden</h2>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
-            "type_preset": "h3",
+            "type_preset": "h2",
             "font": "var(--font-primary--family)",
             "font_size": "",
             "line_height": "normal",
             "letter_spacing": "normal",
             "case": "none",
             "wrap": "pretty",
-            "color": "",
+            "color": "var(--color-foreground-heading)",
             "background": false,
             "background_color": "#1c1c1c26",
             "corner_radius": 0,
@@ -254,6 +254,7 @@
           ]
         }
       },
+      "disabled": true,
       "name": "Featured collection",
       "settings": {
         "collection": "all",
