@@ -202,7 +202,7 @@
                   "type": "button",
                   "settings": {
                     "label": "Become a partner",
-                    "link": "shopify://collections/all",
+                    "link": "#shopify-section-template--29380696965497__section_apfm3P",
                     "open_in_new_tab": false,
                     "style_class": "button",
                     "width": "fit-content",
