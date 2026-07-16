@@ -127,7 +127,7 @@
         "speed_seconds": 40,
         "pause_on_hover": false,
         "duplicate_count": "3",
-        "wrap_background_color": "#f0f2f1",
+        "wrap_background_color": "",
         "section_padding_top": 48,
         "section_padding_bottom": 48,
         "bar_background_type": "solid",

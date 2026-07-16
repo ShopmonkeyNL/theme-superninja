@@ -3782,6 +3782,25 @@ slideshow-arrows .slideshow-control.slideshow-control--style-none {
   flex-basis: var(--size-style-width);
 }
 
+/* When a row stacks into a column on mobile, the width-based flex rules above
+   would distribute *height* (flex-basis 0 + grow), stretching short groups and
+   squeezing tall ones. Reset to natural content height when stacked. */
+@media screen and (max-width: 749px) {
+  .layout-panel-flex--row.mobile-column > .group-block--width-fill {
+    flex: 0 1 auto;
+  }
+
+  .layout-panel-flex--row.mobile-column > .group-block--width-custom {
+    flex-basis: auto;
+  }
+
+  /* "Height: fill" equalises heights in a desktop row; once stacked it only
+     stretches short blocks. Fall back to natural height on mobile. */
+  .layout-panel-flex--row.mobile-column > .group-block--height-fill {
+    height: auto;
+  }
+}
+
 /* Dimension utilities - Height */
 .group-block--height-fit {
   height: auto;

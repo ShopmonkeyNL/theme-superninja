@@ -1,0 +1,191 @@
+{% capture submit_button %}
+  {% content_for 'block', type: 'contact-form-submit-button', id: 'submit-button' %}
+{% endcapture %}
+
+{% render 'partner-form', settings: block.settings, submit_button: submit_button, block: block, section: section %}
+
+{% schema %}
+{
+  "name": "Partner form",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Posts to Shopify's contact form endpoint. Submissions arrive as contact form emails with all fields included."
+    },
+    {
+      "type": "header",
+      "content": "Fields"
+    },
+    {
+      "type": "textarea",
+      "id": "partner_types",
+      "label": "Partner type options",
+      "info": "One option per line.",
+      "default": "Distributor\nRetail chain\nGarden centre\nDIY\nOther"
+    },
+    {
+      "type": "header",
+      "content": "Consent"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_consent",
+      "label": "Show consent checkbox",
+      "default": false
+    },
+    {
+      "type": "richtext",
+      "id": "consent_text",
+      "label": "Consent text",
+      "default": "<p>I agree to the <a href=\"/policies/privacy-policy\">privacy policy</a>.</p>",
+      "visible_if": "{{ block.settings.show_consent }}"
+    },
+    {
+      "type": "header",
+      "content": "Fallback contact"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_fallback",
+      "label": "Show fallback contact line",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "fallback_text",
+      "label": "Text",
+      "default": "Prefer to talk directly?",
+      "visible_if": "{{ block.settings.show_fallback }}"
+    },
+    {
+      "type": "text",
+      "id": "fallback_email",
+      "label": "Email address",
+      "default": "salesinternational@superninja.eco",
+      "visible_if": "{{ block.settings.show_fallback }}"
+    },
+    {
+      "type": "header",
+      "content": "t:content.size"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "t:settings.width_desktop",
+      "options": [
+        {
+          "value": "fit-content",
+          "label": "t:options.fit_content"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.custom"
+        }
+      ],
+      "default": "custom"
+    },
+    {
+      "type": "range",
+      "id": "custom_width",
+      "label": "t:settings.width",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ block.settings.width == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "width_mobile",
+      "label": "t:settings.width_mobile",
+      "options": [
+        {
+          "value": "fit-content",
+          "label": "t:options.fit_content"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.custom"
+        }
+      ],
+      "default": "custom"
+    },
+    {
+      "type": "range",
+      "id": "custom_width_mobile",
+      "label": "t:settings.width",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ block.settings.width_mobile == 'custom' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "inherit_color_scheme",
+      "label": "t:settings.inherit_color_scheme",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1",
+      "visible_if": "{{ block.settings.inherit_color_scheme == false }}"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-start",
+      "label": "t:settings.left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-end",
+      "label": "t:settings.right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Partner form",
+      "category": "t:categories.forms"
+    }
+  ]
+}
+{% endschema %}
