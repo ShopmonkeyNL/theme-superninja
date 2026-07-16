@@ -214,6 +214,7 @@
                 },
                 "button_4nQXjY": {
                   "type": "button",
+                  "disabled": true,
                   "settings": {
                     "label": "Download trade brochure",
                     "link": "shopify://collections/all",
