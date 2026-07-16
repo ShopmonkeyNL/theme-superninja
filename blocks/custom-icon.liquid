@@ -1,0 +1,280 @@
+{%- doc -%}
+  Custom icon block: full control over the SVG that is loaded.
+
+  Three sources:
+  - Theme asset: an SVG filename from the assets folder, inlined via
+    inline_asset_content so it can be recoloured with CSS (currentColor).
+  - Upload: any image/SVG from Shopify Files, rendered as an <img>
+    (cannot be recoloured).
+  - Code: raw SVG markup pasted in the editor, rendered inline.
+
+  Includes size (desktop + mobile), colour override and an optional
+  badge-style background (colour, padding, corner radius).
+{%- enddoc -%}
+
+{%- liquid
+  assign source = block.settings.source
+-%}
+
+<div
+  class="custom-icon{% if block.settings.force_color %} custom-icon--force-color{% endif %}"
+  style="
+    --custom-icon-size: {{ block.settings.width }}px;
+    {% if block.settings.custom_mobile_width %}--custom-icon-size-mobile: {{ block.settings.width_mobile }}px;{% endif %}
+    {% if block.settings.custom_color %}color: {{ block.settings.icon_color }};{% endif %}
+    {% if block.settings.show_background %}
+      background-color: {{ block.settings.background_color }};
+      padding: {{ block.settings.background_padding }}px;
+      border-radius: {{ block.settings.corner_radius }}px;
+    {% endif %}
+  "
+  {{ block.shopify_attributes }}
+>
+  {%- if block.settings.link != blank -%}
+    <a
+      href="{{ block.settings.link }}"
+      class="custom-icon__link"
+      {% if block.settings.open_in_new_tab %}
+        target="_blank" rel="noopener"
+      {% endif %}
+    >
+  {%- endif -%}
+
+  {%- case source -%}
+    {%- when 'code' -%}
+      {%- if block.settings.svg_code != blank -%}
+        {{ block.settings.svg_code }}
+      {%- else -%}
+        {{ 'image' | placeholder_svg_tag: 'custom-icon__placeholder' }}
+      {%- endif -%}
+    {%- when 'upload' -%}
+      {%- if block.settings.image -%}
+        {{
+          block.settings.image
+          | image_url: width: 400
+          | image_tag: widths: '100, 200, 400', class: 'custom-icon__img', loading: 'lazy'
+        }}
+      {%- else -%}
+        {{ 'image' | placeholder_svg_tag: 'custom-icon__placeholder' }}
+      {%- endif -%}
+    {%- else -%}
+      {%- if block.settings.icon_asset != blank -%}
+        {{- block.settings.icon_asset | inline_asset_content -}}
+      {%- else -%}
+        {{ 'image' | placeholder_svg_tag: 'custom-icon__placeholder' }}
+      {%- endif -%}
+  {%- endcase -%}
+
+  {%- if block.settings.link != blank -%}
+    </a>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .custom-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    line-height: 0;
+  }
+
+  .custom-icon__link {
+    display: inline-flex;
+    line-height: 0;
+    color: inherit;
+  }
+
+  .custom-icon svg,
+  .custom-icon .custom-icon__img,
+  .custom-icon .custom-icon__placeholder {
+    width: var(--custom-icon-size, 48px);
+    height: auto;
+    max-width: 100%;
+  }
+
+  .custom-icon--force-color svg,
+  .custom-icon--force-color svg [fill]:not([fill='none']) {
+    fill: currentColor;
+  }
+
+  .custom-icon--force-color svg [stroke]:not([stroke='none']) {
+    stroke: currentColor;
+  }
+
+  @media screen and (max-width: 749px) {
+    .custom-icon svg,
+    .custom-icon .custom-icon__img,
+    .custom-icon .custom-icon__placeholder {
+      width: var(--custom-icon-size-mobile, var(--custom-icon-size, 48px));
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Custom icon",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "source",
+      "label": "Icon source",
+      "options": [
+        {
+          "value": "asset",
+          "label": "Theme asset (SVG)"
+        },
+        {
+          "value": "upload",
+          "label": "Uploaded image"
+        },
+        {
+          "value": "code",
+          "label": "Custom SVG code"
+        }
+      ],
+      "default": "asset"
+    },
+    {
+      "type": "text",
+      "id": "icon_asset",
+      "label": "Asset filename",
+      "info": "SVG filename in the theme's assets folder, e.g. icon-check-border-orange.svg. Inlined, so it can be recoloured below.",
+      "visible_if": "{{ block.settings.source == 'asset' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:settings.image",
+      "info": "Rendered as an image; colour override does not apply.",
+      "visible_if": "{{ block.settings.source == 'upload' }}"
+    },
+    {
+      "type": "textarea",
+      "id": "svg_code",
+      "label": "SVG code",
+      "info": "Paste raw <svg> markup. Use currentColor for fills to enable the colour override.",
+      "visible_if": "{{ block.settings.source == 'code' }}"
+    },
+    {
+      "type": "header",
+      "content": "t:content.size"
+    },
+    {
+      "type": "range",
+      "id": "width",
+      "label": "t:settings.width",
+      "min": 12,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "checkbox",
+      "id": "custom_mobile_width",
+      "label": "Custom mobile size",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "width_mobile",
+      "label": "Width (mobile)",
+      "min": 12,
+      "max": 160,
+      "step": 2,
+      "unit": "px",
+      "default": 32,
+      "visible_if": "{{ block.settings.custom_mobile_width }}"
+    },
+    {
+      "type": "header",
+      "content": "Colour"
+    },
+    {
+      "type": "checkbox",
+      "id": "custom_color",
+      "label": "Override icon colour",
+      "info": "Works for inline SVGs (theme asset or code) that use currentColor.",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon colour",
+      "default": "#FF5000",
+      "visible_if": "{{ block.settings.custom_color }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "force_color",
+      "label": "Force single colour",
+      "info": "Overrides all fills and strokes in the SVG with the icon colour. For single-colour icons only.",
+      "default": false,
+      "visible_if": "{{ block.settings.custom_color }}"
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_background",
+      "label": "Show background",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background colour",
+      "alpha": true,
+      "default": "#FFFFFF",
+      "visible_if": "{{ block.settings.show_background }}"
+    },
+    {
+      "type": "range",
+      "id": "background_padding",
+      "label": "t:content.padding",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 12,
+      "visible_if": "{{ block.settings.show_background }}"
+    },
+    {
+      "type": "range",
+      "id": "corner_radius",
+      "label": "t:settings.border_radius",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 100,
+      "visible_if": "{{ block.settings.show_background }}"
+    },
+    {
+      "type": "header",
+      "content": "Link"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:settings.link"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_in_new_tab",
+      "label": "t:settings.open_new_tab",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom icon",
+      "category": "t:categories.basic"
+    }
+  ]
+}
+{% endschema %}
