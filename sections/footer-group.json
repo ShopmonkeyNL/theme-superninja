@@ -101,8 +101,8 @@
       "name": "t:names.footer",
       "settings": {
         "background_color": "#f0f2f1",
-        "terms_url": "",
-        "privacy_url": ""
+        "terms_url": "shopify://policies/terms-of-service",
+        "privacy_url": "shopify://policies/privacy-policy"
       }
     },
     "footer_utilities_jLGE8U": {
