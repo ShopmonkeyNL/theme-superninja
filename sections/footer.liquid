@@ -1,453 +1,127 @@
-{% comment %}
-  Custom Footer – Simple footer with logo and customizable columns.
-{% endcomment %}
-
-{% liquid
-  assign bg_color = section.settings.background_color | default: '#F0F2F1'
-  assign column_blocks = section.blocks | where: 'type', 'column'
-  assign footer_bg_image = section.settings.footer_bg_image
-  if footer_bg_image != blank
-    assign footer_bg_url = footer_bg_image | image_url: width: 1920
-  else
-    assign footer_bg_url = 'footer-bg.png' | asset_url
-  endif
-%}
-
-<footer class="custom-footer custom-footer--{{ section.id }}" style="--cf-bg: {{ bg_color }};" {{ section.shopify_attributes }}>
-  <div class="custom-footer__inner">
-    <div class="custom-footer__logo">
-      <a href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
-        <img src="{{ 'Logo_Super_Ninja_2025.svg' | asset_url }}" alt="{{ shop.name }}" loading="lazy" width="314" height="96">
-      </a>
+<div
+  class='section section--page-width'
+  {{ section.shopify_attributes }}
+>
+  <div class='footer-inner'>
+    <div class='footer-inner__about'>
+      <img
+        src='{{ settings.logo | image_url }}'
+        alt='Super Ninja black and white logo'
+      >
+      {% if section.settings.super_ninja_description %}
+        <div class='about-text'>{{ section.settings.super_ninja_description }}</div>
+      {% endif %}
     </div>
-    <div class="custom-footer__columns">
-      {% for block in column_blocks %}
-        <div class="custom-footer__column" {{ block.shopify_attributes }}>
-          <h3 class="custom-footer__column-title">{{ block.settings.title }}</h3>
-          <ul class="custom-footer__column-items">
-            {% for i in (1..10) %}
-              {% liquid
-                assign link_text_key = 'link_text_' | append: i
-                assign link_url_key = 'link_url_' | append: i
-                assign link_text = block.settings[link_text_key]
-                assign link_url = block.settings[link_url_key]
-                assign is_how_it_works = false
-                if link_text != blank and link_url != blank
-                  assign link_text_down = link_text | downcase
-                  if link_text_down contains 'how it works' or link_url == '/pages/how-it-works'
-                    assign is_how_it_works = true
-                  endif
-                endif
-              %}
-              {% if is_how_it_works %}
-                {% comment %} Show "How It Works" only on product pages: scroll to #simple-to-use on current PDP {% endcomment %}
-                {% if request.page_type == 'product' %}
-                  <li class="custom-footer__column-item">
-                    <a href="#simple-to-use">{{ link_text }}</a>
-                  </li>
-                {% endif %}
-              {% elsif link_text != blank %}
-                <li class="custom-footer__column-item">
-                  {% if link_url != blank %}
-                    <a href="{{ link_url }}">{{ link_text }}</a>
-                  {% else %}
-                    <span>{{ link_text }}</span>
-                  {% endif %}
-                </li>
-              {% endif %}
-            {% endfor %}
-          </ul>
+    <div class='footer-inner__columns'>
+      {% for block in section.blocks %}
+        <div class="footer-column">
+          <h5>{{ block.settings.link_list.title }}</h5>
+          {% if block.settings.link_list.links %}
+            <div class="footer-column__items">
+              {% for link in block.settings.link_list.links %}
+                <a href="{{ link.url }}" class="item">{{ link.title }}</a>
+              {% endfor %}
+            </div>
+          {% endif %}
         </div>
       {% endfor %}
     </div>
   </div>
+</div>
 
-  <div class="custom-footer__bottom" style="background-image: url({{ footer_bg_url }});">
-    <div class="custom-footer__bottom-inner">
-      <div class="custom-footer__copyright">
-        © {{ 'now' | date: '%Y' }} Super Ninja. All rights reserved.
-      </div>
-      <div class="custom-footer__legal">
-        {% if section.settings.terms_url != blank %}
-          <a href="{{ section.settings.terms_url }}">Terms of Service</a>
-        {% else %}
-          <span>Terms of Service</span>
-        {% endif %}
-        {% if section.settings.privacy_url != blank %}
-          <a href="{{ section.settings.privacy_url }}">Privacy Policy</a>
-        {% else %}
-          <span>Privacy Policy</span>
-        {% endif %}
-      </div>
-    </div>
-  </div>
-</footer>
+{% style %}
+  footer .footer-inner {
+    padding-block: 2rem;
+    display: grid;
+    gap: 2rem;
 
-<style>
-  .custom-footer {
-    background: var(--cf-bg);
-    padding-top: 48px;
-  }
-
-  .custom-footer__inner {
-    max-width: 1312px;
-    margin: 0 auto;
-    display: flex;
-    gap: 4rem;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .custom-footer__logo {
-    flex-shrink: 0;
-  }
-
-  .custom-footer__logo a {
-    display: block;
-    text-decoration: none;
-  }
-
-  .custom-footer__logo img {
-    display: block;
-    height: auto;
-    max-width: 304px;
-  }
-
-  .custom-footer__columns {
-    display: flex;
-    gap: 3rem;
-    flex-wrap: wrap;
-    flex: 1;
-    justify-content: flex-end;
-  }
-
-  .custom-footer__column {
-    min-width: 150px;
-  }
-
-  .custom-footer__column-title {
-    margin: 0 0 1rem;
-    font-size: 24px;
-    font-weight: 700;
-    color: #FF5000;
-    text-transform: uppercase;
-    font-family: var(--font-heading--family);
-  }
-
-  .custom-footer__column-items {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .custom-footer__column-item {
-    margin: 0;
-  }
-
-  .custom-footer__column-item a,
-  .custom-footer__column-item span {
-    font-size: 16px;
-    color: #1C1C1C;
-    text-decoration: none;
-    display: block;
-    transition: opacity 0.2s ease;
-  }
-
-  .custom-footer__column-item a:hover {
-    opacity: 0.7;
-  }
-
-  @media screen and (max-width: 989px) {
-    .custom-footer__inner {
-      flex-direction: column-reverse;
-      gap: 2rem;
-    padding: 0 16px;
-
-    }
-
-    .custom-footer__columns {
-      width: 100%;
-      gap: 2rem;
-    }
-
-    .custom-footer__column {
-      min-width: auto;
-      flex: 1;
-      min-width: 150px;
-    }
-  }
-
-  @media screen and (max-width: 749px) {
-    .custom-footer {
-      padding: 48px 0 0 0;
-    }
-
-    .custom-footer__columns {
-      flex-direction: row;
-      gap: 40px;
-    }
-
-    .custom-footer__column {
-      width: 100%;
-    }
-  }
-
-  /* Footer bottom - Copyright and Legal */
-  .custom-footer__bottom {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 48px 16px;
-    margin-top: 48px;
-
-  }
-
-  .custom-footer__bottom-inner {
-    max-width: 1312px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .custom-footer__copyright {
-    font-size: 14px;
-    color: #fff;   
-  }
-
-  .custom-footer__legal {
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
-  }
-
-  .custom-footer__legal a,
-  .custom-footer__legal span {
-    font-size: 14px;
-    color: #fff;
-    text-decoration: none;
-    transition: opacity 0.2s ease;
-  }
-
-  .custom-footer__legal a:hover {
-    opacity: 0.7;
-  }
-
-  @media screen and (max-width: 749px) {
-    .custom-footer__bottom {
-      padding: 48px 16px 48px 16px;
-    }
-
-    .custom-footer__bottom-inner {
+    & .footer-inner__about {
+      display: flex;
       flex-direction: column;
-      text-align: center;
-      gap: 1rem;
+      gap: 0.5rem;
+
+      & img {
+        max-width: 350px;
+      }
     }
 
-    .custom-footer__legal {
+    & .footer-inner__columns {
+      display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      justify-content: end;
+      gap: 2rem;
+
+      & .footer-column {
+        & h5 {
+          margin-block-end: 0.75rem;
+          
+          @media (min-width: 768px) {
+            margin-block-end: 1.5rem;
+          }
+        }
+
+        & .footer-column__items {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+
+          & .item {
+            transition: opacity 0.2s ease-out;
+            
+            &:hover {
+              transition: opacity 0.2s ease-out;
+              opacity: 0.6;
+            }
+          }
+        }
+      }
+
+      @media (min-width: 750px) {
+        flex-direction: row;
+        gap: 8rem;
+      }
+    }
+
+    @media (min-width: 750px) {
+      grid-template-columns: 0.5fr 1fr;
+      gap: 4rem;
     }
   }
-</style>
+{% endstyle %}
 
 {% schema %}
-  {
-    "name": "Footer",
-    "tag": "footer",
-    "class": "section-footer",
-    "settings": [
-      {
-        "type": "color",
-        "id": "background_color",
-        "label": "Background color",
-        "default": "#F0F2F1"
-      },
-      {
-        "type": "header",
-        "content": "Footer bottom"
-      },
-      {
-        "type": "image_picker",
-        "id": "footer_bg_image",
-        "label": "Bottom background image",
-        "info": "Default: footer-bg.png"
-      },
-      {
-        "type": "url",
-        "id": "terms_url",
-        "label": "Terms of Service URL"
-      },
-      {
-        "type": "url",
-        "id": "privacy_url",
-        "label": "Privacy Policy URL"
-      }
-    ],
-    "blocks": [
-      {
-        "type": "column",
-        "name": "Column",
-        "settings": [
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Column title",
-            "default": "SHOP"
-          },
-          {
-            "type": "text",
-            "id": "link_text_1",
-            "label": "Link 1 text"
-          },
-          {
-            "type": "url",
-            "id": "link_url_1",
-            "label": "Link 1 URL"
-          },
-          {
-            "type": "text",
-            "id": "link_text_2",
-            "label": "Link 2 text"
-          },
-          {
-            "type": "url",
-            "id": "link_url_2",
-            "label": "Link 2 URL"
-          },
-          {
-            "type": "text",
-            "id": "link_text_3",
-            "label": "Link 3 text"
-          },
-          {
-            "type": "url",
-            "id": "link_url_3",
-            "label": "Link 3 URL"
-          },
-          {
-            "type": "text",
-            "id": "link_text_4",
-            "label": "Link 4 text"
-          },
-          {
-            "type": "url",
-            "id": "link_url_4",
-            "label": "Link 4 URL"
-          },
-          {
-            "type": "text",
-            "id": "link_text_5",
-            "label": "Link 5 text"
-          },
-          {
-            "type": "url",
-            "id": "link_url_5",
-            "label": "Link 5 URL"
-          },
-          {
-            "type": "text",
-            "id": "link_text_6",
-            "label": "Link 6 text"
-          },
-          {
-            "type": "url",
-            "id": "link_url_6",
-            "label": "Link 6 URL"
-          },
-          {
-            "type": "text",
-            "id": "link_text_7",
-            "label": "Link 7 text"
-          },
-          {
-            "type": "url",
-            "id": "link_url_7",
-            "label": "Link 7 URL"
-          },
-          {
-            "type": "text",
-            "id": "link_text_8",
-            "label": "Link 8 text"
-          },
-          {
-            "type": "url",
-            "id": "link_url_8",
-            "label": "Link 8 URL"
-          },
-          {
-            "type": "text",
-            "id": "link_text_9",
-            "label": "Link 9 text"
-          },
-          {
-            "type": "url",
-            "id": "link_url_9",
-            "label": "Link 9 URL"
-          },
-          {
-            "type": "text",
-            "id": "link_text_10",
-            "label": "Link 10 text"
-          },
-          {
-            "type": "url",
-            "id": "link_url_10",
-            "label": "Link 10 URL"
-          }
-        ]
-      }
-    ],
-    "presets": [
-      {
-        "name": "Footer",
-        "blocks": [
-          {
-            "type": "column",
-            "settings": {
-              "title": "SHOP",
-              "link_text_1": "All Products",
-              "link_url_1": "/collections/all",
-              "link_text_2": "Best Sellers",
-              "link_url_2": "/collections/all?sort_by=best-selling",
-              "link_text_3": "Bundles",
-              "link_url_3": "/collections/bundles"
-            }
-          },
-          {
-            "type": "column",
-            "settings": {
-              "title": "SUPPORT",
-              "link_text_1": "How It Works",
-              "link_url_1": "/pages/how-it-works",
-              "link_text_2": "FAQ",
-              "link_url_2": "/pages/contact#faq",
-              "link_text_3": "Contact Us",
-              "link_url_3": "/pages/contact"
-            }
-          },
-          {
-            "type": "column",
-            "settings": {
-              "title": "COMPANY",
-              "link_text_1": "About",
-              "link_url_1": "/pages/about-us",
-              "link_text_2": "Reviews",
-              "link_url_2": "/pages/reviews",
-              "link_text_3": "Blog",
-              "link_url_3": "/blogs/blog"
-            }
-          }
-        ]
-      }
-    ],
-    "enabled_on": {
-      "groups": ["footer"]
+{
+  "name": "Footer",
+  "tag": "footer",
+  "class": "section-footer",
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Column",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "link_list",
+          "label": "Menu",
+        }
+      ]
     }
+  ],
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "super_ninja_description",
+      "label": "Super Ninja description",
+      "default": "<p>Bij Super Ninja ontwikkelen we duurzame en gifvrije oplossingen voor ongediertebestrijding. Met innovatieve producten, zoals de Fruit Fly Ninja, bieden we een effectieve en milieuvriendelijke manier om fruitvliegjes en ander ongedierte te bestrijden. </p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer"
+    }
+  ],
+  "enabled_on": {
+    "groups": ["footer"]
   }
+}
 {% endschema %}
