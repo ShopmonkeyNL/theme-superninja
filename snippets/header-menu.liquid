@@ -58,8 +58,14 @@
         ref="menuitem"
       >
         <span class="menu-list__link-title">{{- link.title -}}</span>
+        {%- if link.links != blank and is_how_it_works == false -%}
+          <span class='svg-wrapper icon-caret icon-animated'>
+            {{- 'icon-caret.svg' | inline_asset_content -}}
+          </span>
+        {% endif %}
       </a>
-      {%- if link.links != blank and is_how_it_works == false -%}
+
+      {% comment %} {%- if link.links != blank and is_how_it_works == false -%}
         <div class="menu-list__submenu{{ color_scheme_classes }}" ref="submenu[]">
           <div
             id="submenu-{{ forloop.index }}"
@@ -77,7 +83,17 @@
             %}
           </div>
         </div>
-      {%- endif -%}
+      {%- endif -%} {% endcomment %}
+
+      {% if link.links != blank and is_how_it_works == false %}
+        <div class="submenu-dropdown">
+          {% for childlink in link.links %}
+            <a href="{{ childlink.url }}">
+              {{ childlink.title }}
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
     </li>
     {% endunless %}
   {% endfor %}
@@ -98,8 +114,8 @@
 
 <nav header-menu>
   <div
-    class="menu-list"
-    style="{% render 'menu-font-styles', settings: block_settings %}"
+    class='menu-list'
+    style='{% render 'menu-font-styles', settings: block_settings %}'
   >
     {% assign class = 'overflow-menu' | append: color_scheme_classes %}
     {% render 'overflow-list',

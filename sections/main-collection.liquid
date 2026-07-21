@@ -57,8 +57,8 @@
             data-page="{{ paginate.current_page }}"
             data-product-id="{{ product.id }}"
             ref="cards[]"
-          >
-            {% render 'official-product-card-collection', product: product %}
+          > 
+            {% content_for 'block', type: 'product-card', id: 'product-card', product: product %}
           </li>
         {% endfor %}
       {% endcapture %}

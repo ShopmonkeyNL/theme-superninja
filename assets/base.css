@@ -75,6 +75,10 @@ select {
     box-shadow var(--hover-transition-duration) var(--hover-transition-timing);
   will-change: transform, box-shadow;
   z-index: var(--layer-flat);
+
+  &:hover {
+    transform: scale(1.01);
+  }
 }
 
 .product-card__link {
@@ -995,6 +999,7 @@ body:has(.header[transparent]) #header-group > *:not(.header-section) {
 
 .product-grid__card.product-grid__card {
   display: flex;
+  justify-content: space-between;
   flex-flow: column nowrap;
   gap: var(--product-card-gap);
   align-items: var(--product-card-alignment);
@@ -1314,6 +1319,7 @@ input {
 textarea::placeholder,
 input::placeholder {
   color: var(--color-input-text);
+  opacity: 0.3;
 }
 
 textarea:not(:placeholder-shown)::placeholder,
@@ -1331,6 +1337,7 @@ input:not(:placeholder-shown)::placeholder {
 .button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  filter: grayscale(1);
 }
 
 .button,
@@ -1445,6 +1452,11 @@ shopify-accelerated-checkout-cart {
 
 .icon-caret svg {
   transition: transform var(--animation-speed) var(--animation-easing);
+  color: var(--color-primary-button-background);
+}
+
+.icon-plus svg {
+  color: var(--color-primary-button-background);
 }
 
 .icon-caret--forward svg {
@@ -1457,6 +1469,7 @@ shopify-accelerated-checkout-cart {
 
 summary {
   display: flex;
+  gap: 24px;
   align-items: center;
   cursor: pointer;
   list-style: none;
@@ -1469,8 +1482,8 @@ summary:hover {
 
 summary .svg-wrapper {
   margin-inline-start: auto;
-  height: var(--icon-size-xs);
-  width: var(--icon-size-xs);
+  height: var(--icon-size-sm);
+  aspect-ratio: 1;
   transition: transform var(--animation-speed) var(--animation-easing);
 }
 
@@ -1903,26 +1916,29 @@ deferred-media[data-media-loaded] img {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 4px;
+  background-color: #F6EDE9;
+  padding: 8px;
 }
 
 .deferred-media__poster-icon svg,
 .video-placeholder-wrapper__poster-icon svg {
-  width: var(--button-size);
-  height: var(--button-size);
-  color: var(--color-white);
-  filter: drop-shadow(var(--shadow-button));
+  width: 1rem;
+  height: 1rem;
+  color: #551B00;
+  transition: opacity 0.2s ease;
 
   &:hover {
-    color: rgb(var(--color-white-rgb) / var(--opacity-80));
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
   }
 
   @media screen and (min-width: 750px) {
-    width: 4rem;
-    height: 4rem;
+    width: 1.5rem;
+    height: 1.5rem;
   }
 }
 
@@ -3492,8 +3508,6 @@ slideshow-component[disabled="true"] slideshow-arrows {
 slideshow-arrows .slideshow-control {
   pointer-events: auto;
   opacity: 0;
-  min-height: var(--minimum-touch-target);
-  min-width: var(--minimum-touch-target);
   padding: 0 var(--padding-xs);
   color: var(--color-white);
 }
@@ -3767,6 +3781,25 @@ slideshow-arrows .slideshow-control.slideshow-control--style-none {
 
 .layout-panel-flex--row > .group-block--width-custom {
   flex-basis: var(--size-style-width);
+}
+
+/* When a row stacks into a column on mobile, the width-based flex rules above
+   would distribute *height* (flex-basis 0 + grow), stretching short groups and
+   squeezing tall ones. Reset to natural content height when stacked. */
+@media screen and (max-width: 749px) {
+  .layout-panel-flex--row.mobile-column > .group-block--width-fill {
+    flex: 0 1 auto;
+  }
+
+  .layout-panel-flex--row.mobile-column > .group-block--width-custom {
+    flex-basis: auto;
+  }
+
+  /* "Height: fill" equalises heights in a desktop row; once stacked it only
+     stretches short blocks. Fall back to natural height on mobile. */
+  .layout-panel-flex--row.mobile-column > .group-block--height-fill {
+    height: auto;
+  }
 }
 
 /* Dimension utilities - Height */
@@ -4325,9 +4358,7 @@ text-component {
   }
 }
 
-.group-block-content.layout-panel-flex.layout-panel-flex--column{
-  gap:24px!important;
-}
+
 @media (max-width: 1024px){
   .product-information__grid.product-information--media-left{
     padding: 0 16px!important;
@@ -4346,6 +4377,7 @@ text-component {
 .menu-list__link {
   position: relative;
 }
+
 
 .menu-list__link:hover {
   color: #ff5000 !important;

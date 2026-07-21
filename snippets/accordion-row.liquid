@@ -1,0 +1,48 @@
+<accordion-custom
+  {% if open_by_default %}
+    open-by-default-on-desktop
+    open-by-default-on-mobile
+  {% endif %}
+  {% if open_first and forloop.first %}
+    open-by-default-on-desktop
+    open-by-default-on-mobile
+  {% endif %}
+>
+  <details
+    class='details'
+    data-testid='accordion-details'
+    {% if open_by_default %}
+      open
+    {% endif %}
+    {{ block.shopify_attributes }}
+  >
+    <summary class='details__header {{ custom_type }}'>
+      {% if icon %}
+        {% render 'icon-or-image',
+          icon: icon,
+          image_upload: image_upload,
+          width: width,
+          class_name: 'details__icon'
+        %}
+      {% endif %}
+      {{ heading }}
+      <span class='svg-wrapper icon-caret icon-animated'>
+        {{- 'icon-caret.svg' | inline_asset_content -}}
+      </span>
+      <span class='svg-wrapper icon-plus'>
+        {{- 'icon-plus.svg' | inline_asset_content -}}
+      </span>
+    </summary>
+
+    <div class='details-content'>
+      {{ answer }}
+    </div>
+  </details>
+</accordion-custom>
+
+{% style %}
+  .details__icon {
+    height: auto;
+    margin-inline-end: var(--margin-xs);
+  }
+{% endstyle %}

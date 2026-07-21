@@ -11,6 +11,7 @@
   "sections": {
     "blog_hero": {
       "type": "simple-hero-heading",
+      "disabled": true,
       "settings": {
         "default_background_asset": "blog-heading.png",
         "background_color": "#ffffff",
@@ -21,6 +22,70 @@
         "padding_bottom": 72,
         "decorative_left_asset": "bee.png",
         "decorative_right_asset": "moth.png"
+      }
+    },
+    "hero_HrF848": {
+      "type": "hero",
+      "blocks": {
+        "text_xJ8EYq": {
+          "type": "text",
+          "settings": {
+            "text": "<p>{{ closest.blog.title }}</p>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "h1",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#1c1c1c26",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_xJ8EYq"
+      ],
+      "name": "t:names.hero",
+      "settings": {
+        "media_type_1": "image",
+        "media_type_2": "image",
+        "stack_media_on_mobile": false,
+        "custom_mobile_media": false,
+        "media_type_1_mobile": "image",
+        "media_type_2_mobile": "image",
+        "link": "",
+        "open_in_new_tab": false,
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 16,
+        "section_width": "page-width",
+        "section_height": "custom",
+        "section_height_custom": 30,
+        "color_scheme": "scheme-0862d5fd-36dc-491e-aca4-3407c2404010",
+        "toggle_overlay": true,
+        "overlay_color": "#f6ede9",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "blurred_reflection": false,
+        "reflection_opacity": 75,
+        "padding-block-start": 40,
+        "padding-block-end": 40
       }
     },
     "blog_posts_cards": {
@@ -40,7 +105,7 @@
           "settings": {
             "icon": "outperforms",
             "icon_asset": "",
-            "text": "<p>Outperforms common<br>DIY solutions</p>"
+            "text": "<p>Beter dan<br/>DIY-middelen</p>"
           }
         },
         "benefit_item_ECgcUe": {
@@ -48,7 +113,7 @@
           "settings": {
             "icon": "safe_around_food",
             "icon_asset": "",
-            "text": "<p>Safe around food,<br>kids & pets</p>"
+            "text": "<p>Veilig voor kids<br/>& huisdieren</p>"
           }
         },
         "benefit_item_jmy4Yc": {
@@ -56,7 +121,7 @@
           "settings": {
             "icon": "set_and_forget",
             "icon_asset": "",
-            "text": "<p>Set-and-forget,<br>no maintenance</p>"
+            "text": "<p>Plaatsen en klaar,<br/>geen onderhoud</p>"
           }
         },
         "benefit_item_33BbJV": {
@@ -64,7 +129,7 @@
           "settings": {
             "icon": "visible_results",
             "icon_asset": "",
-            "text": "<p>Visible results<br/>within 24 hours</p>"
+            "text": "<p>Resultaat binnen<br/>24 uur</p>"
           }
         }
       },
@@ -101,6 +166,7 @@
   },
   "order": [
     "blog_hero",
+    "hero_HrF848",
     "blog_posts_cards",
     "benefits_ticker_fqkyHM"
   ]

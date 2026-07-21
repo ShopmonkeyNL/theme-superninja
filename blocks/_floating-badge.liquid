@@ -1,0 +1,112 @@
+{% unless closest.product.available %}
+  <div class='floating-badge sold-out color-{{ settings.badge_sold_out_color_scheme }} {{ block.settings.inline_position }} {{ block.settings.block_position }}'>
+    {{ 'products.product.sold_out' | t }}
+  </div>
+{% endunless %}
+
+{% if closest.product.compare_at_price %}
+  <div class='floating-badge sale color-{{ settings.badge_sale_color_scheme }} {{ block.settings.inline_position }} {{ block.settings.block_position }}'>
+    {{ 'content.product_badge_sale' | t }}
+  </div>
+{% endif %}
+
+{% style %}
+  #shopify-block-{{ block.id }} {
+    position: absolute;
+    z-index: 2;
+
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+
+    & .floating-badge {
+      padding: 6px 16px;
+      width: fit-content;
+      border-radius: {{ settings.badge_corner_radius }}px;
+      text-transform: {{ settings.badge_text_transform }};
+      font-size: 12px;
+      font-family: var(--font-{{ settings.badge_font_family }}--family);
+      font-weight: bold;
+      border: 0.5px solid var(--color-border);
+    }
+
+    &:has(.floating-badge.left) {
+      left: {{ block.settings.inline_position_px }}px;
+    }
+
+    &:has(.floating-badge.right) {
+      right: {{ block.settings.inline_position_px }}px;
+    }
+
+    &:has(.floating-badge.top) {
+      top: {{ block.settings.block_position_px }}px;
+    }
+
+    &:has(.floating-badge.bottom) {
+      bottom: {{ block.settings.block_position_px }}px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Floating badge",
+  "presets": [
+    {
+      "name": "Floating badge"
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Badge position"
+    },
+    {
+      "type": "select",
+      "id": "inline_position",
+      "label": "Inline position",
+      "options": [
+        {
+          "label": "Left",
+          "value": "left"
+        },
+        {
+          "label": "Right",
+          "value": "right"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "inline_position_px",
+      "label": "Inline position px",
+      "default": 16,
+      "min": 0,
+      "max": 40
+    },
+    {
+      "type": "select",
+      "id": "block_position",
+      "label": "Block position",
+      "options": [
+        {
+          "label": "Top",
+          "value": "top"
+        },
+        {
+          "label": "Bottom",
+          "value": "bottom"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "block_position_px",
+      "label": "Block position px",
+      "default": 16,
+      "min": 0,
+      "max": 40
+    }
+  ]
+}
+{% endschema %}

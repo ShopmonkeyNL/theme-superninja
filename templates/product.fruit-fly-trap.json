@@ -9,6 +9,95 @@
  */
 {
   "sections": {
+    "section_zBmKMf": {
+      "type": "section",
+      "blocks": {
+        "text_YAaAxK": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>Discover our products</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h6",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#1c1c1c26",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_WPCjzA": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h2>Coming soon</h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#1c1c1c26",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_YAaAxK",
+        "text_WPCjzA"
+      ],
+      "name": "t:names.custom_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "small",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-1",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#1c1c1c26",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
     "main": {
       "type": "product-information",
       "blocks": {
@@ -271,6 +360,7 @@
           ]
         }
       },
+      "disabled": true,
       "settings": {
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
@@ -325,6 +415,7 @@
         "benefit_3",
         "benefit_4"
       ],
+      "disabled": true,
       "settings": {
         "background_color": "#94d357",
         "text_color": "#1c1c1c",
@@ -406,6 +497,7 @@
         "stat_2",
         "stat_3"
       ],
+      "disabled": true,
       "settings": {
         "stat_number_color": "#ff5000"
       }
@@ -488,8 +580,10 @@
         "card_4",
         "card_5"
       ],
+      "disabled": true,
       "settings": {
-        "background_color": "#f0f2f1"
+        "background_color": "#f0f2f1",
+        "anchor_id": ""
       }
     },
     "video_cards": {
@@ -557,12 +651,14 @@
         "video_1",
         "video_Mejmxq"
       ],
+      "disabled": true,
       "settings": {
         "background_color": "#ffffff"
       }
     },
     "super_ninja_vs_rest": {
       "type": "super-ninja-vs-rest",
+      "disabled": true,
       "settings": {
         "background_color": "#f0f2f1",
         "heading_content": "Super Ninja vs The Rest",
@@ -603,75 +699,78 @@
         "other_row_5": "2-3 DAYS DURATION"
       }
     },
-    "dropdown_pdp": {
-      "type": "dropdown-pdp",
+    "section_fct9dz": {
+      "type": "section",
       "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "content": "Care you can trust around pets and kids",
-            "tag": "h2",
-            "font_size_desktop": 64,
-            "font_size_mobile": 40,
-            "line_height_desktop": 1.2,
-            "line_height_mobile": 1.3,
-            "font_weight": "700",
-            "text_align": "left"
-          }
-        },
-        "text": {
+        "text_kfMLx6": {
           "type": "text",
+          "name": "t:names.heading",
           "settings": {
-            "content": "<p>Powerful pest control that works effectively, without compromising the safety of your home or family.</p>",
-            "font_size_desktop": 18,
-            "font_size_mobile": 16,
-            "line_height_desktop": 1.5,
-            "line_height_mobile": 1.5,
-            "font_weight": "400",
-            "text_align": "left"
-          }
+            "text": "<h2>Why super ninja works when others don't</h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground-heading)",
+            "background": false,
+            "background_color": "#1c1c1c26",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         },
-        "dropdown_1": {
-          "type": "dropdown_item",
+        "adaptive_accordion_YmQDtj": {
+          "type": "_adaptive-accordion",
+          "name": "Adaptive accordion",
           "settings": {
-            "title": "Proven effectiveness",
-            "content": "<p>Super Ninja has been tested and proven to work where other solutions fall short. Real results you can count on.</p>"
-          }
-        },
-        "dropdown_2": {
-          "type": "dropdown_item",
-          "settings": {
-            "title": "Smart, discreet design",
-            "content": "<p>Fits naturally in your kitchen or pantry without drawing attention. Effective without the clutter.</p>"
-          }
-        },
-        "dropdown_3": {
-          "type": "dropdown_item",
-          "settings": {
-            "title": "Safe Formulations",
-            "content": "<p>Developed with safety in mind, so you can use it around food and family with confidence.</p>"
-          }
-        },
-        "dropdown_4": {
-          "type": "dropdown_item",
-          "settings": {
-            "title": "Effortless and mess-free",
-            "content": "<p>Simple to set up and replace. No fuss, no sticky mess—just results.</p>"
-          }
+            "icon": "plus",
+            "dividers": true,
+            "type_preset": "h3"
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "heading",
-        "text",
-        "dropdown_1",
-        "dropdown_2",
-        "dropdown_3",
-        "dropdown_4"
+        "text_kfMLx6",
+        "adaptive_accordion_YmQDtj"
       ],
+      "disabled": true,
+      "name": "t:names.custom_section",
       "settings": {
-        "background_color": "#f0f2f1",
-        "asset_image_desktop": "Screenshot 2026-02-15 at 12.37.51.png",
-        "asset_image_mobile": "Screenshot 2026-02-15 at 12.37.51.png"
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 64,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-d465d6aa-9326-4aad-940a-36f87b34f9bf",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#1c1c1c26",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 96,
+        "padding-block-end": 96
       }
     },
     "image_cards_section": {
@@ -731,6 +830,7 @@
         "card_2",
         "card_3"
       ],
+      "disabled": true,
       "settings": {
         "background_color": "#ffffff",
         "border_color": "#ff5000"
@@ -738,6 +838,7 @@
     },
     "ally_home_pdp": {
       "type": "ally-home-pdp",
+      "disabled": true,
       "settings": {
         "background_color": "#f0f2f1",
         "logo_alt": "Super Ninja",
@@ -748,71 +849,195 @@
         "bullet_3": "Designed for daily life"
       }
     },
-    "faq_pdp": {
-      "type": "faq-pdp",
+    "section_faq_efNww3": {
+      "type": "section-faq",
       "blocks": {
-        "heading": {
-          "type": "faq_heading",
+        "text_CFNn4P": {
+          "type": "text",
+          "name": "t:names.heading",
           "settings": {
-            "content": "Frequently Asked Questions",
-            "tag": "h2",
-            "font_size_desktop": 64,
-            "font_size_mobile": 40,
-            "line_height_desktop": 1.2,
-            "line_height_mobile": 1.3,
-            "font_weight": "700",
-            "text_align": "left"
-          }
+            "text": "<h2>Frequently Asked questions</h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h1",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground-heading)",
+            "background": false,
+            "background_color": "#1c1c1c26",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         },
-        "faq_1": {
-          "type": "faq_item",
+        "accordion_W9x4h6": {
+          "type": "accordion",
+          "name": "t:names.accordion",
           "settings": {
-            "question": "Will this really work better than DIY?",
-            "answer": "<p>Yes! Our formula is scientifically optimized to attract and trap fruit flies more effectively than homemade vinegar solutions. The funnel design prevents escape, and the bait lasts up to 30 days without needing replacement.</p>"
-          }
-        },
-        "faq_2": {
-          "type": "faq_item",
-          "settings": {
-            "question": "How fast will I see results?",
-            "answer": "<p>Most customers start seeing visible reductions within the first 24 hours, with stronger results over the next few days.</p>"
-          }
-        },
-        "faq_3": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Is it safe for pets and kids?",
-            "answer": "<p>Super Ninja is designed for everyday home use when used as directed, including homes with pets and children.</p>"
-          }
-        },
-        "faq_4": {
-          "type": "faq_item",
-          "settings": {
-            "question": "How long does one trap last?",
-            "answer": "<p>Each trap is built to provide long-lasting performance, typically up to 30 days before replacement is needed.</p>"
-          }
-        },
-        "faq_5": {
-          "type": "faq_item",
-          "settings": {
-            "question": "What if it doesn't work for me?",
-            "answer": "<p>If results are not as expected, our support team can help optimize placement and usage for your specific environment.</p>"
-          }
+            "custom_faqs": false,
+            "icon": "caret",
+            "dividers": true,
+            "type_preset": "h4",
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "accordion_row_e9kBBC": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "Retourbeleid",
+                "open_by_default": true,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_X6rmCF": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Ons doel is dat elke klant volledig tevreden is met zijn aankoop. Als dit niet het geval is, laat het ons dan weten. We doen ons best om samen met jou tot een goede oplossing te komen.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#1c1c1c26",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_X6rmCF"
+              ]
+            },
+            "accordion_row_YGgF9b": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "Verzending",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_jRgNLn": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>We zullen je bestelling zo snel mogelijk verzenden. Zodra je bestelling is verzonden, ontvang je een e-mail met meer informatie. De levertijden zijn afhankelijk van je locatie.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#1c1c1c26",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_jRgNLn"
+              ]
+            },
+            "accordion_row_dcV7Kz": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "Productie",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_XD8xUq": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Onze producten worden zowel lokaal als wereldwijd geproduceerd. We selecteren onze productiepartners zorgvuldig om ervoor te zorgen dat onze producten van hoge kwaliteit zijn en een eerlijke prijs hebben.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#1c1c1c26",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_XD8xUq"
+              ]
+            }
+          },
+          "block_order": [
+            "accordion_row_e9kBBC",
+            "accordion_row_YGgF9b",
+            "accordion_row_dcV7Kz"
+          ]
         }
       },
       "block_order": [
-        "heading",
-        "faq_1",
-        "faq_2",
-        "faq_3",
-        "faq_4",
-        "faq_5"
+        "text_CFNn4P",
+        "accordion_W9x4h6"
       ],
+      "disabled": true,
+      "name": "FAQ Section",
       "settings": {
-        "background_color": "#f0f2f1",
-        "border_color": "#ff5000",
-        "icon_color": "#ff5000",
-        "title_color": "#1c1c1c"
+        "padding_block_start_desktop": 96,
+        "padding_block_end_desktop": 96,
+        "padding_block_start_mobile": 48,
+        "padding_block_end_mobile": 48,
+        "content_direction": "row",
+        "content_vertical_mobile": true,
+        "content_gap": 80,
+        "content_alignment": "start"
       }
     },
     "benefits_ticker_footer": {
@@ -857,6 +1082,7 @@
         "benefit_3",
         "benefit_4"
       ],
+      "disabled": true,
       "settings": {
         "background_color": "#94d357",
         "text_color": "#000000",
@@ -880,19 +1106,112 @@
         "bar_border_color": "#ffffff",
         "bar_border_width": 0
       }
+    },
+    "1782131357a761aec7": {
+      "type": "_blocks",
+      "blocks": {
+        "judge_me_reviews_review_widget_4ttrjj": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_4ttrjj"
+      ],
+      "disabled": true,
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#1c1c1c26",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "178213139890296d28": {
+      "type": "_blocks",
+      "blocks": {
+        "judge_me_reviews_review_widget_fyQK9W": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_fyQK9W"
+      ],
+      "disabled": true,
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#1c1c1c26",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
+    "section_zBmKMf",
     "main",
     "benefits_ticker_pdp",
     "pdp_stats_section",
     "cards_with_text",
     "video_cards",
     "super_ninja_vs_rest",
-    "dropdown_pdp",
+    "section_fct9dz",
     "image_cards_section",
     "ally_home_pdp",
-    "faq_pdp",
-    "benefits_ticker_footer"
+    "section_faq_efNww3",
+    "benefits_ticker_footer",
+    "1782131357a761aec7",
+    "178213139890296d28"
   ]
 }
