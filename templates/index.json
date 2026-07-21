@@ -190,7 +190,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Trusted by <strong>1000+</strong> happy customers</p>",
+                    "text": "<p>Vertrouwd door 1000+ tevreden klanten</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -222,7 +222,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<p>ON A MISSION TO GREEN PEST CONTROL</p>",
+                "text": "<p>ONZE MISSIE: EEN GROENE<br/>ONGEDIERTEBESTRIJDING</p>",
                 "width": "fit-content",
                 "max_width": "extra-narrow",
                 "alignment": "left",
@@ -247,7 +247,7 @@
             "text_fXTkdM": {
               "type": "text",
               "settings": {
-                "text": "<p>Proven effective and sustainable pest control products, made from natural ingredients</p>",
+                "text": "<p>Bewezen effectieve en duurzame producten voor plaagbestrijding, gemaakt van natuurlijke ingrediënten</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -272,7 +272,7 @@
             "button_4cDn46": {
               "type": "button",
               "settings": {
-                "label": "Find your bug",
+                "label": "Welk beestje heb jij?",
                 "link": "shopify://collections",
                 "open_in_new_tab": false,
                 "style_class": "button",
@@ -1161,7 +1161,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>Which pest is bugging you?</p>",
+            "text": "<p>Welk ongedierte heb jij?</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -1187,7 +1187,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h2>Coming soon</h2>",
+            "text": "<h2>Coming Soon</h2>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -1250,7 +1250,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h2>Why super ninja works when others don't</h2>",
+            "text": "<p>Waarom Super Ninja wél werkt</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -1388,7 +1388,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>Discover our most trusted solutions</p>",
+            "text": "<p>Ontdek onze meest betrouwbare oplossingen</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -1574,7 +1574,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<p>The wall of wins: </p>",
+                "text": "<p>Onze klanten, hun resultaten: </p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -1600,7 +1600,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<p>stories of victory over the tiny invaders</p>",
+                "text": "<p>Verhalen over de strijd tegen ongedierte</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -1915,7 +1915,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Trusted by <strong>1000+</strong> happy customers</p>",
+                    "text": "<p>Vertrouwd door 1000+ tevreden klanten</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -1972,7 +1972,7 @@
             "text_UD7Gpr": {
               "type": "text",
               "settings": {
-                "text": "<p>Super Ninja was created to prove one thing: You shouldn't have to choose between effectiveness and sustainability.</p>",
+                "text": "<p>Super Ninja is ontstaan om één ding te bewijzen: je hoeft niet te kiezen tussen effectiviteit en duurzaamheid.</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -1997,7 +1997,7 @@
             "button_FihHMK": {
               "type": "button",
               "settings": {
-                "label": "Find your bug",
+                "label": "Vind jouw beestje",
                 "link": "shopify://collections",
                 "open_in_new_tab": false,
                 "style_class": "button",
