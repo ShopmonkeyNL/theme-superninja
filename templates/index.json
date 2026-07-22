@@ -941,7 +941,7 @@
           "settings": {
             "icon": "outperforms",
             "icon_asset": "",
-            "text": "<p>Outperforms common<br>DIY solutions</p>"
+            "text": "<p>Beter dan<br/>DIY-middelen</p>"
           }
         },
         "benefit_2": {
@@ -949,7 +949,7 @@
           "settings": {
             "icon": "safe_around_food",
             "icon_asset": "",
-            "text": "<p>Safe around food,<br>kids & pets</p>"
+            "text": "<p>Veilig voor kids<br/>& huisdieren</p>"
           }
         },
         "benefit_3": {
@@ -957,7 +957,7 @@
           "settings": {
             "icon": "set_and_forget",
             "icon_asset": "",
-            "text": "<p>Set-and-forget,<br>no maintenance</p>"
+            "text": "<p>Plaatsen en klaar,<br/>geen onderhoud</p>"
           }
         },
         "benefit_4": {
@@ -965,7 +965,7 @@
           "settings": {
             "icon": "visible_results",
             "icon_asset": "",
-            "text": "<p>Visible results<br/>within 24 hours</p>"
+            "text": "<p>Resultaat binnen<br/>24 uur</p>"
           }
         }
       },
@@ -1676,7 +1676,7 @@
           "settings": {
             "icon": "outperforms",
             "icon_asset": "",
-            "text": "<p>Outperforms common<br/>DIY solutions</p>"
+            "text": "<p>Beter dan<br/>DIY-middelen</p>"
           }
         },
         "benefit_item_dtVLhE": {
@@ -1684,7 +1684,7 @@
           "settings": {
             "icon": "safe_around_food",
             "icon_asset": "",
-            "text": "<p>Safe around food,<br>kids & pets</p>"
+            "text": "<p>Veilig voor kids<br/>& huisdieren</p>"
           }
         },
         "benefit_item_axrxwW": {
@@ -1692,7 +1692,7 @@
           "settings": {
             "icon": "set_and_forget",
             "icon_asset": "",
-            "text": "<p>Set-and-forget,<br/>no maintenance</p>"
+            "text": "<p>Plaatsen en klaar,<br/>geen onderhoud</p>"
           }
         },
         "benefit_item_fgdfxe": {
@@ -1700,7 +1700,7 @@
           "settings": {
             "icon": "visible_results",
             "icon_asset": "",
-            "text": "<p>Visible results<br/>within 24 hours</p>"
+            "text": "<p>Resultaat binnen<br/>24 uur</p>"
           }
         }
       },
@@ -1947,7 +1947,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<p>Pest control that respects your home</p>",
+                "text": "<p>Ongediertebestrijding <br/>met respect voor jouw huis</p>",
                 "width": "fit-content",
                 "max_width": "extra-narrow",
                 "alignment": "center",
