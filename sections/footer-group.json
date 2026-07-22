@@ -23,7 +23,7 @@
             "link_text_2": "Bestsellers",
             "link_url_2": "/collections/all?sort_by=best-selling",
             "link_text_3": "Bundels",
-            "link_url_3": "/collections/bundles",
+            "link_url_3": "shopify://collections",
             "link_text_4": "",
             "link_url_4": "",
             "link_text_5": "",
@@ -72,12 +72,12 @@
             "title": "SUPER NINJA",
             "link_text_1": "Over ons",
             "link_url_1": "/pages/about-us",
-            "link_text_2": "Beoordelingen",
-            "link_url_2": "/pages/reviews",
-            "link_text_3": "Blog",
-            "link_url_3": "/blogs/blog",
-            "link_text_4": "",
-            "link_url_4": "",
+            "link_text_2": "Partners",
+            "link_url_2": "/pages/partners",
+            "link_text_3": "",
+            "link_url_3": "/pages/reviews",
+            "link_text_4": "Blog",
+            "link_url_4": "/blogs/blog",
             "link_text_5": "",
             "link_url_5": "",
             "link_text_6": "",
@@ -101,8 +101,8 @@
       "name": "t:names.footer",
       "settings": {
         "background_color": "#f0f2f1",
-        "terms_url": "",
-        "privacy_url": ""
+        "terms_url": "shopify://policies/terms-of-service",
+        "privacy_url": "shopify://policies/privacy-policy"
       }
     },
     "footer_utilities_jLGE8U": {

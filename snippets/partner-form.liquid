@@ -1,0 +1,316 @@
+{%- doc -%}
+  Renders the B2B partner form. Posts to Shopify's contact form endpoint
+  (form 'contact'), so submissions arrive like regular contact form emails
+  with every field included.
+
+  Fields: company name, company website, contact name, country (dropdown,
+  all countries), email, phone, partner type (dropdown, editable options),
+  message (optional). Optional GDPR consent checkbox and a fallback
+  "prefer to talk directly" email line below the button.
+
+  @param {object} settings - Block settings.
+  @param {string} submit_button - HTML for the submit button, rendered via a `content_for` block.
+  @param {object} block - Block object used for id and shopify attributes.
+  @param {object} section - Section object used as fallback id source.
+
+  @example
+  {% render 'partner-form', settings: block.settings, submit_button: content_for_submit_button %}
+{%- enddoc -%}
+
+<div
+  class='
+    partner-form
+    spacing-style size-style
+    {% if settings.inherit_color_scheme == false %}color-{{ settings.color_scheme }}{% endif %}
+  '
+  style='
+    {% render 'spacing-style', settings: settings %}
+    {% render 'size-style', settings: settings %}
+  '
+  {{ block.shopify_attributes }}
+>
+  {% assign form_id = block.id | default: section.id | prepend: 'PartnerForm-' %}
+
+  {%- form 'contact', id: form_id, class: 'partner-form__form' -%}
+    {%- if form.errors -%}
+      <div
+        class='partner-form__error partner-form__field--full'
+        tabindex='-1'
+        autofocus
+      >
+        {{- 'icon-error.svg' | inline_asset_content -}}
+
+        {{- form.errors.translated_fields.email | capitalize }}
+        {{ form.errors.messages.email -}}
+      </div>
+    {%- endif -%}
+
+    {%- if form.posted_successfully? -%}
+      <div
+        class='partner-form__success partner-form__field--full'
+        tabindex='-1'
+        autofocus
+      >
+        {{- 'icon-checkmark.svg' | inline_asset_content -}}
+        {{- 'blocks.contact_form.post_success' | t -}}
+      </div>
+    {%- endif -%}
+
+    <div class='partner-form__field'>
+      <label class='partner-form__label' for='{{ form_id }}-company'>
+        <h5>COMPANY NAME <span aria-hidden='true'>*</span></h5>
+      </label>
+      <input
+        type='text'
+        id='{{ form_id }}-company'
+        class='partner-form__input'
+        autocomplete='organization'
+        name='contact[Company name]'
+        placeholder='Your company'
+        required
+      >
+    </div>
+
+    <div class='partner-form__field'>
+      <label class='partner-form__label' for='{{ form_id }}-website'>
+        <h5>COMPANY WEBSITE <span aria-hidden='true'>*</span></h5>
+      </label>
+      <input
+        type='text'
+        id='{{ form_id }}-website'
+        class='partner-form__input'
+        autocomplete='url'
+        name='contact[Company website]'
+        placeholder='www.yourcompany.com'
+        required
+      >
+    </div>
+
+    <div class='partner-form__field'>
+      <label class='partner-form__label' for='{{ form_id }}-name'>
+        <h5>CONTACT NAME <span aria-hidden='true'>*</span></h5>
+      </label>
+      <input
+        type='text'
+        id='{{ form_id }}-name'
+        class='partner-form__input'
+        autocomplete='name'
+        name='contact[Contact name]'
+        value='{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}'
+        placeholder='John Smith'
+        required
+      >
+    </div>
+
+    <div class='partner-form__field'>
+      <label class='partner-form__label' for='{{ form_id }}-country'>
+        <h5>COUNTRY <span aria-hidden='true'>*</span></h5>
+      </label>
+      <select
+        id='{{ form_id }}-country'
+        class='partner-form__input partner-form__select'
+        autocomplete='country-name'
+        name='contact[Country]'
+        required
+      >
+        <option value='' disabled selected>Select your country</option>
+        {{ all_country_option_tags }}
+      </select>
+    </div>
+
+    <div class='partner-form__field'>
+      <label class='partner-form__label' for='{{ form_id }}-email'>
+        <h5>EMAIL ADDRESS <span aria-hidden='true'>*</span></h5>
+      </label>
+      <input
+        type='email'
+        id='{{ form_id }}-email'
+        class='partner-form__input'
+        autocomplete='email'
+        name='contact[email]'
+        spellcheck='false'
+        autocapitalize='off'
+        value='{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}'
+        aria-required='true'
+        {% if form.errors contains 'email' %}
+          aria-invalid='true'
+          aria-describedby='{{ form_id }}-email-error'
+        {% endif %}
+        placeholder='john@company.com'
+        required
+      >
+    </div>
+
+    <div class='partner-form__field'>
+      <label class='partner-form__label' for='{{ form_id }}-phone'>
+        <h5>PHONE <span aria-hidden='true'>*</span></h5>
+      </label>
+      <input
+        type='tel'
+        id='{{ form_id }}-phone'
+        class='partner-form__input'
+        autocomplete='tel'
+        name='contact[Phone]'
+        placeholder='+31 6 12345678'
+        required
+      >
+    </div>
+
+    <div class='partner-form__field partner-form__field--full'>
+      <label class='partner-form__label' for='{{ form_id }}-partner-type'>
+        <h5>PARTNER TYPE <span aria-hidden='true'>*</span></h5>
+      </label>
+      <select
+        id='{{ form_id }}-partner-type'
+        class='partner-form__input partner-form__select'
+        name='contact[Partner type]'
+        required
+      >
+        <option value='' disabled selected>Select partner type</option>
+        {%- assign partner_types = settings.partner_types | newline_to_br | split: '<br />' -%}
+        {%- for type in partner_types -%}
+          {%- assign type_label = type | strip -%}
+          {%- if type_label != blank -%}
+            <option value='{{ type_label | escape }}'>{{ type_label }}</option>
+          {%- endif -%}
+        {%- endfor -%}
+      </select>
+    </div>
+
+    <div class='partner-form__field partner-form__field--full'>
+      <label class='partner-form__label' for='{{ form_id }}-body'>
+        <h5>MESSAGE</h5>
+      </label>
+      <textarea
+        rows='6'
+        id='{{ form_id }}-body'
+        class='partner-form__input partner-form__input--textarea'
+        name='contact[body]'
+        placeholder='Tell us about your market, channel and coverage...'
+      >
+        {{- form.body -}}
+      </textarea>
+    </div>
+
+    {%- if settings.show_consent -%}
+      <div class='partner-form__field partner-form__field--full partner-form__consent'>
+        <input
+          type='checkbox'
+          id='{{ form_id }}-consent'
+          name='contact[Consent]'
+          value='Agreed'
+          required
+        >
+        <label for='{{ form_id }}-consent' class='partner-form__consent-label'>
+          {{ settings.consent_text }}
+        </label>
+      </div>
+    {%- endif -%}
+
+    {{ submit_button }}
+
+    {%- if settings.show_fallback -%}
+      <p class='partner-form__fallback partner-form__field--full'>
+        {{ settings.fallback_text }}
+        <a href='mailto:{{ settings.fallback_email }}'>{{ settings.fallback_email }}</a>
+      </p>
+    {%- endif -%}
+  {% endform %}
+</div>
+
+{% style %}
+  .partner-form {
+    background: transparent;
+
+    & .partner-form__form {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      @media (min-width: 576px) {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      & .partner-form__field {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        min-width: 0;
+
+        & .partner-form__input {
+          width: 100%;
+          max-width: 100%;
+          padding: 16px;
+          border-radius: var(--style-border-radius-inputs, 4px);
+          border: none;
+          font: inherit;
+          background-color: var(--color-input-background);
+          color: var(--color-input-text);
+        }
+
+        & .partner-form__input:is(:hover, :focus) {
+          background-color: var(--color-input-background);
+        }
+
+        & .partner-form__input:focus-visible {
+          outline: 2px solid var(--color-foreground);
+          outline-offset: 1px;
+        }
+
+        & .partner-form__input:autofill {
+          -webkit-box-shadow: inset 0 0 0 1000px var(--color-input-background);
+          -webkit-text-fill-color: var(--color-input-text);
+        }
+      }
+
+      & .partner-form__field--full {
+        @media (min-width: 576px) {
+          grid-column: 1 / -1;
+        }
+      }
+
+      & .partner-form__select {
+        cursor: pointer;
+      }
+
+      & .partner-form__input--textarea {
+        resize: vertical;
+      }
+
+      & .submit-button {
+        grid-column: 1 / -1;
+        justify-self: start;
+      }
+
+      & .partner-form__consent {
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+      }
+
+      & .partner-form__consent-label p {
+        margin: 0;
+      }
+
+      & .partner-form__fallback {
+        margin: 0;
+        font-size: 0.875rem;
+        opacity: 0.8;
+      }
+
+      & .partner-form__error,
+      & .partner-form__success {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      & .partner-form__error svg,
+      & .partner-form__success svg {
+        width: 20px;
+        flex-shrink: 0;
+      }
+    }
+  }
+{% endstyle %}

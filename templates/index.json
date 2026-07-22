@@ -12,11 +12,11 @@
     "slideshow_KatyE9": {
       "type": "slideshow",
       "blocks": {
-        "slide_F6W9cr": {
+        "slide_azMwww": {
           "type": "_slide",
           "settings": {
             "media_type_1": "image",
-            "image_1": "shopify://shop_images/Frame_2087326309.jpg",
+            "image_1": "shopify://shop_images/hf_20260707_140246_b88c0117-d9ba-4d20-aa68-1f7098e6b284.png",
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
@@ -28,6 +28,285 @@
             "inherit_color_scheme": false,
             "color_scheme": "scheme-1",
             "toggle_overlay": true,
+            "overlay_color": "#ffffff",
+            "overlay_style": "gradient",
+            "gradient_direction": "to right",
+            "padding-block-start": 88,
+            "padding-block-end": 96,
+            "padding-inline-start": 48,
+            "padding-inline-end": 48
+          },
+          "blocks": {
+            "group_6RwrBY": {
+              "type": "group",
+              "name": "t:names.group",
+              "settings": {
+                "content_direction": "row",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 8,
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#1c1c1c26",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "group_GjXNcb": {
+                  "type": "group",
+                  "name": "t:names.group",
+                  "settings": {
+                    "content_direction": "row",
+                    "vertical_on_mobile": false,
+                    "horizontal_alignment": "flex-start",
+                    "vertical_alignment": "center",
+                    "align_baseline": false,
+                    "horizontal_alignment_flex_direction_column": "flex-start",
+                    "vertical_alignment_flex_direction_column": "center",
+                    "gap": 0,
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 100,
+                    "height": "fit",
+                    "custom_height": 100,
+                    "inherit_color_scheme": true,
+                    "color_scheme": "",
+                    "background_media": "none",
+                    "video_position": "cover",
+                    "background_image_position": "cover",
+                    "border": "none",
+                    "border_width": 1,
+                    "border_opacity": 100,
+                    "border_radius": 0,
+                    "toggle_overlay": false,
+                    "overlay_color": "#1c1c1c26",
+                    "overlay_style": "solid",
+                    "gradient_direction": "to top",
+                    "link": "",
+                    "open_in_new_tab": false,
+                    "placeholder": "",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {
+                    "icon_fcJc73": {
+                      "type": "icon",
+                      "name": "t:names.icon",
+                      "settings": {
+                        "icon": "star",
+                        "image_upload": "shopify://shop_images/star_24dp_FF5000_FILL1_wght500_GRAD0_opsz24.svg",
+                        "width": 24,
+                        "link": "",
+                        "open_in_new_tab": false
+                      },
+                      "blocks": {}
+                    },
+                    "icon_UjatDP": {
+                      "type": "icon",
+                      "name": "t:names.icon",
+                      "settings": {
+                        "icon": "star",
+                        "image_upload": "shopify://shop_images/star_24dp_FF5000_FILL1_wght500_GRAD0_opsz24.svg",
+                        "width": 24,
+                        "link": "",
+                        "open_in_new_tab": false
+                      },
+                      "blocks": {}
+                    },
+                    "icon_hbLEyV": {
+                      "type": "icon",
+                      "name": "t:names.icon",
+                      "settings": {
+                        "icon": "star",
+                        "image_upload": "shopify://shop_images/star_24dp_FF5000_FILL1_wght500_GRAD0_opsz24.svg",
+                        "width": 24,
+                        "link": "",
+                        "open_in_new_tab": false
+                      },
+                      "blocks": {}
+                    },
+                    "icon_iRTT3J": {
+                      "type": "icon",
+                      "name": "t:names.icon",
+                      "settings": {
+                        "icon": "star",
+                        "image_upload": "shopify://shop_images/star_24dp_FF5000_FILL1_wght500_GRAD0_opsz24.svg",
+                        "width": 24,
+                        "link": "",
+                        "open_in_new_tab": false
+                      },
+                      "blocks": {}
+                    },
+                    "icon_tkw4tR": {
+                      "type": "icon",
+                      "name": "t:names.icon",
+                      "settings": {
+                        "icon": "star",
+                        "image_upload": "shopify://shop_images/star_24dp_FF5000_FILL1_wght500_GRAD0_opsz24.svg",
+                        "width": 24,
+                        "link": "",
+                        "open_in_new_tab": false
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "icon_fcJc73",
+                    "icon_UjatDP",
+                    "icon_hbLEyV",
+                    "icon_iRTT3J",
+                    "icon_tkw4tR"
+                  ]
+                },
+                "text_QYynBe": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Vertrouwd door 1000+ tevreden klanten</p>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#1c1c1c26",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "group_GjXNcb",
+                "text_QYynBe"
+              ]
+            },
+            "text_LMEcyV": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<p>ONZE MISSIE: EEN GROENE<br/>ONGEDIERTEBESTRIJDING</p>",
+                "width": "fit-content",
+                "max_width": "extra-narrow",
+                "alignment": "left",
+                "type_preset": "h1",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground-heading)",
+                "background": false,
+                "background_color": "#1c1c1c26",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_fXTkdM": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Bewezen effectieve en duurzame producten voor plaagbestrijding, gemaakt van natuurlijke ingrediënten</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#1c1c1c26",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 20,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "button_4cDn46": {
+              "type": "button",
+              "settings": {
+                "label": "Welk beestje heb jij?",
+                "link": "shopify://collections",
+                "open_in_new_tab": false,
+                "style_class": "button",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "group_6RwrBY",
+            "text_LMEcyV",
+            "text_fXTkdM",
+            "button_4cDn46"
+          ]
+        },
+        "slide_F6W9cr": {
+          "type": "_slide",
+          "settings": {
+            "media_type_1": "image",
+            "image_1": "shopify://shop_images/Frame_2087326309.jpg",
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "inherit_color_scheme": false,
+            "color_scheme": "scheme-1",
+            "toggle_overlay": false,
             "overlay_color": "#ffffff",
             "overlay_style": "gradient",
             "gradient_direction": "to right",
@@ -83,7 +362,7 @@
                   "settings": {
                     "content_direction": "row",
                     "vertical_on_mobile": false,
-                    "horizontal_alignment": "flex-start",
+                    "horizontal_alignment": "center",
                     "vertical_alignment": "center",
                     "align_baseline": false,
                     "horizontal_alignment_flex_direction_column": "flex-start",
@@ -573,6 +852,7 @@
         }
       },
       "block_order": [
+        "slide_azMwww",
         "slide_F6W9cr",
         "slide_AAeabR"
       ],
@@ -881,7 +1161,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>Which pest is bugging you?</p>",
+            "text": "<p>Welk ongedierte heb jij?</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -907,7 +1187,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h2>Coming soon</h2>",
+            "text": "<h2>Coming Soon</h2>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -970,7 +1250,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h2>Why super ninja works when others don't</h2>",
+            "text": "<p>Waarom Super Ninja wél werkt</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -1108,7 +1388,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>Discover our most trusted solutions</p>",
+            "text": "<p>Ontdek onze meest betrouwbare oplossingen</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -1138,7 +1418,7 @@
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
-            "type_preset": "rte",
+            "type_preset": "h2",
             "font": "var(--font-body--family)",
             "font_size": "1rem",
             "line_height": "normal",
@@ -1294,7 +1574,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<p>The wall of wins: </p>",
+                "text": "<p>Onze klanten, hun resultaten: </p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -1320,7 +1600,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<p>stories of victory over the tiny invaders</p>",
+                "text": "<p>Verhalen over de strijd tegen ongedierte</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -1528,7 +1808,7 @@
                   "settings": {
                     "content_direction": "row",
                     "vertical_on_mobile": false,
-                    "horizontal_alignment": "flex-start",
+                    "horizontal_alignment": "center",
                     "vertical_alignment": "center",
                     "align_baseline": false,
                     "horizontal_alignment_flex_direction_column": "flex-start",
@@ -1635,7 +1915,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Trusted by <strong>1000+</strong> happy customers</p>",
+                    "text": "<p>Vertrouwd door 1000+ tevreden klanten</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -1670,7 +1950,7 @@
                 "text": "<p>Pest control that respects your home</p>",
                 "width": "fit-content",
                 "max_width": "extra-narrow",
-                "alignment": "left",
+                "alignment": "center",
                 "type_preset": "h1",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
@@ -1692,7 +1972,7 @@
             "text_UD7Gpr": {
               "type": "text",
               "settings": {
-                "text": "<p>Super Ninja was created to prove one thing: You shouldn't have to choose between effectiveness and sustainability.</p>",
+                "text": "<p>Super Ninja is ontstaan om één ding te bewijzen: je hoeft niet te kiezen tussen effectiviteit en duurzaamheid.</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -1717,7 +1997,7 @@
             "button_FihHMK": {
               "type": "button",
               "settings": {
-                "label": "Find your bug",
+                "label": "Vind jouw beestje",
                 "link": "shopify://collections",
                 "open_in_new_tab": false,
                 "style_class": "button",

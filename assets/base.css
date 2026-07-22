@@ -75,6 +75,10 @@ select {
     box-shadow var(--hover-transition-duration) var(--hover-transition-timing);
   will-change: transform, box-shadow;
   z-index: var(--layer-flat);
+
+  &:hover {
+    transform: scale(1.01);
+  }
 }
 
 .product-card__link {
@@ -995,6 +999,7 @@ body:has(.header[transparent]) #header-group > *:not(.header-section) {
 
 .product-grid__card.product-grid__card {
   display: flex;
+  justify-content: space-between;
   flex-flow: column nowrap;
   gap: var(--product-card-gap);
   align-items: var(--product-card-alignment);
@@ -1332,6 +1337,7 @@ input:not(:placeholder-shown)::placeholder {
 .button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  filter: grayscale(1);
 }
 
 .button,
@@ -3775,6 +3781,25 @@ slideshow-arrows .slideshow-control.slideshow-control--style-none {
 
 .layout-panel-flex--row > .group-block--width-custom {
   flex-basis: var(--size-style-width);
+}
+
+/* When a row stacks into a column on mobile, the width-based flex rules above
+   would distribute *height* (flex-basis 0 + grow), stretching short groups and
+   squeezing tall ones. Reset to natural content height when stacked. */
+@media screen and (max-width: 749px) {
+  .layout-panel-flex--row.mobile-column > .group-block--width-fill {
+    flex: 0 1 auto;
+  }
+
+  .layout-panel-flex--row.mobile-column > .group-block--width-custom {
+    flex-basis: auto;
+  }
+
+  /* "Height: fill" equalises heights in a desktop row; once stacked it only
+     stretches short blocks. Fall back to natural height on mobile. */
+  .layout-panel-flex--row.mobile-column > .group-block--height-fill {
+    height: auto;
+  }
 }
 
 /* Dimension utilities - Height */
