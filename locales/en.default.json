@@ -322,6 +322,11 @@
   },
   "products": {
     "product": {
+      "best_for": "Best for",
+      "description": "Description",
+      "ingredients": "Ingredients",
+      "shipping_and_returns": "Shipping & returns",
+      "faq": "FAQ",
       "add_to_cart": "Add to cart",
       "adding_to_cart": "Adding...",
       "added_to_cart": "Added to cart",
