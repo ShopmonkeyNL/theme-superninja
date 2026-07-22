@@ -2,7 +2,7 @@
   class='section section--page-width'
   {{ section.shopify_attributes }}
 >
-  <div class='footer-inner'>
+  <div class='footer-inner' style="--padding-block-start: {{ section.settings.padding_block_start }}px; --padding-block-end: {{ section.settings.padding_block_end }}px;">
     <div class='footer-inner__about'>
       <img
         src='{{ settings.logo | image_url }}'
@@ -31,9 +31,11 @@
 
 {% style %}
   footer .footer-inner {
-    padding-block: 2rem;
     display: grid;
-    gap: 2rem;
+    gap: 4rem;
+
+    padding-block-start: calc( var(--padding-block-start) / 2);
+    padding-block-end: calc(var(--padding-block-end) / 2);
 
     & .footer-inner__about {
       display: flex;
@@ -52,10 +54,12 @@
       gap: 2rem;
 
       & .footer-column {
+
+
         & h5 {
           margin-block-end: 0.75rem;
           
-          @media (min-width: 768px) {
+          @media (min-width: 992px) {
             margin-block-end: 1.5rem;
           }
         }
@@ -76,15 +80,21 @@
         }
       }
 
-      @media (min-width: 750px) {
+      @media (min-width: 992px) {
         flex-direction: row;
+      }
+
+      @media (min-width: 1200px) {
         gap: 8rem;
       }
     }
 
-    @media (min-width: 750px) {
-      grid-template-columns: 0.5fr 1fr;
-      gap: 4rem;
+    @media (min-width: 992px) {
+      padding-block-start: var(--padding-block-start);
+      padding-block-end: var(--padding-block-end);
+
+      grid-template-columns: 350px 1fr;
+      gap: 8rem;
     }
   }
 {% endstyle %}
@@ -113,7 +123,29 @@
       "id": "super_ninja_description",
       "label": "Super Ninja description",
       "default": "<p>Bij Super Ninja ontwikkelen we duurzame en gifvrije oplossingen voor ongediertebestrijding. Met innovatieve producten, zoals de Fruit Fly Ninja, bieden we een effectieve en milieuvriendelijke manier om fruitvliegjes en ander ongedierte te bestrijden. </p>"
-    }
+    },
+    {
+      "type": "header",
+      "content": "Paddings"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_start",
+      "label": "Padding block start",
+      "default": 64,
+      "min": 0,
+      "max": 128,
+      "step": 4
+    },
+    {
+      "type": "range",
+      "id": "padding_block_end",
+      "label": "Padding block end",
+      "default": 128,
+      "min": 0,
+      "max": 128,
+      "step": 4
+    },
   ],
   "presets": [
     {
