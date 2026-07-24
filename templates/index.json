@@ -965,7 +965,7 @@
           "settings": {
             "icon": "visible_results",
             "icon_asset": "",
-            "text": "<p>Resultaat binnen<br/>24 uur</p>"
+            "text": "<p>Resultaat<br/>in 24 uur</p>"
           }
         }
       },
@@ -1700,7 +1700,7 @@
           "settings": {
             "icon": "visible_results",
             "icon_asset": "",
-            "text": "<p>Resultaat binnen<br/>24 uur</p>"
+            "text": "<p>Resultaat<br/>in 24 uur</p>"
           }
         }
       },
