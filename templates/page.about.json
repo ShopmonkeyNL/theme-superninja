@@ -81,7 +81,7 @@
           "settings": {
             "icon": "trending_up",
             "icon_asset": "icon-check-border-orange.svg",
-            "text": "<p>Outperforms common<br>DIY solutions</p>"
+            "text": "<p>Beter dan<br/>DIY-middelen</p>"
           }
         },
         "benefit_item_CLXN8e": {
@@ -89,7 +89,7 @@
           "settings": {
             "icon": "trending_up",
             "icon_asset": "icon-clock-border-orange.svg",
-            "text": "<p>Safe around food,<br>kids & pets</p>"
+            "text": "<p>Veilig voor kids<br/>& huisdieren</p>"
           }
         },
         "benefit_item_zkTMzT": {
@@ -97,7 +97,7 @@
           "settings": {
             "icon": "trending_up",
             "icon_asset": "icon-kid-border-orange.svg",
-            "text": "<p>Set-and-forget,<br>no maintenance</p>"
+            "text": "<p>Plaatsen en klaar,<br/>geen onderhoud</p>"
           }
         },
         "benefit_item_cpFhqr": {
@@ -105,7 +105,7 @@
           "settings": {
             "icon": "trending_up",
             "icon_asset": "icon-maintenance-border-orange.svg",
-            "text": "<p>Visible results<br/>within 24 hours</p>"
+            "text": "<p>Resultaat<br/>in 24 uur</p>"
           }
         }
       },
@@ -320,7 +320,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Trusted by <strong>1000+</strong> happy customers</p>",
+                    "text": "<p>Vertrouwd door 1000+ tevreden klanten</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -351,7 +351,7 @@
             "text_zm8kJi": {
               "type": "text",
               "settings": {
-                "text": "<h2>Super Ninja: The <br/>Natural Solution to Pests.</h2>",
+                "text": "<h1>ONZE MISSIE: EEN GROENE<br/>ONGEDIERTEBESTRIJDING</h1>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -376,7 +376,7 @@
             "text_yHPgme": {
               "type": "text",
               "settings": {
-                "text": "<p>We believe pest control should be safe, effective, and responsible - for people, pets, and plants.</p>",
+                "text": "<p>Bewezen effectieve en duurzame producten voor plaagbestrijding, gemaakt van natuurlijke ingrediënten</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -401,7 +401,7 @@
             "button_GqpFe6": {
               "type": "button",
               "settings": {
-                "label": "Find your ninja",
+                "label": "Welk beestje heb jij?",
                 "link": "shopify://collections/all",
                 "open_in_new_tab": false,
                 "style_class": "button",
