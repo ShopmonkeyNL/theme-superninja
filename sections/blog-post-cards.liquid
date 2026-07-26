@@ -100,7 +100,7 @@
                   </g>
                 </svg>
               </span>
-              <span class="blog-post-cards__read-time">{{ read_minutes }} minute{% if read_minutes > 1 %}s{% endif %} to read</span>
+              <span class="blog-post-cards__read-time">{{ read_minutes }} {% if read_minutes > 1 %}{{ 'blog.minutes_to_read' | t }}{% else %}{{ 'blog.minute_to_read' | t }}{% endif %}</span>
             </div>
 
             <h2 class="blog-post-cards__title">
