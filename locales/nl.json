@@ -193,7 +193,7 @@
     "price_filter_html": "De hoogste prijs is {{ price }}",
     "use_fewer_filters_html": "Probeer minder filters te gebruiken of <a class=\"{{ class }}\" href=\"{{ link }}\">wis alle filters</a>.",
     "blog_details_separator": "|",
-    "read_more": "Lees verder",
+    "read_more": "Meer informatie...",
     "account_title": "Account",
     "account_title_personalized": "Hallo {{ first_name }}",
     "account_orders": "Bestellingen",
@@ -347,4 +347,8 @@
   "placeholder_purchase": "Waar heb je deze aankoop gedaan?",
   "placeholder_message": "Vertel ons meer over je vraag...",
 "placeholder_country": "Nederland"
+},
+"blog": {
+  "minute_to_read": "minuut te lezen",
+  "minutes_to_read": "minuten te lezen"
 }}
