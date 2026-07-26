@@ -519,7 +519,7 @@
               "type": "contact-form-submit-button",
               "static": true,
               "settings": {
-                "label": "Verzenden",
+                "label": "Vestuur",
                 "style_class": "button",
                 "width": "fit-content",
                 "custom_width": 100,
