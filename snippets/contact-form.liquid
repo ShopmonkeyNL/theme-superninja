@@ -97,7 +97,7 @@
         class='contact-form__label'
         for='{{ form_id }}-purchase-source'
       >
-        <h5>WHERE DID YOU MAKE THIS PURCHASE?</h5>
+        <h5>{{ 'contact.purchase_source' | t | upcase }}</h5>
       </label>
       <input
         type='text'
