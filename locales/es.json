@@ -354,4 +354,8 @@
   "placeholder_purchase": "¿Dónde realizaste esta compra?",
   "placeholder_message": "Cuéntanos más sobre tu consulta...",
   "placeholder_country": "España"
+},
+"blog": {
+  "minute_to_read": "minuto de lectura",
+  "minutes_to_read": "minutos de lectura"
 }}
