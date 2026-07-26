@@ -152,7 +152,7 @@
         id='{{ form_id }}-body'
         class='contact-form__input contact-form__input--textarea'
         name='contact[body]'
-        placeholder='Tell us more about your inquiry...'
+        placeholder='{{ 'contact.placeholder_message' | t }}'
       >
         {{- form.body -}}
       </textarea>
