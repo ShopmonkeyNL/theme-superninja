@@ -193,7 +193,7 @@
     "price_filter_html": "De hoogste prijs is {{ price }}",
     "use_fewer_filters_html": "Probeer minder filters te gebruiken of <a class=\"{{ class }}\" href=\"{{ link }}\">wis alle filters</a>.",
     "blog_details_separator": "|",
-    "read_more": "Meer informatie...",
+    "read_more": "Lees verder",
     "account_title": "Account",
     "account_title_personalized": "Hallo {{ first_name }}",
     "account_orders": "Bestellingen",
