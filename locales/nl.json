@@ -289,8 +289,6 @@
   "blogs": {
     "article": {
       "comment_author_separator": "•",
-      "minute_to_read": "minuut te lezen",
-      "minutes_to_read": "minuten te lezen",
       "comments_heading": {
         "one": "{{ count }} reactie",
         "other": "{{ count }} reacties"
