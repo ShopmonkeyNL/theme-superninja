@@ -350,5 +350,6 @@
 },
 "blog": {
   "minute_to_read": "Minute Lesezeit",
-  "minutes_to_read": "Minuten Lesezeit"
+  "minutes_to_read": "Minuten Lesezeit",
+  "continue_reading": "Weiterlesen"
 }}
