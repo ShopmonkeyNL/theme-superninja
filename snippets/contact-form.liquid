@@ -63,7 +63,7 @@
         autocomplete='name'
         name='contact[name]'
         value='{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}'
-        placeholder='John Smith'
+        placeholder='{{ 'contact.placeholder_name' | t }}'
       >
     </div>
 
@@ -129,7 +129,7 @@
         class='contact-form__label'
         for='{{ form_id }}-order-number'
       >
-        <h5>ORDER NUMBER</h5>
+        <h5>{{ 'contact.order_number' | t | upcase }}</h5>
       </label>
       <input
         type='text'
@@ -145,7 +145,7 @@
         class='contact-form__label'
         for='{{ form_id }}-body'
       >
-        <h5>MESSAGE</h5>
+        <h5>{{ 'contact.message' | t | upcase }}</h5>
       </label>
       <textarea
         rows='10'
