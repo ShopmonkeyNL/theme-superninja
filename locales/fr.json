@@ -343,4 +343,14 @@
       "success": "Commentaire publié"
     }
   }
-}
+,"contact": {
+  "full_name": "Nom complet",
+  "email_address": "Adresse e-mail",
+  "purchase_source": "Où avez-vous effectué cet achat ?",
+  "country": "Pays",
+  "order_number": "Numéro de commande",
+  "message": "Message",
+  "placeholder_name": "Jean Dupont",
+  "placeholder_purchase": "Où avez-vous effectué cet achat ?",
+  "placeholder_message": "Dites-nous en plus sur votre demande..."
+}}

@@ -336,4 +336,14 @@
       "success": "Kommentar gepostet"
     }
   }
-}
+,"contact": {
+  "full_name": "Vollständiger Name",
+  "email_address": "E-Mail-Adresse",
+  "purchase_source": "Wo hast du deinen Kauf getätigt?",
+  "country": "Land",
+  "order_number": "Bestellnummer",
+  "message": "Nachricht",
+  "placeholder_name": "Max Mustermann",
+  "placeholder_purchase": "Wo hast du deinen Kauf getätigt?",
+  "placeholder_message": "Erzähl uns mehr über deine Anfrage..."
+}}

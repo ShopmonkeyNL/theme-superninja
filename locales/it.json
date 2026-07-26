@@ -343,4 +343,14 @@
       "in_cart": "nel carrello"
     }
   }
-}
+,"contact": {
+  "full_name": "Nome completo",
+  "email_address": "Indirizzo e-mail",
+  "purchase_source": "Dove hai effettuato questo acquisto?",
+  "country": "Paese",
+  "order_number": "Numero ordine",
+  "message": "Messaggio",
+  "placeholder_name": "Mario Rossi",
+  "placeholder_purchase": "Dove hai effettuato questo acquisto?",
+  "placeholder_message": "Dicci di più sulla tua richiesta..."
+}}

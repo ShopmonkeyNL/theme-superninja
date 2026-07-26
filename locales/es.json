@@ -343,4 +343,14 @@
       "success": "Comentario publicado"
     }
   }
-}
+,"contact": {
+  "full_name": "Nombre completo",
+  "email_address": "Dirección de correo electrónico",
+  "purchase_source": "¿Dónde realizaste esta compra?",
+  "country": "País",
+  "order_number": "Número de pedido",
+  "message": "Mensaje",
+  "placeholder_name": "Juan García",
+  "placeholder_purchase": "¿Dónde realizaste esta compra?",
+  "placeholder_message": "Cuéntanos más sobre tu consulta..."
+}}
