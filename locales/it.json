@@ -352,5 +352,6 @@
   "message": "Messaggio",
   "placeholder_name": "Mario Rossi",
   "placeholder_purchase": "Dove hai effettuato questo acquisto?",
-  "placeholder_message": "Dicci di più sulla tua richiesta..."
+  "placeholder_message": "Dicci di più sulla tua richiesta...",
+  "placeholder_country": "Italia"
 }}

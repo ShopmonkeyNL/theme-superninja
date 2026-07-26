@@ -352,5 +352,6 @@
   "message": "Mensaje",
   "placeholder_name": "Juan García",
   "placeholder_purchase": "¿Dónde realizaste esta compra?",
-  "placeholder_message": "Cuéntanos más sobre tu consulta..."
+  "placeholder_message": "Cuéntanos más sobre tu consulta...",
+  "placeholder_country": "España"
 }}

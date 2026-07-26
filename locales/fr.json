@@ -352,5 +352,6 @@
   "message": "Message",
   "placeholder_name": "Jean Dupont",
   "placeholder_purchase": "Où avez-vous effectué cet achat ?",
-  "placeholder_message": "Dites-nous en plus sur votre demande..."
+  "placeholder_message": "Dites-nous en plus sur votre demande...",
+  "placeholder_country": "France"
 }}
