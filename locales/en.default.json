@@ -338,4 +338,15 @@
       "sticky_add_to_cart": "Quick add to cart bar"
     }
   }
-}
+,"contact": {
+  "full_name": "Full name",
+  "email_address": "Email address",
+  "purchase_source": "Where did you make this purchase?",
+  "country": "Country",
+  "order_number": "Order number",
+  "message": "Message",
+  "placeholder_name": "John Smith",
+  "placeholder_purchase": "Where did you make this purchase?",
+  "placeholder_message": "Tell us more about your inquiry...",
+  "placeholder_country": "United Kingdom"
+}}
