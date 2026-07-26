@@ -110,7 +110,7 @@
             <p class="blog-post-cards__excerpt">{{ excerpt_text | strip_html | strip_newlines }}</p>
 
             <a class="blog-post-cards__read-more" href="{{ article.url }}">
-              Continue reading <span aria-hidden="true">→</span>
+              {{ 'blog.continue_reading' | t }} <span aria-hidden="true">→</span>
             </a>
           </article>
         {% endfor %}
