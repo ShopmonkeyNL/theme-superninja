@@ -345,5 +345,6 @@
   "message": "Nachricht",
   "placeholder_name": "Max Mustermann",
   "placeholder_purchase": "Wo hast du deinen Kauf getätigt?",
-  "placeholder_message": "Erzähl uns mehr über deine Anfrage..."
+  "placeholder_message": "Erzähl uns mehr über deine Anfrage...",
+  "placeholder_country": "Deutschland"
 }}
