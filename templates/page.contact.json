@@ -81,7 +81,7 @@
           "settings": {
             "icon": "trending_up",
             "icon_asset": "icon-check-border-orange.svg",
-            "text": "<p>Outperforms common<br>DIY solutions</p>"
+            "text": "<p>Beter dan<br/>DIY-middelen</p>"
           }
         },
         "benefit_item_2": {
@@ -89,7 +89,7 @@
           "settings": {
             "icon": "trending_up",
             "icon_asset": "icon-clock-border-orange.svg",
-            "text": "<p>Safe around food,<br>kids & pets</p>"
+            "text": "<p>Veilig voor kids<br/>& huisdieren</p>"
           }
         },
         "benefit_item_3": {
@@ -97,7 +97,7 @@
           "settings": {
             "icon": "trending_up",
             "icon_asset": "icon-kid-border-orange.svg",
-            "text": "<p>Set-and-forget,<br>no maintenance</p>"
+            "text": "<p>Plaatsen en klaar,<br/>geen onderhoud</p>"
           }
         },
         "benefit_item_4": {
@@ -105,7 +105,7 @@
           "settings": {
             "icon": "trending_up",
             "icon_asset": "icon-maintenance-border-orange.svg",
-            "text": "<p>Visible results<br/>within 24 hours</p>"
+            "text": "<p>Resultaat<br/>in 24 uur</p>"
           }
         }
       },
@@ -226,7 +226,7 @@
                   "type": "text",
                   "name": "t:names.heading",
                   "settings": {
-                    "text": "<p>Get in touch</p>",
+                    "text": "<p>Contacteer ons</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -252,7 +252,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Please fill out the form and a member of our team will get back to you as soon as possible.</p>",
+                    "text": "<p>Vul aub het formulier in, één van onze medewerkers zo snel mogelijk contact met u op.</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -572,7 +572,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h2>Frequently Asked questions</h2>",
+            "text": "<h2>Vaak gestelde vragen</h2>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
