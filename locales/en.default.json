@@ -352,5 +352,6 @@
 },
 "blog": {
   "minute_to_read": "minute to read",
-  "minutes_to_read": "minutes to read"
+  "minutes_to_read": "minutes to read",
+  "continue_reading": "Continue reading"
 }}
