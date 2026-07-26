@@ -345,5 +345,6 @@
   "message": "Bericht",
   "placeholder_name": "Jan Jansen",
   "placeholder_purchase": "Waar heb je deze aankoop gedaan?",
-  "placeholder_message": "Vertel ons meer over je vraag..."
+  "placeholder_message": "Vertel ons meer over je vraag...",
+"placeholder_country": "Nederland"
 }}
