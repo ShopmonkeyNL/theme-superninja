@@ -349,4 +349,8 @@
   "placeholder_purchase": "Where did you make this purchase?",
   "placeholder_message": "Tell us more about your inquiry...",
   "placeholder_country": "United Kingdom"
+},
+"blog": {
+  "minute_to_read": "minute to read",
+  "minutes_to_read": "minutes to read"
 }}
