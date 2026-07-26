@@ -2039,7 +2039,7 @@
                       "type": "text",
                       "name": "t:names.text",
                       "settings": {
-                        "text": "<p><a href=\"tel:+11234567890\" title=\"tel:+11234567890\">+11234567890</a></p>",
+                        "text": "<p>+31102613909‬</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
