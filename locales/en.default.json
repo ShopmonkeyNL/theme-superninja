@@ -364,4 +364,20 @@
   "wasps": "Wasps",
   "general": "General"
 }
-}}
+},
+"partner": {
+  "company_name": "Company name",
+  "company_website": "Company website",
+  "contact_name": "Contact name",
+  "country": "Country",
+  "email_address": "Email address",
+  "phone": "Phone",
+  "partner_type": "Partner type",
+  "message": "Message",
+  "placeholder_company": "Your company",
+  "placeholder_name": "John Smith",
+  "placeholder_message": "Tell us about your market, channel and coverage...",
+  "select_country": "Select your country",
+  "select_partner_type": "Select partner type"
+}
+}
