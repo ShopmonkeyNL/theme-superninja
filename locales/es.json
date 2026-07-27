@@ -369,4 +369,20 @@
   "wasps": "Avispas",
   "general": "General"
 }
-}}
+},
+"partner": {
+  "company_name": "Nombre de la empresa",
+  "company_website": "Sitio web de la empresa",
+  "contact_name": "Nombre de contacto",
+  "country": "País",
+  "email_address": "Dirección de correo electrónico",
+  "phone": "Teléfono",
+  "partner_type": "Tipo de partner",
+  "message": "Mensaje",
+  "placeholder_company": "Tu empresa",
+  "placeholder_name": "Juan García",
+  "placeholder_message": "Cuéntanos sobre tu mercado, canal y cobertura...",
+  "select_country": "Selecciona tu país",
+  "select_partner_type": "Selecciona el tipo de partner"
+}
+}
