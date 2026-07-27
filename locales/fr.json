@@ -357,5 +357,16 @@
 },
 "blog": {
   "minute_to_read": "minute de lecture",
-  "minutes_to_read": "minutes de lecture"
+  "minutes_to_read": "minutes de lecture",
+  "continue_reading": "Lire la suite",
+"categories": "Catégories",
+"all_categories": "Toutes les catégories",
+"tag": {
+  "fruit-flies": "Drosophiles",
+  "fungus-gnats": "Moucherons des terreaux",
+  "food-moths": "Mites alimentaires",
+  "silverfish": "Poissons d'argent",
+  "wasps": "Guêpes",
+  "general": "Général"
+}
 }}
