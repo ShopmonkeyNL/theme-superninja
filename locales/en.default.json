@@ -353,5 +353,15 @@
 "blog": {
   "minute_to_read": "minute to read",
   "minutes_to_read": "minutes to read",
-  "continue_reading": "Continue reading"
+  "continue_reading": "Continue reading",
+"categories": "Categories",
+"all_categories": "All Categories",
+"tag": {
+  "fruit-flies": "Fruit Flies",
+  "fungus-gnats": "Fungus Gnats",
+  "food-moths": "Food Moths",
+  "silverfish": "Silverfish",
+  "wasps": "Wasps",
+  "general": "General"
+}
 }}
