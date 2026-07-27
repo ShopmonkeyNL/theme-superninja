@@ -42,7 +42,7 @@
               data-bpc-tag="{{ tag | handleize }}"
               aria-pressed="false"
             >
-              {{ tag }}
+              {% assign tag_key = 'blog.tag.' | append: tag | handleize %}{{ tag_key | t | default: tag }}
             </button>
           {% endfor %}
         </div>
