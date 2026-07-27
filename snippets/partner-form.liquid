@@ -58,7 +58,7 @@
 
     <div class='partner-form__field'>
       <label class='partner-form__label' for='{{ form_id }}-company'>
-        <h5>COMPANY NAME <span aria-hidden='true'>*</span></h5>
+        <h5>{{ 'partner.company_name' | t | upcase }} <span aria-hidden='true'>*</span></h5>
       </label>
       <input
         type='text'
@@ -66,7 +66,7 @@
         class='partner-form__input'
         autocomplete='organization'
         name='contact[Company name]'
-        placeholder='Your company'
+        placeholder='{{ 'partner.placeholder_company' | t }}'
         required
       >
     </div>
