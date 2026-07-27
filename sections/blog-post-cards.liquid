@@ -25,7 +25,7 @@
   <div class="blog-post-cards__inner">
     {% if selected_blog != blank and selected_blog.articles_count > 0 %}
       <div class="blog-post-cards__categories">
-        <h3 class="blog-post-cards__categories-title">Categories</h3>
+        <h3 class="blog-post-cards__categories-title">{{ 'blog.categories' | t }}</h3>
         <div class="blog-post-cards__categories-track" role="tablist" aria-label="Blog categories">
           <button
             type="button"
