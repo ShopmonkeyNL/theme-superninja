@@ -551,7 +551,7 @@
             "button_trTbUz": {
               "type": "button",
               "settings": {
-                "label": "Find your bug",
+                "label": "Welk beestje heb jij?",
                 "link": "shopify://collections",
                 "open_in_new_tab": false,
                 "style_class": "button",
