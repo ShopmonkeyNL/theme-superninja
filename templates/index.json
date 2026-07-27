@@ -501,7 +501,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>Op weg naar ecologische ongediertebestrijding<br/></h2>",
+                "text": "<p>Op weg naar <br/>ecologische <br/>ongediertebestrijding<br/></p>",
                 "width": "fit-content",
                 "max_width": "extra-narrow",
                 "alignment": "left",
