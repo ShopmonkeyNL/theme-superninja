@@ -362,4 +362,20 @@
   "wasps": "Wespen",
   "general": "Algemeen"
 }
-}}
+},
+"partner": {
+  "company_name": "Bedrijfsnaam",
+  "company_website": "Bedrijfswebsite",
+  "contact_name": "Contactpersoon",
+  "country": "Land",
+  "email_address": "E-mailadres",
+  "phone": "Telefoon",
+  "partner_type": "Type partner",
+  "message": "Bericht",
+  "placeholder_company": "Jouw bedrijf",
+  "placeholder_name": "Jan Jansen",
+  "placeholder_message": "Vertel ons over jouw markt, kanaal en dekking...",
+  "select_country": "Selecteer je land",
+  "select_partner_type": "Selecteer type partner"
+}
+}
