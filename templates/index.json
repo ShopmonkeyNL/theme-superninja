@@ -1753,7 +1753,7 @@
             "inherit_color_scheme": false,
             "color_scheme": "scheme-1",
             "toggle_overlay": true,
-            "overlay_color": "#ffffffa1",
+            "overlay_color": "#FFFFFFCC",
             "overlay_style": "solid",
             "gradient_direction": "to right",
             "padding-block-start": 88,
