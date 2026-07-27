@@ -3205,7 +3205,7 @@
               "type": "partner-form",
               "name": "Partner form",
               "settings": {
-                "partner_types": "Distributor\nRetail chain\nGarden centre\nDIY\nOther",
+                "partner_types": "Distributeur\nRetailketen\nTuincentrum\nBouwmarkt\nAnders",
                 "show_consent": false,
                 "consent_text": "<p>I agree to the <a href=\"/policies/privacy-policy\">privacy policy</a>.</p>",
                 "show_fallback": true,
