@@ -81,7 +81,7 @@
           "settings": {
             "icon": "trending_up",
             "icon_asset": "icon-check-border-orange.svg",
-            "text": "<p>Outperforms common<br>DIY solutions</p>"
+            "text": "<p>Beter dan<br/>DIY-middelen</p>"
           }
         },
         "benefit_item_CLXN8e": {
@@ -89,7 +89,7 @@
           "settings": {
             "icon": "trending_up",
             "icon_asset": "icon-clock-border-orange.svg",
-            "text": "<p>Safe around food,<br>kids & pets</p>"
+            "text": "<p>Veilig voor kids<br/>& huisdieren</p>"
           }
         },
         "benefit_item_zkTMzT": {
@@ -97,7 +97,7 @@
           "settings": {
             "icon": "trending_up",
             "icon_asset": "icon-kid-border-orange.svg",
-            "text": "<p>Set-and-forget,<br>no maintenance</p>"
+            "text": "<p>Plaatsen en klaar,<br/>geen onderhoud</p>"
           }
         },
         "benefit_item_cpFhqr": {
@@ -105,7 +105,7 @@
           "settings": {
             "icon": "trending_up",
             "icon_asset": "icon-maintenance-border-orange.svg",
-            "text": "<p>Visible results<br/>within 24 hours</p>"
+            "text": "<p>Resultaat<br/>in 24 uur</p>"
           }
         }
       },
@@ -146,7 +146,7 @@
           "type": "_slide",
           "settings": {
             "media_type_1": "image",
-            "image_1": "shopify://shop_images/Frame_2087326838_1.jpg",
+            "image_1": "shopify://shop_images/assortment_6.png",
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
@@ -320,7 +320,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Trusted by <strong>1000+</strong> happy customers</p>",
+                    "text": "<p>Vertrouwd door 1000+ tevreden klanten</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -351,7 +351,7 @@
             "text_zm8kJi": {
               "type": "text",
               "settings": {
-                "text": "<h2>Super Ninja: The <br/>Natural Solution to Pests.</h2>",
+                "text": "<h1>ONZE MISSIE: EEN GROENE<br/>ONGEDIERTEBESTRIJDING</h1>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -376,7 +376,7 @@
             "text_yHPgme": {
               "type": "text",
               "settings": {
-                "text": "<p>We believe pest control should be safe, effective, and responsible - for people, pets, and plants.</p>",
+                "text": "<p>Bewezen effectieve en duurzame producten voor plaagbestrijding, gemaakt van natuurlijke ingrediënten</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -401,7 +401,7 @@
             "button_GqpFe6": {
               "type": "button",
               "settings": {
-                "label": "Find your ninja",
+                "label": "Welk beestje heb jij?",
                 "link": "shopify://collections/all",
                 "open_in_new_tab": false,
                 "style_class": "button",
@@ -513,7 +513,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>Born from Frustration, Driven by Results</h2>",
+                "text": "<h2><strong>Geboren uit frustratie. Gedreven door resultaten</strong></h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -538,7 +538,7 @@
             "text_bkGmxK": {
               "type": "text",
               "settings": {
-                "text": "<p>Super Ninja was created out of a simple frustration: traditional pest control solutions were either ineffective, toxic, or both.</p><p>As eco-conscious consumers ourselves, we knew there had to be a better way.</p><p>Our mission is to combine innovative design with natural ingredients to create products that deliver quick, visible results while remaining safe for families, pets, and the environment.</p>",
+                "text": "<p>Super Ninja ontstond uit een simpele frustratie: traditionele middelen tegen insecten waren ineffectief, giftig, of allebei.</p><p>Als milieubewuste consumenten wisten we dat het anders moest. </p><p>Onze missie: innovatief design combineren met natuurlijke ingrediënten, voor producten die snel zichtbare resultaten leveren en tegelijk veilig zijn voor gezin, huisdieren en milieu.<br/><br/></p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -646,7 +646,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>Effectiveness + Responsibility.</h2>",
+                "text": "<p>Effectiviteit + Duurzaamheid</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -671,7 +671,7 @@
             "text_jTt6iN": {
               "type": "text",
               "settings": {
-                "text": "<p>Our goal is to make green pest control the modern standard.</p><p>We craft pest control products that outperform traditional solutions, without compromising on safety or sustainability.</p><p>Every Super Ninja product is designed with our customers' comfort in mind, ensuring a pest-free home without the use of harsh chemicals.</p>",
+                "text": "<p>Ons doel is om ecologische ongediertebestrijding de nieuwe standaard te maken. </p><p>We ontwikkelen producten die traditionele oplossingen overtreffen, zonder concessies aan veiligheid of duurzaamheid. </p><p>Elk Super Ninja product is ontworpen met het comfort van onze klanten voorop, voor een ongediertevrij huis zonder agressief chemicaliën.</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -763,7 +763,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h2>Why our customers trust us</h2>",
+            "text": "<h2>Waarom onze klanten ons vertrouwen</h2>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -957,7 +957,7 @@
                         "text_aXtRq9": {
                           "type": "text",
                           "settings": {
-                            "text": "<h2>Fast & visible results</h2>",
+                            "text": "<h2>Snelle en zichtbare resultaten</h2>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "center",
@@ -982,7 +982,7 @@
                         "text_kqWwKG": {
                           "type": "text",
                           "settings": {
-                            "text": "<p> We prioritize performance, and our products <br/>deliver quick results.</p>",
+                            "text": "<p>Effectiviteit staan bij ons centraal. Onze producten leveren snel merkbaar resultaat.</p>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "center",
@@ -1108,7 +1108,7 @@
                         "text_nhP9QL": {
                           "type": "text",
                           "settings": {
-                            "text": "<h2>Easy to use</h2>",
+                            "text": "<h2>Eenvoudig in gebruik</h2>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "center",
@@ -1133,7 +1133,7 @@
                         "text_LyqyTV": {
                           "type": "text",
                           "settings": {
-                            "text": "<p>Super Ninja products use safe, eco-friendly ingredients <br/>for people, pets, and plants.</p>",
+                            "text": "<p>Klaar voor gebruik vanaf het moment dat je de verpakking opent. <br/>Neerzetten, vergeten en Super Ninja doet zijn werk.</p>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "center",
@@ -1305,7 +1305,7 @@
                         "text_W9DWqa": {
                           "type": "text",
                           "settings": {
-                            "text": "<h2>Safe for family & Pets</h2>",
+                            "text": "<h2>Veilig voor gezin en huisdieren</h2>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "center",
@@ -1330,7 +1330,7 @@
                         "text_kaDKhk": {
                           "type": "text",
                           "settings": {
-                            "text": "<p>Our packaging is recycled, helping reduce<br/>our environmental footprint.</p>",
+                            "text": "<p>Super Ninja producten bevatten veilige, milieuvriendelijke ingrediënten, goed voor mensen, huisdieren en planten.</p>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "center",
@@ -1456,7 +1456,7 @@
                         "text_LFbqDz": {
                           "type": "text",
                           "settings": {
-                            "text": "<h2>Sustainable materials</h2>",
+                            "text": "<h2>Duurzame materialen</h2>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "center",
@@ -1481,7 +1481,7 @@
                         "text_YgQQ6b": {
                           "type": "text",
                           "settings": {
-                            "text": "<p>Our solutions are ready-to-use; just place them <br/>and forget about cleaning.</p>",
+                            "text": "<p>Onze verpakkingen zijn gemaakt van gerecycled materiaal, voor een kleinere ecologische voetafdruk.</p>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "center",
@@ -1630,7 +1630,7 @@
             "text_GQPf7w": {
               "type": "text",
               "settings": {
-                "text": "<p>We Stand Behind Every Product.</p>",
+                "text": "<p>Wij staan achter elk product.</p>",
                 "width": "100%",
                 "max_width": "narrow",
                 "alignment": "left",
@@ -1656,7 +1656,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>We’re dedicated to providing top-notch pest control solutions. With user-friendly designs and a money-back guarantee, you can trust us for effective results. Our products eliminate pests safely and responsibly, without harsh chemicals or mess.</p>",
+                "text": "<p>We staan voor producten die gewoon werken. Met een ontwerp dat iedereen snapt en een niet-goed-geld-terug garantie, neem je geen enkel risico. Super Ninja verwijdert ongedierte veilig en verantwoord, zonder agressieve chemicaliën en zonder troep.</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -1805,7 +1805,7 @@
                   "type": "text",
                   "name": "t:names.heading",
                   "settings": {
-                    "text": "<p>Get in touch</p>",
+                    "text": "<p>Contacteer ons</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -1831,7 +1831,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Please fill out the form and a member of our team will get back to you as soon as possible.</p>",
+                    "text": "<p>Vul aub het formulier in, één van onze medewerkers zo snel mogelijk contact met u op.</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -2039,7 +2039,7 @@
                       "type": "text",
                       "name": "t:names.text",
                       "settings": {
-                        "text": "<p><a href=\"tel:+11234567890\" title=\"tel:+11234567890\">+11234567890</a></p>",
+                        "text": "<p>+31102613909‬</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -2098,7 +2098,7 @@
               "type": "contact-form-submit-button",
               "static": true,
               "settings": {
-                "label": "Submit",
+                "label": "Verstuur",
                 "style_class": "button",
                 "width": "fit-content",
                 "custom_width": 100,
@@ -2150,48 +2150,48 @@
         "testimonial_1": {
           "type": "testimonial",
           "settings": {
-            "title": "Actually Works!",
-            "text": "I was skeptical, but this trap caught more flies in 24 hours than my vinegar trap did in a week. Worth every penny.",
+            "title": "Het werkt echt!",
+            "text": "Ik was sceptisch, maar deze val ving meer vliegen in 24 uur dan mijn azijnval in een hele week. Elke cent waard.",
             "name": "David P."
           }
         },
         "testimonial_2": {
           "type": "testimonial",
           "settings": {
-            "title": "Safe and Effective",
-            "text": "Love that I can use this around my kids and dog. No harsh chemicals and it actually works better than the spray I was using before.",
+            "title": "Veilig en effectief",
+            "text": "Fijn dat ik het kan gebruiken bij mijn kinderen en hond. Geen agressieve chemicaliën, en het werkt beter dan de spray die ik eerder gebruikte.",
             "name": "Rachel T."
           }
         },
         "testimonial_3": {
           "type": "testimonial",
           "settings": {
-            "title": "Super Simple Setup",
-            "text": "Placed it in the kitchen and forgot about it. Two days later, no more fruit flies buzzing around.",
+            "title": "Binnen een minuut klaar",
+            "text": "In de keuken gezet en vergeten. Twee dagen later geen fruitvliegjes meer.",
             "name": "Mark L."
           }
         },
         "testimonial_4": {
           "type": "testimonial",
           "settings": {
-            "title": "Worth Every Penny",
-            "text": "I tried multiple DIY methods and none worked like this. Fast results and zero mess.",
+            "title": "Elke cent waard",
+            "text": "Ik heb veel doe-het-zelf methoden geprobeerd, maar geen enkele werkte zo goed. Snel resultaat en geen rommel.",
             "name": "Olivia N."
           }
         },
         "testimonial_5": {
           "type": "testimonial",
           "settings": {
-            "title": "Pet Friendly Win",
-            "text": "Finally, a product I can trust in a home with pets. Effective and stress-free.",
+            "title": "Huisdiervriendelijk, eindelijk.",
+            "text": "Eindelijk een product dat ik kan vertrouwen in een huis met huisdieren. Effectief en zonder stress.",
             "name": "Kevin S."
           }
         },
         "testimonial_6": {
           "type": "testimonial",
           "settings": {
-            "title": "Bye-Bye Fruit Flies",
-            "text": "By the next morning we saw a huge difference. House feels clean and calm again.",
+            "title": "Dag, fruitvliegjes",
+            "text": "De volgende ochtend al was het verschil enorm. Het huis voelt weer schoon en rustig aan.",
             "name": "Sophia R."
           }
         }
@@ -2205,8 +2205,8 @@
         "testimonial_6"
       ],
       "settings": {
-        "trust_text": "<p>Trusted by <strong>1000+</strong> Happy Customers</p>",
-        "heading": "It Worked for Them. It'll Work for You.",
+        "trust_text": "<p>Meer dan 1.000 tevreden klanten</p>",
+        "heading": "Werkte voor hen. Werkt ook voor jou.",
         "padding_top": 70,
         "padding_bottom": 90,
         "desktop_cards_per_view": 3,

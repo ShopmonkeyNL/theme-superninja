@@ -338,4 +338,46 @@
       "sticky_add_to_cart": "Quick add to cart bar"
     }
   }
+,"contact": {
+  "full_name": "Full name",
+  "email_address": "Email address",
+  "purchase_source": "Where did you make this purchase?",
+  "country": "Country",
+  "order_number": "Order number",
+  "message": "Message",
+  "placeholder_name": "John Smith",
+  "placeholder_purchase": "Where did you make this purchase?",
+  "placeholder_message": "Tell us more about your inquiry...",
+  "placeholder_country": "United Kingdom"
+},
+"blog": {
+  "minute_to_read": "minute to read",
+  "minutes_to_read": "minutes to read",
+  "continue_reading": "Continue reading",
+"categories": "Categories",
+"all_categories": "All Categories",
+"tag": {
+  "fruit-flies": "Fruit Flies",
+  "fungus-gnats": "Fungus Gnats",
+  "food-moths": "Food Moths",
+  "silverfish": "Silverfish",
+  "wasps": "Wasps",
+  "general": "General"
+}
+},
+"partner": {
+  "company_name": "Company name",
+  "company_website": "Company website",
+  "contact_name": "Contact name",
+  "country": "Country",
+  "email_address": "Email address",
+  "phone": "Phone",
+  "partner_type": "Partner type",
+  "message": "Message",
+  "placeholder_company": "Your company",
+  "placeholder_name": "John Smith",
+  "placeholder_message": "Tell us about your market, channel and coverage...",
+  "select_country": "Select your country",
+  "select_partner_type": "Select partner type"
+}
 }

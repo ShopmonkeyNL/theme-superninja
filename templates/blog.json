@@ -30,7 +30,7 @@
         "text_xJ8EYq": {
           "type": "text",
           "settings": {
-            "text": "<p>{{ closest.blog.title }}</p>",
+            "text": "<p>Super Ninja Tips &Tricks</p>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
