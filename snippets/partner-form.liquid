@@ -97,14 +97,14 @@
         autocomplete='name'
         name='contact[Contact name]'
         value='{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}'
-        placeholder='John Smith'
+        placeholder='{{ 'partner.placeholder_name' | t }}'
         required
       >
     </div>
 
     <div class='partner-form__field'>
       <label class='partner-form__label' for='{{ form_id }}-country'>
-        <h5>COUNTRY <span aria-hidden='true'>*</span></h5>
+        <h5>{{ 'partner.country' | t | upcase }} <span aria-hidden='true'>*</span></h5>
       </label>
       <select
         id='{{ form_id }}-country'
@@ -113,7 +113,7 @@
         name='contact[Country]'
         required
       >
-        <option value='' disabled selected>Select your country</option>
+        <option value='' disabled selected>{{ 'partner.select_country' | t }}</option>
         {{ all_country_option_tags }}
       </select>
     </div>
