@@ -120,7 +120,7 @@
 
     <div class='partner-form__field'>
       <label class='partner-form__label' for='{{ form_id }}-email'>
-        <h5>EMAIL ADDRESS <span aria-hidden='true'>*</span></h5>
+        <h5>{{ 'partner.email_address' | t | upcase }} <span aria-hidden='true'>*</span></h5>
       </label>
       <input
         type='email'
