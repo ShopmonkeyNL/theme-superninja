@@ -506,7 +506,7 @@
                       "settings": {
                         "label": "Amazon",
                         "link": "https://www.amazon.com/ryp",
-                        "open_in_new_tab": false,
+                        "open_in_new_tab": true,
                         "style_class": "button",
                         "width": "fit-content",
                         "custom_width": 100,
@@ -521,7 +521,7 @@
                       "settings": {
                         "label": "TikTok Shop",
                         "link": "shopify://pages/writing-a-review-online",
-                        "open_in_new_tab": false,
+                        "open_in_new_tab": true,
                         "style_class": "button-secondary",
                         "width": "fit-content",
                         "custom_width": 100,
