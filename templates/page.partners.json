@@ -28,7 +28,7 @@
             "inherit_color_scheme": true,
             "color_scheme": "scheme-58084d4c-a86e-4d0a-855e-a0966e5043f7",
             "toggle_overlay": true,
-            "overlay_color": "#f6ede97a",
+            "overlay_color": "#F6EDE9C7",
             "overlay_style": "solid",
             "gradient_direction": "to top",
             "padding-block-start": 96,
@@ -111,7 +111,7 @@
             "text_YWVkaL": {
               "type": "text",
               "settings": {
-                "text": "<h2>Verkoop natuurlijke ongediertebestrijding die écht werkt</h2>",
+                "text": "<h2>Verkoop natuurlijke<br/>ongediertebestrijding <br/>die écht werkt</h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
