@@ -469,7 +469,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Trusted by <strong>1000+</strong> happy customers</p>",
+                    "text": "<p>Vertrouwd door 1000+ tevreden klanten</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
