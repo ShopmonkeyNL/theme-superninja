@@ -781,7 +781,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>De natuur doet het werk</h2>",
+                "text": "<p>De natuur <br/>doet het werk</p>",
                 "width": "fit-content",
                 "max_width": "extra-narrow",
                 "alignment": "left",
