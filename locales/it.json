@@ -369,4 +369,20 @@
   "wasps": "Vespe",
   "general": "Generale"
 }
-}}
+},
+"partner": {
+  "company_name": "Nome dell'azienda",
+  "company_website": "Sito web dell'azienda",
+  "contact_name": "Nome del contatto",
+  "country": "Paese",
+  "email_address": "Indirizzo e-mail",
+  "phone": "Telefono",
+  "partner_type": "Tipo di partner",
+  "message": "Messaggio",
+  "placeholder_company": "La tua azienda",
+  "placeholder_name": "Mario Rossi",
+  "placeholder_message": "Parlaci del tuo mercato, canale e copertura...",
+  "select_country": "Seleziona il tuo paese",
+  "select_partner_type": "Seleziona il tipo di partner"
+}
+}
