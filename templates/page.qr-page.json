@@ -285,7 +285,7 @@
                 "text_ALFUFf": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Reach out to us anytime at<a href=\"mailto:service@superninja.eco\" target=\"_blank\">service@superninja.eco!</a></p>",
+                    "text": "<p>Reach out to us anytime at <a href=\"mailto:service@superninja.eco\" target=\"_blank\">service@superninja.eco!</a></p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
