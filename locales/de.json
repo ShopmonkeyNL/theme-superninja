@@ -351,5 +351,15 @@
 "blog": {
   "minute_to_read": "Minute Lesezeit",
   "minutes_to_read": "Minuten Lesezeit",
-  "continue_reading": "Weiterlesen"
+  "continue_reading": "Weiterlesen",
+"categories": "Kategorien",
+"all_categories": "Alle Kategorien",
+"tag": {
+  "fruit-flies": "Fruchtfliegen",
+  "fungus-gnats": "Trauermücken",
+  "food-moths": "Vorratsschädlinge",
+  "silverfish": "Silberfischchen",
+  "wasps": "Wespen",
+  "general": "Allgemein"
+}
 }}
