@@ -33,7 +33,7 @@
             data-bpc-tag="all"
             aria-pressed="true"
           >
-            All Categories
+            {{ 'blog.all_categories' | t }}
           </button>
           {% for tag in selected_blog.all_tags %}
             <button
