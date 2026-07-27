@@ -357,5 +357,16 @@
 },
 "blog": {
   "minute_to_read": "minuto de lectura",
-  "minutes_to_read": "minutos de lectura"
+  "minutes_to_read": "minutos de lectura",
+  "continue_reading": "Seguir leyendo",
+"categories": "Categorías",
+"all_categories": "Todas las categorías",
+"tag": {
+  "fruit-flies": "Moscas de la fruta",
+  "fungus-gnats": "Mosquitos del sustrato",
+  "food-moths": "Polillas de los alimentos",
+  "silverfish": "Lepismas",
+  "wasps": "Avispas",
+  "general": "General"
+}
 }}
