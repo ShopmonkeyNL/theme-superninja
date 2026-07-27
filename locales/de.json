@@ -362,4 +362,20 @@
   "wasps": "Wespen",
   "general": "Allgemein"
 }
-}}
+},
+"partner": {
+  "company_name": "Firmenname",
+  "company_website": "Firmenwebsite",
+  "contact_name": "Ansprechpartner",
+  "country": "Land",
+  "email_address": "E-Mail-Adresse",
+  "phone": "Telefon",
+  "partner_type": "Partnertyp",
+  "message": "Nachricht",
+  "placeholder_company": "Dein Unternehmen",
+  "placeholder_name": "Max Mustermann",
+  "placeholder_message": "Erzähl uns von deinem Markt, Kanal und deiner Abdeckung...",
+  "select_country": "Land auswählen",
+  "select_partner_type": "Partnertyp auswählen"
+}
+}
