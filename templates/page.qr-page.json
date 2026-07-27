@@ -229,7 +229,7 @@
               "name": "Card",
               "settings": {
                 "custom_background": true,
-                "background_color": "#F6EDE9",
+                "background_color": "#f6ede9",
                 "border_radius": 8,
                 "shadow": false,
                 "border": "none",
@@ -318,7 +318,7 @@
               "name": "Card",
               "settings": {
                 "custom_background": true,
-                "background_color": "#F6EDE9",
+                "background_color": "#f6ede9",
                 "border_radius": 8,
                 "shadow": false,
                 "border": "none",
@@ -407,7 +407,7 @@
               "name": "Card",
               "settings": {
                 "custom_background": true,
-                "background_color": "#F6EDE9",
+                "background_color": "#f6ede9",
                 "border_radius": 8,
                 "shadow": false,
                 "border": "none",
@@ -488,7 +488,7 @@
                     "border_opacity": 100,
                     "border_radius": 0,
                     "toggle_overlay": false,
-                    "overlay_color": "#1C1C1C26",
+                    "overlay_color": "#1c1c1c26",
                     "overlay_style": "solid",
                     "gradient_direction": "to top",
                     "link": "",
@@ -520,7 +520,7 @@
                       "name": "t:names.button",
                       "settings": {
                         "label": "TikTok Shop",
-                        "link": "https://www.amazon.com/ryp",
+                        "link": "shopify://pages/writing-a-review-online",
                         "open_in_new_tab": false,
                         "style_class": "button-secondary",
                         "width": "fit-content",
@@ -575,7 +575,7 @@
         "border_opacity": 100,
         "border_radius": 0,
         "toggle_overlay": false,
-        "overlay_color": "#1C1C1C26",
+        "overlay_color": "#1c1c1c26",
         "overlay_style": "solid",
         "gradient_direction": "to top",
         "padding-block-start": 64,
