@@ -358,5 +358,15 @@
 "blog": {
   "minute_to_read": "minuto di lettura",
   "minutes_to_read": "minuti di lettura",
-  "continue_reading": "Continua a leggere"
+  "continue_reading": "Continua a leggere",
+"categories": "Categorie",
+"all_categories": "Tutte le categorie",
+"tag": {
+  "fruit-flies": "Moscerini della frutta",
+  "fungus-gnats": "Moscerini del terriccio",
+  "food-moths": "Tarme alimentari",
+  "silverfish": "Pesciolini d'argento",
+  "wasps": "Vespe",
+  "general": "Generale"
+}
 }}
