@@ -1280,7 +1280,7 @@
                     "text_Da7cRA": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Het beweegt</p>",
+                        "text": "<h2>Het beweegt</h2>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "center",
