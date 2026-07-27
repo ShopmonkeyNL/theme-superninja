@@ -351,5 +351,15 @@
 "blog": {
   "minute_to_read": "minuut te lezen",
   "minutes_to_read": "minuten te lezen",
-  "continue_reading": "Lees verder"
+  "continue_reading": "Lees verder",
+"categories": "Categorieën",
+"all_categories": "Alle categorieën",
+"tag": {
+  "fruit-flies": "Fruitvliegjes",
+  "fungus-gnats": "Rouwmuggen",
+  "food-moths": "Voedselmotten",
+  "silverfish": "Zilvervisjes",
+  "wasps": "Wespen",
+  "general": "Algemeen"
+}
 }}
