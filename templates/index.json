@@ -190,7 +190,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Vertrouwd door 1000+ tevreden klanten</p>",
+                    "text": "<p>Vertrouwd door 25000+ tevreden klanten</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -469,7 +469,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Vertrouwd door 1000+ tevreden klanten</p>",
+                    "text": "<p>Vertrouwd door 25000+ tevreden klanten</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -748,7 +748,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Vertrouwd door 1000+ tevreden klanten</p>",
+                    "text": "<p>Vertrouwd door 25000+ tevreden klanten</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
