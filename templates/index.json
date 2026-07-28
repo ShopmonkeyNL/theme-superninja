@@ -1213,7 +1213,6 @@
         "text_767iHR",
         "text_7xcKVX"
       ],
-      "disabled": true,
       "name": "t:names.custom_section",
       "settings": {
         "content_direction": "column",
@@ -1441,6 +1440,7 @@
         "text_FQYrLB",
         "text_xikAXq"
       ],
+      "disabled": true,
       "name": "t:names.custom_section",
       "settings": {
         "content_direction": "column",
