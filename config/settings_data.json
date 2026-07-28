@@ -747,7 +747,7 @@
   },
   "platform_customizations": {
     "custom_css": [
-      ".blog-card__image img,.article-card__image img,.card__image img {height: 220px; width: 100%; object-fit: cover;}"
+      ".blog-post-cards__image {height: 220px !important; object-fit: cover;}"
     ]
   }
 }
