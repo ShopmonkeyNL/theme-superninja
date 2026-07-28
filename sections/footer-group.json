@@ -40,7 +40,9 @@
       ],
       "name": "t:names.footer",
       "settings": {
-        "super_ninja_description": "<p>Bij Super Ninja ontwikkelen we duurzame en gifvrije oplossingen voor ongediertebestrijding. Met innovatieve producten, zoals de Fruit Fly Ninja, bieden we een effectieve en milieuvriendelijke manier om fruitvliegjes en ander ongedierte te bestrijden. </p>"
+        "super_ninja_description": "<p>Bij Super Ninja ontwikkelen we duurzame en gifvrije oplossingen voor ongediertebestrijding. Met innovatieve producten, zoals de Fruit Fly Ninja, bieden we een effectieve en milieuvriendelijke manier om fruitvliegjes en ander ongedierte te bestrijden. </p>",
+        "padding_block_start": 64,
+        "padding_block_end": 96
       }
     },
     "section_PWPm9V": {
