@@ -747,7 +747,8 @@
   },
   "platform_customizations": {
     "custom_css": [
-      ".blog-post-cards__image {height: 220px !important; object-fit: cover;}"
+      ".blog-post-cards__image {height: 220px !important; object-fit: cover;}",
+      ".article__content,.article-template__content,.article__body {max-width: 900px; margin: 0 auto;}"
     ]
   }
 }
