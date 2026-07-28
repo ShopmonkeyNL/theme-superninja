@@ -16,7 +16,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>Discover our collections</p>",
+            "text": "<p>Ontdek ons assortiment</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",

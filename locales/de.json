@@ -341,4 +341,46 @@
       "success": "Kommentar gepostet"
     }
   }
+,"contact": {
+  "full_name": "Vollständiger Name",
+  "email_address": "E-Mail-Adresse",
+  "purchase_source": "Wo hast du deinen Kauf getätigt?",
+  "country": "Land",
+  "order_number": "Bestellnummer",
+  "message": "Nachricht",
+  "placeholder_name": "Max Mustermann",
+  "placeholder_purchase": "Wo hast du deinen Kauf getätigt?",
+  "placeholder_message": "Erzähl uns mehr über deine Anfrage...",
+  "placeholder_country": "Deutschland"
+},
+"blog": {
+  "minute_to_read": "Minute Lesezeit",
+  "minutes_to_read": "Minuten Lesezeit",
+  "continue_reading": "Weiterlesen",
+"categories": "Kategorien",
+"all_categories": "Alle Kategorien",
+"tag": {
+  "fruit-flies": "Fruchtfliegen",
+  "fungus-gnats": "Trauermücken",
+  "food-moths": "Vorratsschädlinge",
+  "silverfish": "Silberfischchen",
+  "wasps": "Wespen",
+  "general": "Allgemein"
+}
+},
+"partner": {
+  "company_name": "Firmenname",
+  "company_website": "Firmenwebsite",
+  "contact_name": "Ansprechpartner",
+  "country": "Land",
+  "email_address": "E-Mail-Adresse",
+  "phone": "Telefon",
+  "partner_type": "Partnertyp",
+  "message": "Nachricht",
+  "placeholder_company": "Dein Unternehmen",
+  "placeholder_name": "Max Mustermann",
+  "placeholder_message": "Erzähl uns von deinem Markt, Kanal und deiner Abdeckung...",
+  "select_country": "Land auswählen",
+  "select_partner_type": "Partnertyp auswählen"
+}
 }

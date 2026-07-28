@@ -16,7 +16,7 @@
           "type": "_slide",
           "settings": {
             "media_type_1": "image",
-            "image_1": "shopify://shop_images/Frame_2087326838_1.jpg",
+            "image_1": "shopify://shop_images/assortment_6.png",
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
@@ -28,7 +28,7 @@
             "inherit_color_scheme": true,
             "color_scheme": "scheme-58084d4c-a86e-4d0a-855e-a0966e5043f7",
             "toggle_overlay": true,
-            "overlay_color": "#f6ede97a",
+            "overlay_color": "#F6EDE9C7",
             "overlay_style": "solid",
             "gradient_direction": "to top",
             "padding-block-start": 96,
@@ -81,7 +81,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p><strong>FOR DISTRIBUTORS & RETAILERS</strong></p>",
+                    "text": "<p><strong>VOOR DISTRIBUTEURS & RETAILER</strong></p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -111,7 +111,7 @@
             "text_YWVkaL": {
               "type": "text",
               "settings": {
-                "text": "<h1>Stock natural pest<br/>control that actually <br/>sells</h1>",
+                "text": "<h2>Verkoop natuurlijke<br/>ongediertebestrijding <br/>die écht werkt</h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -136,7 +136,7 @@
             "text_qPA4wF": {
               "type": "text",
               "settings": {
-                "text": "<p>Proven products, strong margins and a brand consumers already recognise. Become a stockist and grow with a category that's moving.</p>",
+                "text": "<p>Bewezen producten, sterke marges en een merk dat consumenten al kennen. Word retailer en groei mee in een categorie die beweegt.</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -201,7 +201,7 @@
                 "button_iaYber": {
                   "type": "button",
                   "settings": {
-                    "label": "Become a partner",
+                    "label": "Word partner",
                     "link": "#shopify-section-template--29380696965497__section_apfm3P",
                     "open_in_new_tab": false,
                     "style_class": "button",
@@ -384,7 +384,7 @@
                     "text_bpyYxY": {
                       "type": "text",
                       "settings": {
-                        "text": "<h3>+18% <br/>category uplift</h3>",
+                        "text": "<h3>+18%<br/>categorie groei</h3>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "center",
@@ -409,7 +409,7 @@
                     "text_VBqaV9": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>in the #1 Dutch food retailer · independently<br/>measured (Circana)</p>",
+                        "text": "<p>bij de #1 Nederlandse voedingsretailer · onafhankelijk gemeten (Circana)</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "center",
@@ -498,7 +498,7 @@
                     "text_hckH8y": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>organic community reach</p>",
+                        "text": "<p>organisch community bereik</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "center",
@@ -562,7 +562,7 @@
                     "text_igB8hV": {
                       "type": "text",
                       "settings": {
-                        "text": "<h3>Sold in 15 countries</h3>",
+                        "text": "<h3>Verkocht in 15 landen</h3>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "center",
@@ -587,7 +587,7 @@
                     "text_V6NDkd": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>across 4 continents. With our very first customer is still with us, 10 years on</p>",
+                        "text": "<p>op 4 continenten. Onze allereerste klant is er nog steeds bij, 10 jaar later</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "center",
@@ -671,7 +671,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>Trusted by leading retailers worldwide</p>",
+                "text": "<p>Vertrouwd door toonaangevende retailers wereldwijd</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -931,7 +931,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>About our product</h2>",
+                "text": "<h2>Over ons product</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -1168,7 +1168,7 @@
                     "text_yJ8qWb": {
                       "type": "text",
                       "settings": {
-                        "text": "<h3>IT works</h3>",
+                        "text": "<h2>Het werkt</h2>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "center",
@@ -1193,7 +1193,7 @@
                     "text_WerULr": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Products that do what they promise. Low return rates, repeat purchases and consumers who come back for the next problem.</p>",
+                        "text": "<p>Producten die doen wat ze beloven. Lage retourpercentages, herhaalaankopen en consumenten die terugkomen voor het volgende probleem.</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "center",
@@ -1280,7 +1280,7 @@
                     "text_Da7cRA": {
                       "type": "text",
                       "settings": {
-                        "text": "<h3>It moves</h3>",
+                        "text": "<h2>Het beweegt</h2>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "center",
@@ -1305,7 +1305,7 @@
                     "text_NFNGD9": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>A brand consumers already recognise. Strong sell-through means product leaves the shelf, not gathers dust in the back.</p>",
+                        "text": "<p>Een merk dat consumenten al kennen. Sterke sell-through betekent dat het product het schap verlaat in plaats van stof te verzamelen.</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "center",
@@ -1392,7 +1392,7 @@
                     "text_9xUgep": {
                       "type": "text",
                       "settings": {
-                        "text": "<h3>It's clean</h3>",
+                        "text": "<h2>Het is schoon</h2>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "center",
@@ -1417,7 +1417,7 @@
                     "text_rPKrcU": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Toxin-free and sustainable, built for the modern shopper. The reason they pick you over the chemical alternative.</p>",
+                        "text": "<p>Gifvrij en duurzaam, gemaakt voor de moderne shopper. De reden waarom ze voor jou kiezen boven het chemische alternatief.</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "center",
@@ -1580,7 +1580,7 @@
                   "type": "image",
                   "name": "t:names.image",
                   "settings": {
-                    "image": "shopify://shop_images/hf_20260707_140246_9bbc2ea1-b37b-44a9-b30e-f65728d14e7b.png",
+                    "image": "shopify://shop_images/ffn_closeup_1.jpg",
                     "link": "",
                     "image_ratio": "adapt",
                     "width": "fill",
@@ -1648,7 +1648,7 @@
                   "type": "text",
                   "name": "t:names.heading",
                   "settings": {
-                    "text": "<h2>The partners we are looking for</h2>",
+                    "text": "<p>De partners die we zoeken</p>",
                     "width": "fit-content",
                     "max_width": "none",
                     "alignment": "left",
@@ -1768,7 +1768,7 @@
                         "text_hJyY6m": {
                           "type": "text",
                           "settings": {
-                            "text": "<h3>Distributors</h3>",
+                            "text": "<h3>Distributeurs</h3>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "left",
@@ -1793,7 +1793,7 @@
                         "text_KmNLAW": {
                           "type": "text",
                           "settings": {
-                            "text": "<p>Coverage per country or region.</p>",
+                            "text": "<p>Dekking per land of regio.</p>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "left",
@@ -1925,7 +1925,7 @@
                         "text_dhBgha": {
                           "type": "text",
                           "settings": {
-                            "text": "<h3>Retail chains</h3>",
+                            "text": "<h3>Retailketens</h3>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "left",
@@ -1950,7 +1950,7 @@
                         "text_XFrnkG": {
                           "type": "text",
                           "settings": {
-                            "text": "<p>Full or seasonal range placement with proven sell-through.</p>",
+                            "text": "<p>Volledig of seizoensgebonden assortiment met bewezen sell-through.</p>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "left",
@@ -2082,7 +2082,7 @@
                         "text_Dwdx3C": {
                           "type": "text",
                           "settings": {
-                            "text": "<h3>Garden centres & DIY</h3>",
+                            "text": "<h3>Tuincentra & bouwmarkten</h3>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "left",
@@ -2107,7 +2107,7 @@
                         "text_wBNRtd": {
                           "type": "text",
                           "settings": {
-                            "text": "<p>The complete range for specialist and big-box retail.</p>",
+                            "text": "<p>Het complete assortiment voor specialist en grootschalige retail.</p>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "left",
@@ -2235,7 +2235,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>How it works</h2>",
+                "text": "<h2>Hoe het werkt</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -2521,7 +2521,7 @@
                     "text_6QTRrT": {
                       "type": "text",
                       "settings": {
-                        "text": "<h3>Get in touch</h3>",
+                        "text": "<h2>Neem contact op</h2>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "center",
@@ -2546,7 +2546,7 @@
                     "text_iXi8tf": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Fill in the form or download the trade brochure.</p>",
+                        "text": "<p>Vul het formulier in of download de handelsbrochure.</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "center",
@@ -2682,7 +2682,7 @@
                     "text_qknWaP": {
                       "type": "text",
                       "settings": {
-                        "text": "<h3>We assess fit</h3>",
+                        "text": "<h2>We beoordelen de match</h2>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "center",
@@ -2707,7 +2707,7 @@
                     "text_TAaGbe": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>We review your market, channel and coverage together. We aim to respond within 2 working days.</p>",
+                        "text": "<p>We bekijken samen jouw markt, kanaal en dekking. We streven ernaar binnen 2 werkdagen te reageren.</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "center",
@@ -2843,7 +2843,7 @@
                     "text_whVjdG": {
                       "type": "text",
                       "settings": {
-                        "text": "<h3>You start selling</h3>",
+                        "text": "<h2>Je begint met verkopen</h2>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "center",
@@ -2868,7 +2868,7 @@
                     "text_yVceyr": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Onboarding, range selection and your first order.</p>",
+                        "text": "<p>Onboarding, assortimentsselectie en je eerste bestelling.</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "center",
@@ -2991,10 +2991,10 @@
               "type": "quote",
               "name": "Quote",
               "settings": {
-                "quote": "When we launched with the number one Dutch retailer, Super Ninja drove 18% category growth. Today we remain a strong partner of theirs, having turned that growth into a lasting share of the shelf.\"",
+                "quote": "Toen we lanceerden bij de nummer één Nederlandse retailer, realiseerde Super Ninja 18% categoriegroei. Vandaag zijn we nog steeds een sterke partner, en hebben we die groei omgezet in een blijvend aandeel in het schap.\"",
                 "author": "Joost van Vollenhoven",
-                "role": "CEO & Owner, Super Ninja",
-                "portrait": "shopify://shop_images/1593597728618.jpg",
+                "role": "CEO & Eigenaar, Super Ninja",
+                "portrait": "shopify://shop_images/joost_shopify.png",
                 "portrait_size": 64,
                 "show_quote_mark": true,
                 "quote_mark_size": 40,
@@ -3107,7 +3107,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>Become a partner</h2>",
+                "text": "<h2>Word partner</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -3133,7 +3133,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>Fill in the form and we'll be in touch within 2 working days.</p>",
+                "text": "<p>Vul het formulier in en we nemen binnen 2 werkdagen contact met je op.</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -3205,11 +3205,11 @@
               "type": "partner-form",
               "name": "Partner form",
               "settings": {
-                "partner_types": "Distributor\nRetail chain\nGarden centre\nDIY\nOther",
+                "partner_types": "Distributeur\nRetailketen\nTuincentrum\nBouwmarkt\nAnders",
                 "show_consent": false,
                 "consent_text": "<p>I agree to the <a href=\"/policies/privacy-policy\">privacy policy</a>.</p>",
                 "show_fallback": true,
-                "fallback_text": "Prefer to talk directly?",
+                "fallback_text": "Liever direct contact?",
                 "fallback_email": "salesinternational@superninja.eco",
                 "width": "custom",
                 "custom_width": 100,
@@ -3227,7 +3227,7 @@
                   "type": "contact-form-submit-button",
                   "static": true,
                   "settings": {
-                    "label": "Submit",
+                    "label": "Verstuur",
                     "style_class": "button",
                     "width": "fit-content",
                     "custom_width": 100,

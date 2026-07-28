@@ -348,4 +348,46 @@
       "success": "Commentaire publié"
     }
   }
+,"contact": {
+  "full_name": "Nom complet",
+  "email_address": "Adresse e-mail",
+  "purchase_source": "Où avez-vous effectué cet achat ?",
+  "country": "Pays",
+  "order_number": "Numéro de commande",
+  "message": "Message",
+  "placeholder_name": "Jean Dupont",
+  "placeholder_purchase": "Où avez-vous effectué cet achat ?",
+  "placeholder_message": "Dites-nous en plus sur votre demande...",
+  "placeholder_country": "France"
+},
+"blog": {
+  "minute_to_read": "minute de lecture",
+  "minutes_to_read": "minutes de lecture",
+  "continue_reading": "Lire la suite",
+"categories": "Catégories",
+"all_categories": "Toutes les catégories",
+"tag": {
+  "fruit-flies": "Drosophiles",
+  "fungus-gnats": "Moucherons des terreaux",
+  "food-moths": "Mites alimentaires",
+  "silverfish": "Poissons d'argent",
+  "wasps": "Guêpes",
+  "general": "Général"
+}
+},
+"partner": {
+  "company_name": "Nom de l'entreprise",
+  "company_website": "Site web de l'entreprise",
+  "contact_name": "Nom du contact",
+  "country": "Pays",
+  "email_address": "Adresse e-mail",
+  "phone": "Téléphone",
+  "partner_type": "Type de partenaire",
+  "message": "Message",
+  "placeholder_company": "Votre entreprise",
+  "placeholder_name": "Jean Dupont",
+  "placeholder_message": "Parlez-nous de votre marché, canal et couverture...",
+  "select_country": "Sélectionnez votre pays",
+  "select_partner_type": "Sélectionnez le type de partenaire"
+}
 }
