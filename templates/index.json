@@ -501,7 +501,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<p>Op weg naar <br/>ecologische <br/>ongediertebestrijding<br/></p>",
+                "text": "<p>ECOLOGISCH ÉN<br/>GEWOON EFFECTIEF</p>",
                 "width": "fit-content",
                 "max_width": "extra-narrow",
                 "alignment": "left",
@@ -526,7 +526,7 @@
             "text_nchprY": {
               "type": "text",
               "settings": {
-                "text": "<p>Bewezen effectief en duurzaam, gemaakt van natuurlijke ingrediënten</p>",
+                "text": "<p>Bewezen resultaat. Want duurzaamheid mag nooit ten koste gaan van wat écht werkt.</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -806,7 +806,7 @@
             "text_wmjJFg": {
               "type": "text",
               "settings": {
-                "text": "<p><br/>Krachtige oplossingen geïnspireerd door de natuur. Hard voor ongedierte, veilig voor jou, je gezin en je tuin.</p>",
+                "text": "<p>Krachtige oplossingen geïnspireerd door de natuur. Hard voor ongedierte, veilig voor jou, je gezin en je tuin.</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -1753,7 +1753,7 @@
             "inherit_color_scheme": false,
             "color_scheme": "scheme-1",
             "toggle_overlay": true,
-            "overlay_color": "#FFFFFFCC",
+            "overlay_color": "#ffffffcc",
             "overlay_style": "solid",
             "gradient_direction": "to right",
             "padding-block-start": 88,
