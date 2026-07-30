@@ -376,7 +376,7 @@
                       "type": "text",
                       "name": "t:names.text",
                       "settings": {
-                        "text": "<p><a href=\"mailto:support@superninja.eco\" title=\"mailto:support@superninja.eco\">support@superninja.eco</a></p>",
+                        "text": "<p>service@superninja.eco</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
