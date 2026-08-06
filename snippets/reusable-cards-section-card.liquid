@@ -1,0 +1,38 @@
+{%- doc -%}
+  Reusable card item for reusable-cards-section.
+
+  @param {object} block - Numbered card block
+  @param {number} index - Card position number
+  @param {boolean} [include_shopify_attributes] - Render block.shopify_attributes on article
+{%- enddoc -%}
+
+<article class="reusable-cards-section__card"{% if include_shopify_attributes %} {{ block.shopify_attributes }}{% endif %}>
+  <div class="reusable-cards-section__card-image-wrapper">
+    {% if block.settings.image != blank %}
+      {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.title, class: 'reusable-cards-section__card-image' }}
+    {% elsif block.settings.asset_image != blank %}
+      <img
+        src="{{ block.settings.asset_image | asset_url }}"
+        alt="{{ block.settings.title }}"
+        class="reusable-cards-section__card-image"
+        loading="lazy"
+        width="360"
+        height="280"
+      >
+    {% else %}
+      {{ 'image' | placeholder_svg_tag: class: 'reusable-cards-section__card-image' }}
+    {% endif %}
+  </div>
+
+  <div class="reusable-cards-section__card-body">
+    <div class="reusable-cards-section__card-copy">
+      <h3 class="reusable-cards-section__card-title">
+        {{ block.settings.title | default: 'STEP' }}
+      </h3>
+      <div class="reusable-cards-section__card-text rte">
+        {{ block.settings.content }}
+      </div>
+    </div>
+    <div class="reusable-cards-section__card-number">{{ index }}</div>
+  </div>
+</article>

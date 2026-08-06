@@ -494,30 +494,18 @@
     border-radius: 0px;
   }
 
-  .product-information--pdp .buy-buttons-block .add-to-cart-button:hover {
+  .product-information--pdp .buy-buttons-block .add-to-cart-button:not(:disabled):hover {
     color: #1C1C1C;
     background-color: #94D357;
     border-color: #94D357;
     opacity: 0.92;
   }
 
-  .product-information--pdp .pdp-protection-message {
-    margin: 0 0 10px 0;
-    font-weight: 700;
-    font-size: 22px;
-    line-height: 100%;
-    letter-spacing: 0px;
-    text-transform: uppercase;
-    color: #1C1C1C;
-  }
-
-
-
   /* Hide default variant picker in PDP - we use custom cards instead */
-  .product-information--pdp variant-picker[data-block-id*="variant_picker_R3rGDr"],
+  /* .product-information--pdp variant-picker[data-block-id*="variant_picker_R3rGDr"],
   .product-information--pdp variant-picker:not([ref="variantCardsPicker"]) {
     display: none !important;
-  }
+  } */
   .product-information__grid.product-information--media-left{
     padding: 50px 16px 100px 16px!important;
   }

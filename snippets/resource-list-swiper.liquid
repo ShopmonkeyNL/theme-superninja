@@ -1,0 +1,159 @@
+{%- doc -%}
+  Resource List Swiper Carousel
+
+  Renders a Swiper-based carousel for resource lists.
+  Uses Swiper.js library for smooth, performant carousels.
+
+  @param {string} ref - Unique reference ID for this carousel instance
+  @param {object[]} slides - Array of HTML strings for carousel slides
+  @param {string} [slides_markup] - Pre-rendered slide markup to inject directly into the wrapper
+  @param {number} slide_count - Total number of slides
+  @param {object} settings - Section settings object
+  @param {string} [slide_width_max] - Maximum slide width (default: '300px')
+
+  @example
+  {% render 'resource-list-swiper',
+    ref: 'featuredProducts',
+    slides: list_items_array,
+    slide_count: 12,
+    settings: section.settings,
+    slide_width_max: '450px'
+  %}
+{%- enddoc -%}
+
+
+
+{% liquid
+  assign carousel_id = ref | default: 'resourceListSwiper'
+  assign slides = slides | default: empty
+  assign slides_markup = slides_markup | default: blank
+  assign slide_count = slide_count | default: 0
+  assign settings = settings | default: empty
+  assign slide_width_max = slide_width_max | default: '300px'
+  
+  assign columns = settings.columns | default: 3
+  assign mobile_columns = settings.mobile_columns_carousel | default: settings.mobile_columns | default: 2
+  assign columns_gap = settings.columns_gap | default: 16
+  assign show_arrows = settings.show_arrows
+  assign show_pagination = settings.show_dots
+
+  assign show_arrows_mobile = settings.show_arrows_mobile
+  assign show_pagination_mobile = settings.show_dots_mobile
+  assign loop_enabled = true
+  assign autoplay_enabled = false
+  assign autoplay_timeout = settings.autoplay_timeout | default: 2500
+
+  if settings.loop == false
+    assign loop_enabled = false
+  endif
+
+  if settings.autoplay == true
+    assign autoplay_enabled = true
+  endif
+  
+  if settings.icons_style == 'none'
+    assign show_arrows = false
+  endif
+%}
+
+<div 
+  class="resource-list-swiper-container"
+  data-test="{{ settings.mobile_columns }} and {{ settings.columns }}"
+  data-carousel-id="{{ carousel_id }}"
+  style="
+    --swiper-columns: {{ columns }};
+    --swiper-mobile-columns: {{ mobile_columns }};
+    --swiper-pagination-height: {% if settings.show_dots %}3rem{% else %}0px{% endif %};
+    --swiper-pagination-height-mobile: {% if settings.show_dots_mobile %}3rem{% else %}0px{% endif %};
+    --slide-width-max: {{ slide_width_max }};
+    --swiper-gap-mobile: {{ columns_gap | divided_by: 2 }}px;
+    --swiper-gap: {{ columns_gap }}px;
+  "
+>
+  <div class="swiper resource-list-swiper" id="{{ carousel_id }}">
+    <div class="swiper-wrapper">
+      {% if slides_markup != blank %}
+        {{ slides_markup }}
+      {% else %}
+        {% for slide in slides %}
+          <div class="swiper-slide resource-list-swiper__slide">
+            {{ slide }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    
+  </div>
+  {% if show_arrows or show_arrows_mobile or show_pagination or show_pagination_mobile %}
+    <div class="swiper-navigation-wrapper{% unless show_pagination %} no-margin{% endunless %}{% unless show_pagination_mobile %} no-margin-mobile{% endunless %}">
+
+    {% if show_pagination or show_pagination_mobile %}
+      <div class="swiper-pagination resource-list-swiper__pagination"></div>
+    {% endif %}
+    {% if show_arrows or show_arrows_mobile %}
+    <div class="swiper-navigation">
+      <div class="swiper-button-prev resource-list-swiper__nav">
+        <span class="material-symbols-rounded resource-list-swiper__arrow">arrow_back</span>
+      </div>
+      <div class="swiper-button-next resource-list-swiper__nav">
+        <span class="material-symbols-rounded resource-list-swiper__arrow">arrow_forward</span>
+      </div>
+    </div>
+    {% endif %}
+
+    
+    </div>
+    {% endif %}
+</div>
+
+{% comment %} Store Swiper configuration in data attribute for JS initialization {% endcomment %}
+<script type="application/json" data-swiper-config="{{ carousel_id }}">
+  {
+    "slidesPerView": {{ mobile_columns }},
+    "spaceBetween": {{ columns_gap | divided_by: 2 }},
+    "loop": {% if loop_enabled %}true{% else %}false{% endif %},
+    "autoplay": {% if autoplay_enabled %}{
+      "delay": {{ autoplay_timeout }},
+      "disableOnInteraction": false,
+      "pauseOnMouseEnter": true
+    }{% else %}false{% endif %},
+    "breakpoints": {
+      "750": {
+        "spaceBetween": {{ columns_gap }},
+        "slidesPerView": {{ columns }}
+      }
+    },
+    "navigation": {% if show_arrows_mobile or show_arrows %}{
+      "nextEl": "[data-carousel-id=\"{{ carousel_id }}\"] .swiper-button-next",
+      "prevEl": "[data-carousel-id=\"{{ carousel_id }}\"] .swiper-button-prev"
+    }{% else %}false{% endif %},
+    "pagination": {% if show_pagination_mobile or show_pagination %}{
+      "el": "[data-carousel-id=\"{{ carousel_id }}\"] .swiper-pagination",
+      "clickable": true,
+      "dynamicBullets": false
+    }{% else %}false{% endif %}
+  }
+</script>
+
+{% style %}
+    [data-carousel-id="{{ carousel_id }}"] .resource-list-swiper__pagination {
+        display: {% if show_pagination_mobile %}block{% else %}none{% endif %};
+        height: 24px;
+    }
+
+    [data-carousel-id="{{ carousel_id }}"] .swiper-navigation {
+        display: {% if show_arrows_mobile %}flex{% else %}none{% endif %};
+    }
+
+    @media (min-width: 750px) {
+        [data-carousel-id="{{ carousel_id }}"] .resource-list-swiper__pagination {
+            display: {% if show_pagination %}block{% else %}none{% endif %};
+            height: 24px;
+        }
+
+        [data-carousel-id="{{ carousel_id }}"] .swiper-navigation {
+            display: {% if show_arrows %}flex{% else %}none{% endif %};
+        }
+    }
+{% endstyle %}

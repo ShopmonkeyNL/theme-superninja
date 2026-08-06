@@ -4,11 +4,14 @@
 
 {% liquid
   assign stat_number_color = section.settings.stat_number_color | default: '#FF5000'
+  assign padding_top = section.settings.padding_top | default: 100
+  assign padding_bottom = section.settings.padding_bottom | default: 48
 %}
 
-<section class="pdp-stats-section" style="--pdp-stats-number-color: {{ stat_number_color }};" {{ section.shopify_attributes }}>
-  <img src="{{ 'moth.png' | asset_url }}" alt="" class="pdp-stats-section__moth" width="200" height="200" loading="lazy">
+<section class="pdp-stats-section" style="--pdp-stats-number-color: {{ stat_number_color }}; --pdp-stats-padding-top: {{ padding_top }}px; --pdp-stats-padding-bottom: {{ padding_bottom }}px;" {{ section.shopify_attributes }}>
+  
   <div class="pdp-stats-section__inner">
+    <img src="{{ 'moth.png' | asset_url }}" alt="" class="pdp-stats-section__moth" width="200" height="200" loading="lazy">
     <div class="pdp-stats-section__header">
       {% for block in section.blocks %}
         {% case block.type %}
@@ -53,8 +56,8 @@
       {% for block in section.blocks %}
         {% if block.type == 'stat_item' and stat_count < 3 %}
           <div class="pdp-stats-section__stat" {{ block.shopify_attributes }}>
-            <div class="pdp-stats-section__stat-number">{{ block.settings.number }}</div>
-            <div class="pdp-stats-section__stat-label">{{ block.settings.label }}</div>
+            <div class="pdp-stats-section__stat-number {{ block.settings.number_class | default: 'h1' }}">{{ block.settings.number }}</div>
+            <div class="pdp-stats-section__stat-label {{ block.settings.label_class | default: 'h3' }}">{{ block.settings.label }}</div>
           </div>
           {% assign stat_count = stat_count | plus: 1 %}
         {% endif %}
@@ -67,7 +70,7 @@
   .pdp-stats-section {
     position: relative;
     width: 100%;
-    padding: 100px 16px 48px 16px;
+    padding: var(--pdp-stats-padding-top, 100px) 16px var(--pdp-stats-padding-bottom, 48px) 16px;
     background-color: #FFFFFF;
     overflow: hidden;
   }
@@ -108,6 +111,7 @@
     flex-direction: column;
     align-items: center;
     gap: 48px;
+    position: relative;
   }
 
   .pdp-stats-section__header {
@@ -120,18 +124,13 @@
 
   .pdp-stats-section__heading {
     font-family: var(--font-heading--family);
-    font-size: var(--pdp-stats-fs-d);
-    line-height: var(--pdp-stats-lh-d);
-    text-transform: uppercase;
     color: #1C1C1C;
     margin: 0;
   }
 
   .pdp-stats-section__text {
     font-family: var(--font-primary--family);
-    font-size: var(--pdp-stats-text-fs-d);
-    line-height: var(--pdp-stats-text-lh-d);
-    color: #666666;
+    {% comment %} color: #666666; {% endcomment %}
     margin: 0;
   }
 
@@ -152,24 +151,12 @@
   }
 
   .pdp-stats-section__stat-number {
-    font-family: var(--font-heading--family);
-    font-weight: 700;
-    font-size: 128px;
-    line-height: 100%;
-    letter-spacing: 0px;
-    text-align: center;
-    text-transform: uppercase;
-    color: var(--pdp-stats-number-color, #FF5000);
+    color: var(--pdp-stats-number-color, #FF5000) !important;
   }
 
   .pdp-stats-section__stat-label {
-    font-family: 'Tahoma', sans-serif;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 100%;
-    letter-spacing: 0px;
-    text-align: center;
     color: #666666;
+    text-align: center;
   }
 
   @media (max-width: 1121px){
@@ -187,14 +174,14 @@
 
   @media screen and (max-width: 749px) {
     .pdp-stats-section {
-      padding: 100px 16px 48px 16px;
+      padding: var(--pdp-stats-padding-top, 100px) 16px var(--pdp-stats-padding-bottom, 48px) 16px;
     }
 
     .pdp-stats-section__inner {
       gap: 16px;
     }
 
-    .pdp-stats-section__heading {
+    {% comment %} .pdp-stats-section__heading {
       font-size: var(--pdp-stats-fs-m);
       line-height: var(--pdp-stats-lh-m);
     }
@@ -202,7 +189,7 @@
     .pdp-stats-section__text {
       font-size: var(--pdp-stats-text-fs-m);
       line-height: var(--pdp-stats-text-lh-m);
-    }
+    } {% endcomment %}
 
     .pdp-stats-section__stats-wrapper {
       flex-direction: column;
@@ -219,7 +206,7 @@
     }
 
     .pdp-stats-section__stat-number {
-      font-size: 64px;
+      font-size: 36px;
       flex-shrink: 0;
     }
 
@@ -250,6 +237,26 @@
       "label": "Stat number colour",
       "default": "#FF5000",
       "info": "Colour for the large stat numbers"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 240,
+      "step": 4,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 240,
+      "step": 4,
+      "unit": "px",
+      "default": 48
     }
   ],
   "blocks": [
@@ -472,10 +479,74 @@
           "default": "24HRS"
         },
         {
+          "type": "select",
+          "id": "number_class",
+          "label": "Number size class",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            },
+            {
+              "value": "h5",
+              "label": "H5"
+            },
+            {
+              "value": "h6",
+              "label": "H6"
+            }
+          ],
+          "default": "h1"
+        },
+        {
           "type": "text",
           "id": "label",
           "label": "Label",
           "default": "First Results"
+        },
+        {
+          "type": "select",
+          "id": "label_class",
+          "label": "Label size class",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            },
+            {
+              "value": "h5",
+              "label": "H5"
+            },
+            {
+              "value": "h6",
+              "label": "H6"
+            }
+          ],
+          "default": "h3"
         }
       ]
     }

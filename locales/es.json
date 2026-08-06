@@ -305,6 +305,11 @@
   },
   "products": {
     "product": {
+      "best_for": "Lo mejor para",
+      "description": "Descripción",
+      "ingredients": "Ingredientes",
+      "shipping_and_returns": "Envíos y devoluciones",
+      "faq": "Preguntas frecuentes",
       "add_to_cart": "Agregar al carrito",
       "added_to_cart": "Agregado al carrito",
       "adding_to_cart": "Agregando...",

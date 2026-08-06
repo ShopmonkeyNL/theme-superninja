@@ -322,6 +322,11 @@
   },
   "products": {
     "product": {
+      "best_for": "Het beste voor",
+      "description": "Omschrijving",
+      "ingredients": "Ingrediënten",
+      "shipping_and_returns": "Verzending & retourneren",
+      "faq": "Veelgestelde vragen",
       "add_to_cart": "Aan winkelwagen toevoegen",
       "adding_to_cart": "Toevoegen...",
       "added_to_cart": "Toegevoegd aan winkelwagen",

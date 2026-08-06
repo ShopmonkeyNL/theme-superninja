@@ -864,7 +864,7 @@ h5,
 h6,
 .h6.h6,
 .text-block.h6 > * {
-  font-family: var(--font-h6--family);
+  font-family: var(--font-heading--family);
   font-style: var(--font-h6--style);
   font-weight: var(--font-h6--weight);
   font-size: var(--font-h6--size);
@@ -2125,6 +2125,7 @@ product-price.text-block:is(.h1, .h2, .h3, .h4, .h5, .h6) > *:not(.tax-note) {
   opacity: 0.4;
   text-decoration-line: line-through;
   text-decoration-thickness: 1.5px;
+  font-size: 0.8em;
 }
 
 .card-gallery {
@@ -4371,6 +4372,9 @@ text-component {
 }
 .add-to-cart-icon{
   display: none!important;
+}
+.add-to-cart-icon.add-to-cart-icon--visible {
+  display: block !important;
 }
 
 .menu-list__link {

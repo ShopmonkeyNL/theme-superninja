@@ -6,13 +6,13 @@
 {%- liquid
   # Get all tab items from the section
   assign tab_items = section.blocks | where: 'type', 'pdp-tab-item'
-  
+
   # Always show defaults - tabs will be added via editor
   assign use_defaults = true
   if tab_items.size > 0
     assign use_defaults = false
   endif
-  
+
   # Active tab color
   assign active_tab_bg = block.settings.active_tab_background_color | default: '#FF5000'
 
@@ -26,9 +26,13 @@
 
 {%- comment -%} Always render tabs with default content {%- endcomment -%}
 
-<div class="pdp-tabs-wrapper" style="--pdp-tabs-active-bg: {{ active_tab_bg }};" {{ block.shopify_attributes }}>
-  <div class="pdp-tabs">
-    <div class="pdp-tabs__header">
+<div
+  class='pdp-tabs-wrapper'
+  style='--pdp-tabs-active-bg: {{ active_tab_bg }};'
+  {{ block.shopify_attributes }}
+>
+  <div class='pdp-tabs'>
+    <div class='pdp-tabs__header'>
       {%- liquid
         assign total_tabs = tab_items.size
         if use_defaults
@@ -39,78 +43,146 @@
           assign show_arrows = true
         endif
       -%}
-      
-      <div class="pdp-tabs__nav" data-tabs-nav>
+
+      <div
+        class='pdp-tabs__nav'
+        data-tabs-nav
+      >
         {%- if use_defaults -%}
-          <button class="pdp-tabs__tab pdp-tabs__tab--active" data-tab-index="0" type="button">
-            BEST FOR:
-          </button>
-          <button class="pdp-tabs__tab" data-tab-index="1" type="button">
-            DESCRIPTION
-          </button>
-          <button class="pdp-tabs__tab" data-tab-index="2" type="button">
-            INGREDIENTS
-          </button>
-          <button class="pdp-tabs__tab" data-tab-index="3" type="button">
-            SHIPPING & RETURNS
-          </button>
-          <button class="pdp-tabs__tab" data-tab-index="4" type="button">
-            FAQ
-          </button>
+          {% if product.metafields.custom.best_for_list %}
+            <button
+              class='pdp-tabs__tab pdp-tabs__tab--active'
+              data-tab-index='0'
+              type='button'
+            >
+              {{ 'products.product.best_for' | t }}
+            </button>
+          {% endif %}
+          {% if product.description %}
+            <button
+              class='pdp-tabs__tab'
+              data-tab-index='1'
+              type='button'
+            >
+              {{ 'products.product.description' | t }}
+            </button>
+          {% endif %}
+          {% if product.metafields.custom.ingredients %}
+            <button
+              class='pdp-tabs__tab'
+              data-tab-index='2'
+              type='button'
+            >
+              {{ 'products.product.ingredients' | t }}
+            </button>
+          {% endif %}
+          {% if block.settings.shipping_and_returns %}
+            <button
+              class='pdp-tabs__tab'
+              data-tab-index='3'
+              type='button'
+            >
+              {{ 'products.product.shipping_and_returns' | t }}
+            </button>
+          {% endif %}
         {%- else -%}
           {%- for tab_block in tab_items -%}
-            <button class="pdp-tabs__tab{% if forloop.first %} pdp-tabs__tab--active{% endif %}" data-tab-index="{{ forloop.index0 }}" type="button">
+            <button
+              class='pdp-tabs__tab{% if forloop.first %} pdp-tabs__tab--active{% endif %}'
+              data-tab-index='{{ forloop.index0 }}'
+              type='button'
+            >
               {{ tab_block.settings.title | default: 'Tab ' | append: forloop.index }}
             </button>
           {%- endfor -%}
         {%- endif -%}
       </div>
-      
+
       {%- if show_arrows -%}
-        <button class="pdp-tabs__arrow pdp-tabs__arrow--prev pdp-tabs__arrow--hidden" type="button" aria-label="Previous tabs">
-          <img src="{{ arrow_asset | asset_url }}" alt="" width="36" height="36" class="pdp-tabs__arrow-icon pdp-tabs__arrow-icon--prev" loading="lazy">
+        <button
+          class='pdp-tabs__arrow pdp-tabs__arrow--prev pdp-tabs__arrow--hidden'
+          type='button'
+          aria-label='Previous tabs'
+        >
+          <img
+            src='{{ arrow_asset | asset_url }}'
+            alt=''
+            width='36'
+            height='36'
+            class='pdp-tabs__arrow-icon pdp-tabs__arrow-icon--prev'
+            loading='lazy'
+          >
         </button>
-        <button class="pdp-tabs__arrow pdp-tabs__arrow--next" type="button" aria-label="Next tabs">
-          <img src="{{ arrow_asset | asset_url }}" alt="" width="36" height="36" class="pdp-tabs__arrow-icon" loading="lazy">
+        <button
+          class='pdp-tabs__arrow pdp-tabs__arrow--next'
+          type='button'
+          aria-label='Next tabs'
+        >
+          <img
+            src='{{ arrow_asset | asset_url }}'
+            alt=''
+            width='36'
+            height='36'
+            class='pdp-tabs__arrow-icon'
+            loading='lazy'
+          >
         </button>
       {%- endif -%}
     </div>
-    
-    <div class="pdp-tabs__content">
+
+    <div class='pdp-tabs__content'>
       {%- if use_defaults -%}
-        <div class="pdp-tabs__panel pdp-tabs__panel--active" data-tab-panel="0">
-          <div class="pdp-tabs__panel-content">
-            <ul>
-              <li>Kitchens with fruit bowls or produce</li>
-              <li>Trash and compost areas</li>
-              <li>Homes with kids and pets</li>
-            </ul>
+        <div
+          class='pdp-tabs__panel pdp-tabs__panel--active'
+          data-tab-panel='0'
+        >
+          <div class='pdp-tabs__panel-content'>
+            {% if product.metafields.custom.best_for_list %}
+              <ul>
+                {% for item in product.metafields.custom.best_for_list.value %}
+                  <li>{{ item }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
           </div>
         </div>
-        <div class="pdp-tabs__panel" data-tab-panel="1">
-          <div class="pdp-tabs__panel-content">
-            <p>Product description content goes here.</p>
+        {% if product.description %}
+          <div
+            class='pdp-tabs__panel'
+            data-tab-panel='1'
+          >
+            <div class='pdp-tabs__panel-content'>
+              <p>{{ product.description }}</p>
+            </div>
+          </div>
+        {% endif %}
+        {% if product.metafields.custom.ingredients %}
+          <div
+            class='pdp-tabs__panel'
+            data-tab-panel='2'
+          >
+            <div class='pdp-tabs__panel-content'>
+              <p>{{ product.metafields.custom.ingredients.value }}</p>
+            </div>
+          </div>
+        {% endif %}
+        {% if block.settings.shipping_and_returns %}
+        <div
+          class='pdp-tabs__panel'
+          data-tab-panel='3'
+        >
+          <div class='pdp-tabs__panel-content'>
+            {{ block.settings.shipping_and_returns }}
           </div>
         </div>
-        <div class="pdp-tabs__panel" data-tab-panel="2">
-          <div class="pdp-tabs__panel-content">
-            <p>Ingredients list goes here.</p>
-          </div>
-        </div>
-        <div class="pdp-tabs__panel" data-tab-panel="3">
-          <div class="pdp-tabs__panel-content">
-            <p>Shipping and returns information goes here.</p>
-          </div>
-        </div>
-        <div class="pdp-tabs__panel" data-tab-panel="4">
-          <div class="pdp-tabs__panel-content">
-            <p>Frequently asked questions about the product.</p>
-          </div>
-        </div>
+        {% endif %}
       {%- else -%}
         {%- for tab_block in tab_items -%}
-          <div class="pdp-tabs__panel{% if forloop.first %} pdp-tabs__panel--active{% endif %}" data-tab-panel="{{ forloop.index0 }}">
-            <div class="pdp-tabs__panel-content">
+          <div
+            class='pdp-tabs__panel{% if forloop.first %} pdp-tabs__panel--active{% endif %}'
+            data-tab-panel='{{ forloop.index0 }}'
+          >
+            <div class='pdp-tabs__panel-content'>
               {{ tab_block.settings.content }}
             </div>
           </div>
@@ -128,14 +200,14 @@
 
   .pdp-tabs {
     width: 100%;
-    background-color: #fff!important;
+    background-color: #fff !important;
   }
 
   .pdp-tabs__header {
     display: flex;
     align-items: center;
     gap: 0;
-    border-bottom: 1px solid #E5E5E5;
+    border-bottom: 1px solid #e5e5e5;
     position: relative;
   }
 
@@ -156,7 +228,7 @@
 
   .pdp-tabs__tab {
     padding: 12px 24px;
-    background: #FFFFFF;
+    background: #ffffff;
     border: none;
     border-bottom: 3px solid transparent;
     font-family: var(--font-heading--family);
@@ -164,21 +236,21 @@
     font-size: 14px;
     line-height: 1;
     text-transform: uppercase;
-    color: rgba(28, 28, 28, 0.5)!important;
+    color: rgba(28, 28, 28, 0.5) !important;
     cursor: pointer;
     white-space: nowrap;
     transition: all 0.2s ease;
     flex-shrink: 0;
   }
 
-  .pdp-tabs__tab:hover {
-    background: #F5F5F5;
+  .pdp-tabs__tab:not(.pdp-tabs__tab--active):hover {
+    background: #f5f5f5;
   }
 
   .pdp-tabs__tab--active {
-    background: var(--pdp-tabs-active-bg, #FF5000);
-    color: #FFFFFF!important;
-    border-bottom-color: var(--pdp-tabs-active-bg, #FF5000);
+    background: var(--pdp-tabs-active-bg, #ff5000);
+    color: #ffffff !important;
+    border-bottom-color: var(--pdp-tabs-active-bg, #ff5000);
   }
 
   .pdp-tabs__arrow {
@@ -187,19 +259,17 @@
     transform: translateY(-50%);
     width: 36px;
     height: 36px;
-    background: transparent;
+    background: #fff;
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0;
-    transition: opacity 0.2s ease, visibility 0.2s ease;
+    transition: transform 0.2s ease-in-out, visibility 0.2s ease;
     z-index: 1000;
-  }
-
-  .pdp-tabs__arrow:hover {
-    opacity: 0.9;
+    border-radius: 100%;
+    box-shadow: 0 1px 5px 0px rgb(0 0 0 / 7%);
   }
 
   .pdp-tabs__arrow-icon {
@@ -218,6 +288,14 @@
 
   .pdp-tabs__arrow--next {
     right: -18px;
+  }
+
+  .pdp-tabs__arrow--next:hover {
+    transform: translateY(-50%) translateX(1px);
+  }
+
+  .pdp-tabs__arrow--prev:hover {
+    transform: translateY(-50%) translateX(-1px);
   }
 
   .pdp-tabs__arrow--hidden {
@@ -240,9 +318,8 @@
   .pdp-tabs__panel-content {
     font-family: Tahoma, sans-serif;
     font-weight: 400;
-    font-size: 16px;
     line-height: 1.5;
-    color: #1C1C1C;
+    color: #1c1c1c;
   }
 
   .pdp-tabs__panel-content ul,
@@ -252,21 +329,20 @@
   }
 
   .pdp-tabs__panel-content li {
-    margin-bottom: 8px;
     list-style: none;
     position: relative;
-    padding-left: 20px;
+    padding-left: 0.75rem;
   }
 
   .pdp-tabs__panel-content li::before {
     content: '';
     position: absolute;
     left: 0;
-    top: 8px;
-    width: 8px;
-    height: 8px;
+    top: 50%;
+    width: 4px;
+    height: 4px;
     border-radius: 50%;
-    background: #FF5000;
+    background: #ff5000;
   }
 
   .pdp-tabs__panel-content p {
@@ -279,24 +355,20 @@
 
   @media screen and (min-width: 750px) {
     .pdp-tabs__tab {
-      font-size: 16px;
       padding: 16px 32px;
-    }
-
-    .pdp-tabs__panel-content {
-      font-size: 18px;
     }
   }
 
   @media screen and (max-width: 749px) {
-    .pdp-tabs__arrow--next, .pdp-tabs__arrow--prev{
-     display:none!important
+    .pdp-tabs__arrow--next,
+    .pdp-tabs__arrow--prev {
+      display: none !important;
     }
   }
 </style>
 
 <script>
-  (function() {
+  (function () {
     const tabsWrapper = document.querySelector('.pdp-tabs-wrapper');
     if (!tabsWrapper) return;
 
@@ -312,11 +384,11 @@
     tabs.forEach((tab, index) => {
       tab.addEventListener('click', () => {
         // Update active tab
-        tabs.forEach(t => t.classList.remove('pdp-tabs__tab--active'));
+        tabs.forEach((t) => t.classList.remove('pdp-tabs__tab--active'));
         tab.classList.add('pdp-tabs__tab--active');
 
         // Update active panel
-        panels.forEach(p => p.classList.remove('pdp-tabs__panel--active'));
+        panels.forEach((p) => p.classList.remove('pdp-tabs__panel--active'));
         const targetPanel = tabsWrapper.querySelector(`[data-tab-panel="${index}"]`);
         if (targetPanel) {
           targetPanel.classList.add('pdp-tabs__panel--active');
@@ -364,7 +436,7 @@
       const scrollAmount = 200;
       nav.scrollBy({
         left: direction === 'next' ? scrollAmount : -scrollAmount,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
     }
 
@@ -378,12 +450,12 @@
 
     // Update arrow states on scroll
     nav.addEventListener('scroll', updateArrowStates);
-    
+
     // Initial arrow state - check after a small delay to ensure layout is complete
     setTimeout(() => {
       updateArrowStates();
     }, 100);
-    
+
     // Also check on initial load
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', updateArrowStates);
@@ -413,6 +485,16 @@
       "label": "Active tab background colour",
       "default": "#FF5000",
       "info": "Background colour for the active tab"
+    },
+    {
+      "type": "header",
+      "content": "Shipping & Returns information"
+    },
+    {
+      "type": "richtext",
+      "id": "shipping_and_returns",
+      "label": "Text",
+      "default": "<p><b>Verzending</b></br>Bestellingen worden binnen 1-2 werkdagen verwerkt. Levertijd binnen Nederland is 1-5 werkdagen. Voor andere EU-landen kunnen afwijkende levertijden gelden. Aan levertijden kunnen geen rechten worden ontleend.</br></br>Wij verzenden gratis naar alle EU-landen.</br></br>Vragen over je bestelling? Mail naar support@superninja.eco.</br></br><b>Retourneren</b></br>Je hebt 14 dagen na ontvangst om je bestelling te retourneren, zonder opgave van reden. Stuur het product terug in originele staat en verpakking. Retourkosten zijn voor rekening van de klant, tenzij het product defect of verkeerd geleverd is. Na ontvangst krijg je het volledige orderbedrag binnen 14 dagen teruggestort.</br></br>Retour aanmelden? Mail naar support@superninja.eco.</p>"
     }
   ]
 }

@@ -299,6 +299,11 @@
   },
   "products": {
     "product": {
+      "best_for": "Best for",
+      "description": "Beschreibung",
+      "ingredients": "Zutaten",
+      "shipping_and_returns": "Versand & Rücksendungen",
+      "faq": "Häufig gestellte Fragen",
       "add_to_cart": "In den Warenkorb legen",
       "added_to_cart": "Zum Warenkorb hinzugefügt",
       "adding_to_cart": "Wird hinzugefügt...",
