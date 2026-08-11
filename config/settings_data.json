@@ -123,6 +123,7 @@
     "variant_button_border_width": 1,
     "variant_button_radius": 14,
     "variant_button_width": "equal-width-buttons",
+    "shipping_and_returns": "<p><strong>Verzending</strong></p><p>Bestellingen worden binnen 1-2 werkdagen verwerkt. Levertijd binnen Nederland is 1-5 werkdagen. Voor andere EU-landen kunnen afwijkende levertijden gelden. Aan levertijden kunnen geen rechten worden ontleend.</p><p>Wij verzenden gratis naar alle EU-landen.</p><p>Vragen over je bestelling? Mail naar support@superninja.eco.</p><p><strong>Retourneren</strong></p><p>Je hebt 14 dagen na ontvangst om je bestelling te retourneren, zonder opgave van reden. Stuur het product terug in originele staat en verpakking. Retourkosten zijn voor rekening van de klant, tenzij het product defect of verkeerd geleverd is. Na ontvangst krijg je het volledige orderbedrag binnen 14 dagen teruggestort.</p><p>Retour aanmelden? Mail naar support@superninja.eco.</p>",
     "content_for_index": [],
     "blocks": {
       "7054877461618660028": {
@@ -466,7 +467,7 @@
       },
       "scheme-34914151-20dc-4128-ae1f-ab506b07fc14": {
         "settings": {
-          "background": "#FAFBFA",
+          "background": "#fafbfa",
           "foreground_heading": "#1c1c1c",
           "foreground": "#686868",
           "primary": "#686868",
