@@ -1,0 +1,34 @@
+<div class="icon-usps">
+  {% content_for 'blocks' %}
+</div>
+
+{% style %}
+  #shopify-block-{{ block.id }} {
+    width: 100%;
+  }
+
+  .icon-usps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    width: 100%;
+
+    @media (max-width: 991px) {
+      flex-direction: column;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+  {
+    "name": "Icon USPs",
+    "blocks": [
+      { "type": "_icon-usp"}
+    ],
+    "presets": [
+      {
+        "name": "Icon USPs"
+      }
+    ]
+  }
+{% endschema %}
