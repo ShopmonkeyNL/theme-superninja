@@ -3,12 +3,6 @@
 {% assign ingredients_translation = 'products.product.ingredients' | t %}
 {% assign shipping_and_returns_translation = 'products.product.shipping_and_returns' | t %}
 
-{% assign tabs_array = product.metafields.custom.best_for_list.value %}
-
-{% for tab in tabs_array %}
-  <div>{{ tab }}</div>
-{% endfor %}
-
 <div class='section-background color-{{ section.settings.color_scheme }}'></div>
 
 <div
@@ -20,24 +14,46 @@
       
       <div class="section-product-tabs__heading">
         {% if product.metafields.custom.best_for_list %}
-          {% render 'product-tab-heading' field: 'best-for' translation: best_for_translation  %}
+          {% render 'product-tab-heading' field_name: 'best-for' translation: best_for_translation  %}
         {% endif %}
         
         {% if product.description %}
-          {% render 'product-tab-heading' field: 'description' translation: description_translation  %}
+          {% render 'product-tab-heading' field_name: 'description' translation: description_translation  %}
         {% endif %}
         
         {% if product.metafields.custom.ingredients %}
-          {% render 'product-tab-heading' field: 'ingredients' translation: ingredients_translation  %}
+          {% render 'product-tab-heading' field_name: 'ingredients' translation: ingredients_translation  %}
         {% endif %}
         
-        {% if settings.shipping_and_returns %}
-          {% render 'product-tab-heading' field: 'shipping-and-returns' translation: shipping_and_returns_translation  %}
+        {% if settings.shipping_and_returns != '' %}
+          {% render 'product-tab-heading' field_name: 'shipping-and-returns' translation: shipping_and_returns_translation  %}
         {% endif %}
       </div>
 
-      <div class="section-product-tabs__content">
-        content
+      <div class="section-product-tabs__content" >
+        {% if product.metafields.custom.best_for_list %}
+          <div data-content="best-for" class="hidden">
+            {{ product.metafields.custom.best_for_list.value }}
+          </div>
+        {% endif %}
+        
+        {% if product.description %}
+          <div data-content="description" class="hidden">
+            {{ product.description }}
+          </div>
+        {% endif %}
+        
+        {% if product.metafields.custom.ingredients %}
+          <div data-content="ingredients" class="hidden">
+            {{ product.metafields.custom.ingredients }}
+          </div>
+        {% endif %}
+        
+        {% if settings.shipping_and_returns != '' %}
+          <div data-content="shipping-and-returns" class="hidden">
+            {{ settings.shipping_and_returns }}
+          </div>
+        {% endif %}
       </div>
     </div>
   </div>
@@ -56,8 +72,9 @@
       & .heading-item {
         font-family: var(--font-heading--family);
         text-transform: uppercase;
-
         padding-inline: 2.5rem;
+        white-space: nowrap;
+        cursor: pointer;
 
         &.active {
           color: var(--color-primary-button-background)
@@ -67,9 +84,55 @@
 
     & .section-product-tabs__content {
       padding: 1.5rem;
+
+      h1, h2, h3, h4, h5, h6 {
+        color: #000;
+      }
     }
   }
 {% endstyle %}
+
+{% javascript %}
+  document.addEventListener('DOMContentLoaded', () => {
+    const productTabs = document.querySelector('.section-product-tabs');
+    const headingItems = productTabs.querySelectorAll('.heading-item');
+    const headingContent = productTabs.querySelectorAll('[data-content]');
+
+    if (!productTabs || !headingItems || !headingContent) return;
+
+    headingItems.forEach((heading, index) => {
+      if (index === 0) {
+        heading.classList.add('active');
+
+        matchFieldToContent(heading, headingContent);
+      }
+      
+      heading.addEventListener('click', () => {
+        const headingActive = productTabs.querySelector('.heading-item.active');
+
+        if (headingActive) headingActive.classList.remove('active');
+        
+        heading.classList.add('active');
+
+        matchFieldToContent(heading, headingContent);
+      })
+    })
+  })
+
+  function matchFieldToContent(heading, headingContent) {
+    const { field } = heading.dataset;
+
+    headingContent.forEach(contentItem => {
+      const { content } = contentItem.dataset;
+
+      if (content === field) {
+        contentItem.classList.remove('hidden');
+      } else {
+        if (!contentItem.classList.contains('hidden')) contentItem.classList.add('hidden')
+      }
+    })
+  }
+{% endjavascript %}
 
 {% schema %}
 {
