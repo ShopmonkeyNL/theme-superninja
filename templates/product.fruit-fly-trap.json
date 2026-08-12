@@ -1301,6 +1301,67 @@
         "padding-block-end": 96
       }
     },
+    "comparison_view_hUVaJQ": {
+      "type": "comparison-view",
+      "blocks": {
+        "text": {
+          "type": "text",
+          "static": true,
+          "settings": {
+            "text": "<p>Ontdek waarom super ninja de beste keuze is.</p>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "custom",
+            "font": "var(--font-heading--family)",
+            "font_size": "1.125rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "uppercase",
+            "wrap": "pretty",
+            "color": "var(--color-foreground-heading)",
+            "background": false,
+            "background_color": "#1c1c1c26",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "heading": {
+          "type": "_heading",
+          "static": true,
+          "settings": {
+            "type_preset": "h2",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground-heading)",
+            "text": "<p>Super ninja versus andere merken</p>",
+            "read_only": false,
+            "alignment": "center",
+            "show_alignment": true,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "name": "Comparison view",
+      "settings": {
+        "color_scheme": "",
+        "section_width": "page-width",
+        "padding-block-start": 96,
+        "padding-block-end": 96
+      }
+    },
     "section_faq_efNww3": {
       "type": "section-faq",
       "blocks": {
@@ -1567,6 +1628,7 @@
     "section_fct9dz",
     "section_VBC4A9",
     "section_Xqk7yk",
+    "comparison_view_hUVaJQ",
     "section_faq_efNww3",
     "benefits_ticker_footer"
   ]
