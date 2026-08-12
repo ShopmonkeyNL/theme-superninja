@@ -1270,6 +1270,83 @@
         "padding-block-end": 96
       }
     },
+    "what_clients_say_brXdhX": {
+      "type": "what-clients-say",
+      "blocks": {
+        "text": {
+          "type": "text",
+          "static": true,
+          "settings": {
+            "text": "<p>Meer dan 3000+ positieve reviews</p>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-heading--family)",
+            "font_size": "1.125rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "uppercase",
+            "wrap": "pretty",
+            "color": "var(--color-foreground-heading)",
+            "background": false,
+            "background_color": "#1c1c1c26",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "heading": {
+          "type": "_heading",
+          "static": true,
+          "settings": {
+            "type_preset": "h2",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "text": "<p>Wat klanten over ons zeggen</p>",
+            "read_only": false,
+            "alignment": "left",
+            "show_alignment": true,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "button": {
+          "type": "button",
+          "static": true,
+          "settings": {
+            "label": "Lees alle reviews",
+            "link": "/",
+            "open_in_new_tab": false,
+            "style_class": "button-secondary",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
+        }
+      },
+      "name": "What clients say",
+      "settings": {
+        "color_scheme": "scheme-f33bf0ba-b43d-424f-9d6c-9f4b9bcd8138",
+        "section_width": "page-width",
+        "padding-block-start": 96,
+        "padding-block-end": 96,
+        "review_product": "super-ninja-fruit-fly-trap"
+      }
+    },
     "section_faq_efNww3": {
       "type": "section-faq",
       "blocks": {
@@ -1537,6 +1614,7 @@
     "comparison_view_hUVaJQ",
     "discreet_and_versatile_fRxa8D",
     "section_Xqk7yk",
+    "what_clients_say_brXdhX",
     "section_faq_efNww3",
     "benefits_ticker_footer"
   ]
