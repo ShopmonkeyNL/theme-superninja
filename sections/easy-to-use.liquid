@@ -21,10 +21,26 @@
       </div>
       <div class="content-cards">
         {% for object in section.settings.metaobject_steps %}
-          {% render 'easy-to-use-card', title: object.titel, img: object.afbeelding, description: object.omschrijving %}
+          {% render 'image-with-content', title: object.titel, img: object.afbeelding, description: object.omschrijving %}
         {% endfor %}
       </div>
     </div>
+
+    {% if section.settings.bug_1 %}
+      <img src="{{ section.settings.bug_1 | image_url: width: 400 }}" class="easy-to-use__bug bug-1"/>
+    {% endif %}
+
+    {% if section.settings.bug_2 %}
+      <img src="{{ section.settings.bug_2 | image_url: width: 400 }}" class="easy-to-use__bug bug-2"/>
+    {% endif %}
+
+    {% if section.settings.bug_3 %}
+      <img src="{{ section.settings.bug_3 | image_url: width: 400 }}" class="easy-to-use__bug bug-3"/>
+    {% endif %}
+
+    {% if section.settings.bug_4 %}
+      <img src="{{ section.settings.bug_4 | image_url: width: 400 }}" class="easy-to-use__bug bug-4"/>
+    {% endif %}
   </div>
 </div>
 
@@ -33,6 +49,8 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+
+    /* position: relative; */
 
     & .easy-to-use__heading-wrapper {
       display: flex;
@@ -83,6 +101,38 @@
         flex-direction: column;
         gap: 1.5rem;
       }
+    }
+
+    & .easy-to-use__bug {
+      position: absolute;
+      height: 200px;
+      width: fit-content;
+      
+      z-index: -1;
+
+      &.bug-1 {
+        left: -3.5rem;
+        top: 1rem;
+      }
+
+      &.bug-2 {
+        left: -5.5rem;
+        top: 15rem;
+      }
+
+      &.bug-3 {
+        right: -1rem;
+        bottom: 12rem;
+      }
+
+      &.bug-4 {
+        right: -3.5rem;
+        bottom: 1rem;
+      }
+
+      @media (max-width: 749px) {
+        display: none;
+      } 
     }
 
     @media (min-width: 750px) {
@@ -150,11 +200,35 @@
       "default": 0
     },
     {
+      "type": "header",
+      "content": "Content"
+    },
+    {
       "type": "metaobject_list",
       "id": "metaobject_steps",
       "label": "Metaobject steps",
       "metaobject_type": "easy_to_use_steps"
-    }
+    },
+    {
+      "type": "image_picker",
+      "id": "bug_1",
+      "label": "Image bug 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "bug_2",
+      "label": "Image bug 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "bug_3",
+      "label": "Image bug 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "bug_4",
+      "label": "Image bug 4"
+    },
   ],
   "presets": [
     {

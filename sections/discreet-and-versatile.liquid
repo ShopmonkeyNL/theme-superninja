@@ -1,0 +1,101 @@
+<div class='section-background color-{{ section.settings.color_scheme }}'></div>
+
+<div
+  class='section section--{{ section.settings.section_width }} spacing-style {% if section.settings.color_scheme != blank %}color-{{ section.settings.color_scheme }}{% endif %}'
+  style='{% render 'spacing-padding', settings: section.settings %}'
+>
+  <div class="discreet-and-versatile">
+    {% content_for 'block', type: '_heading', id: 'heading', text: '' %}
+    <div class="discreet-and-versatile__content">
+      {% for object in section.settings.metaobject_steps %}
+        {% render 'image-with-content', title: object.title, img: object.image, description: object.description %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% style %}
+  .discreet-and-versatile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+
+    & .discreet-and-versatile__content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Discreet & Versatile",
+  "blocks": [
+    {
+      "type": "_heading"
+    }
+  ],
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "t:options.page"
+        },
+        {
+          "value": "full-width",
+          "label": "t:options.full"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "metaobject_list",
+      "id": "metaobject_steps",
+      "label": "Metaobject steps",
+      "metaobject_type": "discreet_versatile"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Discreet & Versatile"
+    }
+  ]
+}
+{% endschema %}
