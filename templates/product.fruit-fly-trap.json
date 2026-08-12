@@ -305,6 +305,72 @@
         "padding-block-end": 0
       }
     },
+    "benefits_ticker_pdp": {
+      "type": "benefits_ticker",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "outperforms",
+            "icon_asset": "",
+            "text": "<p>Outperforms common<br>DIY solutions</p>"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "safe_around_food",
+            "icon_asset": "",
+            "text": "<p>Safe around food,<br>kids & pets</p>"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "set_and_forget",
+            "icon_asset": "",
+            "text": "<p>Set-and-forget,<br>no maintenance</p>"
+          }
+        },
+        "benefit_4": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "visible_results",
+            "icon_asset": "",
+            "text": "<p>Visible results<br/>within 24 hours</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4"
+      ],
+      "settings": {
+        "background_color": "#94d357",
+        "text_color": "#1c1c1c",
+        "border_color": "#1c1c1c",
+        "divider_opacity": 3,
+        "rotate_deg": 2,
+        "invert_rotation": false,
+        "scale": 110,
+        "padding_y": 16,
+        "speed_seconds": 40,
+        "pause_on_hover": false,
+        "duplicate_count": "3",
+        "wrap_background_color": "",
+        "section_padding_top": 24,
+        "section_padding_bottom": 40,
+        "bar_background_type": "solid",
+        "bar_background_color": "#94d357",
+        "bar_gradient_start": "#43c241",
+        "bar_gradient_end": "#319130",
+        "bar_background_gradient": "",
+        "bar_border_color": "#ffffff",
+        "bar_border_width": 0
+      }
+    },
     "section_product_tabs_9yxC6V": {
       "type": "section-product-tabs",
       "name": "Product tabs",
@@ -885,73 +951,6 @@
         ]
       }
     },
-    "benefits_ticker_pdp": {
-      "type": "benefits_ticker",
-      "blocks": {
-        "benefit_1": {
-          "type": "benefit_item",
-          "settings": {
-            "icon": "outperforms",
-            "icon_asset": "",
-            "text": "<p>Outperforms common<br>DIY solutions</p>"
-          }
-        },
-        "benefit_2": {
-          "type": "benefit_item",
-          "settings": {
-            "icon": "safe_around_food",
-            "icon_asset": "",
-            "text": "<p>Safe around food,<br>kids & pets</p>"
-          }
-        },
-        "benefit_3": {
-          "type": "benefit_item",
-          "settings": {
-            "icon": "set_and_forget",
-            "icon_asset": "",
-            "text": "<p>Set-and-forget,<br>no maintenance</p>"
-          }
-        },
-        "benefit_4": {
-          "type": "benefit_item",
-          "settings": {
-            "icon": "visible_results",
-            "icon_asset": "",
-            "text": "<p>Visible results<br/>within 24 hours</p>"
-          }
-        }
-      },
-      "block_order": [
-        "benefit_1",
-        "benefit_2",
-        "benefit_3",
-        "benefit_4"
-      ],
-      "disabled": true,
-      "settings": {
-        "background_color": "#94d357",
-        "text_color": "#1c1c1c",
-        "border_color": "#1c1c1c",
-        "divider_opacity": 3,
-        "rotate_deg": 2,
-        "invert_rotation": false,
-        "scale": 110,
-        "padding_y": 16,
-        "speed_seconds": 40,
-        "pause_on_hover": false,
-        "duplicate_count": "3",
-        "wrap_background_color": "",
-        "section_padding_top": 24,
-        "section_padding_bottom": 40,
-        "bar_background_type": "solid",
-        "bar_background_color": "#94d357",
-        "bar_gradient_start": "#43c241",
-        "bar_gradient_end": "#319130",
-        "bar_background_gradient": "",
-        "bar_border_color": "#ffffff",
-        "bar_border_width": 0
-      }
-    },
     "section_fct9dz": {
       "type": "section",
       "blocks": {
@@ -1199,7 +1198,6 @@
         "group_zCrm3R",
         "video_stories_MaUc6Q"
       ],
-      "disabled": true,
       "name": "t:names.custom_section",
       "settings": {
         "content_direction": "column",
@@ -1535,7 +1533,6 @@
         "benefit_3",
         "benefit_4"
       ],
-      "disabled": true,
       "settings": {
         "background_color": "#94d357",
         "text_color": "#000000",
@@ -1545,7 +1542,7 @@
         "invert_rotation": false,
         "scale": 110,
         "padding_y": 16,
-        "speed_seconds": 18,
+        "speed_seconds": 40,
         "pause_on_hover": false,
         "duplicate_count": "3",
         "wrap_background_color": "",
@@ -1563,10 +1560,10 @@
   },
   "order": [
     "main",
+    "benefits_ticker_pdp",
     "section_product_tabs_9yxC6V",
     "section_AmfzXy",
     "easy_to_use_qTFF3K",
-    "benefits_ticker_pdp",
     "section_fct9dz",
     "section_VBC4A9",
     "section_Xqk7yk",
