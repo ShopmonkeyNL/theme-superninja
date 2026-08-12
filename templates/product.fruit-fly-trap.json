@@ -948,142 +948,11 @@
           "open",
           "maak-schoon",
           "place-go"
-        ]
-      }
-    },
-    "section_fct9dz": {
-      "type": "section",
-      "blocks": {
-        "group_L6e3aP": {
-          "type": "group",
-          "name": "t:names.group",
-          "settings": {
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "center",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 16,
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "toggle_overlay": false,
-            "overlay_color": "#1c1c1c26",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "link": "",
-            "open_in_new_tab": false,
-            "placeholder": "",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "text_VrDymh": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "<p>hoe ons product werkt.</p>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h6",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground-heading)",
-                "background": false,
-                "background_color": "#1c1c1c26",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_3mrxVE": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "<p>makkelijk te gebruiken</p>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h2",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground-heading)",
-                "background": false,
-                "background_color": "#1c1c1c26",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "text_VrDymh",
-            "text_3mrxVE"
-          ]
-        }
-      },
-      "block_order": [
-        "group_L6e3aP"
-      ],
-      "disabled": true,
-      "name": "t:names.custom_section",
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 64,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-1",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#1c1c1c26",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 96,
-        "padding-block-end": 96
+        ],
+        "bug_1": "shopify://shop_images/bug-1_ef445329-021c-44c0-9b47-654333f135a6.png",
+        "bug_2": "shopify://shop_images/bug-2.png",
+        "bug_3": "shopify://shop_images/bug-3.png",
+        "bug_4": "shopify://shop_images/bug-4.png"
       }
     },
     "section_VBC4A9": {
@@ -1227,80 +1096,6 @@
         "padding-block-end": 96
       }
     },
-    "section_Xqk7yk": {
-      "type": "section",
-      "blocks": {
-        "text_cGpV3p": {
-          "type": "text",
-          "name": "t:names.heading",
-          "settings": {
-            "text": "<h2>Why super ninja works when others don't</h2>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground-heading)",
-            "background": false,
-            "background_color": "#1c1c1c26",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "adaptive_accordion_VynyVW": {
-          "type": "_adaptive-accordion",
-          "name": "Adaptive accordion",
-          "settings": {
-            "icon": "plus",
-            "dividers": true,
-            "type_preset": "h3"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "text_cGpV3p",
-        "adaptive_accordion_VynyVW"
-      ],
-      "disabled": true,
-      "name": "t:names.custom_section",
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 64,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-1",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#1c1c1c26",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 96,
-        "padding-block-end": 96
-      }
-    },
     "comparison_view_hUVaJQ": {
       "type": "comparison-view",
       "blocks": {
@@ -1358,6 +1153,119 @@
       "settings": {
         "color_scheme": "",
         "section_width": "page-width",
+        "padding-block-start": 96,
+        "padding-block-end": 96
+      }
+    },
+    "discreet_and_versatile_fRxa8D": {
+      "type": "discreet-and-versatile",
+      "blocks": {
+        "heading": {
+          "type": "_heading",
+          "static": true,
+          "settings": {
+            "type_preset": "h2",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground-heading)",
+            "text": "<p>Discreet & versatile</p>",
+            "read_only": false,
+            "alignment": "center",
+            "show_alignment": true,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "name": "Discreet & Versatile",
+      "settings": {
+        "color_scheme": "scheme-34914151-20dc-4128-ae1f-ab506b07fc14",
+        "section_width": "page-width",
+        "padding-block-start": 96,
+        "padding-block-end": 96,
+        "metaobject_steps": [
+          "in-de-buurt-van-fruitschalen",
+          "naast-vuilnisbakken",
+          "monteren-met-lijm"
+        ]
+      }
+    },
+    "section_Xqk7yk": {
+      "type": "section",
+      "blocks": {
+        "text_cGpV3p": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h2>Why super ninja works when others don't</h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground-heading)",
+            "background": false,
+            "background_color": "#1c1c1c26",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "adaptive_accordion_VynyVW": {
+          "type": "_adaptive-accordion",
+          "name": "Adaptive accordion",
+          "settings": {
+            "icon": "plus",
+            "dividers": true,
+            "type_preset": "h3"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_cGpV3p",
+        "adaptive_accordion_VynyVW"
+      ],
+      "name": "t:names.custom_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 64,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-1",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#1c1c1c26",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
         "padding-block-start": 96,
         "padding-block-end": 96
       }
@@ -1625,10 +1533,10 @@
     "section_product_tabs_9yxC6V",
     "section_AmfzXy",
     "easy_to_use_qTFF3K",
-    "section_fct9dz",
     "section_VBC4A9",
-    "section_Xqk7yk",
     "comparison_view_hUVaJQ",
+    "discreet_and_versatile_fRxa8D",
+    "section_Xqk7yk",
     "section_faq_efNww3",
     "benefits_ticker_footer"
   ]
