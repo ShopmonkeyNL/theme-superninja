@@ -1,0 +1,205 @@
+{% capture logo %}
+  <img src="{{ settings.logo | img_url: width: 500 }}" alt="">
+{% endcapture %}
+
+{% capture check %}
+  <div class="check-wrapper">
+    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="13" viewBox="0 0 17 13" fill="none">
+      <path d="M5.7 12.025L0 6.325L1.425 4.9L5.7 9.175L14.875 0L16.3 1.425L5.7 12.025Z" fill="#F6EDE9"/>
+    </svg>
+  </div>
+{% endcapture %}
+
+{% capture x %}
+  <div class="x-wrapper">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M1.4 14L0 12.6L5.6 7L0 1.4L1.4 0L7 5.6L12.6 0L14 1.4L8.4 7L14 12.6L12.6 14L7 8.4L1.4 14Z" fill="#FFF"/>
+    </svg>
+  </div>
+{% endcapture %}
+
+{% assign features_translation = 'products.product.features' | t %}
+{% assign other_brands_translation = 'products.product.other_brands' | t %}
+{% assign effectiveness_translation = 'products.product.effectiveness' | t %}
+{% assign effort_translation = 'products.product.effort' | t %}
+{% assign minimal_translation = 'products.product.minimal' | t %}
+{% assign high_translation = 'products.product.high' | t %}
+{% assign safety_translation = 'products.product.safety' | t %}
+{% assign clutter_level_translation = 'products.product.clutter_level' | t %}
+{% assign no_clutter_translation = 'products.product.no_clutter' | t %}
+{% assign high_clutter_level_translation = 'products.product.high_clutter_level' | t %}
+{% assign duration_translation = 'products.product.duration' | t %}
+{% assign thirty_days_translation = 'products.product.thirty_days' | t %}
+{% assign two_three_days_translation = 'products.product.two_three_days' | t %}
+
+<div class='section-background color-{{ section.settings.color_scheme }}'></div>
+
+<div
+  class='section section--{{ section.settings.section_width }} spacing-style {% if section.settings.color_scheme != blank %}color-{{ section.settings.color_scheme }}{% endif %}'
+  style='{% render 'spacing-padding', settings: section.settings %}'
+>
+  <div class='comparison-view'>
+    <div class='comparison-view__heading-wrapper'>
+      {% content_for 'block', type: 'text', id: 'text' %}
+      {% content_for 'block', type: '_heading', id: 'heading', text: '' %}
+    </div>
+
+    <div class='comparison-view__view'>
+      {% render 'comparison-view-row',
+        feature_heading: features_translation,
+        feature_center_value: logo,
+        feature_end_value: other_brands_translation,
+        heading: true
+      %}
+      {% render 'comparison-view-row',
+        feature_heading: effectiveness_translation,
+        feature_center_value: check,
+        feature_end_value: x
+      %}
+      {% render 'comparison-view-row',
+        feature_heading: effectiveness_translation,
+        feature_center_value: minimal_translation,
+        feature_end_value: high_translation
+      %}
+      {% render 'comparison-view-row',
+        feature_heading: safety_translation,
+        feature_center_value: check,
+        feature_end_value: x
+      %}
+      {% render 'comparison-view-row',
+        feature_heading: clutter_level_translation,
+        feature_center_value: no_clutter_translation,
+        feature_end_value: high_clutter_level_translation
+      %}
+      {% render 'comparison-view-row',
+        feature_heading: duration_translation,
+        feature_center_value: thirty_days_translation,
+        feature_end_value: two_three_days_translation
+      %}
+    </div>
+  </div>
+</div>
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    display: none;
+
+    @media (min-width: 576px) {
+      display: grid;
+    }
+  }
+
+  .comparison-view {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+
+    & .comparison-view__heading-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      @media (min-width: 750px) {
+        gap: 1rem;
+      }
+    }
+
+    & .comparison-view__view {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      align-items: center;
+      align-self: stretch;
+
+      & .check-wrapper {
+        height: 2rem;
+        width: 2rem;
+
+        display: flex;
+        padding: 0.5rem;
+        align-items: center;
+        background-color: var(--color-primary-button-background);
+        border-radius: 5rem;
+      }
+
+      & .x-wrapper {
+        height: 2rem;
+        width: 2rem;
+
+        display: flex;
+        padding: 0.5rem;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--color-foreground-heading);
+        border-radius: 5rem;
+      }
+    }
+   }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Comparison view",
+  "blocks": [
+    {
+      "type": "text"
+    },
+    {
+      "type": "_heading"
+    }
+  ],
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "t:options.page"
+        },
+        {
+          "value": "full-width",
+          "label": "t:options.full"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Comparison view"
+    }
+  ]
+}
+{% endschema %}

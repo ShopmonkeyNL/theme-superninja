@@ -338,49 +338,62 @@
       "quantity_increments": "Stappen van {{ increment }}",
       "quantity_minimum": "Minimum van {{ minimum }}",
       "quantity_maximum": "Maximum van {{ maximum }}",
-      "in_cart": "in winkelwagen"
+      "in_cart": "in winkelwagen",
+      "features": "Kenmerken",
+      "other_brands": "Andere merken",
+      "effectiveness": "Doeltreffendheid",
+      "effort": "Inspanning",
+      "minimal": "Minimaal",
+      "high": "Hoog",
+      "safety": "Veiligheid (huisdieren & kinderen)",
+      "clutter_level": "Rommel niveau",
+      "no_clutter": "Geen rommel",
+      "high_clutter_level": "Hoog rommel niveau",
+      "duration": "Duur",
+      "thirty_days": "30 dagen",
+      "two_three_days": "2-3 dagen"
     }
+  },
+  "contact": {
+    "full_name": "Volledige naam",
+    "email_address": "E-mailadres",
+    "purchase_source": "Waar heb je deze aankoop gedaan?",
+    "country": "Land",
+    "order_number": "Bestelnummer",
+    "message": "Bericht",
+    "placeholder_name": "Jan Jansen",
+    "placeholder_purchase": "Waar heb je deze aankoop gedaan?",
+    "placeholder_message": "Vertel ons meer over je vraag...",
+    "placeholder_country": "Nederland"
+  },
+  "blog": {
+    "minute_to_read": "minuut te lezen",
+    "minutes_to_read": "minuten te lezen",
+    "continue_reading": "Lees verder",
+    "categories": "Categorieën",
+    "all_categories": "Alle categorieën",
+    "tag": {
+      "fruit-flies": "Fruitvliegjes",
+      "fungus-gnats": "Rouwmuggen",
+      "food-moths": "Voedselmotten",
+      "silverfish": "Zilvervisjes",
+      "wasps": "Wespen",
+      "general": "Algemeen"
+    }
+  },
+  "partner": {
+    "company_name": "Bedrijfsnaam",
+    "company_website": "Bedrijfswebsite",
+    "contact_name": "Contactpersoon",
+    "country": "Land",
+    "email_address": "E-mailadres",
+    "phone": "Telefoon",
+    "partner_type": "Type partner",
+    "message": "Bericht",
+    "placeholder_company": "Jouw bedrijf",
+    "placeholder_name": "Jan Jansen",
+    "placeholder_message": "Vertel ons over jouw markt, kanaal en dekking...",
+    "select_country": "Selecteer je land",
+    "select_partner_type": "Selecteer type partner"
   }
-,"contact": {
-  "full_name": "Volledige naam",
-  "email_address": "E-mailadres",
-  "purchase_source": "Waar heb je deze aankoop gedaan?",
-  "country": "Land",
-  "order_number": "Bestelnummer",
-  "message": "Bericht",
-  "placeholder_name": "Jan Jansen",
-  "placeholder_purchase": "Waar heb je deze aankoop gedaan?",
-  "placeholder_message": "Vertel ons meer over je vraag...",
-"placeholder_country": "Nederland"
-},
-"blog": {
-  "minute_to_read": "minuut te lezen",
-  "minutes_to_read": "minuten te lezen",
-  "continue_reading": "Lees verder",
-"categories": "Categorieën",
-"all_categories": "Alle categorieën",
-"tag": {
-  "fruit-flies": "Fruitvliegjes",
-  "fungus-gnats": "Rouwmuggen",
-  "food-moths": "Voedselmotten",
-  "silverfish": "Zilvervisjes",
-  "wasps": "Wespen",
-  "general": "Algemeen"
-}
-},
-"partner": {
-  "company_name": "Bedrijfsnaam",
-  "company_website": "Bedrijfswebsite",
-  "contact_name": "Contactpersoon",
-  "country": "Land",
-  "email_address": "E-mailadres",
-  "phone": "Telefoon",
-  "partner_type": "Type partner",
-  "message": "Bericht",
-  "placeholder_company": "Jouw bedrijf",
-  "placeholder_name": "Jan Jansen",
-  "placeholder_message": "Vertel ons over jouw markt, kanaal en dekking...",
-  "select_country": "Selecteer je land",
-  "select_partner_type": "Selecteer type partner"
-}
 }

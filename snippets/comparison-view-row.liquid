@@ -1,0 +1,38 @@
+<div class='view-row'>
+  <div class='view-row__item{% if heading %} h5{% endif %}'>{{ feature_heading }}</div>
+  <div class='view-row__item center h6'>{{ feature_center_value }}</div>
+  <div class='view-row__item{% if heading %} h5 {% else %} h6{% endif %}'>{{ feature_end_value }}</div>
+</div>
+
+{% style %}
+  .view-row {
+    display: flex;
+    align-items: flex-start;
+    align-self: stretch;
+    border-bottom: 0.5px solid var(--border-color);
+
+    & .view-row__item {
+      display: flex;
+      padding: 1.5rem;
+      align-items: center;
+      flex: 1 0 0;
+      align-self: stretch;
+      justify-content: center;
+
+      color: var(--color-foreground-heading);
+
+      & img {
+        max-width: 80%;
+      }
+
+      &.center {
+        background-color: #F6EDE9;
+        color: #551B00;
+      }
+
+      &:first-of-type {
+        justify-content: start;
+      }
+    }
+  }
+{% endstyle %}
