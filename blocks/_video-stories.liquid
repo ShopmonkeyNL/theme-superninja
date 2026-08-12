@@ -2,45 +2,77 @@
 
 <div class='video-stories'>
   <div class='swiper video-stories__slider'>
-    <div class='swiper-wrapper'>
-      {% for video in video_metaobject %}
-        <div class='swiper-slide'>
-          {% render 'video',
-            video: video.video.value,
-            video_autoplay: false,
-            video_loop: true,
-            section_id: section.id
-          %}
-        </div>
-      {% endfor %}
-    </div>
+      <div class='swiper-wrapper'>
+        {% for video in video_metaobject %}
+          <div class='swiper-slide'>
+            {% render 'video',
+              video: video.video.value,
+              video_autoplay: false,
+              video_loop: true,
+              section_id: section.id
+            %}
+          </div>
+        {% endfor %}
+      </div>
 
-    <div class="videos-stories__prev swiper-button-prev">
+    </div>
+    <div class='videos-stories__prev'>
       {%- render 'slideshow-arrow', action: 'previous', icon_style: icon_style, icon_shape: shape -%}
     </div>
-    <div class="videos-stories__next swiper-button-next">
+    <div class='videos-stories__next'>
       {%- render 'slideshow-arrow', action: 'next', icon_style: icon_style, icon_shape: shape -%}
     </div>
-  </div>
 </div>
 
 {% style %}
   #shopify-block-{{ block.id }} {
     width: 100%;
+    position: relative;
 
     .video-stories deferred-media img,
     .video-stories deferred-media video {
       border-radius: 4px;
     }
 
+    .videos-stories__prev {
+      position: absolute;
+      left: -1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+    }
+
+    .videos-stories__next {
+      position: absolute;
+      right: -1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+    }
+
+    .videos-stories__next button,
+    .videos-stories__prev button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background: var(--color-primary-button-background);
+      padding: 0.75rem;
+      border-radius: 64px;
+    }
+
     .video-stories .icon-arrow,
     .video-stories .icon-arrow svg {
-      width: 2rem;
-      height: 2rem;
+      width: 1.5rem;
+      height: 1.5rem;
     }
 
     .video-stories .swiper-button-disabled {
       display: none;
+    }
+
+    .swiper.video-stories__slider {
+      overflow: hidden;
     }
   }
 {% endstyle %}
@@ -60,7 +92,7 @@
         },
         992: {
           slidesPerView: 5,
-        }
+        },
       },
       autoplay: {
         delay: 5000,
@@ -68,7 +100,7 @@
       navigation: {
         prevEl: '.videos-stories__prev',
         nextEl: '.videos-stories__next',
-      }
+      },
     });
   });
 {% endjavascript %}

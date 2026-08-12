@@ -1920,7 +1920,7 @@ deferred-media[data-media-loaded] img {
   align-items: center;
   justify-content: center;
   border-radius: 4px;
-  background-color: #F6EDE9;
+  background-color: var(--color-background);
   padding: 8px;
 }
 
@@ -1928,7 +1928,7 @@ deferred-media[data-media-loaded] img {
 .video-placeholder-wrapper__poster-icon svg {
   width: 1rem;
   height: 1rem;
-  color: #551B00;
+  color: var(--color-foreground-heading);
   transition: opacity 0.2s ease;
 
   &:hover {
