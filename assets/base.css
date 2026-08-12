@@ -2303,6 +2303,10 @@ product-price.text-block:is(.h1, .h2, .h3, .h4, .h5, .h6) > *:not(.tax-note) {
   display: flex;
   gap: var(--gap);
   height: 100%;
+
+  @media (max-width: 749px) {
+    gap: calc(var(--gap) / 2);
+  }
 }
 
 .layout-panel-flex--row {
