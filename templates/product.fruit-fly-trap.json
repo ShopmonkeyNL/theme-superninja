@@ -496,7 +496,7 @@
                         "wrap": "pretty",
                         "color": "var(--color-foreground)",
                         "background": false,
-                        "background_color": "#1C1C1C26",
+                        "background_color": "#1c1c1c26",
                         "corner_radius": 0,
                         "padding-block-start": 0,
                         "padding-block-end": 0,
@@ -522,7 +522,7 @@
                         "wrap": "pretty",
                         "color": "var(--color-foreground)",
                         "background": false,
-                        "background_color": "#1C1C1C26",
+                        "background_color": "#1c1c1c26",
                         "corner_radius": 0,
                         "padding-block-start": 0,
                         "padding-block-end": 0,
@@ -614,7 +614,7 @@
                         "wrap": "pretty",
                         "color": "var(--color-foreground)",
                         "background": false,
-                        "background_color": "#1C1C1C26",
+                        "background_color": "#1c1c1c26",
                         "corner_radius": 0,
                         "padding-block-start": 0,
                         "padding-block-end": 0,
@@ -640,7 +640,7 @@
                         "wrap": "pretty",
                         "color": "var(--color-foreground)",
                         "background": false,
-                        "background_color": "#1C1C1C26",
+                        "background_color": "#1c1c1c26",
                         "corner_radius": 0,
                         "padding-block-start": 0,
                         "padding-block-end": 0,
@@ -732,7 +732,7 @@
                         "wrap": "pretty",
                         "color": "var(--color-foreground)",
                         "background": false,
-                        "background_color": "#1C1C1C26",
+                        "background_color": "#1c1c1c26",
                         "corner_radius": 0,
                         "padding-block-start": 0,
                         "padding-block-end": 0,
@@ -758,7 +758,7 @@
                         "wrap": "pretty",
                         "color": "var(--color-foreground)",
                         "background": false,
-                        "background_color": "#1C1C1C26",
+                        "background_color": "#1c1c1c26",
                         "corner_radius": 0,
                         "padding-block-start": 0,
                         "padding-block-end": 0,
@@ -815,6 +815,74 @@
         "gradient_direction": "to top",
         "padding-block-start": 96,
         "padding-block-end": 96
+      }
+    },
+    "easy_to_use_qTFF3K": {
+      "type": "easy-to-use",
+      "blocks": {
+        "text": {
+          "type": "text",
+          "static": true,
+          "settings": {
+            "text": "<p>Hoe ons product werkt.</p>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "custom",
+            "font": "var(--font-heading--family)",
+            "font_size": "1.125rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "uppercase",
+            "wrap": "pretty",
+            "color": "var(--color-foreground-heading)",
+            "background": false,
+            "background_color": "#1c1c1c26",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "heading": {
+          "type": "_heading",
+          "static": true,
+          "settings": {
+            "type_preset": "h2",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground-heading)",
+            "text": "<p>Makkelijk te gebruiken</p>",
+            "read_only": false,
+            "alignment": "center",
+            "show_alignment": true,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "name": "Easy to use",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "section_width": "page-width",
+        "padding-block-start": 96,
+        "padding-block-end": 96,
+        "metaobject_steps": [
+          "verwijder",
+          "schud",
+          "open",
+          "maak-schoon",
+          "place-go"
+        ]
       }
     },
     "benefits_ticker_pdp": {
@@ -1497,6 +1565,7 @@
     "main",
     "section_product_tabs_9yxC6V",
     "section_AmfzXy",
+    "easy_to_use_qTFF3K",
     "benefits_ticker_pdp",
     "section_fct9dz",
     "section_VBC4A9",
