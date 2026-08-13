@@ -1,0 +1,17 @@
+{% if product.metafields.custom.short_description %}
+  <div class="short-description">
+    {{ product.metafields.custom.short_description }}
+  </div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Short description",
+    "presets": [
+      {
+        "name": "Short description",
+        "category": "Shopmonkey - Custom"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,114 @@
+<div class='section-background color-{{ section.settings.color_scheme }}'></div>
+
+<div
+  class='section section--{{ section.settings.section_width }} spacing-style {% if section.settings.color_scheme != blank %}color-{{ section.settings.color_scheme }}{% endif %}'
+  style='{% render 'spacing-padding', settings: section.settings %}'
+>
+  <div class="product-details">
+    <div class="product-details__media-gallery{% if section.settings.equal_columns %} equal{% endif %}">media</div>
+    <div class="product-details__configure{% if section.settings.equal_columns %} equal{% endif %}">
+      {% content_for 'blocks' %}
+    </div>
+  </div>
+</div>
+
+{% style %}
+  .product-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+
+    & > .equal {
+      flex: 1;
+    }
+
+    & .product-details__configure {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    @media (min-width: 750px) {
+      flex-direction: row;
+      gap: 4rem;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Product details",
+  "blocks": [
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "_product-protection-message"
+    }
+  ],
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "t:options.page"
+        },
+        {
+          "value": "full-width",
+          "label": "t:options.full"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Content"     
+    },
+    {
+      "type": "checkbox",
+      "id": "equal_columns",
+      "label": "Set equal columns",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product details",
+      "category": "Shopmonkey - Custom"
+    }
+  ]
+}
+{% endschema %}
