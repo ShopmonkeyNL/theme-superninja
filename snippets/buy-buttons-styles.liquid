@@ -10,6 +10,7 @@
     --buy-button-preferred-width: 185px;
 
     width: 100%;
+    position: relative;
   }
 
   .product-form-buttons {
@@ -33,7 +34,7 @@
   }
 
   .product-form-buttons button {
-    width: fit-content;
+    width: 100%;
     padding-block: var(--padding-lg);
   }
 
@@ -41,6 +42,23 @@
     flex-grow: 0;
     flex-shrink: 0;
     height: var(--height-buy-buttons);
+
+    background-color: unset;
+    border: none;
+
+    & .icon-plus svg {
+      color: var(--color);
+    }
+
+    &:hover {
+      background-color: unset;
+    }
+  }
+
+  .quantity-selector input[type=number] {
+    background-color: #EAF6DD;
+    padding-block: 0.5rem;
+    border-radius: 2px;
   }
 
   .quantity-label {
@@ -90,6 +108,14 @@
     transform: translateY(-50%);
     font-size: 0.5em;
     line-height: 0;
+  }
+
+  product-price {
+    justify-content: center;
+
+    & > div {
+      text-align: end;
+    }
   }
 
   .add-to-cart-button {
