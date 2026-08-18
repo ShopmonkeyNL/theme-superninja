@@ -498,6 +498,20 @@
           },
           "blocks": {}
         },
+        "variant_picker_GzEGAR": {
+          "type": "variant-picker",
+          "name": "t:names.product_variant_picker",
+          "settings": {
+            "variant_style": "buttons",
+            "show_swatches": true,
+            "alignment": "left",
+            "padding-block-start": 0,
+            "padding-block-end": 8,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
         "buy_buttons_Hj9nhX": {
           "type": "buy-buttons",
           "name": "t:names.product_buy_buttons",
@@ -598,10 +612,10 @@
       "block_order": [
         "group_kLmxdj",
         "product_protection_message_jGNFWL",
+        "variant_picker_GzEGAR",
         "buy_buttons_Hj9nhX",
         "ai_gen_block_2ed7d23_jWQQfW"
       ],
-      "disabled": true,
       "name": "Product details",
       "settings": {
         "color_scheme": "",
