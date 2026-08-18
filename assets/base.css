@@ -3513,13 +3513,13 @@ slideshow-arrows .slideshow-control {
   opacity: 0;
   padding: var(--padding-xs);
   color: var(--color-white);
-  background-color: var(--color-black);
+  background-color: #31461D;
   display: flex;
   border-radius: 100%;
   transition: opacity 0.2s ease-out;
 
   &:hover {
-    background-color: var(--color-black);
+    background-color: #31461D;
     opacity: 0.2;
     transition: opacity 0.2s ease-out;
   }
