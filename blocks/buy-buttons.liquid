@@ -239,10 +239,12 @@
             form_obj: form
           %}
 
-          {% content_for 'block',
-            type: 'text',
-            id: 'text'
-          %}
+          <div class="delivery-text">
+            {% content_for 'block',
+              type: 'text',
+              id: 'text'
+            %}
+          </div>
         </div>
         {%- if block_settings.gift_card_form and product.gift_card? -%}
           </span>
