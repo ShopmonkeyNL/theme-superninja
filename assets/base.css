@@ -3481,7 +3481,6 @@ slideshow-arrows {
   display: flex;
   z-index: var(--layer-heightened);
   pointer-events: none;
-  mix-blend-mode: difference;
   align-items: flex-end;
 
   &[position="left"] {
@@ -3512,8 +3511,18 @@ slideshow-component[disabled="true"] slideshow-arrows {
 slideshow-arrows .slideshow-control {
   pointer-events: auto;
   opacity: 0;
-  padding: 0 var(--padding-xs);
+  padding: var(--padding-xs);
   color: var(--color-white);
+  background-color: var(--color-black);
+  display: flex;
+  border-radius: 100%;
+  transition: opacity 0.2s ease-out;
+
+  &:hover {
+    background-color: var(--color-black);
+    opacity: 0.2;
+    transition: opacity 0.2s ease-out;
+  }
 }
 
 slideshow-arrows .slideshow-control.slideshow-control--style-none {
@@ -3743,7 +3752,7 @@ slideshow-arrows .slideshow-control.slideshow-control--style-none {
 }
 
 .resource-list__carousel slideshow-arrows {
-  padding-inline: var(--util-page-margin-offset);
+  padding-inline: 1rem;
 }
 
 .resource-list__carousel .resource-list__slide {
@@ -4409,4 +4418,10 @@ text-component {
 /* Announcement bar disabled for now */
 #header-group .shopify-section:has(.announcement-bar) {
   display: none !important;
+}
+
+.floating-atc {
+  position: absolute;
+  bottom: var(--padding-block-end);
+  right: var(--padding-inline-end);
 }

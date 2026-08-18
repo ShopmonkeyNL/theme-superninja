@@ -111,6 +111,9 @@
       {% if block_settings.padding-block-end > 0 %}--zoom-out-padding-block-end: min(var(--padding-xs), {{ block_settings.padding-block-end | times: 0.7}}px);{% endif %}
     "
   >
+    <div class="floating-atc" style="--padding-inline-end: {{ block_settings.padding-inline-end }}px; --padding-block-end: {{ block_settings.padding-block-end }}px;">
+      float
+    </div>
     {{ children }}
   </div>
 </product-card>
