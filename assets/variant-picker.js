@@ -80,7 +80,6 @@ export default class VariantPicker extends Component {
     this.fetchUpdatedSection(this.buildRequestUrl(selectedOption), morphElementSelector);
 
     const url = new URL(window.location.href);
-
     const variantId = selectedOption.dataset.variantId || null;
 
     if (isOnProductPage) {
@@ -244,6 +243,7 @@ export default class VariantPicker extends Component {
       .then((response) => response.text())
       .then((responseText) => {
         this.#pendingRequestUrl = undefined;
+
         const html = new DOMParser().parseFromString(responseText, 'text/html');
         // Defer is only useful for the initial rendering of the page. Remove it here.
         html.querySelector('overflow-list[defer]')?.removeAttribute('defer');

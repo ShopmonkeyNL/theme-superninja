@@ -191,7 +191,6 @@ class ProductFormComponent extends Component {
     const { signal } = this.#abortController;
     const target = this.closest('.shopify-section, dialog, product-card');
     target?.addEventListener(ThemeEvents.variantUpdate, this.#onVariantUpdate, { signal });
-    target?.addEventListener(ThemeEvents.variantSelected, this.#onVariantSelected, { signal });
 
     // Listen for cart updates to sync data-cart-quantity
     document.addEventListener(ThemeEvents.cartUpdate, this.#onCartUpdate, { signal });
@@ -625,14 +624,6 @@ class ProductFormComponent extends Component {
 
     // Fetch and update cart quantity for the new variant
     await this.#fetchAndUpdateCartQuantity();
-  };
-
-  /**
-   * Disable the add to cart button while the UI is updating before #onVariantUpdate is called.
-   * Accelerated checkout button is also disabled via its own event listener not exposed to the theme.
-   */
-  #onVariantSelected = () => {
-    this.refs.addToCartButtonContainer?.disable();
   };
 }
 
