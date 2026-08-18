@@ -334,7 +334,8 @@
       "high_clutter_level": "Niveau d'encombrement élevé",
       "duration": "Durée",
       "thirty_days": "30 jours",
-      "two_three_days": "2-3 jours"
+      "two_three_days": "2-3 jours",
+      "variant_picker": "Faites un choix"
     }
   },
   "fields": {

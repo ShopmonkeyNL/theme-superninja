@@ -353,7 +353,8 @@
       "high_clutter_level": "High clutter level",
       "duration": "Duration",
       "thirty_days": "30 days",
-      "two_three_days": "2-3 days"
+      "two_three_days": "2-3 days",
+      "variant_picker": "Make a choice"
     }
   },
   "contact": {

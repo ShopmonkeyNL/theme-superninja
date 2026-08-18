@@ -328,7 +328,8 @@
       "high_clutter_level": "Hoher Grad an Unordnung",
       "duration": "Dauer",
       "thirty_days": "30 Tage",
-      "two_three_days": "2-3 Tage"
+      "two_three_days": "2-3 Tage",
+      "variant_picker": "Treffen Sie eine Wahl"
     }
   },
   "fields": {

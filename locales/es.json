@@ -334,7 +334,8 @@
       "high_clutter_level": "Alto nivel de desorden",
       "duration": "Duración",
       "thirty_days": "30 días",
-      "two_three_days": "2-3 días"
+      "two_three_days": "2-3 días",
+      "variant_picker": "hacer una elección"
     }
   },
   "fields": {
