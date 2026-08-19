@@ -69,7 +69,7 @@
     <div class="benefits-ticker__bar"{% if has_gradient %} style="background: {{ bar_bg_gradient }};"{% endif %}>
       <div class="benefits-ticker__track" data-duplicate-count="{{ duplicate_count }}">
         {% for i in (1..duplicate_count) %}
-          <div class="benefits-ticker__row" aria-hidden="{{ i | minus: 1 }}">
+          <div class="benefits-ticker__row">
             {% for block in benefit_blocks %}
               <div class="benefits-ticker__item" {{ block.shopify_attributes }}>
                 <span class="benefits-ticker__icon-wrap">
