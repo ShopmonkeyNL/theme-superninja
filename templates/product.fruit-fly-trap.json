@@ -886,6 +886,35 @@
           "block_order": [
             "text_7eF7kE"
           ]
+        },
+        "product-media-gallery": {
+          "type": "_product-media-gallery",
+          "static": true,
+          "settings": {
+            "media_presentation": "carousel",
+            "media_columns": "one",
+            "image_gap": 0,
+            "large_first_image": false,
+            "icons_style": "arrow",
+            "slideshow_controls_style": "thumbnails",
+            "slideshow_mobile_controls_style": "counter",
+            "thumbnail_position": "left",
+            "thumbnail_width": 72,
+            "thumbnail_radius": 0,
+            "aspect_ratio": "adapt",
+            "constrain_to_viewport": false,
+            "media_fit": "cover",
+            "media_radius": 4,
+            "extend_media": true,
+            "zoom": true,
+            "video_loop": false,
+            "hide_variants": true,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -901,7 +930,7 @@
         "color_scheme": "",
         "section_width": "page-width",
         "padding-block-start": 64,
-        "padding-block-end": 96,
+        "padding-block-end": 128,
         "equal_columns": true
       }
     },
@@ -1479,8 +1508,8 @@
         "overlay_color": "#1c1c1c26",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 96,
-        "padding-block-end": 96
+        "padding-block-start": 128,
+        "padding-block-end": 128
       }
     },
     "easy_to_use_qTFF3K": {
@@ -1540,8 +1569,8 @@
       "settings": {
         "color_scheme": "scheme-1",
         "section_width": "page-width",
-        "padding-block-start": 96,
-        "padding-block-end": 96,
+        "padding-block-start": 128,
+        "padding-block-end": 128,
         "metaobject_steps": [
           "verwijder",
           "schud",
@@ -1692,8 +1721,8 @@
         "overlay_color": "#1c1c1c26",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 96,
-        "padding-block-end": 96
+        "padding-block-start": 128,
+        "padding-block-end": 128
       }
     },
     "comparison_view_hUVaJQ": {
@@ -1753,8 +1782,8 @@
       "settings": {
         "color_scheme": "",
         "section_width": "page-width",
-        "padding-block-start": 96,
-        "padding-block-end": 96
+        "padding-block-start": 128,
+        "padding-block-end": 128
       }
     },
     "discreet_and_versatile_fRxa8D": {
@@ -1788,8 +1817,8 @@
       "settings": {
         "color_scheme": "scheme-34914151-20dc-4128-ae1f-ab506b07fc14",
         "section_width": "page-width",
-        "padding-block-start": 96,
-        "padding-block-end": 96,
+        "padding-block-start": 128,
+        "padding-block-end": 128,
         "metaobject_steps": [
           "in-de-buurt-van-fruitschalen",
           "naast-vuilnisbakken",
@@ -1866,8 +1895,8 @@
         "overlay_color": "#1c1c1c26",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 96,
-        "padding-block-end": 96
+        "padding-block-start": 128,
+        "padding-block-end": 128
       }
     },
     "what_clients_say_brXdhX": {
@@ -1942,8 +1971,8 @@
       "settings": {
         "color_scheme": "scheme-f33bf0ba-b43d-424f-9d6c-9f4b9bcd8138",
         "section_width": "page-width",
-        "padding-block-start": 96,
-        "padding-block-end": 96,
+        "padding-block-start": 128,
+        "padding-block-end": 128,
         "review_product": "super-ninja-fruit-fly-trap"
       }
     },
@@ -2127,8 +2156,8 @@
       ],
       "name": "FAQ Section",
       "settings": {
-        "padding_block_start_desktop": 96,
-        "padding_block_end_desktop": 96,
+        "padding_block_start_desktop": 128,
+        "padding_block_end_desktop": 128,
         "padding_block_start_mobile": 48,
         "padding_block_end_mobile": 48,
         "content_direction": "row",
