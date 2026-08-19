@@ -56,38 +56,38 @@
 
 {%- if settings.transition_to_main_product -%}
   <product-card-link
-    data-product-id="{{ product.id }}"
-    data-featured-media-url="{{ featured_media_url }}"
-    data-product-transition="{{ settings.transition_to_main_product }}"
+    data-product-id='{{ product.id }}'
+    data-featured-media-url='{{ featured_media_url }}'
+    data-product-transition='{{ settings.transition_to_main_product }}'
     {% if onboarding %}
-      data-placeholder="true"
+      data-placeholder='true'
     {% endif %}
   >
 {%- endif -%}
 <product-card
-  class="product-card"
-  data-product-id="{{ product.id }}"
-  id="product-card-{{ block.id }}"
-  data-product-transition="{{ settings.transition_to_main_product }}"
+  class='product-card'
+  data-product-id='{{ product.id }}'
+  id='product-card-{{ block.id }}'
+  data-product-transition='{{ settings.transition_to_main_product }}'
   {{ block.shopify_attributes }}
   {% if onboarding %}
-    data-placeholder="true"
+    data-placeholder='true'
   {% endif %}
 >
   <a
-    id="{{ product_card_id | md5 }}"
+    id='{{ product_card_id | md5 }}'
     {% unless onboarding %}
-      href="{{ variant_to_link.url }}"
+      href='{{ variant_to_link.url }}'
     {% endunless %}
-    class="product-card__link"
-    ref="productCardLink"
+    class='product-card__link'
+    ref='productCardLink'
   >
-    <span class="visually-hidden">
+    <span class='visually-hidden'>
       {{ product.title }}
     </span>
   </a>
   <div
-    class="
+    class='
       product-card__content
       layout-panel-flex
       layout-panel-flex--column
@@ -96,8 +96,8 @@
       border-style
       gap-style
       {% if block_settings.inherit_color_scheme == false %} color-{{ block_settings.color_scheme }}{% endif %}
-    "
-    style="
+    '
+    style='
       {% render 'border-override', settings: block_settings %}
       {% render 'layout-panel-style', settings: block_settings %}
       {% render 'spacing-style', settings: block_settings %}
@@ -109,10 +109,86 @@
       {% if block_settings.padding-inline-end > 0 %}--zoom-out-padding-inline-end: min(var(--padding-xs), {{ block_settings.padding-inline-end | times: 0.7}}px);{% endif %}
       {% if block_settings.padding-block-start > 0 %}--zoom-out-padding-block-start: min(var(--padding-xs), {{ block_settings.padding-block-start | times: 0.7}}px);{% endif %}
       {% if block_settings.padding-block-end > 0 %}--zoom-out-padding-block-end: min(var(--padding-xs), {{ block_settings.padding-block-end | times: 0.7}}px);{% endif %}
-    "
+    '
   >
-    <div class="floating-atc" style="--padding-inline-end: {{ block_settings.padding-inline-end }}px; --padding-block-end: {{ block_settings.padding-block-end }}px;">
-      float
+    <div
+      class='floating-atc'
+      style='--padding-inline-end: {{ block_settings.padding-inline-end }}px; --padding-block-end: {{ block_settings.padding-block-end }}px;'
+    >
+      {% assign floating_atc_form_id = product_card_id | append: '-floating-atc' %}
+      {% assign floating_atc_label = 'actions.add_to_cart' | t %}
+      {% assign floating_atc_media = product.selected_or_first_available_variant.featured_media.preview_image | image_url: width: 100 %}
+      {% if product.selected_or_first_available_variant.featured_media.preview_image == blank %}
+        {% assign floating_atc_media = product.featured_media.preview_image | image_url: width: 100 %}
+      {% endif %}
+      
+      {% capture floating_atc_icon %}
+        <span class="add-to-cart-text">
+          <span class="svg-wrapper add-to-cart-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M7.33366 5.99996V3.99996H5.33366V2.66663H7.33366V0.666626H8.66699V2.66663H10.667V3.99996H8.66699V5.99996H7.33366ZM3.72533 14.275C3.46421 14.0138 3.33366 13.7 3.33366 13.3333C3.33366 12.9666 3.46421 12.6527 3.72533 12.3916C3.98644 12.1305 4.30033 12 4.66699 12C5.03366 12 5.34755 12.1305 5.60866 12.3916C5.86977 12.6527 6.00033 12.9666 6.00033 13.3333C6.00033 13.7 5.86977 14.0138 5.60866 14.275C5.34755 14.5361 5.03366 14.6666 4.66699 14.6666C4.30033 14.6666 3.98644 14.5361 3.72533 14.275ZM10.392 14.275C10.1309 14.0138 10.0003 13.7 10.0003 13.3333C10.0003 12.9666 10.1309 12.6527 10.392 12.3916C10.6531 12.1305 10.967 12 11.3337 12C11.7003 12 12.0142 12.1305 12.2753 12.3916C12.5364 12.6527 12.667 12.9666 12.667 13.3333C12.667 13.7 12.5364 14.0138 12.2753 14.275C12.0142 14.5361 11.7003 14.6666 11.3337 14.6666C10.967 14.6666 10.6531 14.5361 10.392 14.275ZM0.666992 2.66663V1.33329H2.85033L5.68366 7.33329H10.3503L12.9503 2.66663H14.467L11.1503 8.66663H5.40033L4.66699 9.99996H12.667V11.3333H2.41699L4.40033 7.73329L2.00033 2.66663H0.666992Z" fill="#31461D"/>
+            </svg>
+          </span>
+        </span>
+
+        <span class="add-to-cart__added">
+          <span class="svg-wrapper add-to-cart__added-icon">
+            {{- 'icon-checkmark-burst.svg' | inline_asset_content -}}
+          </span>
+        </span>
+      {% endcapture %}
+      
+      <product-form-component
+        data-product-id='{{ product.id }}'
+        on:submit='/handleSubmit'
+      >
+        <div
+          class='visually-hidden'
+          aria-live='assertive'
+          role='status'
+          aria-atomic='true'
+          ref='liveRegion'
+        ></div>
+        {%- form 'product',
+          product,
+          id: floating_atc_form_id,
+          novalidate: 'novalidate',
+          data-type: 'add-to-cart-form'
+        -%}
+          <input
+            type='hidden'
+            name='id'
+            ref='variantId'
+            value='{{ product.selected_or_first_available_variant.id }}'
+            {% unless product.selected_or_first_available_variant.available %}
+              disabled
+            {% endunless %}
+          >
+          <input
+            type='hidden'
+            name='quantity'
+            value='1'
+          >
+          <add-to-cart-component
+            ref='addToCartButtonContainer'
+            data-product-variant-media='{{ floating_atc_media }}'
+            data-add-to-cart-animation='{{ settings.add_to_cart_animation }}'
+          >
+            {% render 'button',
+              link: '',
+              tag: 'button',
+              type: 'submit',
+              name: 'add',
+              ref: 'addToCartButton',
+              on_click: '/handleClick',
+              content: floating_atc_icon,
+              class: 'button-secondary floating-atc__button add-to-cart-button',
+              aria_label: floating_atc_label,
+              form: floating_atc_form_id
+            %}
+          </add-to-cart-component>
+        {%- endform -%}
+      </product-form-component>
     </div>
     {{ children }}
   </div>
@@ -131,6 +207,27 @@
     height: 100%;
   }
 
+  .floating-atc {
+    position: absolute;
+    right: var(--padding-inline-end);
+    bottom: var(--padding-block-end);
+    z-index: var(--layer-raised);
+  }
+
+  .floating-atc__button {
+    display: grid;
+    width: calc(var(--height-buy-buttons) / 1.5);
+    height: calc(var(--height-buy-buttons) / 1.5);
+    padding: 0;
+    place-items: center;
+  }
+
+  .floating-atc__button .svg-wrapper,
+  .floating-atc__button svg {
+    width: var(--icon-size-sm);
+    height: var(--icon-size-sm);
+  }
+
   @media screen and (max-width: 749px) {
     .product-card slideshow-arrows .slideshow-control {
       display: none;
@@ -138,7 +235,7 @@
   }
 
   /* Hide "Add" button when "Choose" button is shown */
-  :is(.product-card):has([data-quick-add-button='choose']) add-to-cart-component {
+  :is(.product-card):has([data-quick-add-button='choose']) .quick-add add-to-cart-component {
     display: none;
   }
 

@@ -3,6 +3,15 @@
 
   @param {string} link - link to render
   @param {object} [block] - The block
+  @param {string} [tag] - Element to render, defaults to `a`
+  @param {string} [type] - Button type when rendering a button
+  @param {string} [name] - Button name when rendering a button
+  @param {string} [content] - Content to render inside the element
+  @param {string} [class] - Additional classes
+  @param {string} [form] - Form ID when rendering a button
+  @param {string} [aria_label] - Accessible label when rendering a button
+  @param {string} [ref] - Component reference for a button
+  @param {string} [on_click] - Declarative click handler for a button
 
   @example
   {% render 'button', link: '/collections/all' %}
@@ -10,27 +19,60 @@
 
 {% assign block_settings = block.settings %}
 
-<a
-  {% if link == blank %}
-    role="link"
-    aria-disabled="true"
-  {% else %}
-    href="{{ link }}"
-  {% endif %}
-  class="
-    size-style
-    {{ block_settings.style_class }}
-    {{ block_settings.style_class }}--{{ block.id }}
-  "
-  style="{% render 'size-style', settings: block_settings %}"
-  {%- if block_settings.open_in_new_tab -%}
-    target="_blank"
-    rel="noopener noreferrer"
-  {%- endif -%}
-  {{ block.shopify_attributes }}
->
-  {{ block_settings.label }}
-</a>
+{% if tag == 'button' %}
+  <button
+    type="{{ type | default: 'button' }}"
+    {% if ref != blank %}
+      ref="{{ ref }}"
+    {% endif %}
+    {% if on_click != blank %}
+      on:click="{{ on_click }}"
+    {% endif %}
+    {% if name != blank %}
+      name="{{ name }}"
+    {% endif %}
+    {% if form != blank %}
+      form="{{ form }}"
+    {% endif %}
+    {% if aria_label != blank %}
+      aria-label="{{ aria_label }}"
+    {% endif %}
+    class="
+      button
+      size-style
+      {{ block_settings.style_class }}
+      {{ block_settings.style_class }}--{{ block.id }}
+      {{ class }}
+    "
+    style="{% render 'size-style', settings: block_settings %}"
+    {{ block.shopify_attributes }}
+  >
+    {{ content | default: block_settings.label }}
+  </button>
+{% else %}
+  <a
+    {% if link == blank %}
+      role="link"
+      aria-disabled="true"
+    {% else %}
+      href="{{ link }}"
+    {% endif %}
+    class="
+      size-style
+      {{ block_settings.style_class }}
+      {{ block_settings.style_class }}--{{ block.id }}
+      {{ class }}
+    "
+    style="{% render 'size-style', settings: block_settings %}"
+    {%- if block_settings.open_in_new_tab -%}
+      target="_blank"
+      rel="noopener noreferrer"
+    {%- endif -%}
+    {{ block.shopify_attributes }}
+  >
+    {{ content | default: block_settings.label }}
+  </a>
+{% endif %}
 
 {% style %}
   .link {

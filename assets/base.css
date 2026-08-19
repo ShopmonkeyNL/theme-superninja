@@ -3512,14 +3512,14 @@ slideshow-arrows .slideshow-control {
   pointer-events: auto;
   opacity: 0;
   padding: var(--padding-xs);
-  color: var(--color-white);
-  background-color: #31461D;
+  color: var(--color-background);
+  background-color: var(--color-foreground-heading);
   display: flex;
   border-radius: 100%;
   transition: opacity 0.2s ease-out;
 
   &:hover {
-    background-color: #31461D;
+    background-color: var(--color-foreground-heading);
     opacity: 0.2;
     transition: opacity 0.2s ease-out;
   }
@@ -4383,9 +4383,7 @@ text-component {
     margin-top: 16px;
   }
 }
-.add-to-cart-icon{
-  display: none!important;
-}
+
 .add-to-cart-icon.add-to-cart-icon--visible {
   display: block !important;
 }
