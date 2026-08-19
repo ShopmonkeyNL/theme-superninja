@@ -3512,16 +3512,21 @@ slideshow-arrows .slideshow-control {
   pointer-events: auto;
   opacity: 0;
   padding: var(--padding-xs);
-  color: var(--color-background);
-  background-color: var(--color-foreground-heading);
+  color: var(--color-foreground-heading);
+  background-color: var(--color-background);
   display: flex;
   border-radius: 100%;
-  transition: opacity 0.2s ease-out;
+  transition: transform 0.2s ease-out;
+  border: 0.5px solid var(--border-color);
 
-  &:hover {
-    background-color: var(--color-foreground-heading);
-    opacity: 0.2;
-    transition: opacity 0.2s ease-out;
+  & svg > path {
+    fill: var(--color-foreground-heading);
+  }
+
+  &:hover {    
+    background-color: var(--color-background);
+    transform: scale(1.02);
+    transition: transform 0.2s ease-out;
   }
 }
 
@@ -3529,9 +3534,21 @@ slideshow-arrows .slideshow-control.slideshow-control--style-none {
   display: none;
 }
 
+.media-gallery--carousel slideshow-arrows {
+  left: 0.5rem;
+  right: 0.5rem;
+}
+
 .media-gallery--carousel slideshow-arrows .slideshow-control {
-  padding-inline: 0 var(--padding-md);
   opacity: 1;
+
+  color: var(--color-primary-button-text);
+  background-color: var(--color-primary-button-background);
+  border: none;
+
+  & svg > path {
+    fill: var(--color-primary-button-text);
+  }
 }
 
 .card-gallery slideshow-arrows .slideshow-control {

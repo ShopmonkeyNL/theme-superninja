@@ -117,7 +117,7 @@
     assign sorted_media = selected_product.media
   endif
   assign has_image_drop = sorted_media | has: 'media_type', 'image'
-  assign controls_thumbnails = sorted_media | slice: 0, 4
+  assign controls_thumbnails = sorted_media 
 
   # Determine if we're in single column mode (carousel or grid with one column)
   assign is_single_column = false
@@ -387,7 +387,8 @@
             controls_on_media: mobile_controls_on_media,
             pagination_position: 'center',
             aspect_ratio: block_settings.aspect_ratio,
-            thumbnail_radius: block_settings.thumbnail_radius
+            thumbnail_radius: block_settings.thumbnail_radius,
+            bottom_position: 0
           -%}
         {% endif %}
       {% endcapture %}
