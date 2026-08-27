@@ -4377,25 +4377,8 @@ text-component {
   position: relative;
 }
 
-
 .menu-list__link:hover {
-  color: #ff5000 !important;
-}
-
-.menu-list__link::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 15px;
-  width: 100%;
-  height: 2px;
-  background: #ff5000;
-  transform: scaleX(0);
-  transition: transform 0.2s ease;
-}
-
-.menu-list__link:hover::after {
-  transform: scaleX(1);
+  color: var(--color-primary-button-background);
 }
 
 /* Announcement bar disabled for now */
