@@ -4377,10 +4377,6 @@ text-component {
   position: relative;
 }
 
-.menu-list__link:hover {
-  color: var(--color-primary-button-background);
-}
-
 /* Announcement bar disabled for now */
 #header-group .shopify-section:has(.announcement-bar) {
   display: none !important;

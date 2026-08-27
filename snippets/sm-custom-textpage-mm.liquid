@@ -1,0 +1,42 @@
+<div class="custom-textpage-submenu">
+  <div class="h5">Informatiepagina's</div>
+
+  <div class="cts__links">
+    {% for link in parent_link.links %}
+      <div>
+        {{ link.title }}
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="cts__nav">
+   <a href="{{ routes.root_url }}">Contact</a>
+   <a href="{{ routes.root_url }}">Klantenservice</a>
+   <a href="{{ routes.root_url }}">Keuzehulp</a>
+  </div>
+</div>
+
+{% style %} 
+  .custom-textpage-submenu {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+
+    & .cts__links {
+      column-count: 2;
+      column-gap: 4rem;
+      width: fit-content;
+
+      & > div {
+        padding-block-end: 1rem;
+        width: fit-content;
+        display: flex;
+        gap: 0.5rem;
+
+        &:last-of-type {
+          padding: 0;
+        }
+      }
+    }
+  }
+{% endstyle %}

@@ -80,7 +80,7 @@
       style="--submenu-animation-speed: {{ animation_speed }}ms;"
     >
       <div class="header-menu__inner">
-        {%- render 'header-menu' %}
+        {%- render 'header-menu', custom_textpages_menu: block.settings.custom_textpages_menu %}
       </div>
 
       <script
@@ -250,7 +250,16 @@
     }
   }
 
+  .menu-list__link-title {
+    transition: color 0.2s ease-out;
+  }
+
   .menu-list__list-item:has(.menu-list__link[aria-expanded='true']) {
+    & .menu-list__link-title {
+      color: var(--color-primary-button-background);
+      transition: color 0.2s ease-out;
+    }
+
     & .submenu-dropdown {
       visibility: visible;
       opacity: 1;
@@ -746,6 +755,12 @@
     {
       "type": "header",
       "content": "t:content.submenu_feature"
+    },
+    {
+      "type": "checkbox",
+      "id": "custom_textpages_menu",
+      "label": "Custom textpages menu",
+      "info": "Custom textpages submenu for 'Meer info'"
     },
     {
       "type": "select",

@@ -73,13 +73,15 @@
             style="{% render 'submenu-font-styles', settings: block_settings %}"
           >
             {% assign list_id = 'MegaMenuList-' | append: forloop.index %}
+
             {% render 'mega-menu',
               section: section,
               parent_link: link,
               id: list_id,
               menu_content_type: menu_content_type,
               content_aspect_ratio: ratio,
-              image_border_radius: image_border_radius
+              image_border_radius: image_border_radius,
+              custom_textpages_menu: custom_textpages_menu
             %}
           </div>
         </div>
