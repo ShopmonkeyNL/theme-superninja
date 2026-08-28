@@ -1,0 +1,41 @@
+<div class="menu-drawer-heading">
+  <div class="menu-drawer-heading__inner">
+    {% if sub %}
+      <div class="svg-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M11.4 12L16 16.6L14.6 18L8.6 12L14.6 6L16 7.4L11.4 12Z" fill="#1C1C1C"/>
+        </svg>
+      </div>
+    {% endif %}
+    <div class="menu-drawer-heading__item h5">Menu</div>
+  </div>
+</div>
+
+{% style %}
+  .menu-drawer-heading {
+    position: relative;
+    width: 100%;
+    padding-inline: var(--drawer-padding);
+    
+    & .menu-drawer-heading__inner {
+      text-align: center;
+      padding: 0.5rem;
+      border: 0.5px solid #D2D2D2;
+      background-color: #F5F6F6;
+      color: var(--color-foreground-heading);
+    }
+
+    & .svg-wrapper {
+      position: absolute;
+      left: calc(var(--drawer-padding) + 0.5rem);
+      top: 50%;
+      transform: translateY(-50%);
+
+      & svg {
+        width: var(--icon-size-md);
+        height: var(--icon-size-md);
+      }
+    }
+    
+  }
+{% endstyle %}
