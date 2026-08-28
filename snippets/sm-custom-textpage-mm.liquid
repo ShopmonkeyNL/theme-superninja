@@ -1,18 +1,27 @@
 <div class="custom-textpage-submenu">
-  <div class="h5">Informatiepagina's</div>
-
-  <div class="cts__links">
-    {% for link in parent_link.links %}
-      <div>
-        {{ link.title }}
-      </div>
-    {% endfor %}
+  <div class="cts__inner">
+    <div class="h5">Informatiepagina's</div>
+  
+    <div class="cts__links">
+      {% for link in parent_link.links %}
+        <a href="{{ link.url }}">
+        {% for entry in metaobjects.mega_menu_custom_textpages_meer_info.values %}
+          {% if link.handle == entry.link_handle %}
+            {% if entry.image %}
+              <img src="{{ entry.image | image_url: width: 500 }}" alt="{{ entry.title }} bug image">
+            {% endif %}
+            <span>{{ entry.title }}</span>
+          {% endif %}
+        {% endfor %}
+        </a>
+      {% endfor %}
+    </div>
   </div>
 
   <div class="cts__nav">
-   <a href="{{ routes.root_url }}">Contact</a>
-   <a href="{{ routes.root_url }}">Klantenservice</a>
-   <a href="{{ routes.root_url }}">Keuzehulp</a>
+    {% for nav_link in linklists['mega-menu-secondary-nav'].links %}
+      <a href="{{ nav_link.url }}">{{ nav_link.title }}</a>
+    {% endfor %}
   </div>
 </div>
 
@@ -20,21 +29,56 @@
   .custom-textpage-submenu {
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 3rem;
+    color: var(--color-foreground-heading);
+
+    & .cts__inner {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
 
     & .cts__links {
-      column-count: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       column-gap: 4rem;
+      row-gap: 1rem;
       width: fit-content;
 
-      & > div {
-        padding-block-end: 1rem;
+      & > a { 
         width: fit-content;
         display: flex;
+        align-items: center;
         gap: 0.5rem;
+        transition: opacity 0.2s ease-out;
+        font-size: var(--font-h6--size);
+
+        & img {
+          width: 40px;
+          aspect-ratio: 1;
+        }
 
         &:last-of-type {
           padding: 0;
+        }
+
+        &:hover {
+          opacity: 0.5;
+          transition: opacity 0.2s ease-out;
+        }
+      }
+    }
+
+    & .cts__nav {
+      display: flex;
+      gap: 3rem;
+
+      & > a {
+        transition: opacity 0.2s ease-out;
+
+        &:hover {
+          opacity: 0.5;
+          transition: opacity 0.2s ease-out;
         }
       }
     }
