@@ -1,36 +1,46 @@
 <div class="custom-textpage-submenu">
-  <div class="cts__inner">
-    <div class="h5">Informatiepagina's</div>
-  
-    <div class="cts__links">
-      {% for link in parent_link.links %}
-        <a href="{{ link.url }}">
-        {% for entry in metaobjects.mega_menu_custom_textpages_meer_info.values %}
-          {% if link.handle == entry.link_handle %}
-            {% if entry.image %}
-              <img src="{{ entry.image | image_url: width: 500 }}" alt="{{ entry.title }} bug image">
+  <div class="cts__left">
+    <div class="cts__inner">
+      <div class="h5">Informatiepagina's</div>
+    
+      <div class="cts__links">
+        {% for link in parent_link.links %}
+          <a href="{{ link.url }}">
+          {% for entry in metaobjects.mega_menu_custom_textpages_meer_info.values %}
+            {% if link.handle == entry.link_handle %}
+              {% if entry.image %}
+                <img src="{{ entry.image | image_url: width: 500 }}" alt="{{ entry.title }} bug image">
+              {% endif %}
+              <span>{{ entry.title }}</span>
             {% endif %}
-            <span>{{ entry.title }}</span>
-          {% endif %}
+          {% endfor %}
+          </a>
         {% endfor %}
-        </a>
+      </div>
+    </div>
+  
+    <div class="cts__nav">
+      {% for nav_link in linklists['mega-menu-secondary-nav'].links %}
+        <a href="{{ nav_link.url }}">{{ nav_link.title }}</a>
       {% endfor %}
     </div>
   </div>
 
-  <div class="cts__nav">
-    {% for nav_link in linklists['mega-menu-secondary-nav'].links %}
-      <a href="{{ nav_link.url }}">{{ nav_link.title }}</a>
-    {% endfor %}
-  </div>
+  {{ banners }}
 </div>
 
 {% style %} 
   .custom-textpage-submenu {
     display: flex;
-    flex-direction: column;
-    gap: 3rem;
-    color: var(--color-foreground-heading);
+    justify-content: space-between;
+    gap: 8rem;
+    
+    & .cts__left {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      color: var(--color-foreground-heading);
+    }
 
     & .cts__inner {
       display: flex;

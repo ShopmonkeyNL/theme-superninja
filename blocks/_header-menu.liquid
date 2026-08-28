@@ -14,7 +14,7 @@
 {% case variant %}
   {% when 'mobile' %}
     <div
-      class="header__drawer desktop:hidden"
+      class="header__drawer"
       ref="headerDrawerContainer"
       {{ block.shopify_attributes }}
     >
@@ -79,8 +79,12 @@
       {{ block.shopify_attributes }}
       style="--submenu-animation-speed: {{ animation_speed }}ms;"
     >
+      {% capture banners %}
+        {% content_for 'blocks' %}
+      {% endcapture %}
+
       <div class="header-menu__inner">
-        {%- render 'header-menu', custom_textpages_menu: block.settings.custom_textpages_menu %}
+        {%- render 'header-menu', custom_textpages_menu: block.settings.custom_textpages_menu, banners: banners %}
       </div>
 
       <script
@@ -647,6 +651,11 @@
 {
   "name": "t:names.menu",
   "tag": null,
+  "blocks": [
+    {
+      "type": "@theme"
+    }
+  ],
   "settings": [
     {
       "type": "link_list",

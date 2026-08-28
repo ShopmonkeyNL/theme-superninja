@@ -264,11 +264,11 @@
           {% comment %} Mobile: [logo] | [cart][menu] com space-between {% endcomment %}
           <div class="header__columns header__columns--mobile spacing-style">
             <div class="header-mobile__left">
-              {{ logo }}
+              {{ mobile_menu }}
             </div>
+            {{ logo }}
             <div class="header-mobile__right">
               {{ actions }}
-              {{ mobile_menu }}
             </div>
           </div>
         {% else %}
@@ -520,7 +520,7 @@
 
     /* If there is no center column, make the column the menu is in grow eagerly */
     &:where(:not(:has(.header__column--center))) {
-      @media screen and (min-width: 750px) {
+      @media screen and (min-width: 992px) {
         --header-template-columns: var(--header-left) var(--header-right);
 
         grid-template-areas: 'left right';
@@ -547,7 +547,7 @@
   }
 
   /* Mobile: esconder grid desktop e mostrar estrutura própria [logo] | [cart][menu] */
-  @media screen and (max-width: 749px) {
+  @media screen and (max-width: 991px) {
     .header__columns--desktop {
       display: none;
     }
@@ -564,6 +564,7 @@
     }
 
     .header-mobile__left {
+      flex: 1;
       flex-shrink: 0;
     }
 
@@ -572,9 +573,17 @@
       flex-direction: row;
       align-items: center;
       gap: var(--gap-md, 12px);
+      flex: 1;
       flex-shrink: 0;
+      justify-content: end;
+
+      & .account-button.header-actions__action {
+        display: none;
+      }
     }
   }
+
+  
 
   /* Single column layout if there are no columns within */
   .header__columns:not(:has(.header__column)) {
