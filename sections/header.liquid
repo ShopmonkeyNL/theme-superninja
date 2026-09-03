@@ -207,7 +207,9 @@
 
       case row
         when 'top'
-          assign first = mobile_menu
+          # The mobile menu is rendered explicitly in the mobile column below, so it
+          # must not be duplicated into the desktop column as well.
+          assign first = ''
 
           if bottom_row_blocks.size > 0 and section.settings.divider_size == 'page-width'
             assign class = class | append: ' divider--page-width'

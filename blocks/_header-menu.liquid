@@ -11,17 +11,33 @@
   assign animation_speed = 200
 %}
 
+{%- comment -%}
+  The child blocks tag may only be used once per block file, so the nested blocks
+  (the CTA banners) are captured here and reused by the variants below.
+{%- endcomment -%}
+{%- capture banners -%}
+  {% content_for 'blocks' %}
+{%- endcapture -%}
+{%- assign banners = banners | strip -%}
+
 {% case variant %}
   {% when 'mobile' %}
+    {%- liquid
+      assign mobile_promotions = ''
+      if block_settings.mobile_promotions
+        assign mobile_promotions = banners
+      endif
+    -%}
+
     <div
-      class="header__drawer"
+      class="sm-header-drawer__container"
       ref="headerDrawerContainer"
       {{ block.shopify_attributes }}
     >
-      {% render 'header-drawer',
-        class: 'header__drawer--mobile',
+      {% render 'sm-header-drawer',
         linklist: block_settings.menu,
-        data_header_drawer_type: 'mobile-drawer'
+        custom_textpages_menu: block_settings.custom_textpages_menu,
+        banners: mobile_promotions
       %}
     </div>
 
@@ -79,10 +95,6 @@
       {{ block.shopify_attributes }}
       style="--submenu-animation-speed: {{ animation_speed }}ms;"
     >
-      {% capture banners %}
-        {% content_for 'blocks' %}
-      {% endcapture %}
-
       <div class="header-menu__inner">
         {%- render 'header-menu', custom_textpages_menu: block.settings.custom_textpages_menu, banners: banners %}
       </div>
@@ -852,6 +864,27 @@
     {
       "type": "header",
       "content": "t:content.mobile_layout"
+    },
+    {
+      "type": "link_list",
+      "id": "mobile_secondary_menu",
+      "label": "Mobile menu secondary links",
+      "info": "Shown below the menu items and below every submenu, e.g. Contact / Klantenservice / Keuzehulp."
+    },
+    {
+      "type": "text",
+      "id": "mobile_textpages_heading",
+      "label": "Mobile submenu heading",
+      "info": "Heading above the information pages in the 'Meer info' submenu.",
+      "default": "Informatiepagina's",
+      "visible_if": "{{ block.settings.custom_textpages_menu }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_promotions",
+      "label": "Show promotion blocks in mobile menu",
+      "info": "Repeats the blocks of this menu (such as the CTA banners) at the bottom of the mobile menu. Off by default: the banners are designed for the desktop mega menu.",
+      "default": false
     },
     {
       "type": "checkbox",

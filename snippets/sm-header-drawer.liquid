@@ -1,0 +1,670 @@
+{%- doc -%}
+  Renders the mobile/tablet header menu.
+
+  Unlike `header-drawer`, this menu expands underneath the header instead of sliding
+  in from the side. The panel markup is only rendered when the header section is
+  requested through the Section Rendering API (`section.index` is blank for those
+  renders), which keeps the initial document small. The header hydrates itself on
+  idle, so the markup is normally in place before a visitor taps the toggle;
+  `sm-header-drawer.js` fetches it on demand when it is not.
+
+  @param {object} linklist - The linklist to render
+  @param {string} [class] - Additional classes to add to the drawer
+  @param {string} [banners] - Promotional blocks rendered underneath the menu
+  @param {boolean} [custom_textpages_menu] - Renders the "Meer info" submenu with its metaobject icons
+  @param {object} [block] - The header menu block that provides the settings
+  @param {object} [section] - The header section that provides the settings
+
+  @example
+  {% render 'sm-header-drawer', linklist: block.settings.menu, banners: banners %}
+{%- enddoc -%}
+
+{% liquid
+  assign block_settings = block.settings
+  assign menu = linklist | default: block_settings.menu
+  assign secondary_menu = linklists[block_settings.mobile_secondary_menu]
+  assign textpages_heading = block_settings.mobile_textpages_heading | default: "Informatiepagina's"
+
+  assign label_open = 'accessibility.menu' | t
+  assign label_close = 'actions.close' | t
+  assign label_localization = 'content.localization_region_and_language' | t
+  assign panel_id = 'SmHeaderDrawerPanel-' | append: section.id
+
+  assign show_account = false
+  if section.settings.show_account and shop.customer_accounts_enabled
+    assign show_account = true
+  endif
+
+  assign show_language = section.settings.show_language
+  if localization.available_languages.size <= 1
+    assign show_language = false
+  endif
+
+  assign show_country = section.settings.show_country
+  if localization.available_countries.size <= 1
+    assign show_country = false
+  endif
+
+  ##
+  # The panel content is deliberately kept out of the initial document. It is added
+  # by the Section Rendering API render of the header, which is requested on idle by
+  # the hydration script in `sections/header.liquid` and, as a fallback, on the first
+  # tap of the toggle.
+  assign render_panel = false
+  if section.index == blank
+    assign render_panel = true
+  endif
+%}
+
+<script
+  src="{{ 'sm-header-drawer.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+
+<sm-header-drawer
+  class="sm-header-drawer {{ class }}"
+  data-skip-node-update
+  data-section-id="{{ section.id }}"
+  data-label-open="{{ label_open | escape }}"
+  data-label-close="{{ label_close | escape }}"
+  tabindex="-1"
+>
+  <button
+    type="button"
+    class="sm-header-drawer__toggle button-unstyled"
+    aria-label="{{ label_open | escape }}"
+    aria-expanded="false"
+    aria-controls="{{ panel_id }}"
+    ref="toggle"
+    on:click="/toggle"
+  >
+    <span class="svg-wrapper sm-header-drawer__icon sm-header-drawer__icon--open">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+        <path d="M3 18V16H21V18H3ZM3 13V11H21V13H3ZM3 8V6H21V8H3Z" fill="currentColor"/>
+      </svg>
+    </span>
+    <span class="svg-wrapper sm-header-drawer__icon sm-header-drawer__icon--close">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+        <path d="M6.4 19L5 17.6L10.6 12L5 6.4L6.4 5L12 10.6L17.6 5L19 6.4L13.4 12L19 17.6L17.6 19L12 13.4L6.4 19Z" fill="currentColor"/>
+      </svg>
+    </span>
+  </button>
+
+  <div
+    id="{{ panel_id }}"
+    class="sm-header-drawer__panel{% if block_settings.color_scheme != blank %} color-{{ block_settings.color_scheme }}{% endif %}"
+    data-skip-node-update
+    ref="panel"
+    inert
+  >
+    {%- if render_panel -%}
+      <div
+        class="sm-menu"
+        style="
+          {%- render 'menu-font-styles', settings: block_settings, menu_type: 'drawer' %}
+          {%- render 'submenu-font-styles', settings: block_settings %}
+        "
+        data-active-view="root"
+        data-skip-node-update
+        ref="views"
+      >
+        <div
+          class="sm-menu__view"
+          data-view="root"
+          ref="view[]"
+          tabindex="-1"
+        >
+          {% render 'menu-drawer-heading' %}
+
+          <nav
+            class="sm-menu__nav"
+            aria-label="{{ label_open | escape }}"
+          >
+            <ul class="sm-menu__list list-unstyled" role="list">
+              {%- for link in menu.links -%}
+                {% liquid
+                  assign link_title_down = link.title | downcase
+                  assign is_how_it_works = false
+                  if link_title_down contains 'how it works' or link.url == '/pages/how-it-works'
+                    assign is_how_it_works = true
+                  endif
+
+                  assign has_submenu = false
+                  if link.links != blank and is_how_it_works == false
+                    assign has_submenu = true
+                  endif
+                %}
+                {%- unless is_how_it_works and request.page_type != 'product' -%}
+                  <li
+                    class="sm-menu__item sm-menu__animated"
+                    style="--sm-menu-index: {{ forloop.index }};"
+                  >
+                    {%- if has_submenu -%}
+                      <button
+                        type="button"
+                        class="sm-menu__link sm-menu__link--top button-unstyled"
+                        data-submenu="{{ link.handle }}"
+                        aria-expanded="false"
+                        aria-controls="SmMenuView-{{ link.handle }}-{{ section.id }}"
+                        on:click="/openSubmenu"
+                      >
+                        <span class="sm-menu__link-text">{{ link.title | escape }}</span>
+                        <span class="svg-wrapper sm-menu__chevron" aria-hidden="true">
+                          {{- 'icon-chevron-right.svg' | inline_asset_content -}}
+                        </span>
+                      </button>
+                    {%- else -%}
+                      <a
+                        href="{% if is_how_it_works %}#simple-to-use{% else %}{{ link.url }}{% endif %}"
+                        class="sm-menu__link sm-menu__link--top{% if link.current %} sm-menu__link--active{% endif %}"
+                        {% if link.current %}
+                          aria-current="page"
+                        {% endif %}
+                        on:click="/close"
+                      >
+                        <span class="sm-menu__link-text">{{ link.title | escape }}</span>
+                      </a>
+                    {%- endif -%}
+                  </li>
+                {%- endunless -%}
+              {%- endfor -%}
+            </ul>
+          </nav>
+
+          {%- if show_account -%}
+            <a
+              href="{{ routes.account_url }}"
+              class="sm-menu__account sm-menu__animated"
+              style="--sm-menu-index: {{ menu.links.size | plus: 1 }};"
+            >
+              <span class="svg-wrapper" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                  <path d="M9.175 10.825C8.39167 10.0417 8 9.1 8 8C8 6.9 8.39167 5.95833 9.175 5.175C9.95833 4.39167 10.9 4 12 4C13.1 4 14.0417 4.39167 14.825 5.175C15.6083 5.95833 16 6.9 16 8C16 9.1 15.6083 10.0417 14.825 10.825C14.0417 11.6083 13.1 12 12 12C10.9 12 9.95833 11.6083 9.175 10.825ZM4 20V17.2C4 16.6333 4.14583 16.1125 4.4375 15.6375C4.72917 15.1625 5.11667 14.8 5.6 14.55C6.63333 14.0333 7.68333 13.6458 8.75 13.3875C9.81667 13.1292 10.9 13 12 13C13.1 13 14.1833 13.1292 15.25 13.3875C16.3167 13.6458 17.3667 14.0333 18.4 14.55C18.8833 14.8 19.2708 15.1625 19.5625 15.6375C19.8542 16.1125 20 16.6333 20 17.2V20H4ZM6 18H18V17.2C18 17.0167 17.9542 16.85 17.8625 16.7C17.7708 16.55 17.65 16.4333 17.5 16.35C16.6 15.9 15.6917 15.5625 14.775 15.3375C13.8583 15.1125 12.9333 15 12 15C11.0667 15 10.1417 15.1125 9.225 15.3375C8.30833 15.5625 7.4 15.9 6.5 16.35C6.35 16.4333 6.22917 16.55 6.1375 16.7C6.04583 16.85 6 17.0167 6 17.2V18ZM13.4125 9.4125C13.8042 9.02083 14 8.55 14 8C14 7.45 13.8042 6.97917 13.4125 6.5875C13.0208 6.19583 12.55 6 12 6C11.45 6 10.9792 6.19583 10.5875 6.5875C10.1958 6.97917 10 7.45 10 8C10 8.55 10.1958 9.02083 10.5875 9.4125C10.9792 9.80417 11.45 10 12 10C12.55 10 13.0208 9.80417 13.4125 9.4125Z" fill="currentColor"/>
+                </svg>
+              </span>
+              {{ 'accessibility.account' | t }}
+            </a>
+          {%- endif -%}
+
+          {%- if banners != blank -%}
+            <div class="sm-menu__promotions">{{ banners }}</div>
+          {%- endif -%}
+
+          {% render 'sm-header-drawer-utilities',
+            secondary_menu: secondary_menu,
+            show_country: show_country,
+            show_language: show_language,
+            country_selector_style: section.settings.country_selector_style,
+            section_id: section.id
+          %}
+        </div>
+
+        {%- for link in menu.links -%}
+          {% liquid
+            assign link_title_down = link.title | downcase
+            assign is_how_it_works = false
+            if link_title_down contains 'how it works' or link.url == '/pages/how-it-works'
+              assign is_how_it_works = true
+            endif
+
+            assign use_textpages = false
+            if custom_textpages_menu and link.handle == 'meer-info'
+              assign use_textpages = true
+            endif
+          %}
+          {%- if link.links != blank and is_how_it_works == false -%}
+            <div
+              id="SmMenuView-{{ link.handle }}-{{ section.id }}"
+              class="sm-menu__view sm-menu__view--submenu"
+              data-view="{{ link.handle }}"
+              ref="view[]"
+              tabindex="-1"
+              inert
+            >
+              {% render 'menu-drawer-heading', sub: true, title: link.title %}
+
+              <nav
+                class="sm-menu__nav"
+                aria-label="{{ link.title | escape }}"
+              >
+                {%- if use_textpages -%}
+                  <h2 class="sm-menu__subtitle h5">{{ textpages_heading }}</h2>
+                {%- endif -%}
+
+                <ul class="sm-menu__list sm-menu__list--child list-unstyled" role="list">
+                  {%- for childlink in link.links -%}
+                    {% liquid
+                      assign icon = false
+                      assign label = childlink.title
+                      if use_textpages
+                        for entry in metaobjects.mega_menu_custom_textpages_meer_info.values
+                          if childlink.handle == entry.link_handle
+                            assign icon = entry.image
+                            assign label = entry.title | default: childlink.title
+                            break
+                          endif
+                        endfor
+                      endif
+                    %}
+                    <li class="sm-menu__item sm-menu__item--child">
+                      <a
+                        href="{{ childlink.url }}"
+                        class="sm-menu__link sm-menu__link--child{% if childlink.current %} sm-menu__link--active{% endif %}"
+                        {% if childlink.current %}
+                          aria-current="page"
+                        {% endif %}
+                      >
+                        {%- if icon -%}
+                          <img
+                            src="{{ icon | image_url: width: 120 }}"
+                            alt=""
+                            width="40"
+                            height="40"
+                            loading="lazy"
+                            class="sm-menu__link-icon"
+                            aria-hidden="true"
+                          >
+                        {%- elsif use_textpages -%}
+                          <span
+                            class="sm-menu__link-icon sm-menu__link-icon--placeholder"
+                            aria-hidden="true"
+                          ></span>
+                        {%- endif -%}
+                        <span class="sm-menu__link-text">{{ label | escape }}</span>
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </nav>
+
+              {% render 'sm-header-drawer-utilities',
+                secondary_menu: secondary_menu,
+                show_country: show_country,
+                show_language: show_language,
+                country_selector_style: section.settings.country_selector_style,
+                section_id: section.id
+              %}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- if show_country or show_language -%}
+          <div
+            id="SmMenuView-localization-{{ section.id }}"
+            class="sm-menu__view sm-menu__view--submenu sm-menu__view--localization"
+            data-view="localization"
+            ref="view[]"
+            tabindex="-1"
+            inert
+          >
+            {% render 'menu-drawer-heading', sub: true, title: label_localization %}
+
+            <div class="sm-menu__localization">
+              {% render 'localization-form',
+                show_country: show_country,
+                show_language: show_language,
+                localization_style: 'drawer',
+                block_id: block.id
+              %}
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</sm-header-drawer>
+
+{% stylesheet %}
+  /* Container rendered by the mobile variant of the header menu block. */
+  .sm-header-drawer__container {
+    display: flex;
+    align-items: center;
+    min-height: 60px;
+  }
+
+  .header--compact .sm-header-drawer__container {
+    min-height: var(--minimum-touch-target);
+  }
+
+  @media screen and (min-width: 992px) {
+    .sm-header-drawer__container {
+      display: none;
+      min-height: 0;
+    }
+  }
+
+  sm-header-drawer {
+    --sm-drawer-speed: 300ms;
+    --sm-drawer-padding-inline: var(--page-margin);
+
+    display: flex;
+    align-items: center;
+  }
+
+  sm-header-drawer:focus {
+    outline: none;
+  }
+
+  /* Release the header's layout containment while the menu is expanded, so the
+     panel is free to extend past the header. Mirrors the rule for the legacy drawer. */
+  .header:has(sm-header-drawer[open]) {
+    contain: style;
+  }
+
+  sm-header-drawer .sm-header-drawer__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--minimum-touch-target);
+    height: var(--minimum-touch-target);
+    color: var(--color-foreground);
+    cursor: pointer;
+    transition: opacity var(--animation-speed) var(--animation-easing);
+  }
+
+  sm-header-drawer .sm-header-drawer__toggle svg {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+  }
+
+  .sm-header-drawer__icon {
+    display: flex;
+  }
+
+  .sm-header-drawer__icon--close,
+  .sm-header-drawer[open] .sm-header-drawer__icon--open {
+    display: none;
+  }
+
+  .sm-header-drawer[open] .sm-header-drawer__icon--close {
+    display: flex;
+  }
+
+  /* ---------------------------------------------------------------- panel */
+
+  .sm-header-drawer__panel {
+    /* Aligns the reused menu-drawer-heading with the rest of the menu. */
+    --drawer-padding: var(--sm-drawer-padding-inline);
+
+    position: absolute;
+    inset-inline: 0;
+    top: calc(100% + var(--border-bottom-width, 0px));
+    z-index: var(--layer-menu-drawer);
+    height: calc(100dvh - var(--sm-header-drawer-offset, var(--header-height)));
+    background-color: var(--color-background);
+    overflow: hidden;
+    clip-path: inset(0 0 100% 0);
+    opacity: 0;
+    visibility: hidden;
+    transition: clip-path var(--sm-drawer-speed) var(--ease-out-quad),
+      opacity calc(var(--sm-drawer-speed) * 0.5) var(--animation-easing),
+      visibility var(--sm-drawer-speed) linear;
+  }
+
+  .sm-header-drawer[open] .sm-header-drawer__panel {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* ---------------------------------------------------------------- views */
+
+  .sm-menu {
+    display: grid;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .sm-menu__view {
+    grid-area: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding-block: var(--padding-2xl) var(--padding-3xl);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    transition: transform var(--sm-drawer-speed) var(--ease-out-quad),
+      opacity calc(var(--sm-drawer-speed) * 0.6) var(--animation-easing),
+      visibility var(--sm-drawer-speed) linear;
+  }
+
+  .sm-menu__view:focus {
+    outline: none;
+  }
+
+  .sm-menu__view[inert] {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .sm-menu__view[data-view='root'][inert] {
+    transform: translateX(-20%);
+  }
+
+  .sm-menu__view--submenu[inert] {
+    transform: translateX(100%);
+  }
+
+  /* ------------------------------------------------------------ menu items */
+
+  .sm-menu__nav {
+    margin-block-start: var(--margin-xs);
+    padding-inline: var(--sm-drawer-padding-inline);
+  }
+
+  .sm-menu__list {
+    margin: 0;
+    padding: 0;
+  }
+
+  .sm-menu__item {
+    display: flex;
+    border-block-end: 1px solid var(--color-border);
+  }
+
+  .sm-menu .sm-menu__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap-md);
+    width: 100%;
+    min-height: var(--minimum-touch-target);
+    padding-block: var(--padding-xl);
+    text-align: start;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .sm-menu .sm-menu__link--top {
+    font-family: var(--menu-top-level-font-family, var(--font-heading--family));
+    font-style: var(--menu-top-level-font-style);
+    font-weight: var(--menu-top-level-font-weight, 700);
+    font-size: var(--menu-font-xl--size);
+    line-height: var(--menu-font-xl--line-height);
+    text-transform: var(--menu-top-level-font-case, uppercase);
+    color: var(--color-foreground-heading);
+  }
+
+  .sm-menu__chevron {
+    display: inline-flex;
+    flex-shrink: 0;
+    color: var(--color-primary-button-background);
+  }
+
+  .sm-menu__chevron svg {
+    width: var(--icon-size-sm);
+    height: var(--icon-size-sm);
+  }
+
+  .sm-menu__subtitle {
+    /* base.css zeroes margin-block-start on a heading that is a first child
+       (`:first-child:is(.h1, ... .h6)`), so the spacing uses padding instead.
+       Sits closer to the list it labels than to the heading above it. */
+    margin-block: 0;
+    padding-block: var(--padding-4xl) var(--padding-2xl);
+  }
+
+  .sm-menu__list--child {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sm-menu__item--child {
+    border-block-end: 0;
+  }
+
+  .sm-menu .sm-menu__link--child {
+    justify-content: flex-start;
+    gap: var(--gap-md);
+    padding-block: var(--padding-2xs);
+    font-family: var(--font-body--family);
+    font-size: var(--font-h6--size);
+    text-transform: none;
+    color: var(--color-foreground);
+  }
+
+  .sm-menu__link-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    object-fit: contain;
+  }
+
+  .sm-menu__link-icon--placeholder {
+    background-color: var(--color-foreground-muted);
+    opacity: 0.1;
+    border-radius: var(--style-border-radius-xs);
+  }
+
+  .sm-menu__link:hover .sm-menu__link-text {
+    opacity: var(--opacity-subdued-text);
+  }
+
+  /* -------------------------------------------------------- account & utils */
+
+  .sm-menu__account {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gap-xs);
+    width: fit-content;
+    min-height: var(--minimum-touch-target);
+    margin-inline: var(--sm-drawer-padding-inline);
+    margin-block-start: var(--margin-md);
+    font-size: var(--font-h6--size);
+    color: var(--color-foreground);
+    text-decoration: none;
+  }
+
+  .sm-menu__account svg {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+  }
+
+  .sm-menu__utilities {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-xs);
+    margin-inline: var(--sm-drawer-padding-inline);
+    margin-block-start: var(--margin-xl);
+    padding-block-start: var(--padding-lg);
+    border-block-start: 1px solid var(--color-border);
+  }
+
+  .sm-menu__utility-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--gap-xl);
+    margin: 0;
+    padding: 0;
+  }
+
+  .sm-menu__utility-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--minimum-touch-target);
+    font-size: var(--font-size--md);
+    color: var(--color-foreground);
+    text-decoration: none;
+  }
+
+  .sm-menu .sm-menu__localization-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gap-xs);
+    width: fit-content;
+    min-height: var(--minimum-touch-target);
+    color: var(--color-foreground);
+    cursor: pointer;
+  }
+
+  .sm-menu__localization-label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gap-2xs);
+  }
+
+  .sm-menu__localization-trigger .sm-menu__chevron {
+    color: currentcolor;
+  }
+
+  .sm-menu__localization-trigger .sm-menu__chevron svg {
+    width: var(--icon-size-xs);
+    height: var(--icon-size-xs);
+  }
+
+  .sm-menu__localization {
+    padding-inline: var(--sm-drawer-padding-inline);
+  }
+
+  /* ---------------------------------------------------------- promotions */
+
+  .sm-menu__promotions {
+    margin-block-start: var(--margin-xl);
+    padding-inline-start: var(--sm-drawer-padding-inline);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .sm-menu__promotions::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* The CTA banners are hidden below 1200px for the desktop mega menu. */
+  .sm-menu__promotions .cta-banner {
+    display: block;
+    flex: 0 0 auto;
+    width: min(78vw, 320px);
+    scroll-snap-align: start;
+  }
+
+  /* ---------------------------------------------------------- animations */
+
+  @keyframes sm-menu-item-in {
+    from {
+      opacity: 0;
+      transform: translateY(-0.5rem);
+    }
+
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .sm-header-drawer[open] .sm-menu__animated {
+    animation: sm-menu-item-in calc(var(--sm-drawer-speed) * 0.9) var(--ease-out-quad) backwards;
+    animation-delay: calc(60ms + (var(--sm-menu-index, 1) - 1) * 35ms);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sm-header-drawer__panel,
+    .sm-menu__view {
+      transition-duration: 1ms;
+    }
+
+    .sm-header-drawer[open] .sm-menu__animated {
+      animation: none;
+    }
+  }
+{% endstylesheet %}
