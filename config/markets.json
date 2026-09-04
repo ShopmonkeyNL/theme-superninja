@@ -11,6 +11,9 @@
   "markets": {
     "netherlans": {
       "parent": "@default"
+    },
+    "belgium": {
+      "parent": "@default"
     }
   }
 }
