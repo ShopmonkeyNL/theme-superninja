@@ -151,7 +151,9 @@
                       >
                         <span class="sm-menu__link-text">{{ link.title | escape }}</span>
                         <span class="svg-wrapper sm-menu__chevron" aria-hidden="true">
-                          {{- 'icon-chevron-right.svg' | inline_asset_content -}}
+                          <svg xmlns="http://www.w3.org/2000/svg" width="5" height="8" viewBox="0 0 5 8" fill="none">
+                            <path d="M3.06667 4L0 0.933333L0.933333 0L4.93333 4L0.933333 8L0 7.06667L3.06667 4Z" fill="#FF5000"/>
+                          </svg>
                         </span>
                       </button>
                     {%- else -%}
@@ -187,17 +189,19 @@
             </a>
           {%- endif -%}
 
-          {%- if banners != blank -%}
-            <div class="sm-menu__promotions">{{ banners }}</div>
-          {%- endif -%}
-
           {% render 'sm-header-drawer-utilities',
+            show_secondary_menu: false,
             secondary_menu: secondary_menu,
             show_country: show_country,
             show_language: show_language,
             country_selector_style: section.settings.country_selector_style,
             section_id: section.id
           %}
+
+          {%- if banners != blank -%}
+            <div class="sm-menu__promotions">{{ banners }}</div>
+          {%- endif -%}
+
         </div>
 
         {%- for link in menu.links -%}
@@ -279,12 +283,15 @@
               </nav>
 
               {% render 'sm-header-drawer-utilities',
+                show_secondary_menu: true,
                 secondary_menu: secondary_menu,
                 show_country: show_country,
                 show_language: show_language,
                 country_selector_style: section.settings.country_selector_style,
                 section_id: section.id
               %}
+
+
             </div>
           {%- endif -%}
         {%- endfor -%}
@@ -363,7 +370,8 @@
     transition: opacity var(--animation-speed) var(--animation-easing);
   }
 
-  sm-header-drawer .sm-header-drawer__toggle svg {
+  sm-header-drawer .sm-header-drawer__toggle svg,
+  sm-header-drawer .sm-header-drawer__toggle .svg-wrapper {
     width: var(--icon-size-md);
     height: var(--icon-size-md);
   }
@@ -400,6 +408,7 @@
     transition: clip-path var(--sm-drawer-speed) var(--ease-out-quad),
       opacity calc(var(--sm-drawer-speed) * 0.5) var(--animation-easing),
       visibility var(--sm-drawer-speed) linear;
+    min-height: 0;
   }
 
   .sm-header-drawer[open] .sm-header-drawer__panel {
@@ -413,6 +422,7 @@
   .sm-menu {
     display: grid;
     height: 100%;
+    min-height: 0;
     overflow: hidden;
   }
 
@@ -421,9 +431,12 @@
     display: flex;
     flex-direction: column;
     min-width: 0;
-    padding-block: var(--padding-2xl) var(--padding-3xl);
+    min-height: 0;
+    height: 100%;
+    box-sizing: border-box;
     overflow-y: auto;
     overscroll-behavior: contain;
+    padding-block: var(--padding-2xl) var(--padding-3xl);
     transition: transform var(--sm-drawer-speed) var(--ease-out-quad),
       opacity calc(var(--sm-drawer-speed) * 0.6) var(--animation-easing),
       visibility var(--sm-drawer-speed) linear;
@@ -470,7 +483,7 @@
     gap: var(--gap-md);
     width: 100%;
     min-height: var(--minimum-touch-target);
-    padding-block: var(--padding-xl);
+    padding-block: var(--padding-lg);
     text-align: start;
     text-decoration: none;
     cursor: pointer;
@@ -493,8 +506,8 @@
   }
 
   .sm-menu__chevron svg {
-    width: var(--icon-size-sm);
-    height: var(--icon-size-sm);
+    width: var(--icon-size-2xs);
+    height: var(--icon-size-2xs);
   }
 
   .sm-menu__subtitle {
@@ -502,7 +515,8 @@
        (`:first-child:is(.h1, ... .h6)`), so the spacing uses padding instead.
        Sits closer to the list it labels than to the heading above it. */
     margin-block: 0;
-    padding-block: var(--padding-4xl) var(--padding-2xl);
+    padding-block: var(--padding-2xl) var(--padding-2xl);
+    --color: var(--color-foreground-heading);
   }
 
   .sm-menu__list--child {
@@ -620,10 +634,15 @@
   /* ---------------------------------------------------------- promotions */
 
   .sm-menu__promotions {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    align-items: stretch;
+    gap: var(--gap-md);
     margin-block-start: var(--margin-xl);
-    padding-inline-start: var(--sm-drawer-padding-inline);
-    overflow-x: auto;
-    scrollbar-width: none;
+    padding-inline: var(--sm-drawer-padding-inline);
+    overflow-x: scroll;
+
   }
 
   .sm-menu__promotions::-webkit-scrollbar {

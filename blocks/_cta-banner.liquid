@@ -8,6 +8,10 @@
 </div>
 
 {% style %}
+  .layout-panel-flex--row:not(.mobile-column):has(.cta-banner) {
+    flex-wrap: nowrap;
+  }
+
   .cta-banner {
     position: relative;
 
@@ -24,8 +28,10 @@
         flex-wrap: wrap;
       }
     }
+  }
 
-    @media (max-width: 1199px) {
+  @media (max-width: 1199px) {
+    .custom-textpage-submenu .cta-banner {
       display: none;
     }
   }
