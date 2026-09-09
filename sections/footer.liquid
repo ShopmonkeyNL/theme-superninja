@@ -15,7 +15,7 @@
     <div class='footer-inner__columns'>
       {% for block in section.blocks %}
         <div class="footer-column">
-          <h5>{{ block.settings.link_list.title }}</h5>
+          <div class="h5">{{ block.settings.link_list.title }}</div>
           {% if block.settings.link_list.links %}
             <div class="footer-column__items">
               {% for link in block.settings.link_list.links %}
@@ -55,7 +55,7 @@
 
       & .footer-column {
 
-        & h5 {
+        & .h5 {
           margin-block-end: 0.75rem;
           color: var(--color-primary-button-background);
           pointer-events: none;
