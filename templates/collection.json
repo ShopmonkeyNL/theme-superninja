@@ -69,6 +69,7 @@
         "text_UDitcC",
         "text_6MHmND"
       ],
+      "disabled": true,
       "name": "t:names.custom_section",
       "settings": {
         "content_direction": "column",
@@ -500,6 +501,7 @@
                 "price_MnCbW9": {
                   "type": "price",
                   "name": "t:names.product_price",
+                  "disabled": true,
                   "settings": {
                     "show_sale_price_first": true,
                     "show_installments": false,
@@ -523,6 +525,7 @@
                 "buy_buttons_HN3f8C": {
                   "type": "buy-buttons",
                   "name": "t:names.product_buy_buttons",
+                  "disabled": true,
                   "settings": {
                     "stacking": false,
                     "show_pickup_availability": true,
@@ -571,7 +574,6 @@
           ]
         }
       },
-      "disabled": true,
       "settings": {
         "layout_type": "grid",
         "product_card_size": "large",

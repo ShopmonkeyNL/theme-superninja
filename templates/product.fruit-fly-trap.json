@@ -69,6 +69,7 @@
         "text_YAaAxK",
         "text_WPCjzA"
       ],
+      "disabled": true,
       "name": "t:names.custom_section",
       "settings": {
         "content_direction": "column",
@@ -263,6 +264,7 @@
             },
             "custom_liquid_variant_cards": {
               "type": "custom-liquid",
+              "disabled": true,
               "settings": {
                 "custom_liquid": "{% render 'pdp-variant-cards', product_resource: closest.product, section_id: section.id %}"
               },
@@ -281,8 +283,35 @@
               },
               "blocks": {}
             },
+            "text_XkcDdP": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "text": "<h6><strong>Binnenkort te koop</strong></h6>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#18191E",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
             "buy_buttons_eYQEYi": {
               "type": "buy-buttons",
+              "disabled": true,
               "settings": {
                 "stacking": true,
                 "show_pickup_availability": false,
@@ -335,6 +364,7 @@
             },
             "pdp_tabs_wrapper": {
               "type": "pdp-tabs-wrapper",
+              "disabled": true,
               "settings": {
                 "active_tab_background_color": "#ff5000"
               },
@@ -342,6 +372,7 @@
             },
             "pdp_complete_defense": {
               "type": "pdp-complete-defense",
+              "disabled": true,
               "settings": {},
               "blocks": {}
             }
@@ -352,6 +383,7 @@
             "custom_liquid_protection_message",
             "custom_liquid_variant_cards",
             "variant_picker_R3rGDr",
+            "text_XkcDdP",
             "buy_buttons_eYQEYi",
             "pdp_benefits_badges",
             "pdp_reviews_carousel",
@@ -360,7 +392,6 @@
           ]
         }
       },
-      "disabled": true,
       "settings": {
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
