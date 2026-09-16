@@ -28,9 +28,7 @@
           "blocks": {}
         }
       },
-      "block_order": [
-        "announcement_BxgCk9"
-      ],
+      "block_order": ["announcement_BxgCk9"],
       "name": "t:names.announcement_bar",
       "settings": {
         "speed": 5,
@@ -228,9 +226,7 @@
                           "blocks": {}
                         }
                       },
-                      "block_order": [
-                        "button_6xL9dq"
-                      ]
+                      "block_order": ["button_6xL9dq"]
                     }
                   },
                   "block_order": []
@@ -357,24 +353,16 @@
                           "blocks": {}
                         }
                       },
-                      "block_order": [
-                        "button_qWbVHK",
-                        "button_9kEdcC"
-                      ]
+                      "block_order": ["button_qWbVHK", "button_9kEdcC"]
                     }
                   },
                   "block_order": []
                 }
               },
-              "block_order": [
-                "cta_banner_TMPUwC",
-                "cta_banner_g4jTcU"
-              ]
+              "block_order": ["cta_banner_TMPUwC", "cta_banner_g4jTcU"]
             }
           },
-          "block_order": [
-            "group_fmGBeR"
-          ]
+          "block_order": ["group_fmGBeR"]
         }
       },
       "settings": {
@@ -410,8 +398,5 @@
       }
     }
   },
-  "order": [
-    "header_announcements_9jGBFp",
-    "header_section"
-  ]
+  "order": ["header_announcements_9jGBFp", "header_section"]
 }
