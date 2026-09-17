@@ -66,7 +66,7 @@
             "menu_font_style": "inverse",
             "type_font_primary_link": "heading",
             "type_case_primary_link": "uppercase",
-            "mega_mega_text_field": "shop",
+            "mega_mega_text_field": "shop, meer-info",
             "mobile_secondary_menu": "mega-menu-secondary-nav",
             "mobile_promotions": true,
             "navigation_bar": false,
