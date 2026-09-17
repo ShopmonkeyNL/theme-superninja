@@ -28,7 +28,9 @@
           "blocks": {}
         }
       },
-      "block_order": ["announcement_BxgCk9"],
+      "block_order": [
+        "announcement_BxgCk9"
+      ],
       "name": "t:names.announcement_bar",
       "settings": {
         "speed": 5,
@@ -58,19 +60,14 @@
           "type": "_header-menu",
           "static": true,
           "settings": {
-            "menu": "main-menu",
+            "menu": "sm-main-menu",
             "color_scheme": "",
             "type_font_primary_size": "0.875rem",
             "menu_font_style": "inverse",
             "type_font_primary_link": "heading",
             "type_case_primary_link": "uppercase",
-            "custom_textpages_menu": true,
-            "menu_style": "text",
-            "featured_products_aspect_ratio": "1 / 1",
-            "featured_collections_aspect_ratio": "16 / 9",
-            "image_border_radius": 4,
+            "mega_mega_text_field": "shop",
             "mobile_secondary_menu": "mega-menu-secondary-nav",
-            "mobile_textpages_heading": "Informatiepagina's",
             "mobile_promotions": true,
             "navigation_bar": false,
             "color_scheme_navigation_bar": "",
@@ -226,7 +223,9 @@
                           "blocks": {}
                         }
                       },
-                      "block_order": ["button_6xL9dq"]
+                      "block_order": [
+                        "button_6xL9dq"
+                      ]
                     }
                   },
                   "block_order": []
@@ -353,16 +352,24 @@
                           "blocks": {}
                         }
                       },
-                      "block_order": ["button_qWbVHK", "button_9kEdcC"]
+                      "block_order": [
+                        "button_qWbVHK",
+                        "button_9kEdcC"
+                      ]
                     }
                   },
                   "block_order": []
                 }
               },
-              "block_order": ["cta_banner_TMPUwC", "cta_banner_g4jTcU"]
+              "block_order": [
+                "cta_banner_TMPUwC",
+                "cta_banner_g4jTcU"
+              ]
             }
           },
-          "block_order": ["group_fmGBeR"]
+          "block_order": [
+            "group_fmGBeR"
+          ]
         }
       },
       "settings": {
@@ -398,5 +405,8 @@
       }
     }
   },
-  "order": ["header_announcements_9jGBFp", "header_section"]
+  "order": [
+    "header_announcements_9jGBFp",
+    "header_section"
+  ]
 }
