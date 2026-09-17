@@ -1,27 +1,31 @@
-<div class="custom-textpage-submenu">
-  <div class="cts__left">
-    <div class="cts__inner">
-      <div class="h5">Informatiepagina's</div>
-    
-      <div class="cts__links">
+<div class='custom-textpage-submenu'>
+  <div class='cts__left'>
+    <div class='cts__inner'>
+      <div class='h5'>{{ parent_link.title }}</div>
+
+      <div class='cts__links'>
         {% for link in parent_link.links %}
-          <a href="{{ link.url }}">
-          {% for entry in metaobjects.mega_menu_custom_textpages_meer_info.values %}
-            {% if link.handle == entry.link_handle %}
-              {% if entry.image %}
-                <img src="{{ entry.image | image_url: width: 500 }}" alt="{{ entry.title }} bug image">
-              {% endif %}
-              <span>{{ entry.title }}</span>
+          <a href='{{ link.url }}'>
+            {% if link.object.featured_image %}
+              <img
+                src='{{ link.object.featured_image | image_url: width: 500 }}'
+                alt='{{ link.title }} bug image'
+              >
+            {% else %}
+              <span
+                class='sm-menu__link-icon sm-menu__link-icon--placeholder'
+                aria-hidden='true'
+              ></span>
             {% endif %}
-          {% endfor %}
+            <span>{{ link.title }}</span>
           </a>
         {% endfor %}
       </div>
     </div>
-  
-    <div class="cts__nav">
+
+    <div class='cts__nav'>
       {% for nav_link in linklists['mega-menu-secondary-nav'].links %}
-        <a href="{{ nav_link.url }}">{{ nav_link.title }}</a>
+        <a href='{{ nav_link.url }}'>{{ nav_link.title }}</a>
       {% endfor %}
     </div>
   </div>
@@ -29,12 +33,12 @@
   {{ banners }}
 </div>
 
-{% style %} 
+{% style %}
   .custom-textpage-submenu {
     display: flex;
     justify-content: space-between;
     gap: 8rem;
-    
+
     & .cts__left {
       display: flex;
       flex-direction: column;
@@ -55,7 +59,7 @@
       row-gap: 1rem;
       width: fit-content;
 
-      & > a { 
+      & > a {
         width: fit-content;
         display: flex;
         align-items: center;

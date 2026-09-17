@@ -8,17 +8,27 @@
   @param {string} [menu_content_type] - The type of content to render, options: ['featured_products', 'featured_collections', 'collection_images', 'text'] (default: 'text')
   @param {number} [content_aspect_ratio] - The aspect ratio to display the content if applicable
   @param {number} [image_border_radius] - The border radius used for the content images
-  @param {boolean} [custom_textpages_menu] - Decides if textpage for 'Meer info' should have a custom layout.
-  @param {object} [banners] - Banner block object
+  @param {object} [banners] - Banner block object,
+  @param {object} [mega_menu_items] Menu-items that should display mega-menu
 {%- enddoc -%}
 
 <div class="mega-menu section section--full-width-margin section--{{ section.settings.section_width }}">
   <div
     class="mega-menu__grid"
-    data-menu-grid-id="{{ id }}"
   > 
-    {% if custom_textpages_menu and parent_link.handle == 'meer-info' %}
-      {% render 'sm-custom-textpage-mm' parent_link: parent_link, banners: banners %}
+    {% assign menu_items =  mega_menu_items | split: ',' %}
+    {% assign show_mega_menu = false %}
+
+    {% for item in menu_items %}
+      {% assign item_title = item | strip %}
+      
+      {% if item_title == parent_link.handle %}
+        {% assign show_mega_menu = true %}
+      {% endif %}
+    {% endfor %}
+
+    {% if show_mega_menu %}
+      {% render 'sm-mm' parent_link: parent_link, banners: banners %}
     {% else %}
       {% render 'mega-menu-list',
         parent_link: parent_link,

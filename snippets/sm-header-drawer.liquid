@@ -11,9 +11,9 @@
   @param {object} linklist - The linklist to render
   @param {string} [class] - Additional classes to add to the drawer
   @param {string} [banners] - Promotional blocks rendered underneath the menu
-  @param {boolean} [custom_textpages_menu] - Renders the "Meer info" submenu with its metaobject icons
   @param {object} [block] - The header menu block that provides the settings
   @param {object} [section] - The header section that provides the settings
+  @param {object} [mega_menu_items] Menu-items that should display mega-menu
 
   @example
   {% render 'sm-header-drawer', linklist: block.settings.menu, banners: banners %}
@@ -212,10 +212,16 @@
               assign is_how_it_works = true
             endif
 
-            assign use_textpages = false
-            if custom_textpages_menu and link.handle == 'meer-info'
-              assign use_textpages = true
-            endif
+            assign menu_items =  mega_menu_items | split: ','
+            assign show_mega_menu = false
+
+            for item in menu_items
+              assign item_title = item | strip
+              
+              if item_title == link.handle
+                assign show_mega_menu = true
+              endif
+            endfor
           %}
           {%- if link.links != blank and is_how_it_works == false -%}
             <div
@@ -232,7 +238,7 @@
                 class="sm-menu__nav"
                 aria-label="{{ link.title | escape }}"
               >
-                {%- if use_textpages -%}
+                {%- if show_mega_menu -%}
                   <h2 class="sm-menu__subtitle h5">{{ textpages_heading }}</h2>
                 {%- endif -%}
 
@@ -241,14 +247,9 @@
                     {% liquid
                       assign icon = false
                       assign label = childlink.title
-                      if use_textpages
-                        for entry in metaobjects.mega_menu_custom_textpages_meer_info.values
-                          if childlink.handle == entry.link_handle
-                            assign icon = entry.image
-                            assign label = entry.title | default: childlink.title
-                            break
-                          endif
-                        endfor
+                      if show_mega_menu
+                        assign icon = childlink.object.featured_image
+                        assign label = childlink.title 
                       endif
                     %}
                     <li class="sm-menu__item sm-menu__item--child">
@@ -269,7 +270,7 @@
                             class="sm-menu__link-icon"
                             aria-hidden="true"
                           >
-                        {%- elsif use_textpages -%}
+                        {%- elsif show_mega_menu -%}
                           <span
                             class="sm-menu__link-icon sm-menu__link-icon--placeholder"
                             aria-hidden="true"
