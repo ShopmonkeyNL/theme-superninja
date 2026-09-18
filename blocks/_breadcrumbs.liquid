@@ -1,0 +1,54 @@
+<nav aria-label="breadcrumb" class="breadcrumbs">
+  <a href="">breadcrumb 1</a>
+  <span aria-hidden="true">
+    {{- 'icon-chevron-right.svg' | inline_asset_content -}}
+  </span>
+  <a href="">breadcrumb 2</a>
+  <span aria-hidden="true">
+    {{- 'icon-chevron-right.svg' | inline_asset_content -}}
+  </span>
+  <div class="breadcrumbs__last" aria-current="page">{{ product.title }}</div>
+</nav>
+
+{% style %}
+  .breadcrumbs {
+    padding-block-end: 2rem;
+
+    display: flex;
+    column-gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+
+    font-size: 1rem;
+
+    & svg {
+      height: 10px;
+    }
+
+    & a {
+      transition: opacity 0.2s ease-out;
+      
+      &:hover {
+        opacity: 0.6;
+        transition: opacity 0.2s ease-out;
+      }
+    }
+    
+    
+    & .breadcrumbs__last {
+      font-weight: bold;
+      color: var(--color-primary-button-background);
+    }
+  }
+  {% endstyle %}
+
+{% schema %}
+{
+  "name": "Breadcrumbs",
+    "presets": [
+      {
+        "name": "Breadcrumbs"
+      }
+    ]
+  }
+{% endschema %}

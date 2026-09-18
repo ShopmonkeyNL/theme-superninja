@@ -4,6 +4,9 @@
   class='section section--{{ section.settings.section_width }} spacing-style {% if section.settings.color_scheme != blank %}color-{{ section.settings.color_scheme }}{% endif %}'
   style='{% render 'spacing-padding', settings: section.settings %}'
 >
+  
+  {% content_for 'block', type: '_breadcrumbs', id: 'breadcrumbs' %}
+
   <div class="product-details">
     <div class="product-details__media-gallery{% if section.settings.equal_columns %} equal{% endif %}">
       {% content_for 'block', type: '_product-media-gallery', id: 'product-media-gallery' %}
@@ -46,6 +49,9 @@
     },
     {
       "type": "_product-protection-message"
+    },
+    {
+      "type": "_breadcrumbs"
     }
   ],
   "settings": [
