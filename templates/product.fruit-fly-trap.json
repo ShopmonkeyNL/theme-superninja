@@ -205,7 +205,10 @@
                       "blocks": {}
                     }
                   },
-                  "block_order": ["text_BdUQCN", "text_ptqR6a"]
+                  "block_order": [
+                    "text_BdUQCN",
+                    "text_ptqR6a"
+                  ]
                 }
               },
               "block_order": [
@@ -340,6 +343,7 @@
           ]
         }
       },
+      "disabled": true,
       "settings": {
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
@@ -472,7 +476,10 @@
                   "blocks": {}
                 }
               },
-              "block_order": ["text_V3hnKg", "short_description_GQccEk"]
+              "block_order": [
+                "text_V3hnKg",
+                "short_description_GQccEk"
+              ]
             }
           },
           "block_order": [
@@ -768,7 +775,9 @@
                           "blocks": {}
                         }
                       },
-                      "block_order": ["image_CxREqj"]
+                      "block_order": [
+                        "image_CxREqj"
+                      ]
                     },
                     "product_card_group_xXDKMT": {
                       "type": "_product-card-group",
@@ -858,7 +867,10 @@
                           "blocks": {}
                         }
                       },
-                      "block_order": ["product_title_HiDgkD", "price_JNAzit"]
+                      "block_order": [
+                        "product_title_HiDgkD",
+                        "price_JNAzit"
+                      ]
                     }
                   },
                   "block_order": [
@@ -867,10 +879,14 @@
                   ]
                 }
               },
-              "block_order": ["product_card_group_tKfGBq"]
+              "block_order": [
+                "product_card_group_tKfGBq"
+              ]
             }
           },
-          "block_order": ["text_7eF7kE"]
+          "block_order": [
+            "text_7eF7kE"
+          ]
         },
         "product-media-gallery": {
           "type": "_product-media-gallery",
@@ -955,7 +971,12 @@
           }
         }
       },
-      "block_order": ["benefit_1", "benefit_2", "benefit_3", "benefit_4"],
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4"
+      ],
       "settings": {
         "background_color": "#94d357",
         "text_color": "#1c1c1c",
@@ -1087,7 +1108,10 @@
               "blocks": {}
             }
           },
-          "block_order": ["text_X6Xetc", "text_Cjeyqj"]
+          "block_order": [
+            "text_X6Xetc",
+            "text_Cjeyqj"
+          ]
         },
         "icon_usp_wrapper_pYKhX6": {
           "type": "icon-usp-wrapper",
@@ -1204,7 +1228,10 @@
                       "blocks": {}
                     }
                   },
-                  "block_order": ["text_enfrHh", "text_bUV7Ak"]
+                  "block_order": [
+                    "text_enfrHh",
+                    "text_bUV7Ak"
+                  ]
                 }
               },
               "block_order": []
@@ -1319,7 +1346,10 @@
                       "blocks": {}
                     }
                   },
-                  "block_order": ["text_cwL7V6", "text_9hmQ7k"]
+                  "block_order": [
+                    "text_cwL7V6",
+                    "text_9hmQ7k"
+                  ]
                 }
               },
               "block_order": []
@@ -1434,7 +1464,10 @@
                       "blocks": {}
                     }
                   },
-                  "block_order": ["text_cicdyX", "text_fYiWzt"]
+                  "block_order": [
+                    "text_cicdyX",
+                    "text_fYiWzt"
+                  ]
                 }
               },
               "block_order": []
@@ -1447,7 +1480,10 @@
           ]
         }
       },
-      "block_order": ["group_KqUfzE", "icon_usp_wrapper_pYKhX6"],
+      "block_order": [
+        "group_KqUfzE",
+        "icon_usp_wrapper_pYKhX6"
+      ],
       "name": "t:names.custom_section",
       "settings": {
         "content_direction": "column",
@@ -1645,7 +1681,10 @@
               "blocks": {}
             }
           },
-          "block_order": ["text_Nkrjt3", "text_UrRaXk"]
+          "block_order": [
+            "text_Nkrjt3",
+            "text_UrRaXk"
+          ]
         },
         "video_stories_MaUc6Q": {
           "type": "_video-stories",
@@ -1654,7 +1693,10 @@
           "blocks": {}
         }
       },
-      "block_order": ["group_zCrm3R", "video_stories_MaUc6Q"],
+      "block_order": [
+        "group_zCrm3R",
+        "video_stories_MaUc6Q"
+      ],
       "name": "t:names.custom_section",
       "settings": {
         "content_direction": "column",
@@ -1825,7 +1867,10 @@
           "blocks": {}
         }
       },
-      "block_order": ["text_cGpV3p", "adaptive_accordion_VynyVW"],
+      "block_order": [
+        "text_cGpV3p",
+        "adaptive_accordion_VynyVW"
+      ],
       "name": "t:names.custom_section",
       "settings": {
         "content_direction": "column",
@@ -2016,7 +2061,9 @@
                   "blocks": {}
                 }
               },
-              "block_order": ["text_X6rmCF"]
+              "block_order": [
+                "text_X6rmCF"
+              ]
             },
             "accordion_row_YGgF9b": {
               "type": "_accordion-row",
@@ -2053,7 +2100,9 @@
                   "blocks": {}
                 }
               },
-              "block_order": ["text_jRgNLn"]
+              "block_order": [
+                "text_jRgNLn"
+              ]
             },
             "accordion_row_dcV7Kz": {
               "type": "_accordion-row",
@@ -2090,7 +2139,9 @@
                   "blocks": {}
                 }
               },
-              "block_order": ["text_XD8xUq"]
+              "block_order": [
+                "text_XD8xUq"
+              ]
             }
           },
           "block_order": [
@@ -2100,7 +2151,10 @@
           ]
         }
       },
-      "block_order": ["text_CFNn4P", "accordion_W9x4h6"],
+      "block_order": [
+        "text_CFNn4P",
+        "accordion_W9x4h6"
+      ],
       "name": "FAQ Section",
       "settings": {
         "padding_block_start_desktop": 128,
@@ -2149,7 +2203,12 @@
           }
         }
       },
-      "block_order": ["benefit_1", "benefit_2", "benefit_3", "benefit_4"],
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4"
+      ],
       "settings": {
         "background_color": "#94d357",
         "text_color": "#000000",
@@ -2159,7 +2218,6 @@
         "invert_rotation": false,
         "scale": 110,
         "padding_y": 16,
-        "speed_seconds": 40,
         "speed_seconds": 40,
         "pause_on_hover": false,
         "duplicate_count": "3",
