@@ -16,7 +16,7 @@
           "type": "_slide",
           "settings": {
             "media_type_1": "image",
-            "image_1": "shopify://shop_images/Gemini_Generated_Image_q7x4blq7x4blq7x4.png",
+            "image_1": "shopify://shop_images/super-ninja-fruitvliegjesval-natuurlijke-ongediertebestrijding-effectief.png",
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
@@ -979,7 +979,7 @@
         "text_color": "#1c1c1c",
         "border_color": "#ffffff",
         "divider_opacity": 3,
-        "rotate_deg": -2,
+        "rotate_deg": 0,
         "invert_rotation": false,
         "scale": 110,
         "padding_y": 16,
@@ -1213,6 +1213,7 @@
         "text_767iHR",
         "text_7xcKVX"
       ],
+      "disabled": true,
       "name": "t:names.custom_section",
       "settings": {
         "content_direction": "column",
@@ -1715,7 +1716,7 @@
         "text_color": "#1c1c1c",
         "border_color": "#ffffff",
         "divider_opacity": 3,
-        "rotate_deg": -2,
+        "rotate_deg": 0,
         "invert_rotation": true,
         "scale": 110,
         "padding_y": 16,
