@@ -558,6 +558,7 @@
             },
             "add-to-cart": {
               "type": "add-to-cart",
+              "disabled": true,
               "static": true,
               "settings": {
                 "style_class": "button-secondary"
@@ -612,6 +613,7 @@
         "product_recommendations_JwwexE": {
           "type": "product-recommendations",
           "name": "t:names.product_recommendations",
+          "disabled": true,
           "settings": {
             "recommendation_type": "related",
             "layout_type": "carousel",
@@ -887,6 +889,12 @@
           "block_order": [
             "text_7eF7kE"
           ]
+        },
+        "breadcrumbs": {
+          "type": "_breadcrumbs",
+          "static": true,
+          "settings": {},
+          "blocks": {}
         },
         "product-media-gallery": {
           "type": "_product-media-gallery",
