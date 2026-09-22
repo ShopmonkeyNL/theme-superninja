@@ -5,12 +5,28 @@
 
       <div class='cts__links'>
         {% for link in parent_link.links %}
-          <a href='{{ link.url }}'>
+          <a href='{{ link.url }}' aria-label="{{ link.title }}">
             {% if link.object.featured_image %}
               <img
                 src='{{ link.object.featured_image | image_url: width: 500 }}'
                 alt='{{ link.title }} bug image'
               >
+            {% elsif metaobjects.mega_menu_custom_textpages_meer_info.values %}
+              {% for entry in metaobjects.mega_menu_custom_textpages_meer_info.values %}
+                {% if entry.system.handle == link.handle %}
+                  {% if entry.image %}
+                    <img
+                      src='{{ entry.image | image_url: width: 500 }}'
+                      alt='{{ entry.system.handle }} bug image'
+                    >
+                  {% else %}
+                    <span
+                      class='sm-menu__link-icon sm-menu__link-icon--placeholder'
+                      aria-hidden='true'
+                    ></span>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
             {% else %}
               <span
                 class='sm-menu__link-icon sm-menu__link-icon--placeholder'

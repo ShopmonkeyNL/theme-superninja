@@ -13,7 +13,7 @@
   @param {string} [banners] - Promotional blocks rendered underneath the menu
   @param {object} [block] - The header menu block that provides the settings
   @param {object} [section] - The header section that provides the settings
-  @param {object} [mega_menu_items] Menu-items that should display mega-menu
+  @param {object} [mega_menu_items] - Menu-items that should display mega-menu
 
   @example
   {% render 'sm-header-drawer', linklist: block.settings.menu, banners: banners %}
@@ -23,7 +23,6 @@
   assign block_settings = block.settings
   assign menu = linklist | default: block_settings.menu
   assign secondary_menu = linklists[block_settings.mobile_secondary_menu]
-  assign textpages_heading = block_settings.mobile_textpages_heading | default: "Informatiepagina's"
 
   assign label_open = 'accessibility.menu' | t
   assign label_close = 'actions.close' | t
@@ -57,71 +56,90 @@
 %}
 
 <script
-  src="{{ 'sm-header-drawer.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
+  src='{{ 'sm-header-drawer.js' | asset_url }}'
+  type='module'
+  fetchpriority='low'
 ></script>
 
 <sm-header-drawer
-  class="sm-header-drawer {{ class }}"
+  class='sm-header-drawer {{ class }}'
   data-skip-node-update
-  data-section-id="{{ section.id }}"
-  data-label-open="{{ label_open | escape }}"
-  data-label-close="{{ label_close | escape }}"
-  tabindex="-1"
+  data-section-id='{{ section.id }}'
+  data-label-open='{{ label_open | escape }}'
+  data-label-close='{{ label_close | escape }}'
+  tabindex='-1'
 >
   <button
-    type="button"
-    class="sm-header-drawer__toggle button-unstyled"
-    aria-label="{{ label_open | escape }}"
-    aria-expanded="false"
-    aria-controls="{{ panel_id }}"
-    ref="toggle"
-    on:click="/toggle"
+    type='button'
+    class='sm-header-drawer__toggle button-unstyled'
+    aria-label='{{ label_open | escape }}'
+    aria-expanded='false'
+    aria-controls='{{ panel_id }}'
+    ref='toggle'
+    on:click='/toggle'
   >
-    <span class="svg-wrapper sm-header-drawer__icon sm-header-drawer__icon--open">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+    <span class='svg-wrapper sm-header-drawer__icon sm-header-drawer__icon--open'>
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        width='24'
+        height='24'
+        viewBox='0 0 24 24'
+        fill='none'
+        aria-hidden='true'
+        focusable='false'
+      >
         <path d="M3 18V16H21V18H3ZM3 13V11H21V13H3ZM3 8V6H21V8H3Z" fill="currentColor"/>
       </svg>
     </span>
-    <span class="svg-wrapper sm-header-drawer__icon sm-header-drawer__icon--close">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+    <span class='svg-wrapper sm-header-drawer__icon sm-header-drawer__icon--close'>
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        width='24'
+        height='24'
+        viewBox='0 0 24 24'
+        fill='none'
+        aria-hidden='true'
+        focusable='false'
+      >
         <path d="M6.4 19L5 17.6L10.6 12L5 6.4L6.4 5L12 10.6L17.6 5L19 6.4L13.4 12L19 17.6L17.6 19L12 13.4L6.4 19Z" fill="currentColor"/>
       </svg>
     </span>
   </button>
 
   <div
-    id="{{ panel_id }}"
-    class="sm-header-drawer__panel{% if block_settings.color_scheme != blank %} color-{{ block_settings.color_scheme }}{% endif %}"
+    id='{{ panel_id }}'
+    class='sm-header-drawer__panel{% if block_settings.color_scheme != blank %} color-{{ block_settings.color_scheme }}{% endif %}'
     data-skip-node-update
-    ref="panel"
+    ref='panel'
     inert
   >
     {%- if render_panel -%}
       <div
-        class="sm-menu"
-        style="
+        class='sm-menu'
+        style='
           {%- render 'menu-font-styles', settings: block_settings, menu_type: 'drawer' %}
           {%- render 'submenu-font-styles', settings: block_settings %}
-        "
-        data-active-view="root"
+        '
+        data-active-view='root'
         data-skip-node-update
-        ref="views"
+        ref='views'
       >
         <div
-          class="sm-menu__view"
-          data-view="root"
-          ref="view[]"
-          tabindex="-1"
+          class='sm-menu__view'
+          data-view='root'
+          ref='view[]'
+          tabindex='-1'
         >
           {% render 'menu-drawer-heading' %}
 
           <nav
-            class="sm-menu__nav"
-            aria-label="{{ label_open | escape }}"
+            class='sm-menu__nav'
+            aria-label='{{ label_open | escape }}'
           >
-            <ul class="sm-menu__list list-unstyled" role="list">
+            <ul
+              class='sm-menu__list list-unstyled'
+              role='list'
+            >
               {%- for link in menu.links -%}
                 {% liquid
                   assign link_title_down = link.title | downcase
@@ -137,35 +155,44 @@
                 %}
                 {%- unless is_how_it_works and request.page_type != 'product' -%}
                   <li
-                    class="sm-menu__item sm-menu__animated"
-                    style="--sm-menu-index: {{ forloop.index }};"
+                    class='sm-menu__item sm-menu__animated'
+                    style='--sm-menu-index: {{ forloop.index }};'
                   >
                     {%- if has_submenu -%}
                       <button
-                        type="button"
-                        class="sm-menu__link sm-menu__link--top button-unstyled"
-                        data-submenu="{{ link.handle }}"
-                        aria-expanded="false"
-                        aria-controls="SmMenuView-{{ link.handle }}-{{ section.id }}"
-                        on:click="/openSubmenu"
+                        type='button'
+                        class='sm-menu__link sm-menu__link--top button-unstyled'
+                        data-submenu='{{ link.handle }}'
+                        aria-expanded='false'
+                        aria-controls='SmMenuView-{{ link.handle }}-{{ section.id }}'
+                        on:click='/openSubmenu'
                       >
-                        <span class="sm-menu__link-text">{{ link.title | escape }}</span>
-                        <span class="svg-wrapper sm-menu__chevron" aria-hidden="true">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="5" height="8" viewBox="0 0 5 8" fill="none">
+                        <span class='sm-menu__link-text'>{{ link.title | escape }}</span>
+                        <span
+                          class='svg-wrapper sm-menu__chevron'
+                          aria-hidden='true'
+                        >
+                          <svg
+                            xmlns='http://www.w3.org/2000/svg'
+                            width='5'
+                            height='8'
+                            viewBox='0 0 5 8'
+                            fill='none'
+                          >
                             <path d="M3.06667 4L0 0.933333L0.933333 0L4.93333 4L0.933333 8L0 7.06667L3.06667 4Z" fill="#FF5000"/>
                           </svg>
                         </span>
                       </button>
                     {%- else -%}
                       <a
-                        href="{% if is_how_it_works %}#simple-to-use{% else %}{{ link.url }}{% endif %}"
-                        class="sm-menu__link sm-menu__link--top{% if link.current %} sm-menu__link--active{% endif %}"
+                        href='{% if is_how_it_works %}#simple-to-use{% else %}{{ link.url }}{% endif %}'
+                        class='sm-menu__link sm-menu__link--top{% if link.current %} sm-menu__link--active{% endif %}'
                         {% if link.current %}
-                          aria-current="page"
+                          aria-current='page'
                         {% endif %}
-                        on:click="/close"
+                        on:click='/close'
                       >
-                        <span class="sm-menu__link-text">{{ link.title | escape }}</span>
+                        <span class='sm-menu__link-text'>{{ link.title | escape }}</span>
                       </a>
                     {%- endif -%}
                   </li>
@@ -176,12 +203,23 @@
 
           {%- if show_account -%}
             <a
-              href="{{ routes.account_url }}"
-              class="sm-menu__account sm-menu__animated"
-              style="--sm-menu-index: {{ menu.links.size | plus: 1 }};"
+              href='{{ routes.account_url }}'
+              class='sm-menu__account sm-menu__animated'
+              style='--sm-menu-index: {{ menu.links.size | plus: 1 }};'
             >
-              <span class="svg-wrapper" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+              <span
+                class='svg-wrapper'
+                aria-hidden='true'
+              >
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='24'
+                  height='24'
+                  viewBox='0 0 24 24'
+                  fill='none'
+                  aria-hidden='true'
+                  focusable='false'
+                >
                   <path d="M9.175 10.825C8.39167 10.0417 8 9.1 8 8C8 6.9 8.39167 5.95833 9.175 5.175C9.95833 4.39167 10.9 4 12 4C13.1 4 14.0417 4.39167 14.825 5.175C15.6083 5.95833 16 6.9 16 8C16 9.1 15.6083 10.0417 14.825 10.825C14.0417 11.6083 13.1 12 12 12C10.9 12 9.95833 11.6083 9.175 10.825ZM4 20V17.2C4 16.6333 4.14583 16.1125 4.4375 15.6375C4.72917 15.1625 5.11667 14.8 5.6 14.55C6.63333 14.0333 7.68333 13.6458 8.75 13.3875C9.81667 13.1292 10.9 13 12 13C13.1 13 14.1833 13.1292 15.25 13.3875C16.3167 13.6458 17.3667 14.0333 18.4 14.55C18.8833 14.8 19.2708 15.1625 19.5625 15.6375C19.8542 16.1125 20 16.6333 20 17.2V20H4ZM6 18H18V17.2C18 17.0167 17.9542 16.85 17.8625 16.7C17.7708 16.55 17.65 16.4333 17.5 16.35C16.6 15.9 15.6917 15.5625 14.775 15.3375C13.8583 15.1125 12.9333 15 12 15C11.0667 15 10.1417 15.1125 9.225 15.3375C8.30833 15.5625 7.4 15.9 6.5 16.35C6.35 16.4333 6.22917 16.55 6.1375 16.7C6.04583 16.85 6 17.0167 6 17.2V18ZM13.4125 9.4125C13.8042 9.02083 14 8.55 14 8C14 7.45 13.8042 6.97917 13.4125 6.5875C13.0208 6.19583 12.55 6 12 6C11.45 6 10.9792 6.19583 10.5875 6.5875C10.1958 6.97917 10 7.45 10 8C10 8.55 10.1958 9.02083 10.5875 9.4125C10.9792 9.80417 11.45 10 12 10C12.55 10 13.0208 9.80417 13.4125 9.4125Z" fill="currentColor"/>
                 </svg>
               </span>
@@ -199,9 +237,8 @@
           %}
 
           {%- if banners != blank -%}
-            <div class="sm-menu__promotions">{{ banners }}</div>
+            <div class='sm-menu__promotions'>{{ banners }}</div>
           {%- endif -%}
-
         </div>
 
         {%- for link in menu.links -%}
@@ -212,12 +249,12 @@
               assign is_how_it_works = true
             endif
 
-            assign menu_items =  mega_menu_items | split: ','
+            assign menu_items = mega_menu_items | split: ','
             assign show_mega_menu = false
 
             for item in menu_items
               assign item_title = item | strip
-              
+
               if item_title == link.handle
                 assign show_mega_menu = true
               endif
@@ -225,58 +262,78 @@
           %}
           {%- if link.links != blank and is_how_it_works == false -%}
             <div
-              id="SmMenuView-{{ link.handle }}-{{ section.id }}"
-              class="sm-menu__view sm-menu__view--submenu"
-              data-view="{{ link.handle }}"
-              ref="view[]"
-              tabindex="-1"
+              id='SmMenuView-{{ link.handle }}-{{ section.id }}'
+              class='sm-menu__view sm-menu__view--submenu'
+              data-view='{{ link.handle }}'
+              ref='view[]'
+              tabindex='-1'
               inert
             >
               {% render 'menu-drawer-heading', sub: true, title: link.title %}
 
               <nav
-                class="sm-menu__nav"
-                aria-label="{{ link.title | escape }}"
+                class='sm-menu__nav'
+                aria-label='{{ link.title | escape }}'
               >
-                {%- if show_mega_menu -%}
-                  <h2 class="sm-menu__subtitle h5">{{ textpages_heading }}</h2>
-                {%- endif -%}
-
-                <ul class="sm-menu__list sm-menu__list--child list-unstyled" role="list">
+                <ul
+                  class='sm-menu__list sm-menu__list--child list-unstyled'
+                  role='list'
+                >
                   {%- for childlink in link.links -%}
                     {% liquid
                       assign icon = false
                       assign label = childlink.title
                       if show_mega_menu
                         assign icon = childlink.object.featured_image
-                        assign label = childlink.title 
+                        assign label = childlink.title
                       endif
                     %}
-                    <li class="sm-menu__item sm-menu__item--child">
+                    <li class='sm-menu__item sm-menu__item--child'>
                       <a
-                        href="{{ childlink.url }}"
-                        class="sm-menu__link sm-menu__link--child{% if childlink.current %} sm-menu__link--active{% endif %}"
+                        href='{{ childlink.url }}'
+                        class='sm-menu__link sm-menu__link--child{% if childlink.current %} sm-menu__link--active{% endif %}'
                         {% if childlink.current %}
-                          aria-current="page"
+                          aria-current='page'
                         {% endif %}
                       >
                         {%- if icon -%}
                           <img
-                            src="{{ icon | image_url: width: 120 }}"
-                            alt=""
-                            width="40"
-                            height="40"
-                            loading="lazy"
-                            class="sm-menu__link-icon"
-                            aria-hidden="true"
+                            src='{{ icon | image_url: width: 120 }}'
+                            alt=''
+                            width='40'
+                            height='40'
+                            loading='lazy'
+                            class='sm-menu__link-icon'
+                            aria-hidden='true'
                           >
+                        {% elsif metaobjects.mega_menu_custom_textpages_meer_info.values %}
+                          {% for entry in metaobjects.mega_menu_custom_textpages_meer_info.values %}
+                            {% if entry.system.handle == childlink.handle %}
+                              {% if entry.image %}
+                                <img
+                                  src='{{ entry.image | image_url: width: 120 }}'
+                                  alt=''
+                                  width='40'
+                                  height='40'
+                                  loading='lazy'
+                                  class='sm-menu__link-icon'
+                                  aria-hidden='true'
+                                >
+                              {% else %}
+                                <span
+                                  class='sm-menu__link-icon sm-menu__link-icon--placeholder'
+                                  aria-hidden='true'
+                                ></span>
+                              {% endif %}
+                            {% endif %}
+                          {% endfor %}
                         {%- elsif show_mega_menu -%}
                           <span
-                            class="sm-menu__link-icon sm-menu__link-icon--placeholder"
-                            aria-hidden="true"
+                            class='sm-menu__link-icon sm-menu__link-icon--placeholder'
+                            aria-hidden='true'
                           ></span>
                         {%- endif -%}
-                        <span class="sm-menu__link-text">{{ label | escape }}</span>
+                        <span class='sm-menu__link-text'>{{ label | escape }}</span>
                       </a>
                     </li>
                   {%- endfor -%}
@@ -291,24 +348,22 @@
                 country_selector_style: section.settings.country_selector_style,
                 section_id: section.id
               %}
-
-
             </div>
           {%- endif -%}
         {%- endfor -%}
 
         {%- if show_country or show_language -%}
           <div
-            id="SmMenuView-localization-{{ section.id }}"
-            class="sm-menu__view sm-menu__view--submenu sm-menu__view--localization"
-            data-view="localization"
-            ref="view[]"
-            tabindex="-1"
+            id='SmMenuView-localization-{{ section.id }}'
+            class='sm-menu__view sm-menu__view--submenu sm-menu__view--localization'
+            data-view='localization'
+            ref='view[]'
+            tabindex='-1'
             inert
           >
             {% render 'menu-drawer-heading', sub: true, title: label_localization %}
 
-            <div class="sm-menu__localization">
+            <div class='sm-menu__localization'>
               {% render 'localization-form',
                 show_country: show_country,
                 show_language: show_language,
@@ -407,8 +462,7 @@
     opacity: 0;
     visibility: hidden;
     transition: clip-path var(--sm-drawer-speed) var(--ease-out-quad),
-      opacity calc(var(--sm-drawer-speed) * 0.5) var(--animation-easing),
-      visibility var(--sm-drawer-speed) linear;
+      opacity calc(var(--sm-drawer-speed) * 0.5) var(--animation-easing), visibility var(--sm-drawer-speed) linear;
     min-height: 0;
   }
 
@@ -439,8 +493,7 @@
     overscroll-behavior: contain;
     padding-block: var(--padding-2xl) var(--padding-3xl);
     transition: transform var(--sm-drawer-speed) var(--ease-out-quad),
-      opacity calc(var(--sm-drawer-speed) * 0.6) var(--animation-easing),
-      visibility var(--sm-drawer-speed) linear;
+      opacity calc(var(--sm-drawer-speed) * 0.6) var(--animation-easing), visibility var(--sm-drawer-speed) linear;
   }
 
   .sm-menu__view:focus {
@@ -643,7 +696,6 @@
     margin-block-start: var(--margin-xl);
     padding-inline: var(--sm-drawer-padding-inline);
     overflow-x: scroll;
-
   }
 
   .sm-menu__promotions::-webkit-scrollbar {
