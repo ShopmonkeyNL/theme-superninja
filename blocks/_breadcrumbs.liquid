@@ -1,17 +1,40 @@
-<nav aria-label="breadcrumb" class="breadcrumbs">
-  <a href="">breadcrumb 1</a>
-  <span aria-hidden="true">
-    {{- 'icon-chevron-right.svg' | inline_asset_content -}}
-  </span>
-  <a href="">breadcrumb 2</a>
-  <span aria-hidden="true">
-    {{- 'icon-chevron-right.svg' | inline_asset_content -}}
-  </span>
-  <div class="breadcrumbs__last" aria-current="page">{{ product.title }}</div>
+{% assign position = 1 %}
+
+<nav aria-label="breadcrumb" class="breadcrumbs" >
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+
+    {% comment %} Home {% endcomment %}
+    {% render 'breadcrumb-list-item' url: shop.url, name: 'Home', position: position %}
+    
+    {% comment %} If productpage & product is inside one or more collections {% endcomment %}
+    {% if product %}
+      {% if product.collections %}
+        {% assign position = position | plus: 1 %}
+
+        <li aria-hidden="true">{{- 'icon-chevron-right.svg' | inline_asset_content -}}</li>
+        {% render 'breadcrumb-list-item' url: product.collections.last.url, name: product.collections.last.title, position: position %}
+      {% endif %}
+
+      {% assign position = position | plus: 1 %}
+
+      <li aria-hidden="true">{{- 'icon-chevron-right.svg' | inline_asset_content -}}</li>
+      {% render 'breadcrumb-list-item' last: true, name: product.title, position: position %}
+    {% endif %}
+
+    {% comment %} If on collectionpage {% endcomment %}
+    {% if collection %}
+      {% assign position = position | plus: 1 %}
+
+      <li aria-hidden="true">{{- 'icon-chevron-right.svg' | inline_asset_content -}}</li>
+      {% render 'breadcrumb-list-item' last: true, name: collection.title, position: position %}
+    {% endif %}
+  </ol>
 </nav>
 
 {% style %}
-  .breadcrumbs {
+  .breadcrumbs ol {
+    padding: 0;
+    margin: 0;
     padding-block-end: 2rem;
 
     display: flex;
@@ -20,6 +43,11 @@
     align-items: center;
 
     font-size: 1rem;
+
+    & > li {
+      list-style: none;
+      display: flex;
+    }
 
     & svg {
       height: 10px;

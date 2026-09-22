@@ -42,6 +42,11 @@
       results_size: collection.products_count
     %}
 
+    {% content_for 'block',
+      type: '_breadcrumbs',
+      id: 'breadcrumbs'
+    %}
+
     {% assign products_per_page = 24 %}
 
     {% if section.settings.enable_infinite_scroll == false %}
@@ -151,6 +156,11 @@
 {% schema %}
 {
   "name": "t:names.collection_container",
+  "blocks": [
+    {
+      "type": "_breadcrumbs"
+    }
+  ],
   "enabled_on": {
     "templates": ["collection"]
   },
