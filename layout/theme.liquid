@@ -44,13 +44,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     {{ content_for_header }}
     {%- render 'typekit-fonts' -%}
-
-    <style>
-      html.has-benefits-ticker,
-      body.has-benefits-ticker {
-        overflow-x: hidden !important;
-      }
-    </style>
   </head>
 
   <body class='page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}'>
@@ -111,44 +104,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         const shouldApplyOffset = !hasImmediateSection ? '1' : '0';
         document.body.style.setProperty('--transparent-header-offset-boolean', shouldApplyOffset);
-      })();
-    </script>
-
-    <script>
-      (function enforceNoHorizontalScrollWithBenefitsTicker() {
-        function applyOverflowLock(hasTicker) {
-          var html = document.documentElement;
-          var body = document.body;
-          if (!html || !body) return;
-
-          if (hasTicker) {
-            html.classList.add('has-benefits-ticker');
-            body.classList.add('has-benefits-ticker');
-            html.style.setProperty('overflow-x', 'hidden', 'important');
-            body.style.setProperty('overflow-x', 'hidden', 'important');
-          } else {
-            html.classList.remove('has-benefits-ticker');
-            body.classList.remove('has-benefits-ticker');
-            html.style.removeProperty('overflow-x');
-            body.style.removeProperty('overflow-x');
-          }
-        }
-
-        function syncOverflowLock() {
-          applyOverflowLock(Boolean(document.querySelector('.benefits-ticker')));
-        }
-
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', syncOverflowLock, { once: true });
-        } else {
-          syncOverflowLock();
-        }
-
-        window.addEventListener('load', syncOverflowLock, { passive: true });
-        window.addEventListener('resize', syncOverflowLock, { passive: true });
-
-        var observer = new MutationObserver(syncOverflowLock);
-        observer.observe(document.documentElement, { childList: true, subtree: true });
       })();
     </script>
 

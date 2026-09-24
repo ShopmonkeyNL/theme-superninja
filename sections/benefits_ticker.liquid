@@ -244,17 +244,12 @@
 </section>
 
 <style>
-  /* Evita scroll horizontal na página (a section em si não usa overflow hidden) */
-  body {
-    overflow-x: hidden;
-  }
-
   /* Section “floating”: no layout space, overlaps sections above and below */
   .benefits-ticker {
     position: relative;
     z-index: 2;
     width: 100%;
-    overflow: visible;
+    overflow: clip;
     padding: var(--bt-section-padding-top, 1.5rem) 0 var(--bt-section-padding-bottom, 1.5rem);
     margin-top: -4rem;
     margin-bottom: -5rem;
@@ -270,7 +265,6 @@
     background: var(--bt-bar-bg, #94D357);
     color: var(--bt-color);
     padding: var(--bt-pad-y) 0;
-    transform: rotate(var(--bt-rotate)) scale(var(--bt-scale));
     transform-origin: center center;
     width: 100vw;
     margin-left: calc(50% - 50vw);
