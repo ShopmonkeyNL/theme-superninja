@@ -1,33 +1,36 @@
-{% assign position = 1 %}
+{%- liquid
+  assign position = 1
+  assign main_collection = collection | default: product.collections.last
+-%}
 
-<nav aria-label="breadcrumb" class="breadcrumbs" >
+<nav aria-label="Breadcrumb" class="breadcrumbs">
   <ol itemscope itemtype="https://schema.org/BreadcrumbList">
 
     {% comment %} Home {% endcomment %}
-    {% render 'breadcrumb-list-item' url: shop.url, name: 'Home', position: position %}
-    
-    {% comment %} If productpage & product is inside one or more collections {% endcomment %}
-    {% if product %}
-      {% if product.collections %}
+    {% render 'breadcrumb-list-item', url: routes.root_url, name: 'Home', position: position %}
+
+    {% comment %} Productpagina: Home > Collectie > Product {% endcomment %}
+    {% if template.name == 'product' %}
+      {% if main_collection %}
         {% assign position = position | plus: 1 %}
 
         <li aria-hidden="true">{{- 'icon-chevron-right.svg' | inline_asset_content -}}</li>
-        {% render 'breadcrumb-list-item' url: product.collections.last.url, name: product.collections.last.title, position: position %}
+        {% render 'breadcrumb-list-item', url: main_collection.url, name: main_collection.title, position: position %}
       {% endif %}
 
       {% assign position = position | plus: 1 %}
 
       <li aria-hidden="true">{{- 'icon-chevron-right.svg' | inline_asset_content -}}</li>
-      {% render 'breadcrumb-list-item' last: true, name: product.title, position: position %}
-    {% endif %}
+      {% render 'breadcrumb-list-item', last: true, name: product.title, position: position %}
 
-    {% comment %} If on collectionpage {% endcomment %}
-    {% if collection %}
+    {% comment %} Collectiepagina: Home > Collectie {% endcomment %}
+    {% elsif template.name == 'collection' %}
       {% assign position = position | plus: 1 %}
 
       <li aria-hidden="true">{{- 'icon-chevron-right.svg' | inline_asset_content -}}</li>
-      {% render 'breadcrumb-list-item' last: true, name: collection.title, position: position %}
+      {% render 'breadcrumb-list-item', last: true, name: collection.title, position: position %}
     {% endif %}
+
   </ol>
 </nav>
 
