@@ -84,7 +84,7 @@
         "menu_position": "center",
         "menu_row": "top",
         "show_account": false,
-        "show_search": false,
+        "show_search": true,
         "search_position": "right",
         "search_row": "top",
         "show_country": false,

@@ -25,7 +25,7 @@
   <div class="blog-post-cards__inner">
     {% if selected_blog != blank and selected_blog.articles_count > 0 %}
       <div class="blog-post-cards__categories">
-        <h3 class="blog-post-cards__categories-title">Categories</h3>
+        <h3 class="blog-post-cards__categories-title">{{ 'blog.categories' | t }}</h3>
         <div class="blog-post-cards__categories-track" role="tablist" aria-label="Blog categories">
           <button
             type="button"
@@ -33,7 +33,7 @@
             data-bpc-tag="all"
             aria-pressed="true"
           >
-            All Categories
+            {{ 'blog.all_categories' | t }}
           </button>
           {% for tag in selected_blog.all_tags %}
             <button
@@ -42,7 +42,7 @@
               data-bpc-tag="{{ tag | handleize }}"
               aria-pressed="false"
             >
-              {{ tag }}
+              {% assign tag_handle = tag | handleize %}{% assign tag_key = 'blog.tag.' | append: tag_handle %}{{ tag_key | t | default: tag }}
             </button>
           {% endfor %}
         </div>
@@ -100,7 +100,7 @@
                   </g>
                 </svg>
               </span>
-              <span class="blog-post-cards__read-time">{{ read_minutes }} minute{% if read_minutes > 1 %}s{% endif %} to read</span>
+              <span class="blog-post-cards__read-time">{{ read_minutes }} {% if read_minutes > 1 %}{{ 'blog.minutes_to_read' | t }}{% else %}{{ 'blog.minute_to_read' | t }}{% endif %}</span>
             </div>
 
             <h2 class="blog-post-cards__title">
@@ -110,7 +110,7 @@
             <p class="blog-post-cards__excerpt">{{ excerpt_text | strip_html | strip_newlines }}</p>
 
             <a class="blog-post-cards__read-more" href="{{ article.url }}">
-              Continue reading <span aria-hidden="true">→</span>
+              {{ 'blog.continue_reading' | t }} <span aria-hidden="true">→</span>
             </a>
           </article>
         {% endfor %}

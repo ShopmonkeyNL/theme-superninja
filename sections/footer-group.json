@@ -14,155 +14,246 @@
     "footer_m9NzUG": {
       "type": "footer",
       "blocks": {
-        "column_UqnGHi": {
-          "type": "column",
+        "heading_gBXHmY": {
+          "type": "heading",
           "settings": {
-            "title": "SHOP",
-            "link_text_1": "Alle Producten",
-            "link_url_1": "/collections/all",
-            "link_text_2": "Bestsellers",
-            "link_url_2": "/collections/all?sort_by=best-selling",
-            "link_text_3": "Bundels",
-            "link_url_3": "shopify://collections",
-            "link_text_4": "",
-            "link_url_4": "",
-            "link_text_5": "",
-            "link_url_5": "",
-            "link_text_6": "",
-            "link_url_6": "",
-            "link_text_7": "",
-            "link_url_7": "",
-            "link_text_8": "",
-            "link_url_8": "",
-            "link_text_9": "",
-            "link_url_9": "",
-            "link_text_10": "",
-            "link_url_10": ""
+            "link_list": "footer-shop"
           }
         },
-        "column_GdaEHb": {
-          "type": "column",
+        "heading_cpiqFA": {
+          "type": "heading",
           "settings": {
-            "title": "SUPPORT",
-            "link_text_1": "How It Works",
-            "link_url_1": "/pages/how-it-works",
-            "link_text_2": "Veelgestelde vragen",
-            "link_url_2": "/pages/contact#faq",
-            "link_text_3": "Contacteer ons",
-            "link_url_3": "/pages/contact",
-            "link_text_4": "",
-            "link_url_4": "",
-            "link_text_5": "",
-            "link_url_5": "",
-            "link_text_6": "",
-            "link_url_6": "",
-            "link_text_7": "",
-            "link_url_7": "",
-            "link_text_8": "",
-            "link_url_8": "",
-            "link_text_9": "",
-            "link_url_9": "",
-            "link_text_10": "",
-            "link_url_10": ""
+            "link_list": "footer-support"
           }
         },
-        "column_EpdReU": {
-          "type": "column",
+        "heading_AkxxKg": {
+          "type": "heading",
           "settings": {
-            "title": "SUPER NINJA",
-            "link_text_1": "Over ons",
-            "link_url_1": "/pages/about-us",
-            "link_text_2": "Partners",
-            "link_url_2": "/pages/partners",
-            "link_text_3": "",
-            "link_url_3": "/pages/reviews",
-            "link_text_4": "Blog",
-            "link_url_4": "/blogs/blog",
-            "link_text_5": "",
-            "link_url_5": "",
-            "link_text_6": "",
-            "link_url_6": "",
-            "link_text_7": "",
-            "link_url_7": "",
-            "link_text_8": "",
-            "link_url_8": "",
-            "link_text_9": "",
-            "link_url_9": "",
-            "link_text_10": "",
-            "link_url_10": ""
+            "link_list": "footer-information"
           }
         }
       },
       "block_order": [
-        "column_UqnGHi",
-        "column_GdaEHb",
-        "column_EpdReU"
+        "heading_gBXHmY",
+        "heading_cpiqFA",
+        "heading_AkxxKg"
       ],
       "name": "t:names.footer",
       "settings": {
-        "background_color": "#f0f2f1",
-        "terms_url": "shopify://policies/terms-of-service",
-        "privacy_url": "shopify://policies/privacy-policy"
+        "super_ninja_description": "<p>Bij Super Ninja ontwikkelen we duurzame en gifvrije oplossingen voor ongediertebestrijding. Met innovatieve producten, zoals de Fruit Fly Ninja, bieden we een effectieve en milieuvriendelijke manier om fruitvliegjes en ander ongedierte te bestrijden. </p>",
+        "padding_block_start": 64,
+        "padding_block_end": 96
       }
     },
-    "footer_utilities_jLGE8U": {
-      "type": "footer-utilities",
+    "section_PWPm9V": {
+      "type": "section",
       "blocks": {
-        "footer_copyright_jweRK8": {
-          "type": "footer-copyright",
+        "group_kqKA3Y": {
+          "type": "group",
+          "name": "t:names.group",
           "settings": {
-            "show_powered_by": true,
-            "font_size": "0.75rem",
-            "case": "none"
+            "content_direction": "row",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#1c1c1c26",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
           },
-          "blocks": {}
-        },
-        "footer_policy_list_VCdnpa": {
-          "type": "footer-policy-list",
-          "settings": {
-            "font_size": "0.75rem",
-            "case": "none"
+          "blocks": {
+            "group_8JjiDD": {
+              "type": "group",
+              "name": "t:names.group",
+              "settings": {
+                "content_direction": "row",
+                "vertical_on_mobile": false,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 40,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#1c1c1c26",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "text_XCtRFj": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p><a href=\"/policies/terms-of-service\" title=\"Terms of Service\">Terms of Service</a></p>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#1c1c1c26",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "text_j9FR3r": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p><a href=\"/policies/privacy-policy\" title=\"Privacy Policy\">Privacy policy</a></p>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#1c1c1c26",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_XCtRFj",
+                "text_j9FR3r"
+              ]
+            },
+            "text_VLqYr6": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "text": "<p>© 2026 Super Ninja. All rights reserved.</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "0.75rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#1c1c1c26",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
           },
-          "blocks": {}
-        },
-        "social_links_Ew63Kq": {
-          "type": "social-links",
-          "settings": {
-            "facebook_url": "https://www.facebook.com/",
-            "instagram_url": "https://www.instagram.com/",
-            "youtube_url": "https://www.youtube.com/",
-            "tiktok_url": "https://www.tiktok.com/",
-            "twitter_url": "https://x.com/",
-            "threads_url": "",
-            "linkedin_url": "",
-            "bluesky_url": "",
-            "snapchat_url": "",
-            "pinterest_url": "",
-            "tumblr_url": "",
-            "vimeo_url": "",
-            "custom_url": ""
-          },
-          "blocks": {}
+          "block_order": [
+            "group_8JjiDD",
+            "text_VLqYr6"
+          ]
         }
       },
       "block_order": [
-        "footer_copyright_jweRK8",
-        "footer_policy_list_VCdnpa",
-        "social_links_Ew63Kq"
+        "group_kqKA3Y"
       ],
-      "name": "t:names.utilities",
+      "name": "t:names.rich_text_section",
       "settings": {
-        "section_width": "page-width",
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
         "gap": 24,
-        "divider_thickness": 0,
-        "color_scheme": "",
-        "padding-block-start": 20,
-        "padding-block-end": 48
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-5",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#1c1c1c26",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 24,
+        "padding-block-end": 24
       }
     }
   },
   "order": [
     "footer_m9NzUG",
-    "footer_utilities_jLGE8U"
+    "section_PWPm9V"
   ]
 }

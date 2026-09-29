@@ -16,7 +16,7 @@
           "type": "_slide",
           "settings": {
             "media_type_1": "image",
-            "image_1": "shopify://shop_images/hf_20260707_140246_b88c0117-d9ba-4d20-aa68-1f7098e6b284.png",
+            "image_1": "shopify://shop_images/super-ninja-fruitvliegjesval-natuurlijke-ongediertebestrijding-effectief.png",
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
@@ -190,7 +190,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Vertrouwd door 1000+ tevreden klanten</p>",
+                    "text": "<p>Vertrouwd door 25000+ tevreden klanten</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -295,13 +295,13 @@
           "type": "_slide",
           "settings": {
             "media_type_1": "image",
-            "image_1": "shopify://shop_images/Frame_2087326309.jpg",
+            "image_1": "shopify://shop_images/assortment_5.png",
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
             "vertical_alignment": "center",
             "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "center",
+            "horizontal_alignment_flex_direction_column": "flex-start",
             "vertical_alignment_flex_direction_column": "center",
             "gap": 12,
             "inherit_color_scheme": false,
@@ -362,7 +362,7 @@
                   "settings": {
                     "content_direction": "row",
                     "vertical_on_mobile": false,
-                    "horizontal_alignment": "center",
+                    "horizontal_alignment": "flex-start",
                     "vertical_alignment": "center",
                     "align_baseline": false,
                     "horizontal_alignment_flex_direction_column": "flex-start",
@@ -469,7 +469,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Trusted by <strong>1000+</strong> happy customers</p>",
+                    "text": "<p>Vertrouwd door 25000+ tevreden klanten</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -501,7 +501,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<p>ON A MISSION TO GREEN PEST CONTROL</p>",
+                "text": "<p>ECOLOGISCH ÉN<br/>GEWOON EFFECTIEF</p>",
                 "width": "fit-content",
                 "max_width": "extra-narrow",
                 "alignment": "left",
@@ -526,7 +526,7 @@
             "text_nchprY": {
               "type": "text",
               "settings": {
-                "text": "<p>Proven effective and sustainable pest control products, made from natural ingredients</p>",
+                "text": "<p>Bewezen resultaat. Want duurzaamheid mag nooit ten koste gaan van wat écht werkt.</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -551,7 +551,7 @@
             "button_trTbUz": {
               "type": "button",
               "settings": {
-                "label": "Find your bug",
+                "label": "Welk beestje heb jij?",
                 "link": "shopify://collections",
                 "open_in_new_tab": false,
                 "style_class": "button",
@@ -574,7 +574,7 @@
           "type": "_slide",
           "settings": {
             "media_type_1": "image",
-            "image_1": "shopify://shop_images/Frame_2087326838.jpg",
+            "image_1": "shopify://shop_images/nature_heavy_lifting.jpg",
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
@@ -598,7 +598,6 @@
             "group_xtEC8d": {
               "type": "group",
               "name": "t:names.group",
-              "disabled": true,
               "settings": {
                 "content_direction": "row",
                 "vertical_on_mobile": true,
@@ -749,7 +748,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Trusted by <strong>1000+</strong> happy customers</p>",
+                    "text": "<p>Vertrouwd door 25000+ tevreden klanten</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -781,7 +780,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<p>NATURE DOES THE HEAVY LIFTING</p>",
+                "text": "<p>De natuur <br/>doet het werk</p>",
                 "width": "fit-content",
                 "max_width": "extra-narrow",
                 "alignment": "left",
@@ -806,7 +805,7 @@
             "text_wmjJFg": {
               "type": "text",
               "settings": {
-                "text": "<p>Powerful pest control solutions inspired by nature — tough on bugs, safe to use around your home and garden.</p>",
+                "text": "<p>Krachtige oplossingen geïnspireerd door de natuur. Hard voor ongedierte, veilig voor jou, je gezin en je tuin.</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -831,7 +830,7 @@
             "button_3hzrP6": {
               "type": "button",
               "settings": {
-                "label": "Find your bug",
+                "label": "Welk beestje heb jij?",
                 "link": "shopify://collections",
                 "open_in_new_tab": false,
                 "style_class": "button",
@@ -941,7 +940,7 @@
           "settings": {
             "icon": "outperforms",
             "icon_asset": "",
-            "text": "<p>Outperforms common<br>DIY solutions</p>"
+            "text": "<p>Beter dan<br/>DIY-middelen</p>"
           }
         },
         "benefit_2": {
@@ -949,7 +948,7 @@
           "settings": {
             "icon": "safe_around_food",
             "icon_asset": "",
-            "text": "<p>Safe around food,<br>kids & pets</p>"
+            "text": "<p>Veilig voor kids<br/>& huisdieren</p>"
           }
         },
         "benefit_3": {
@@ -957,7 +956,7 @@
           "settings": {
             "icon": "set_and_forget",
             "icon_asset": "",
-            "text": "<p>Set-and-forget,<br>no maintenance</p>"
+            "text": "<p>Plaatsen en klaar,<br/>geen onderhoud</p>"
           }
         },
         "benefit_4": {
@@ -965,7 +964,7 @@
           "settings": {
             "icon": "visible_results",
             "icon_asset": "",
-            "text": "<p>Visible results<br/>within 24 hours</p>"
+            "text": "<p>Resultaat<br/>in 24 uur</p>"
           }
         }
       },
@@ -980,7 +979,7 @@
         "text_color": "#1c1c1c",
         "border_color": "#ffffff",
         "divider_opacity": 3,
-        "rotate_deg": -2,
+        "rotate_deg": 0,
         "invert_rotation": false,
         "scale": 110,
         "padding_y": 16,
@@ -1214,6 +1213,7 @@
         "text_767iHR",
         "text_7xcKVX"
       ],
+      "disabled": true,
       "name": "t:names.custom_section",
       "settings": {
         "content_direction": "column",
@@ -1441,6 +1441,7 @@
         "text_FQYrLB",
         "text_xikAXq"
       ],
+      "disabled": true,
       "name": "t:names.custom_section",
       "settings": {
         "content_direction": "column",
@@ -1676,7 +1677,7 @@
           "settings": {
             "icon": "outperforms",
             "icon_asset": "",
-            "text": "<p>Outperforms common<br/>DIY solutions</p>"
+            "text": "<p>Beter dan<br/>DIY-middelen</p>"
           }
         },
         "benefit_item_dtVLhE": {
@@ -1684,7 +1685,7 @@
           "settings": {
             "icon": "safe_around_food",
             "icon_asset": "",
-            "text": "<p>Safe around food,<br>kids & pets</p>"
+            "text": "<p>Veilig voor kids<br/>& huisdieren</p>"
           }
         },
         "benefit_item_axrxwW": {
@@ -1692,7 +1693,7 @@
           "settings": {
             "icon": "set_and_forget",
             "icon_asset": "",
-            "text": "<p>Set-and-forget,<br/>no maintenance</p>"
+            "text": "<p>Plaatsen en klaar,<br/>geen onderhoud</p>"
           }
         },
         "benefit_item_fgdfxe": {
@@ -1700,7 +1701,7 @@
           "settings": {
             "icon": "visible_results",
             "icon_asset": "",
-            "text": "<p>Visible results<br/>within 24 hours</p>"
+            "text": "<p>Resultaat<br/>in 24 uur</p>"
           }
         }
       },
@@ -1715,7 +1716,7 @@
         "text_color": "#1c1c1c",
         "border_color": "#ffffff",
         "divider_opacity": 3,
-        "rotate_deg": -2,
+        "rotate_deg": 0,
         "invert_rotation": true,
         "scale": 110,
         "padding_y": 16,
@@ -1741,7 +1742,7 @@
           "type": "_slide",
           "settings": {
             "media_type_1": "image",
-            "image_1": "shopify://shop_images/Frame_2087326838.jpg",
+            "image_1": "shopify://shop_images/assortment_6.png",
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
@@ -1753,7 +1754,7 @@
             "inherit_color_scheme": false,
             "color_scheme": "scheme-1",
             "toggle_overlay": true,
-            "overlay_color": "#ffffffa1",
+            "overlay_color": "#ffffffcc",
             "overlay_style": "solid",
             "gradient_direction": "to right",
             "padding-block-start": 88,
@@ -1915,7 +1916,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Vertrouwd door 1000+ tevreden klanten</p>",
+                    "text": "<p>Vertrouwd door 25000+ tevreden klanten</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -1947,7 +1948,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<p>Pest control that respects your home</p>",
+                "text": "<p>Ongediertebestrijding <br/>met respect voor jouw huis</p>",
                 "width": "fit-content",
                 "max_width": "extra-narrow",
                 "alignment": "center",
