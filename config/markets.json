@@ -11,15 +11,6 @@
   "markets": {
     "netherlans": {
       "parent": "@default"
-    },
-    "belgium": {
-      "parent": "@default"
-    },
-    "france": {
-      "parent": "@default"
-    },
-    "uk": {
-      "parent": "@default"
     }
   }
 }
