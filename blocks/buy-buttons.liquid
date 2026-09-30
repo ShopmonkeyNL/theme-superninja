@@ -70,7 +70,7 @@
           <span class="buy-buttons-block__bar">
         {%- endif -%}
         <div
-          class="product-form-buttons spacing-style{% if block_settings.stacking %} product-form-buttons--stacked{% endif %}"
+          class="product-form-buttons{% if template.name == 'collection' %} collection{% endif %} spacing-style{% if block_settings.stacking %} product-form-buttons--stacked{% endif %}"
           style="{% render 'spacing-style', settings: block_settings %}"
           ref="productFormButtons"
         >
@@ -239,7 +239,7 @@
             form_obj: form
           %}
 
-          <div class="delivery-text">
+          <div class="delivery-text{% if template.name == 'collection' %} collection{% endif %}">
             {% content_for 'block',
               type: 'text',
               id: 'text'

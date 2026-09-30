@@ -32,6 +32,11 @@
 >
   {% render 'skip-to-content-link', href: '#ResultsList', text: 'accessibility.skip_to_results_list' %}
 
+  {% content_for 'block',
+    type: '_breadcrumbs',
+    id: 'breadcrumbs'
+  %}
+
   <div
     class="collection-wrapper grid gap-style{% if section.settings.product_grid_width == 'full-width' %} collection-wrapper--grid-full-width{% endif %}"
   >
@@ -40,11 +45,6 @@
       id: 'filters',
       results: collection,
       results_size: collection.products_count
-    %}
-
-    {% content_for 'block',
-      type: '_breadcrumbs',
-      id: 'breadcrumbs'
     %}
 
     {% assign products_per_page = 24 %}
@@ -63,7 +63,7 @@
             data-product-id="{{ product.id }}"
             ref="cards[]"
           > 
-            {% content_for 'block', type: 'product-card', id: 'product-card', product: product %}
+            {% content_for 'block', type: 'product-card', id: 'product-card', product: product, show_floating_atc: false %}
           </li>
         {% endfor %}
       {% endcapture %}

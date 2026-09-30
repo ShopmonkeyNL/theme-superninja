@@ -23,18 +23,25 @@
     & .delivery-text {
       grid-area: text;
     }
+
+    & .delivery-text.collection {
+      display: none;
+    }
   }
 
   .product-form-buttons {
     display: flex;
     flex-wrap: wrap;
 
-    display: grid;
-    grid-template: 
-      "qty price"
-      "button button"
-      "text text"
-    ;
+    &:not(.collection) {
+      display: grid;
+      grid-template: 
+        "qty price"
+        "button button"
+        "text text"
+      ;
+    }
+
   }
 
   .product-form-buttons:not(:has(.quantity-rules)) {
