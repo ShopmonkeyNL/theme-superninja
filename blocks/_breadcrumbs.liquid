@@ -34,6 +34,16 @@
   </ol>
 </nav>
 
+{% if template.name == 'collection' %}
+  {% style %}
+    @media (max-width: 749px) {
+      #shopify-block-{{ block.id }} {
+        padding-inline: var(--padding-lg);
+      }
+    }
+  {% endstyle %}
+{% endif %}
+
 {% style %}
   .breadcrumbs ol {
     padding: 0;
