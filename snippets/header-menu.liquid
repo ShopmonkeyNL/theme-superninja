@@ -65,7 +65,7 @@
         {% endif %}
       </a>
 
-      {% comment %} {%- if link.links != blank and is_how_it_works == false -%}
+      {%- if link.links != blank and is_how_it_works == false -%}
         <div class="menu-list__submenu{{ color_scheme_classes }}" ref="submenu[]">
           <div
             id="submenu-{{ forloop.index }}"
@@ -73,27 +73,20 @@
             style="{% render 'submenu-font-styles', settings: block_settings %}"
           >
             {% assign list_id = 'MegaMenuList-' | append: forloop.index %}
+
             {% render 'mega-menu',
               section: section,
               parent_link: link,
               id: list_id,
               menu_content_type: menu_content_type,
               content_aspect_ratio: ratio,
-              image_border_radius: image_border_radius
+              image_border_radius: image_border_radius,
+              banners: banners,
+              mega_menu_items: mega_menu_items
             %}
           </div>
         </div>
-      {%- endif -%} {% endcomment %}
-
-      {% if link.links != blank and is_how_it_works == false %}
-        <div class="submenu-dropdown">
-          {% for childlink in link.links %}
-            <a href="{{ childlink.url }}">
-              {{ childlink.title }}
-            </a>
-          {% endfor %}
-        </div>
-      {% endif %}
+      {%- endif -%}
     </li>
     {% endunless %}
   {% endfor %}

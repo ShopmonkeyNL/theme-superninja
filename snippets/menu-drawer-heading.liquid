@@ -1,0 +1,77 @@
+{%- doc -%}
+  Renders the heading bar at the top of the mobile menu.
+
+  @param {string} [title] - The label to show. Defaults to the translated "Menu".
+  @param {boolean} [sub] - Renders a back button in front of the label.
+  @param {string} [back_action] - The `on:click` binding of the back button.
+
+  @example
+  {% render 'menu-drawer-heading', sub: true, title: link.title %}
+{%- enddoc -%}
+
+{% liquid
+  assign heading_title = title
+  if heading_title == blank
+    assign heading_title = 'accessibility.menu' | t
+  endif
+
+  assign heading_back_action = back_action
+  if heading_back_action == blank
+    assign heading_back_action = '/closeSubmenu'
+  endif
+%}
+
+<div class="menu-drawer-heading">
+  <div class="menu-drawer-heading__inner">
+    {% if sub %}
+      <button
+        type="button"
+        class="menu-drawer-heading__back button-unstyled"
+        aria-label="{{ 'actions.back' | t }}"
+        on:click="{{ heading_back_action }}"
+      >
+        <span class="svg-wrapper" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <path d="M11.4 12L16 16.6L14.6 18L8.6 12L14.6 6L16 7.4L11.4 12Z" fill="currentColor"/>
+          </svg>
+        </span>
+      </button>
+    {% endif %}
+    <div class="menu-drawer-heading__item h5">{{ heading_title | escape }}</div>
+  </div>
+</div>
+
+{% style %}
+  .menu-drawer-heading {
+    position: relative;
+    width: 100%;
+    padding-inline: var(--drawer-padding);
+
+    & .menu-drawer-heading__inner {
+      text-align: center;
+      padding: 0.5rem;
+      border: 0.5px solid #D2D2D2;
+      background-color: #F5F6F6;
+      color: var(--color-foreground-heading);
+    }
+
+    & .menu-drawer-heading__back {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      left: calc(var(--drawer-padding) + 0.5rem);
+      top: 50%;
+      transform: translateY(-50%);
+      min-width: var(--icon-size-md);
+      min-height: var(--icon-size-md);
+      color: var(--color-foreground-heading);
+      cursor: pointer;
+
+      & svg {
+        width: var(--icon-size-md);
+        height: var(--icon-size-md);
+      }
+    }
+  }
+{% endstyle %}

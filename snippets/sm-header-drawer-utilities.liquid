@@ -1,0 +1,81 @@
+{%- doc -%}
+  Renders the utility row shown underneath every view of the mobile header menu:
+  the secondary links from the design ("Contact / Klantenservice / Keuzehulp") and,
+  when the shop sells in more than one market or language, the trigger that opens
+  the localization view.
+
+  @param {object} [secondary_menu] - The linklist with the secondary links
+  @param {boolean} [show_country] - Whether a country selector is available
+  @param {boolean} [show_language] - Whether a language selector is available
+  @param {boolean} [country_selector_style] - Whether to show the country flag
+  @param {string} [section_id] - The id of the header section, used to link the trigger to its view
+  @param {boolean} [show_secondary_menu] - Whether to show the secondary menu
+
+  @example
+  {% render 'sm-header-drawer-utilities', secondary_menu: secondary_menu, show_country: true %}
+{%- enddoc -%}
+
+{% liquid
+  assign show_localization = false
+  if show_country or show_language
+    assign show_localization = true
+  endif
+%}
+
+{%- if secondary_menu.links.size > 0 or show_localization -%}
+  <div class="sm-menu__utilities">
+    {%- if secondary_menu.links.size > 0 and show_secondary_menu -%}
+      <nav aria-label="{{ secondary_menu.title | escape }}">
+        <ul class="sm-menu__utility-links list-unstyled" role="list">
+          {%- for link in secondary_menu.links -%}
+            <li>
+              <a
+                href="{{ link.url }}"
+                class="sm-menu__utility-link"
+                {% if link.current %}
+                  aria-current="page"
+                {% endif %}
+              >
+                {{- link.title | escape -}}
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+    {%- endif -%}
+
+    {%- if show_localization -%}
+      <button
+        type="button"
+        class="sm-menu__localization-trigger button-unstyled"
+        data-submenu="localization"
+        aria-controls="SmMenuView-localization-{{ section_id }}"
+        aria-expanded="false"
+        on:click="/openSubmenu"
+      >
+        <span class="sm-menu__localization-label">
+          {%- if show_country -%}
+            {%- if country_selector_style -%}
+              <span
+                class="icon-flag"
+                style="background-image: url({{ localization.country | image_url: width: 32 }});"
+              ></span>
+            {%- endif -%}
+            <span>{{ localization.country.currency.iso_code }}</span>
+          {%- endif -%}
+          {%- if show_country and show_language -%}
+            <span aria-hidden="true">/</span>
+          {%- endif -%}
+          {%- if show_language -%}
+            <span>{{ localization.language.iso_code | upcase }}</span>
+          {%- endif -%}
+        </span>
+        <span class="svg-wrapper sm-menu__chevron" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="5" height="8" viewBox="0 0 5 8" fill="none">
+            <path d="M3.06667 4L0 0.933333L0.933333 0L4.93333 4L0.933333 8L0 7.06667L3.06667 4Z" fill="#FF5000"/>
+          </svg>
+        </span>
+      </button>
+    {%- endif -%}
+  </div>
+{%- endif -%}

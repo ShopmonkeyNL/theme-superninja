@@ -1,0 +1,116 @@
+<div class='custom-textpage-submenu'>
+  <div class='cts__left'>
+    <div class='cts__inner'>
+      <div class='h5'>{{ parent_link.title }}</div>
+
+      <div class='cts__links'>
+        {% for link in parent_link.links %}
+          <a href='{{ link.url }}' aria-label="{{ link.title }}">
+            {% if link.object.featured_image %}
+              <img
+                src='{{ link.object.featured_image | image_url: width: 500 }}'
+                alt='{{ link.title }} bug image'
+              >
+            {% elsif metaobjects.mega_menu_custom_textpages_meer_info.values %}
+              {% for entry in metaobjects.mega_menu_custom_textpages_meer_info.values %}
+                {% if entry.system.handle == link.handle %}
+                  {% if entry.image %}
+                    <img
+                      src='{{ entry.image | image_url: width: 500 }}'
+                      alt='{{ entry.system.handle }} bug image'
+                    >
+                  {% else %}
+                    <span
+                      class='sm-menu__link-icon sm-menu__link-icon--placeholder'
+                      aria-hidden='true'
+                    ></span>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            {% else %}
+              <span
+                class='sm-menu__link-icon sm-menu__link-icon--placeholder'
+                aria-hidden='true'
+              ></span>
+            {% endif %}
+            <span>{{ link.title }}</span>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class='cts__nav'>
+      {% for nav_link in linklists['mega-menu-secondary-nav'].links %}
+        <a href='{{ nav_link.url }}'>{{ nav_link.title }}</a>
+      {% endfor %}
+    </div>
+  </div>
+
+  {{ banners }}
+</div>
+
+{% style %}
+  .custom-textpage-submenu {
+    display: flex;
+    justify-content: space-between;
+    gap: 8rem;
+
+    & .cts__left {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      color: var(--color-foreground-heading);
+    }
+
+    & .cts__inner {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    & .cts__links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 4rem;
+      row-gap: 1rem;
+      width: fit-content;
+
+      & > a {
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: opacity 0.2s ease-out;
+        font-size: var(--font-h6--size);
+
+        & img {
+          width: 40px;
+          aspect-ratio: 1;
+        }
+
+        &:last-of-type {
+          padding: 0;
+        }
+
+        &:hover {
+          opacity: 0.5;
+          transition: opacity 0.2s ease-out;
+        }
+      }
+    }
+
+    & .cts__nav {
+      display: flex;
+      gap: 3rem;
+
+      & > a {
+        transition: opacity 0.2s ease-out;
+
+        &:hover {
+          opacity: 0.5;
+          transition: opacity 0.2s ease-out;
+        }
+      }
+    }
+  }
+{% endstyle %}
