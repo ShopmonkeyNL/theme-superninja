@@ -516,7 +516,6 @@
         "buy_buttons_Hj9nhX": {
           "type": "buy-buttons",
           "name": "t:names.product_buy_buttons",
-          "disabled": true,
           "settings": {
             "color_scheme": "scheme-f33bf0ba-b43d-424f-9d6c-9f4b9bcd8138",
             "stacking": false,

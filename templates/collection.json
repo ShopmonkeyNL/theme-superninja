@@ -65,7 +65,10 @@
           "blocks": {}
         }
       },
-      "block_order": ["text_UDitcC", "text_6MHmND"],
+      "block_order": [
+        "text_UDitcC",
+        "text_6MHmND"
+      ],
       "disabled": true,
       "name": "t:names.custom_section",
       "settings": {
@@ -125,7 +128,9 @@
           "blocks": {}
         }
       },
-      "block_order": ["text_AUegAx"],
+      "block_order": [
+        "text_AUegAx"
+      ],
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
@@ -292,6 +297,12 @@
           },
           "blocks": {}
         },
+        "breadcrumbs": {
+          "type": "_breadcrumbs",
+          "static": true,
+          "settings": {},
+          "blocks": {}
+        },
         "product-card": {
           "type": "product-card",
           "static": true,
@@ -423,7 +434,10 @@
                       "blocks": {}
                     }
                   },
-                  "block_order": ["floating_badge_AQUqAM", "image_RX4TPX"]
+                  "block_order": [
+                    "floating_badge_AQUqAM",
+                    "image_RX4TPX"
+                  ]
                 },
                 "product_card_group_6nKMdP": {
                   "type": "_product-card-group",
@@ -504,7 +518,10 @@
                       "blocks": {}
                     }
                   },
-                  "block_order": ["review_9UraQt", "text_DECX8w"]
+                  "block_order": [
+                    "review_9UraQt",
+                    "text_DECX8w"
+                  ]
                 }
               },
               "block_order": [
@@ -597,6 +614,7 @@
                     },
                     "price": {
                       "type": "price",
+                      "disabled": true,
                       "static": true,
                       "settings": {
                         "show_sale_price_first": true,
@@ -635,6 +653,7 @@
                     },
                     "text": {
                       "type": "text",
+                      "disabled": true,
                       "static": true,
                       "settings": {
                         "text": "",
@@ -663,7 +682,10 @@
                   "block_order": []
                 }
               },
-              "block_order": ["price_MnCbW9", "buy_buttons_HN3f8C"]
+              "block_order": [
+                "price_MnCbW9",
+                "buy_buttons_HN3f8C"
+              ]
             }
           },
           "block_order": [
@@ -733,7 +755,9 @@
           "blocks": {}
         }
       },
-      "block_order": ["text_HkbAkp"],
+      "block_order": [
+        "text_HkbAkp"
+      ],
       "name": "t:names.rich_text_section",
       "settings": {
         "content_direction": "column",
@@ -859,7 +883,10 @@
               "blocks": {}
             }
           },
-          "block_order": ["text_V3hPtg", "text_YcYTCg"]
+          "block_order": [
+            "text_V3hPtg",
+            "text_YcYTCg"
+          ]
         },
         "video_stories_HKacU3": {
           "type": "_video-stories",
@@ -868,7 +895,10 @@
           "blocks": {}
         }
       },
-      "block_order": ["group_yiFA7F", "video_stories_HKacU3"],
+      "block_order": [
+        "group_yiFA7F",
+        "video_stories_HKacU3"
+      ],
       "name": "t:names.custom_section",
       "settings": {
         "content_direction": "column",
