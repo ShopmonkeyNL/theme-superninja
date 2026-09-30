@@ -116,7 +116,7 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
-                "color": "var(--color-foreground)",
+                "color": "var(--color-foreground-heading)",
                 "background": false,
                 "background_color": "#1c1c1c26",
                 "corner_radius": 0,
@@ -439,6 +439,7 @@
                   "type": "buy-buttons",
                   "name": "t:names.product_buy_buttons",
                   "settings": {
+                    "color_scheme": "",
                     "stacking": false,
                     "show_pickup_availability": true,
                     "gift_card_form": true,
@@ -455,6 +456,30 @@
                       "settings": {},
                       "blocks": {}
                     },
+                    "price": {
+                      "type": "price",
+                      "disabled": true,
+                      "static": true,
+                      "settings": {
+                        "show_sale_price_first": true,
+                        "show_installments": false,
+                        "show_tax_info": false,
+                        "type_preset": "",
+                        "width": "100%",
+                        "alignment": "left",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "color": "var(--color-foreground)",
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    },
                     "add-to-cart": {
                       "type": "add-to-cart",
                       "static": true,
@@ -468,6 +493,33 @@
                       "disabled": true,
                       "static": true,
                       "settings": {},
+                      "blocks": {}
+                    },
+                    "text": {
+                      "type": "text",
+                      "disabled": true,
+                      "static": true,
+                      "settings": {
+                        "text": "",
+                        "width": "fit-content",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "color": "var(--color-foreground)",
+                        "background": false,
+                        "background_color": "#1c1c1c26",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
                       "blocks": {}
                     }
                   },
