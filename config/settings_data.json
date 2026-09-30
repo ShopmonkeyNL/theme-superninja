@@ -744,5 +744,11 @@
         }
       }
     }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      ".blog-post-cards__image {height: 220px !important; object-fit: cover;}",
+      ".blog-post-content {max-width: 100% !important;}"
+    ]
   }
 }

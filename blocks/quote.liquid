@@ -1,0 +1,478 @@
+{%- doc -%}
+  Quote block: a card-styled testimonial with a large decorative quote mark,
+  the quote in large type, and an author row (round portrait, name, role).
+
+  Designed to be repeated inside a group: width fit/fill/custom (desktop +
+  mobile) controls side-by-side vs stacked layouts. Reuses the theme's
+  spacing-style and size-style snippets so sizing behaves like other blocks.
+{%- enddoc -%}
+
+{%- liquid
+  assign quote_font = 'var(--font-body--family)'
+  if block.settings.font == 'heading'
+    assign quote_font = 'var(--font-heading--family)'
+  endif
+-%}
+
+<div
+  class="
+    quote-card
+    spacing-style
+    size-style
+    {% if block.settings.inherit_color_scheme == false %}color-{{ block.settings.color_scheme }}{% endif %}
+  "
+  style="
+    {% render 'spacing-style', settings: block.settings %}
+    {% render 'size-style', settings: block.settings %}
+    --quote-font: {{ quote_font }};
+    --quote-font-size: {{ block.settings.quote_font_size_desktop }}px;
+    --quote-font-size-mobile: {{ block.settings.quote_font_size_mobile }}px;
+    --quote-font-weight: {{ block.settings.quote_font_weight }};
+    --quote-content-gap: {{ block.settings.content_gap }}px;
+    --quote-mark-size: {{ block.settings.quote_mark_size }}px;
+    --quote-mark-color: {{ block.settings.quote_mark_color }};
+    --quote-portrait-size: {{ block.settings.portrait_size }}px;
+    {% if block.settings.custom_background %}background-color: {{ block.settings.background_color }};{% endif %}
+    border-radius: {{ block.settings.border_radius }}px;
+    {% if block.settings.shadow %}box-shadow: 0 4px 16px rgb(0 0 0 / 8%);{% endif %}
+  "
+  {{ block.shopify_attributes }}
+>
+  {%- if block.settings.show_quote_mark -%}
+    <span class="quote-card__mark" aria-hidden="true">
+      <svg viewBox="0 0 44 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 32V20.6C0 9.5 6.2 2.3 16.4 0l2.3 5.5C12 7.9 8.9 11.7 8.7 15.7H18V32H0Z" fill="currentColor"/>
+        <path d="M26 32V20.6C26 9.5 32.2 2.3 42.4 0l2.3 5.5C38 7.9 34.9 11.7 34.7 15.7H44V32H26Z" fill="currentColor"/>
+      </svg>
+    </span>
+  {%- endif -%}
+
+  <div class="quote-card__body">
+    {%- if block.settings.quote != blank -%}
+      <blockquote class="quote-card__text">
+        {{- block.settings.quote | newline_to_br -}}
+      </blockquote>
+    {%- endif -%}
+
+    {%- if block.settings.portrait or block.settings.author != blank or block.settings.role != blank -%}
+      <div class="quote-card__author">
+        {%- if block.settings.portrait -%}
+          {{
+            block.settings.portrait
+            | image_url: width: 200
+            | image_tag: widths: '100, 200', class: 'quote-card__portrait', loading: 'lazy'
+          }}
+        {%- endif -%}
+        <div class="quote-card__meta">
+          {%- if block.settings.author != blank -%}
+            <span class="quote-card__name">{{ block.settings.author }}</span>
+          {%- endif -%}
+          {%- if block.settings.role != blank -%}
+            <span class="quote-card__role">{{ block.settings.role }}</span>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .quote-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    position: relative;
+  }
+
+  .quote-card__mark {
+    flex-shrink: 0;
+    color: var(--quote-mark-color, currentColor);
+    line-height: 0;
+  }
+
+  .quote-card__mark svg {
+    width: var(--quote-mark-size, 40px);
+    height: auto;
+  }
+
+  .quote-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--quote-content-gap, 24px);
+    min-width: 0;
+  }
+
+  .quote-card__text {
+    margin: 0;
+    font-family: var(--quote-font, var(--font-body--family));
+    font-size: var(--quote-font-size, 28px);
+    font-weight: var(--quote-font-weight, 700);
+    line-height: 1.3;
+    color: var(--color-foreground-heading, currentColor);
+    text-wrap: pretty;
+  }
+
+  .quote-card__author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .quote-card__portrait {
+    width: var(--quote-portrait-size, 48px);
+    height: var(--quote-portrait-size, 48px);
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .quote-card__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .quote-card__name {
+    font-weight: 700;
+    font-size: 0.9375rem;
+  }
+
+  .quote-card__role {
+    font-size: 0.875rem;
+    opacity: 0.65;
+  }
+
+  @media screen and (max-width: 749px) {
+    .quote-card__text {
+      font-size: var(--quote-font-size-mobile, var(--quote-font-size, 20px));
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Quote",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Quote",
+      "default": "When we launched with the number one Dutch retailer, Super Ninja drove 18% category growth. Today we remain a strong partner of theirs, having turned that growth into a lasting share of the shelf.\""
+    },
+    {
+      "type": "text",
+      "id": "author",
+      "label": "Name",
+      "default": "Joost van Vollenhoven"
+    },
+    {
+      "type": "text",
+      "id": "role",
+      "label": "Role & company",
+      "default": "CEO & Owner, Super Ninja"
+    },
+    {
+      "type": "image_picker",
+      "id": "portrait",
+      "label": "Portrait or logo",
+      "info": "Shown as a small round image next to the name."
+    },
+    {
+      "type": "range",
+      "id": "portrait_size",
+      "label": "Portrait size",
+      "min": 32,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "header",
+      "content": "Quote mark"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_quote_mark",
+      "label": "Show quote mark",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "quote_mark_size",
+      "label": "Size",
+      "min": 20,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 40,
+      "visible_if": "{{ block.settings.show_quote_mark }}"
+    },
+    {
+      "type": "color",
+      "id": "quote_mark_color",
+      "label": "Colour",
+      "default": "#FF5000",
+      "visible_if": "{{ block.settings.show_quote_mark }}"
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "select",
+      "id": "font",
+      "label": "t:settings.font",
+      "options": [
+        {
+          "value": "body",
+          "label": "t:options.body"
+        },
+        {
+          "value": "heading",
+          "label": "t:options.heading"
+        }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "range",
+      "id": "quote_font_size_desktop",
+      "label": "Quote font size",
+      "min": 16,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "quote_font_size_mobile",
+      "label": "Quote font size (mobile)",
+      "min": 14,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "select",
+      "id": "quote_font_weight",
+      "label": "t:settings.font_weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "t:options.regular"
+        },
+        {
+          "value": "500",
+          "label": "t:options.medium"
+        },
+        {
+          "value": "600",
+          "label": "t:options.semibold"
+        },
+        {
+          "value": "700",
+          "label": "t:options.bold"
+        }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "range",
+      "id": "content_gap",
+      "label": "Space between quote and name",
+      "min": 8,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Card"
+    },
+    {
+      "type": "checkbox",
+      "id": "custom_background",
+      "label": "Custom background colour",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background colour",
+      "alpha": true,
+      "default": "#F0F2F1",
+      "visible_if": "{{ block.settings.custom_background }}"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "t:settings.border_radius",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "checkbox",
+      "id": "shadow",
+      "label": "Shadow",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "inherit_color_scheme",
+      "label": "t:settings.inherit_color_scheme",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1",
+      "visible_if": "{{ block.settings.inherit_color_scheme == false }}"
+    },
+    {
+      "type": "header",
+      "content": "t:content.size"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "t:settings.width",
+      "options": [
+        {
+          "value": "fit-content",
+          "label": "t:options.fit_content"
+        },
+        {
+          "value": "fill",
+          "label": "t:options.fill"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.custom"
+        }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "range",
+      "id": "custom_width",
+      "label": "t:settings.custom_width",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ block.settings.width == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "width_mobile",
+      "label": "t:settings.width_mobile",
+      "options": [
+        {
+          "value": "fit-content",
+          "label": "t:options.fit_content"
+        },
+        {
+          "value": "fill",
+          "label": "t:options.fill"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.custom"
+        }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "range",
+      "id": "custom_width_mobile",
+      "label": "t:settings.custom_width",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ block.settings.width_mobile == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": "t:settings.height",
+      "options": [
+        {
+          "value": "fit",
+          "label": "t:options.fit_content"
+        },
+        {
+          "value": "fill",
+          "label": "t:options.fill"
+        }
+      ],
+      "default": "fit"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-start",
+      "label": "t:settings.left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-end",
+      "label": "t:settings.right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Quote",
+      "category": "t:categories.basic"
+    }
+  ]
+}
+{% endschema %}

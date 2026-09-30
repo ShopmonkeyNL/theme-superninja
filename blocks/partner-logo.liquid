@@ -1,0 +1,162 @@
+{%- doc -%}
+  Partner logo block: an image sized by a fixed height (desktop + mobile)
+  so a row of logos lines up visually regardless of each file's dimensions.
+  Designed for the marquee section, but works inside groups and cards too.
+{%- enddoc -%}
+
+{%- liquid
+  assign logo_link = block.settings.link
+-%}
+
+<div
+  class="partner-logo{% if block.settings.keep_color %} partner-logo--keep-color{% endif %}{% if block.settings.grayscale %} partner-logo--grayscale{% endif %}"
+  style="
+    --partner-logo-height: {{ block.settings.height }}px;
+    {% if block.settings.custom_mobile_height %}--partner-logo-height-mobile: {{ block.settings.height_mobile }}px;{% endif %}
+  "
+  {{ block.shopify_attributes }}
+>
+  {%- if logo_link != blank -%}
+    <a
+      href="{{ logo_link }}"
+      class="partner-logo__link"
+      {% if block.settings.open_in_new_tab %}
+        target="_blank" rel="noopener"
+      {% endif %}
+    >
+  {%- endif -%}
+
+  {%- if block.settings.image -%}
+    {{
+      block.settings.image
+      | image_url: width: 800
+      | image_tag: widths: '200, 400, 600, 800', class: 'partner-logo__img', loading: 'lazy'
+    }}
+  {%- else -%}
+    {{ 'image' | placeholder_svg_tag: 'partner-logo__img partner-logo__placeholder' }}
+  {%- endif -%}
+
+  {%- if logo_link != blank -%}
+    </a>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .partner-logo {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .partner-logo__link {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .partner-logo__img {
+    height: var(--partner-logo-height, 48px);
+    width: auto;
+    max-width: none;
+    object-fit: contain;
+  }
+
+  .partner-logo__placeholder {
+    width: calc(var(--partner-logo-height, 48px) * 2);
+  }
+
+  .partner-logo--grayscale .partner-logo__img {
+    filter: grayscale(100%);
+  }
+
+  /* Opt-out for individual logos inside a grayscale marquee */
+  marquee-component.marquee--grayscale .marquee__repeated-items .partner-logo--keep-color :is(img, svg) {
+    filter: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .partner-logo__img {
+      height: var(--partner-logo-height-mobile, var(--partner-logo-height, 48px));
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Partner logo",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:settings.image",
+      "info": "PNG or SVG with a transparent background works best."
+    },
+    {
+      "type": "range",
+      "id": "height",
+      "label": "Logo height",
+      "min": 16,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "checkbox",
+      "id": "custom_mobile_height",
+      "label": "Custom mobile height",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "height_mobile",
+      "label": "Logo height (mobile)",
+      "min": 12,
+      "max": 160,
+      "step": 2,
+      "unit": "px",
+      "default": 32,
+      "visible_if": "{{ block.settings.custom_mobile_height }}"
+    },
+    {
+      "type": "header",
+      "content": "Colour"
+    },
+    {
+      "type": "checkbox",
+      "id": "grayscale",
+      "label": "Grayscale",
+      "info": "Renders this logo in grayscale, also outside the marquee.",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "keep_color",
+      "label": "Keep colour in grayscale marquee",
+      "info": "Skips the marquee's grayscale filter for this logo only.",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Link"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:settings.link"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_in_new_tab",
+      "label": "t:settings.open_new_tab",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Partner logo",
+      "category": "t:categories.basic"
+    }
+  ]
+}
+{% endschema %}

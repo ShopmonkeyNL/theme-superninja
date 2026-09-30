@@ -16,7 +16,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>Discover our collections</p>",
+            "text": "<p>Ontdek ons assortiment</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -46,7 +46,7 @@
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
-            "type_preset": "rte",
+            "type_preset": "h2",
             "font": "var(--font-body--family)",
             "font_size": "1rem",
             "line_height": "normal",
@@ -69,6 +69,7 @@
         "text_UDitcC",
         "text_6MHmND"
       ],
+      "disabled": true,
       "name": "t:names.custom_section",
       "settings": {
         "content_direction": "column",
@@ -333,7 +334,9 @@
                       "name": "Floating badge",
                       "settings": {
                         "inline_position": "left",
-                        "block_position": "top"
+                        "inline_position_px": 16,
+                        "block_position": "top",
+                        "block_position_px": 16
                       },
                       "blocks": {}
                     },
@@ -498,6 +501,7 @@
                 "price_MnCbW9": {
                   "type": "price",
                   "name": "t:names.product_price",
+                  "disabled": true,
                   "settings": {
                     "show_sale_price_first": true,
                     "show_installments": false,
@@ -521,6 +525,7 @@
                 "buy_buttons_HN3f8C": {
                   "type": "buy-buttons",
                   "name": "t:names.product_buy_buttons",
+                  "disabled": true,
                   "settings": {
                     "stacking": false,
                     "show_pickup_availability": true,

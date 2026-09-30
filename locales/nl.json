@@ -339,4 +339,46 @@
       "in_cart": "in winkelwagen"
     }
   }
+,"contact": {
+  "full_name": "Volledige naam",
+  "email_address": "E-mailadres",
+  "purchase_source": "Waar heb je deze aankoop gedaan?",
+  "country": "Land",
+  "order_number": "Bestelnummer",
+  "message": "Bericht",
+  "placeholder_name": "Jan Jansen",
+  "placeholder_purchase": "Waar heb je deze aankoop gedaan?",
+  "placeholder_message": "Vertel ons meer over je vraag...",
+"placeholder_country": "Nederland"
+},
+"blog": {
+  "minute_to_read": "minuut te lezen",
+  "minutes_to_read": "minuten te lezen",
+  "continue_reading": "Lees verder",
+"categories": "Categorieën",
+"all_categories": "Alle categorieën",
+"tag": {
+  "fruit-flies": "Fruitvliegjes",
+  "fungus-gnats": "Rouwmuggen",
+  "food-moths": "Voedselmotten",
+  "silverfish": "Zilvervisjes",
+  "wasps": "Wespen",
+  "general": "Algemeen"
+}
+},
+"partner": {
+  "company_name": "Bedrijfsnaam",
+  "company_website": "Bedrijfswebsite",
+  "contact_name": "Contactpersoon",
+  "country": "Land",
+  "email_address": "E-mailadres",
+  "phone": "Telefoon",
+  "partner_type": "Type partner",
+  "message": "Bericht",
+  "placeholder_company": "Jouw bedrijf",
+  "placeholder_name": "Jan Jansen",
+  "placeholder_message": "Vertel ons over jouw markt, kanaal en dekking...",
+  "select_country": "Selecteer je land",
+  "select_partner_type": "Selecteer type partner"
+}
 }
