@@ -7,28 +7,29 @@
   style="{% render 'spacing-style', settings: block_settings %}"
   {{ block.shopify_attributes }}
 >
-  <h1 class="{{ block_settings.type_preset | default: 'h2' }}">
+  <div class="{{ block_settings.type_preset | default: 'h2' }}">
     {%- if cart.empty? -%}
       {{ 'content.your_cart_is_empty' | t }}
     {%- else -%}
       {{ block_settings.title }}
       {%- if block_settings.show_count -%}{% render 'cart-bubble' %}{%- endif -%}
     {%- endif -%}
-  </h1>
+  </div>
 </div>
 
 {% style %}
-  .cart-title h1 {
+  .cart-title {
     margin-block-end: 0;
     display: inline-flex;
     align-items: center;
-    gap: var(--gap-sm);
+    color: var(--color-foreground-heading);
   }
 
   .cart-title .cart-bubble {
     width: fit-content;
     display: inline-flex;
     align-items: center;
+    align-self: end;
     justify-content: center;
     border-radius: var(--style-border-radius-buttons-primary);
     aspect-ratio: auto;
@@ -41,7 +42,7 @@
   }
 
   .cart-title .cart-bubble__background {
-    background-color: rgb(var(--color-foreground-rgb) / var(--opacity-10-25));
+    background: transparent;
   }
 
   .cart-title .cart-bubble__text {

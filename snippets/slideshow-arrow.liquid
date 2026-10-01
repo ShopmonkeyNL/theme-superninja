@@ -22,14 +22,6 @@
   if icon_style contains 'large'
     assign icon_size = 'large'
   endif
-
-  comment
-    PDP arrows: product.v2 template = green arrow-right.svg, else orange Capa_1.svg
-  endcomment
-  assign arrow_asset = 'Capa_1.svg'
-  if style == 'arrow' and icon_name == 'arrow' and template.name == 'product' and template.suffix == 'v2'
-    assign arrow_asset = 'arrow-right.svg'
-  endif
 -%}
 
 <button
@@ -48,6 +40,8 @@
   ref="{{ action }}"
 >
   <span class="svg-wrapper icon-{{ icon_name }}">
-    {{- arrow_asset | inline_asset_content -}}
+    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+      <path d="M6.58564 16L11.1718 11.4144H0V7.41436H11.1718L6.58564 2.82879L9.41436 0L18.8279 9.41443L9.41436 18.8288L6.58564 16Z" fill="#F0F2F1"/>
+    </svg>
   </span>
 </button>

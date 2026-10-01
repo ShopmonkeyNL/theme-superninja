@@ -1,0 +1,59 @@
+<div class='icon-usps__item'>
+  <div class='item-icon'>
+    {% content_for 'block', type: 'icon', id: 'icon' %}
+  </div>
+
+  <div class='item-text'>
+    {% content_for 'block', type: 'group', id: 'text' %}
+  </div>
+</div>
+
+{% style %}
+  #shopify-block-{{ block.id }} {
+    width: 100%;
+    flex: 1;
+  }
+
+  .icon-usps__item {
+    border: var(--border-width) solid var(--border-color);
+    padding: 1.5rem;
+    border-radius: 2px;
+
+    display: flex;
+    gap: 1rem;
+
+    & .item-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      min-width: fit-content;
+
+      padding: 1.5rem;
+      aspect-ratio: 1;
+      background-color: var(--color-primary-button-background);
+
+      border-radius: inherit;
+      color: var(--color-background);
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "_icon-usp",
+  "blocks": [
+    {
+      "type": "icon"
+    },
+    {
+      "type": "group"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Icon usp"
+    }
+  ]
+}
+{% endschema %}

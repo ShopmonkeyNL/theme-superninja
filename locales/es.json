@@ -144,6 +144,9 @@
     "taxes_at_checkout_shipping_at_checkout_without_policy": "Impuestos, descuentos y envío calculados en la página de pago.",
     "checkout": "Pagar",
     "cart_title": "Carrito",
+    "cart_products": "Productos",
+    "cart_delivery": "Entrega",
+    "cart_delivery_free": "Gratis",
     "price": "Precio",
     "price_regular": "Precio habitual",
     "price_compare_at": "Precio de comparación",
@@ -305,6 +308,11 @@
   },
   "products": {
     "product": {
+      "best_for": "Lo mejor para",
+      "description": "Descripción",
+      "ingredients": "Ingredientes",
+      "shipping_and_returns": "Envíos y devoluciones",
+      "faq": "Preguntas frecuentes",
       "add_to_cart": "Agregar al carrito",
       "added_to_cart": "Agregado al carrito",
       "adding_to_cart": "Agregando...",
@@ -316,7 +324,21 @@
       "quantity_increments": "Incrementos de {{ increment }}",
       "quantity_minimum": "Mínimo de {{ minimum }}",
       "quantity_maximum": "Máximo de {{ maximum }}",
-      "in_cart": "en el carrito"
+      "in_cart": "en el carrito",
+      "features": "Características",
+      "other_brands": "Otras marcas",
+      "effectiveness": "Eficacia",
+      "effort": "Esfuerzo",
+      "minimal": "Mínimo",
+      "high": "Alto",
+      "safety": "Seguridad (mascotas y niños)",
+      "clutter_level": "Nivel de desorden",
+      "no_clutter": "Sin desorden",
+      "high_clutter_level": "Alto nivel de desorden",
+      "duration": "Duración",
+      "thirty_days": "30 días",
+      "two_three_days": "2-3 días",
+      "variant_picker": "hacer una elección"
     }
   },
   "fields": {
@@ -342,47 +364,47 @@
       "success_moderated": "Comentario publicado y a la espera de moderación",
       "success": "Comentario publicado"
     }
+  },
+  "contact": {
+    "full_name": "Nombre completo",
+    "email_address": "Dirección de correo electrónico",
+    "purchase_source": "¿Dónde realizaste esta compra?",
+    "country": "País",
+    "order_number": "Número de pedido",
+    "message": "Mensaje",
+    "placeholder_name": "Juan García",
+    "placeholder_purchase": "¿Dónde realizaste esta compra?",
+    "placeholder_message": "Cuéntanos más sobre tu consulta...",
+    "placeholder_country": "España"
+  },
+  "blog": {
+    "minute_to_read": "minuto de lectura",
+    "minutes_to_read": "minutos de lectura",
+    "continue_reading": "Seguir leyendo",
+    "categories": "Categorías",
+    "all_categories": "Todas las categorías",
+    "tag": {
+      "fruit-flies": "Moscas de la fruta",
+      "fungus-gnats": "Mosquitos del sustrato",
+      "food-moths": "Polillas de los alimentos",
+      "silverfish": "Lepismas",
+      "wasps": "Avispas",
+      "general": "General"
+    }
+  },
+  "partner": {
+    "company_name": "Nombre de la empresa",
+    "company_website": "Sitio web de la empresa",
+    "contact_name": "Nombre de contacto",
+    "country": "País",
+    "email_address": "Dirección de correo electrónico",
+    "phone": "Teléfono",
+    "partner_type": "Tipo de partner",
+    "message": "Mensaje",
+    "placeholder_company": "Tu empresa",
+    "placeholder_name": "Juan García",
+    "placeholder_message": "Cuéntanos sobre tu mercado, canal y cobertura...",
+    "select_country": "Selecciona tu país",
+    "select_partner_type": "Selecciona el tipo de partner"
   }
-,"contact": {
-  "full_name": "Nombre completo",
-  "email_address": "Dirección de correo electrónico",
-  "purchase_source": "¿Dónde realizaste esta compra?",
-  "country": "País",
-  "order_number": "Número de pedido",
-  "message": "Mensaje",
-  "placeholder_name": "Juan García",
-  "placeholder_purchase": "¿Dónde realizaste esta compra?",
-  "placeholder_message": "Cuéntanos más sobre tu consulta...",
-  "placeholder_country": "España"
-},
-"blog": {
-  "minute_to_read": "minuto de lectura",
-  "minutes_to_read": "minutos de lectura",
-  "continue_reading": "Seguir leyendo",
-"categories": "Categorías",
-"all_categories": "Todas las categorías",
-"tag": {
-  "fruit-flies": "Moscas de la fruta",
-  "fungus-gnats": "Mosquitos del sustrato",
-  "food-moths": "Polillas de los alimentos",
-  "silverfish": "Lepismas",
-  "wasps": "Avispas",
-  "general": "General"
-}
-},
-"partner": {
-  "company_name": "Nombre de la empresa",
-  "company_website": "Sitio web de la empresa",
-  "contact_name": "Nombre de contacto",
-  "country": "País",
-  "email_address": "Dirección de correo electrónico",
-  "phone": "Teléfono",
-  "partner_type": "Tipo de partner",
-  "message": "Mensaje",
-  "placeholder_company": "Tu empresa",
-  "placeholder_name": "Juan García",
-  "placeholder_message": "Cuéntanos sobre tu mercado, canal y cobertura...",
-  "select_country": "Selecciona tu país",
-  "select_partner_type": "Selecciona el tipo de partner"
-}
 }

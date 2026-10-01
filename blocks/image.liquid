@@ -36,6 +36,14 @@
 {% liquid
   assign media_width_desktop = '100vw'
   assign media_width_mobile = '100vw'
+
+  if block_settings.width == 'custom'
+    assign media_width_desktop = block_settings.custom_width | append: 'vw'
+  endif
+  if block_settings.width_mobile == 'custom'
+    assign media_width_mobile = block_settings.custom_width_mobile | append: 'vw'
+  endif
+
   assign sizes = 'auto, (min-width: 750px) ' | append: media_width_desktop | append: ', ' | append: media_width_mobile
   assign widths = '240, 352, 832, 1200, 1600, 1920, 2560, 3840'
 %}

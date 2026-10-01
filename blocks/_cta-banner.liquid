@@ -1,0 +1,60 @@
+<div class="cta-banner">
+  {% content_for 'block', type: 'image', id: 'img' %}
+  
+  <div class="cta-banner__content">
+    {% content_for 'block', type: '_heading', text: 'Heading', id: 'cta-banner-heading' %}
+    {% content_for 'block', type: 'group', id: 'cta-banner-buttons' %}
+  </div>
+</div>
+
+{% style %}
+  .layout-panel-flex--row:not(.mobile-column):has(.cta-banner) {
+    flex-wrap: nowrap;
+  }
+
+  .cta-banner {
+    position: relative;
+
+    & .cta-banner__content {
+      position: absolute;
+      display: flex;
+      gap: 1rem;
+      flex-direction: column;
+      bottom: 1rem;
+      left: 1rem;
+      right: 1rem;
+
+      & .group-block > .group-block-content {
+        flex-wrap: wrap;
+      }
+    }
+  }
+
+  @media (max-width: 1199px) {
+    .custom-textpage-submenu .cta-banner {
+      display: none;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+  {
+    "name": "CTA Banner",
+    "blocks": [
+      {
+        "type": "image"
+      },
+      {
+        "type": "_heading",
+      },
+      {
+        "type": "group"
+      }
+    ],
+    "presets": [
+      {
+        "name": "CTA Banner"
+      }
+    ]
+  }
+{% endschema %}

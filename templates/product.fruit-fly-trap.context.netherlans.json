@@ -16,15 +16,7 @@
     "main": {
       "blocks": {
         "product-details": {
-          "blocks": {
-            "pdp_benefits_badges": {
-              "settings": {
-                "badge_1_text": "MAKKELIJK TE GEBRUIKEN",
-                "badge_2_text": "VEILIG VOOR HUISDIEREN & KINDEREN",
-                "badge_3_text": "EFFECTIEF TEGEN FRUITVLIEGJES"
-              }
-            }
-          }
+          "blocks": {}
         }
       }
     },
@@ -50,92 +42,6 @@
             "text": "<p>Zichtbare resultaten<br/>binnen 24 uur</p>"
           }
         }
-      }
-    },
-    "pdp_stats_section": {
-      "blocks": {
-        "heading": {
-          "settings": {
-            "content": "Meer dan 95% van de fruitvliegjes is binnen 24 uur verdwenen"
-          }
-        },
-        "text": {
-          "settings": {
-            "content": "<p>Zo ontworpen dat je snel ziet dat het werkt<br/><br/></p>"
-          }
-        },
-        "stat_1": {
-          "settings": {
-            "number": "24UUR",
-            "label": "Eerste Resultaten"
-          }
-        },
-        "stat_2": {
-          "settings": {
-            "label": "Vliegjes Gevangen"
-          }
-        },
-        "stat_3": {
-          "settings": {
-            "number": "30 DAGEN",
-            "label": "Werkzaam"
-          }
-        }
-      }
-    },
-    "cards_with_text": {
-      "blocks": {
-        "heading": {
-          "settings": {
-            "content": "Makkelijk te gebruiken"
-          }
-        },
-        "card_1": {
-          "settings": {
-            "title": "Verwijder",
-            "content": "<p>Verwijder de bron van de geur – het fruit of het afval.</p>"
-          }
-        },
-        "card_2": {
-          "settings": {
-            "title": "Schud",
-            "content": "<p>Schud het flesje voor gebruik.</p>"
-          }
-        },
-        "card_3": {
-          "settings": {
-            "content": "<p>Draai de dop van het flesje open.</p>"
-          }
-        },
-        "card_4": {
-          "settings": {
-            "title": "Maak Schoon",
-            "content": "<p>Verwijder de overtollige vloeistof uit de gele trechter.</p>"
-          }
-        },
-        "card_5": {
-          "settings": {
-            "content": "<p>Zet het naast je<br/>fruit en laat het<br/>zijn werk doen.</p>"
-          }
-        }
-      }
-    },
-    "video_cards": {
-      "blocks": {
-        "heading": {
-          "settings": {
-            "content": "ECHTE MENSEN, ECHTE RESULTATEN — DIT ZEGGEN ONZE KLANTEN"
-          }
-        }
-      }
-    },
-    "super_ninja_vs_rest": {
-      "settings": {
-        "heading_content": "Super Ninja versus andere merken",
-        "text_content": "<p>Ontdek waarom Super Ninja de beste keuze is.</p>",
-        "features_title": "KENMERKEN",
-        "feature_1": "DOELTREFFENDHEID",
-        "feature_2": "INSPANNING"
       }
     }
   }

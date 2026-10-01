@@ -34,6 +34,10 @@
       margin: 0;
     }
 
+    & summary {
+      color: var(--color-foreground-heading);
+    }
+
     padding-block-start: {{ padding_mobile_bs }}px;
     padding-block-end: {{ padding_mobile_be }}px;
 
@@ -72,16 +76,18 @@
       "id": "padding_block_start_desktop",
       "label": "Padding top",
       "min": 0,
-      "max": 100,
-      "default": 96
+      "max": 128,
+      "default": 96,
+      "step": 2
     },
     {
       "type": "range",
       "id": "padding_block_end_desktop",
       "label": "Padding bottom",
       "min": 0,
-      "max": 100,
-      "default": 96
+      "max": 128,
+      "default": 96,
+      "step": 2
     },
     {
       "type": "header",

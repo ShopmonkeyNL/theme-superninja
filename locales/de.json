@@ -142,6 +142,9 @@
     "taxes_at_checkout_shipping_at_checkout_without_policy": "Steuern, Rabatte und Versand werden beim Checkout berechnet.",
     "checkout": "Auschecken",
     "cart_title": "Warenkorb",
+    "cart_products": "Produkte",
+    "cart_delivery": "Lieferung",
+    "cart_delivery_free": "Frei",
     "price": "Preis",
     "price_regular": "Normaler Preis",
     "price_compare_at": "Vergleichspreis",
@@ -299,6 +302,11 @@
   },
   "products": {
     "product": {
+      "best_for": "Best for",
+      "description": "Beschreibung",
+      "ingredients": "Zutaten",
+      "shipping_and_returns": "Versand & Rücksendungen",
+      "faq": "Häufig gestellte Fragen",
       "add_to_cart": "In den Warenkorb legen",
       "added_to_cart": "Zum Warenkorb hinzugefügt",
       "adding_to_cart": "Wird hinzugefügt...",
@@ -310,7 +318,21 @@
       "quantity_increments": "In {{ increment }}er Schritten",
       "quantity_minimum": "Mindestens {{ minimum }}",
       "quantity_maximum": "Maximal {{ maximum }}",
-      "in_cart": "im Warenkorb"
+      "in_cart": "im Warenkorb",
+      "features": "Merkmale",
+      "other_brands": "Andere Marken",
+      "effectiveness": "Wirksamkeit",
+      "effort": "Bemühung",
+      "minimal": "Minimal",
+      "high": "Hoch",
+      "safety": "Sicherheit (Haustiere und Kinder)",
+      "clutter_level": "Unordnungsgrad",
+      "no_clutter": "Kein Durcheinander",
+      "high_clutter_level": "Hoher Grad an Unordnung",
+      "duration": "Dauer",
+      "thirty_days": "30 Tage",
+      "two_three_days": "2-3 Tage",
+      "variant_picker": "Treffen Sie eine Wahl"
     }
   },
   "fields": {
@@ -335,47 +357,47 @@
       "success_moderated": "Kommentar gepostet, Moderation ausstehend",
       "success": "Kommentar gepostet"
     }
+  },
+  "contact": {
+    "full_name": "Vollständiger Name",
+    "email_address": "E-Mail-Adresse",
+    "purchase_source": "Wo hast du deinen Kauf getätigt?",
+    "country": "Land",
+    "order_number": "Bestellnummer",
+    "message": "Nachricht",
+    "placeholder_name": "Max Mustermann",
+    "placeholder_purchase": "Wo hast du deinen Kauf getätigt?",
+    "placeholder_message": "Erzähl uns mehr über deine Anfrage...",
+    "placeholder_country": "Deutschland"
+  },
+  "blog": {
+    "minute_to_read": "Minute Lesezeit",
+    "minutes_to_read": "Minuten Lesezeit",
+    "continue_reading": "Weiterlesen",
+    "categories": "Kategorien",
+    "all_categories": "Alle Kategorien",
+    "tag": {
+      "fruit-flies": "Fruchtfliegen",
+      "fungus-gnats": "Trauermücken",
+      "food-moths": "Vorratsschädlinge",
+      "silverfish": "Silberfischchen",
+      "wasps": "Wespen",
+      "general": "Allgemein"
+    }
+  },
+  "partner": {
+    "company_name": "Firmenname",
+    "company_website": "Firmenwebsite",
+    "contact_name": "Ansprechpartner",
+    "country": "Land",
+    "email_address": "E-Mail-Adresse",
+    "phone": "Telefon",
+    "partner_type": "Partnertyp",
+    "message": "Nachricht",
+    "placeholder_company": "Dein Unternehmen",
+    "placeholder_name": "Max Mustermann",
+    "placeholder_message": "Erzähl uns von deinem Markt, Kanal und deiner Abdeckung...",
+    "select_country": "Land auswählen",
+    "select_partner_type": "Partnertyp auswählen"
   }
-,"contact": {
-  "full_name": "Vollständiger Name",
-  "email_address": "E-Mail-Adresse",
-  "purchase_source": "Wo hast du deinen Kauf getätigt?",
-  "country": "Land",
-  "order_number": "Bestellnummer",
-  "message": "Nachricht",
-  "placeholder_name": "Max Mustermann",
-  "placeholder_purchase": "Wo hast du deinen Kauf getätigt?",
-  "placeholder_message": "Erzähl uns mehr über deine Anfrage...",
-  "placeholder_country": "Deutschland"
-},
-"blog": {
-  "minute_to_read": "Minute Lesezeit",
-  "minutes_to_read": "Minuten Lesezeit",
-  "continue_reading": "Weiterlesen",
-"categories": "Kategorien",
-"all_categories": "Alle Kategorien",
-"tag": {
-  "fruit-flies": "Fruchtfliegen",
-  "fungus-gnats": "Trauermücken",
-  "food-moths": "Vorratsschädlinge",
-  "silverfish": "Silberfischchen",
-  "wasps": "Wespen",
-  "general": "Allgemein"
-}
-},
-"partner": {
-  "company_name": "Firmenname",
-  "company_website": "Firmenwebsite",
-  "contact_name": "Ansprechpartner",
-  "country": "Land",
-  "email_address": "E-Mail-Adresse",
-  "phone": "Telefon",
-  "partner_type": "Partnertyp",
-  "message": "Nachricht",
-  "placeholder_company": "Dein Unternehmen",
-  "placeholder_name": "Max Mustermann",
-  "placeholder_message": "Erzähl uns von deinem Markt, Kanal und deiner Abdeckung...",
-  "select_country": "Land auswählen",
-  "select_partner_type": "Partnertyp auswählen"
-}
 }

@@ -16,6 +16,7 @@
       assign strikethrough_color_mix = '#fff'
     endif
   %}
+
   <variant-picker
     class="variant-picker spacing-style variant-picker--{{ block_settings.alignment }}"
     style="--color-strikethrough-mix: {{ strikethrough_color_mix }}; {% render 'spacing-style', settings: block_settings %}"
@@ -32,7 +33,19 @@
       data-shopify-visual-preview
     {% endif %}
   >
+  <div class="h6 variant-picker-heading">{{ 'products.product.variant_picker' | t }}:</div>
+
     <form class="variant-picker__form">
+      {%- liquid
+        assign use_pdp_variant_cards = false
+        if block_settings.variant_style == 'buttons'
+          assign use_pdp_variant_cards = true
+        endif
+      -%}
+
+      {%- if use_pdp_variant_cards -%}
+        {% render 'pdp-variant-cards', product_resource: product_resource, section_id: section.id, block_id: block.id %}
+      {%- else -%}
       {%- for product_option in product_resource.options_with_values -%}
         {%- liquid
           assign swatch_count = product_option.values | map: 'swatch' | compact | size
@@ -193,6 +206,7 @@
           </div>
         {%- endif -%}
       {%- endfor -%}
+      {%- endif -%}
 
       <script type="application/json">
         {{ product_resource.selected_or_first_available_variant | json }}
@@ -204,6 +218,14 @@
 {% style %}
   .variant-picker {
     width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    & .variant-picker-heading {
+      color: var(--color-foreground-heading);
+    }
   }
 
   .variant-picker__form {

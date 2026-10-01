@@ -68,11 +68,6 @@ class HeaderComponent extends Component {
     // We round to the nearest integer to avoid unnecessaary reflows.
     const roundedHeaderHeight = Math.round(entry.borderBoxSize[0].blockSize);
     document.body.style.setProperty('--header-height', `${roundedHeaderHeight}px`);
-
-    // Check if the menu drawer should be hidden in favor of the header menu
-    if (this.#menuDrawerHiddenWidth && window.innerWidth > this.#menuDrawerHiddenWidth) {
-      this.#updateMenuVisibility(false);
-    }
   });
 
   /**
@@ -100,14 +95,6 @@ class HeaderComponent extends Component {
     }, config);
 
     this.#intersectionObserver.observe(this);
-  };
-
-  /**
-   * Handles the overflow minimum event from the header menu
-   * @param {OverflowMinimumEvent} event
-   */
-  #handleOverflowMinimum = (event) => {
-    this.#updateMenuVisibility(event.detail.minimumReached);
   };
 
   /**

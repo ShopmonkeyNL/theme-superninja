@@ -60,34 +60,328 @@
           "type": "_header-menu",
           "static": true,
           "settings": {
-            "menu": "main-menu",
+            "menu": "sm-main-menu",
             "color_scheme": "",
             "type_font_primary_size": "0.875rem",
             "menu_font_style": "inverse",
             "type_font_primary_link": "heading",
             "type_case_primary_link": "uppercase",
-            "menu_style": "text",
-            "featured_products_aspect_ratio": "1 / 1",
-            "featured_collections_aspect_ratio": "16 / 9",
-            "image_border_radius": 4,
+            "mega_mega_text_field": "shop, meer-info",
+            "mobile_secondary_menu": "mega-menu-secondary-nav",
+            "mobile_promotions": true,
             "navigation_bar": false,
             "color_scheme_navigation_bar": "",
             "drawer_accordion": true,
             "drawer_accordion_expand_first": false,
             "drawer_dividers": true
           },
-          "blocks": {}
+          "blocks": {
+            "group_fmGBeR": {
+              "type": "group",
+              "name": "t:names.group",
+              "settings": {
+                "content_direction": "row",
+                "vertical_on_mobile": false,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "flex-start",
+                "gap": 16,
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": false,
+                "color_scheme": "scheme-2a2e79ef-1425-43c0-b9f8-5ff8e08906b9",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#1c1c1c26",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "cta_banner_TMPUwC": {
+                  "type": "_cta-banner",
+                  "name": "CTA Banner",
+                  "settings": {},
+                  "blocks": {
+                    "img": {
+                      "type": "image",
+                      "static": true,
+                      "settings": {
+                        "image": "shopify://shop_images/promotion-banner.png",
+                        "link": "",
+                        "image_ratio": "adapt",
+                        "width": "fill",
+                        "custom_width": 100,
+                        "width_mobile": "fill",
+                        "custom_width_mobile": 100,
+                        "height": "fill",
+                        "border": "none",
+                        "border_width": 1,
+                        "border_opacity": 100,
+                        "border_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    },
+                    "cta-banner-heading": {
+                      "type": "_heading",
+                      "static": true,
+                      "settings": {
+                        "type_preset": "h4",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "color": "var(--color-foreground-heading)",
+                        "text": "<p>Last van fruitvliegjes? Ontdek onze producten.</p>",
+                        "read_only": false,
+                        "alignment": "left",
+                        "show_alignment": true,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    },
+                    "cta-banner-buttons": {
+                      "type": "group",
+                      "static": true,
+                      "settings": {
+                        "content_direction": "column",
+                        "vertical_on_mobile": true,
+                        "horizontal_alignment": "flex-start",
+                        "vertical_alignment": "center",
+                        "align_baseline": false,
+                        "horizontal_alignment_flex_direction_column": "flex-start",
+                        "vertical_alignment_flex_direction_column": "center",
+                        "gap": 12,
+                        "width": "fill",
+                        "custom_width": 100,
+                        "width_mobile": "fill",
+                        "custom_width_mobile": 100,
+                        "height": "fit",
+                        "custom_height": 100,
+                        "inherit_color_scheme": true,
+                        "color_scheme": "scheme-2a2e79ef-1425-43c0-b9f8-5ff8e08906b9",
+                        "background_media": "none",
+                        "video_position": "cover",
+                        "background_image_position": "cover",
+                        "border": "none",
+                        "border_width": 1,
+                        "border_opacity": 100,
+                        "border_radius": 0,
+                        "toggle_overlay": false,
+                        "overlay_color": "#1c1c1c26",
+                        "overlay_style": "solid",
+                        "gradient_direction": "to top",
+                        "link": "",
+                        "open_in_new_tab": false,
+                        "placeholder": "",
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {
+                        "button_6xL9dq": {
+                          "type": "button",
+                          "name": "t:names.button",
+                          "settings": {
+                            "label": "Bekijk producten",
+                            "link": "shopify://collections/all",
+                            "open_in_new_tab": false,
+                            "style_class": "button",
+                            "width": "fit-content",
+                            "custom_width": 100,
+                            "width_mobile": "fit-content",
+                            "custom_width_mobile": 100
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "button_6xL9dq"
+                      ]
+                    }
+                  },
+                  "block_order": []
+                },
+                "cta_banner_g4jTcU": {
+                  "type": "_cta-banner",
+                  "name": "CTA Banner",
+                  "settings": {},
+                  "blocks": {
+                    "img": {
+                      "type": "image",
+                      "static": true,
+                      "settings": {
+                        "image": "shopify://shop_images/promotion-banner-2.png",
+                        "link": "",
+                        "image_ratio": "adapt",
+                        "width": "fill",
+                        "custom_width": 100,
+                        "width_mobile": "fill",
+                        "custom_width_mobile": 100,
+                        "height": "fill",
+                        "border": "none",
+                        "border_width": 1,
+                        "border_opacity": 100,
+                        "border_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    },
+                    "cta-banner-heading": {
+                      "type": "_heading",
+                      "static": true,
+                      "settings": {
+                        "type_preset": "h4",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "color": "var(--color-foreground-heading)",
+                        "text": "<p>Veilig rondom voedsel, kinderen en huisdieren</p>",
+                        "read_only": false,
+                        "alignment": "left",
+                        "show_alignment": true,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    },
+                    "cta-banner-buttons": {
+                      "type": "group",
+                      "static": true,
+                      "settings": {
+                        "content_direction": "row",
+                        "vertical_on_mobile": true,
+                        "horizontal_alignment": "flex-start",
+                        "vertical_alignment": "center",
+                        "align_baseline": false,
+                        "horizontal_alignment_flex_direction_column": "flex-start",
+                        "vertical_alignment_flex_direction_column": "center",
+                        "gap": 8,
+                        "width": "fill",
+                        "custom_width": 100,
+                        "width_mobile": "fill",
+                        "custom_width_mobile": 100,
+                        "height": "fit",
+                        "custom_height": 100,
+                        "inherit_color_scheme": true,
+                        "color_scheme": "scheme-2a2e79ef-1425-43c0-b9f8-5ff8e08906b9",
+                        "background_media": "none",
+                        "video_position": "cover",
+                        "background_image_position": "cover",
+                        "border": "none",
+                        "border_width": 1,
+                        "border_opacity": 100,
+                        "border_radius": 0,
+                        "toggle_overlay": false,
+                        "overlay_color": "#1c1c1c26",
+                        "overlay_style": "solid",
+                        "gradient_direction": "to top",
+                        "link": "",
+                        "open_in_new_tab": false,
+                        "placeholder": "",
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {
+                        "button_qWbVHK": {
+                          "type": "button",
+                          "name": "t:names.button",
+                          "settings": {
+                            "label": "Bekijk producten",
+                            "link": "shopify://collections/all",
+                            "open_in_new_tab": false,
+                            "style_class": "button",
+                            "width": "fit-content",
+                            "custom_width": 100,
+                            "width_mobile": "fit-content",
+                            "custom_width_mobile": 100
+                          },
+                          "blocks": {}
+                        },
+                        "button_9kEdcC": {
+                          "type": "button",
+                          "name": "t:names.button",
+                          "disabled": true,
+                          "settings": {
+                            "label": "Keuzehulp",
+                            "link": "shopify://collections/all",
+                            "open_in_new_tab": false,
+                            "style_class": "button-secondary",
+                            "width": "fit-content",
+                            "custom_width": 100,
+                            "width_mobile": "fit-content",
+                            "custom_width_mobile": 100
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "button_qWbVHK",
+                        "button_9kEdcC"
+                      ]
+                    }
+                  },
+                  "block_order": []
+                }
+              },
+              "block_order": [
+                "cta_banner_TMPUwC",
+                "cta_banner_g4jTcU"
+              ]
+            }
+          },
+          "block_order": [
+            "group_fmGBeR"
+          ]
         }
       },
       "settings": {
         "logo_position": "left",
         "menu_position": "center",
         "menu_row": "top",
-        "show_account": false,
+        "show_account": true,
         "show_search": true,
         "search_position": "right",
         "search_row": "top",
-        "show_country": false,
+        "show_country": true,
         "country_selector_style": false,
         "show_language": true,
         "localization_font": "heading",

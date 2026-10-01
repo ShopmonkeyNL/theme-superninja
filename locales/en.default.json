@@ -147,6 +147,9 @@
     "blog_details_separator": "|",
     "cart_estimated_total": "Estimated total",
     "cart_title": "Cart",
+    "cart_products": "Products",
+    "cart_delivery": "Delivery",
+    "cart_delivery_free": "Free",
     "cart_subtotal": "Subtotal",
     "cart_total": "Cart total",
     "checkout": "Check out",
@@ -322,6 +325,11 @@
   },
   "products": {
     "product": {
+      "best_for": "Best for",
+      "description": "Description",
+      "ingredients": "Ingredients",
+      "shipping_and_returns": "Shipping & returns",
+      "faq": "FAQ",
       "add_to_cart": "Add to cart",
       "adding_to_cart": "Adding...",
       "added_to_cart": "Added to cart",
@@ -335,49 +343,63 @@
       "quantity_maximum": "Maximum of {{ maximum }}",
       "in_cart": "in cart",
       "default_title": "Default Title",
-      "sticky_add_to_cart": "Quick add to cart bar"
+      "sticky_add_to_cart": "Quick add to cart bar",
+      "features": "Features",
+      "other_brands": "Other brands",
+      "effectiveness": "Effectiveness",
+      "effort": "Effort",
+      "minimal": "Minimal",
+      "high": "High",
+      "safety": "Safety (pets & children)",
+      "clutter_level": "Clutter level",
+      "no_clutter": "No clutter",
+      "high_clutter_level": "High clutter level",
+      "duration": "Duration",
+      "thirty_days": "30 days",
+      "two_three_days": "2-3 days",
+      "variant_picker": "Make a choice"
     }
+  },
+  "contact": {
+    "full_name": "Full name",
+    "email_address": "Email address",
+    "purchase_source": "Where did you make this purchase?",
+    "country": "Country",
+    "order_number": "Order number",
+    "message": "Message",
+    "placeholder_name": "John Smith",
+    "placeholder_purchase": "Where did you make this purchase?",
+    "placeholder_message": "Tell us more about your inquiry...",
+    "placeholder_country": "United Kingdom"
+  },
+  "blog": {
+    "minute_to_read": "minute to read",
+    "minutes_to_read": "minutes to read",
+    "continue_reading": "Continue reading",
+    "categories": "Categories",
+    "all_categories": "All Categories",
+    "tag": {
+      "fruit-flies": "Fruit Flies",
+      "fungus-gnats": "Fungus Gnats",
+      "food-moths": "Food Moths",
+      "silverfish": "Silverfish",
+      "wasps": "Wasps",
+      "general": "General"
+    }
+  },
+  "partner": {
+    "company_name": "Company name",
+    "company_website": "Company website",
+    "contact_name": "Contact name",
+    "country": "Country",
+    "email_address": "Email address",
+    "phone": "Phone",
+    "partner_type": "Partner type",
+    "message": "Message",
+    "placeholder_company": "Your company",
+    "placeholder_name": "John Smith",
+    "placeholder_message": "Tell us about your market, channel and coverage...",
+    "select_country": "Select your country",
+    "select_partner_type": "Select partner type"
   }
-,"contact": {
-  "full_name": "Full name",
-  "email_address": "Email address",
-  "purchase_source": "Where did you make this purchase?",
-  "country": "Country",
-  "order_number": "Order number",
-  "message": "Message",
-  "placeholder_name": "John Smith",
-  "placeholder_purchase": "Where did you make this purchase?",
-  "placeholder_message": "Tell us more about your inquiry...",
-  "placeholder_country": "United Kingdom"
-},
-"blog": {
-  "minute_to_read": "minute to read",
-  "minutes_to_read": "minutes to read",
-  "continue_reading": "Continue reading",
-"categories": "Categories",
-"all_categories": "All Categories",
-"tag": {
-  "fruit-flies": "Fruit Flies",
-  "fungus-gnats": "Fungus Gnats",
-  "food-moths": "Food Moths",
-  "silverfish": "Silverfish",
-  "wasps": "Wasps",
-  "general": "General"
-}
-},
-"partner": {
-  "company_name": "Company name",
-  "company_website": "Company website",
-  "contact_name": "Contact name",
-  "country": "Country",
-  "email_address": "Email address",
-  "phone": "Phone",
-  "partner_type": "Partner type",
-  "message": "Message",
-  "placeholder_company": "Your company",
-  "placeholder_name": "John Smith",
-  "placeholder_message": "Tell us about your market, channel and coverage...",
-  "select_country": "Select your country",
-  "select_partner_type": "Select partner type"
-}
 }

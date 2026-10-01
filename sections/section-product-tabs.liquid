@@ -1,0 +1,207 @@
+{% assign best_for_translation = 'products.product.best_for' | t %}
+{% assign description_translation = 'products.product.description' | t %}
+{% assign ingredients_translation = 'products.product.ingredients' | t %}
+{% assign shipping_and_returns_translation = 'products.product.shipping_and_returns' | t %}
+
+<div class='section-background color-{{ section.settings.color_scheme }}'></div>
+
+<div
+  class='section section--{{ section.settings.section_width }} spacing-style {% if section.settings.color_scheme != blank %}color-{{ section.settings.color_scheme }}{% endif %}'
+  style='{% render 'spacing-padding', settings: section.settings %}'
+>
+  <div class='container'>
+    <div class="section-product-tabs" style="{% if section.settings.border > 0 %}--border-width: {{ section.settings.border }}px;{% endif %}">
+      
+      <div class="section-product-tabs__heading">
+        {% if product.metafields.custom.best_for_list %}
+          {% render 'product-tab-heading' field_name: 'best-for' translation: best_for_translation  %}
+        {% endif %}
+        
+        {% if product.description %}
+          {% render 'product-tab-heading' field_name: 'description' translation: description_translation  %}
+        {% endif %}
+        
+        {% if product.metafields.custom.ingredients %}
+          {% render 'product-tab-heading' field_name: 'ingredients' translation: ingredients_translation  %}
+        {% endif %}
+        
+        {% if settings.shipping_and_returns != '' %}
+          {% render 'product-tab-heading' field_name: 'shipping-and-returns' translation: shipping_and_returns_translation  %}
+        {% endif %}
+      </div>
+
+      <div class="section-product-tabs__content" >
+        {% if product.metafields.custom.best_for_list %}
+          <div data-content="best-for" class="hidden">
+            {{ product.metafields.custom.best_for_list.value }}
+          </div>
+        {% endif %}
+        
+        {% if product.description %}
+          <div data-content="description" class="hidden">
+            {{ product.description }}
+          </div>
+        {% endif %}
+        
+        {% if product.metafields.custom.ingredients %}
+          <div data-content="ingredients" class="hidden">
+            {{ product.metafields.custom.ingredients }}
+          </div>
+        {% endif %}
+        
+        {% if settings.shipping_and_returns != '' %}
+          <div data-content="shipping-and-returns" class="hidden">
+            {{ settings.shipping_and_returns }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% style %}
+  .section-product-tabs {
+    border: var(--border-width) solid var(--border-color);
+
+    & .section-product-tabs__heading {
+      display: flex;
+      padding-block: 1.5rem;
+      border-block-end: 0.5px solid var(--border-color);
+      overflow-x: auto;
+
+      & .heading-item {
+        font-family: var(--font-heading--family);
+        text-transform: uppercase;
+        padding-inline: 2.5rem;
+        white-space: nowrap;
+        cursor: pointer;
+
+        &.active {
+          color: var(--color-primary-button-background)
+        }
+      }
+    }
+
+    & .section-product-tabs__content {
+      padding: 1.5rem;
+
+      h1, h2, h3, h4, h5, h6 {
+        color: var(--color-input-text);
+      }
+    }
+  }
+{% endstyle %}
+
+{% javascript %}
+  document.addEventListener('DOMContentLoaded', () => {
+    const productTabs = document.querySelector('.section-product-tabs');
+    const headingItems = productTabs.querySelectorAll('.heading-item');
+    const headingContent = productTabs.querySelectorAll('[data-content]');
+
+    if (!productTabs || !headingItems || !headingContent) return;
+
+    headingItems.forEach((heading, index) => {
+      if (index === 0) {
+        heading.classList.add('active');
+
+        matchFieldToContent(heading, headingContent);
+      }
+      
+      heading.addEventListener('click', () => {
+        const headingActive = productTabs.querySelector('.heading-item.active');
+
+        if (headingActive) headingActive.classList.remove('active');
+        
+        heading.classList.add('active');
+
+        matchFieldToContent(heading, headingContent);
+      })
+    })
+  })
+
+  function matchFieldToContent(heading, headingContent) {
+    const { field } = heading.dataset;
+
+    headingContent.forEach(contentItem => {
+      const { content } = contentItem.dataset;
+
+      if (content === field) {
+        contentItem.classList.remove('hidden');
+      } else {
+        if (!contentItem.classList.contains('hidden')) contentItem.classList.add('hidden')
+      }
+    })
+  }
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Product tabs",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "t:options.page"
+        },
+        {
+          "value": "full-width",
+          "label": "t:options.full"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 128,
+      "step": 4,
+      "unit": "px",
+      "default": 128
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 128,
+      "step": 4,
+      "unit": "px",
+      "default": 128
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "range",
+      "id": "border",
+      "label": "Border",
+      "default": 0.5,
+      "min": 0,
+      "max": 4,
+      "step": 0.5
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product tabs"
+    }
+  ]
+}
+{% endschema %}

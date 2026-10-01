@@ -104,7 +104,7 @@
           ref="thumbnailsContainer"
           class="slideshow-controls__thumbnails-container"
         >
-          <div class="slideshow-controls__thumbnails">
+          <div class="slideshow-controls__thumbnails" role="tablist">
             {% for media in thumbnails %}
               <button
                 class="slideshow-control button button-unstyled slideshow-controls__thumbnail"
@@ -112,6 +112,7 @@
                 on:click="/select/{{ forloop.index0 }}"
                 style="--aspect-ratio: {% if aspect_ratio == 'adapt' %}{{ media.preview_image.aspect_ratio | default: 1.0 }}{% else %}{{ aspect_ratio }}{% endif %};"
                 ref="thumbnails[]"
+                role="tab"
                 {% if forloop.first %}
                   aria-selected="true"
                 {% endif %}
@@ -156,7 +157,7 @@
           <span ref="current">1</span><span class="slash">/</span>{{ item_count -}}
         </div>
       {% when 'dots' %}
-        <ol class="slideshow-controls__{{ style }}">
+        <ol class="slideshow-controls__{{ style }}" role="tablist">
           {% for i in (1..item_count) %}
             <li>
               <button
@@ -165,6 +166,7 @@
                 aria-label="{{ 'accessibility.slide_status' | t: index: forloop.index, length: forloop.length }}"
                 on:click="/select/{{ forloop.index0 }}"
                 ref="dots[]"
+                role="tab"
                 {% if forloop.first %}
                   aria-selected="true"
                 {% endif %}

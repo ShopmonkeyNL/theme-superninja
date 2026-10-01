@@ -77,7 +77,7 @@ select {
   z-index: var(--layer-flat);
 
   &:hover {
-    transform: scale(1.01);
+    transform: scale(1.003);
   }
 }
 
@@ -689,8 +689,8 @@ p:empty {
 }
 
 .svg-wrapper > svg {
-  width: var(--icon-size-sm);
-  height: var(--icon-size-sm);
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
 }
 
 .relative {
@@ -864,7 +864,7 @@ h5,
 h6,
 .h6.h6,
 .text-block.h6 > * {
-  font-family: var(--font-h6--family);
+  font-family: var(--font-heading--family);
   font-style: var(--font-h6--style);
   font-weight: var(--font-h6--weight);
   font-size: var(--font-h6--size);
@@ -1920,7 +1920,7 @@ deferred-media[data-media-loaded] img {
   align-items: center;
   justify-content: center;
   border-radius: 4px;
-  background-color: #F6EDE9;
+  background-color: var(--color-background);
   padding: 8px;
 }
 
@@ -1928,7 +1928,7 @@ deferred-media[data-media-loaded] img {
 .video-placeholder-wrapper__poster-icon svg {
   width: 1rem;
   height: 1rem;
-  color: #551B00;
+  color: var(--color-foreground-heading);
   transition: opacity 0.2s ease;
 
   &:hover {
@@ -2125,6 +2125,7 @@ product-price.text-block:is(.h1, .h2, .h3, .h4, .h5, .h6) > *:not(.tax-note) {
   opacity: 0.4;
   text-decoration-line: line-through;
   text-decoration-thickness: 1.5px;
+  font-size: 0.8em;
 }
 
 .card-gallery {
@@ -2302,6 +2303,10 @@ product-price.text-block:is(.h1, .h2, .h3, .h4, .h5, .h6) > *:not(.tax-note) {
   display: flex;
   gap: var(--gap);
   height: 100%;
+
+  @media (max-width: 749px) {
+    gap: calc(var(--gap) / 2);
+  }
 }
 
 .layout-panel-flex--row {
@@ -2708,7 +2713,8 @@ product-price.text-block:is(.h1, .h2, .h3, .h4, .h5, .h6) > *:not(.tax-note) {
   align-items: center;
   gap: var(--gap-sm);
   min-width: 48px;
-  padding: 6px 12px;
+  padding: 8px 16px;
+  font-weight: bold;
   border-radius: var(--style-border-radius-pills);
   cursor: pointer;
   background-color: var(--pills-pill-background-color);
@@ -3476,7 +3482,6 @@ slideshow-arrows {
   display: flex;
   z-index: var(--layer-heightened);
   pointer-events: none;
-  mix-blend-mode: difference;
   align-items: flex-end;
 
   &[position="left"] {
@@ -3507,17 +3512,44 @@ slideshow-component[disabled="true"] slideshow-arrows {
 slideshow-arrows .slideshow-control {
   pointer-events: auto;
   opacity: 0;
-  padding: 0 var(--padding-xs);
-  color: var(--color-white);
+  padding: var(--padding-xs);
+  color: var(--color-foreground-heading);
+  background-color: var(--color-background);
+  display: flex;
+  border-radius: 100%;
+  transition: transform 0.2s ease-out;
+  border: 0.5px solid var(--border-color);
+
+  & svg > path {
+    fill: var(--color-foreground-heading);
+  }
+
+  &:hover {    
+    background-color: var(--color-background);
+    transform: scale(1.02);
+    transition: transform 0.2s ease-out;
+  }
 }
 
 slideshow-arrows .slideshow-control.slideshow-control--style-none {
   display: none;
 }
 
+.media-gallery--carousel slideshow-arrows {
+  left: 0.5rem;
+  right: 0.5rem;
+}
+
 .media-gallery--carousel slideshow-arrows .slideshow-control {
-  padding-inline: 0 var(--padding-md);
   opacity: 1;
+
+  color: var(--color-primary-button-text);
+  background-color: var(--color-primary-button-background);
+  border: none;
+
+  & svg > path {
+    fill: var(--color-primary-button-text);
+  }
 }
 
 .card-gallery slideshow-arrows .slideshow-control {
@@ -3738,7 +3770,7 @@ slideshow-arrows .slideshow-control.slideshow-control--style-none {
 }
 
 .resource-list__carousel slideshow-arrows {
-  padding-inline: var(--util-page-margin-offset);
+  padding-inline: 1rem;
 }
 
 .resource-list__carousel .resource-list__slide {
@@ -4369,36 +4401,22 @@ text-component {
     margin-top: 16px;
   }
 }
-.add-to-cart-icon{
-  display: none!important;
+
+.add-to-cart-icon.add-to-cart-icon--visible {
+  display: block !important;
 }
 
 .menu-list__link {
   position: relative;
 }
 
-
-.menu-list__link:hover {
-  color: #ff5000 !important;
-}
-
-.menu-list__link::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 15px;
-  width: 100%;
-  height: 2px;
-  background: #ff5000;
-  transform: scaleX(0);
-  transition: transform 0.2s ease;
-}
-
-.menu-list__link:hover::after {
-  transform: scaleX(1);
-}
-
 /* Announcement bar disabled for now */
 #header-group .shopify-section:has(.announcement-bar) {
   display: none !important;
+}
+
+.floating-atc {
+  position: absolute;
+  bottom: var(--padding-block-end);
+  right: var(--padding-inline-end);
 }

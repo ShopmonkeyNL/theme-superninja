@@ -3,6 +3,11 @@
   Collects all pdp-review-item blocks and creates auto-rotating carousel
 {%- enddoc -%}
 
+{%- capture default_reviews_raw -%}
+SARAH M.::5::"Worked overnight! I couldn't believe how fast the fruit flies disappeared. So much better than those vinegar traps."||JOHN D.::5::"Finally, a solution that actually works! My kitchen is fruit fly free and I couldn't be happier with the results."||MARIA L.::5::"Easy to use, safe around my kids and pets, and incredibly effective. Highly recommend!"
+{%- endcapture -%}
+{%- assign default_reviews = default_reviews_raw | split: '||' -%}
+
 {%- liquid
   # Get all review items from the section
   assign review_items = section.blocks | where: 'type', 'pdp-review-item'
@@ -12,7 +17,7 @@
   endif
   
   if use_defaults
-    assign review_count = 3
+    assign review_count = default_reviews.size
   else
     assign review_count = review_items.size
   endif
@@ -29,51 +34,29 @@
   endif
 -%}
 
-<div class="pdp-reviews-carousel" {{ block.shopify_attributes }}>
+<div class="pdp-reviews-carousel" id="pdp-reviews-carousel-{{ block.id }}" {{ block.shopify_attributes }}>
   <div class="pdp-reviews-carousel__container">
     {%- if use_defaults -%}
       {%- comment -%} Default reviews {%- endcomment -%}
-      <div class="pdp-review-item pdp-review-item--active" data-review-index="0">
-        <div class="pdp-review-item__header">
-          <div class="pdp-review-item__name">SARAH M.</div>
-          <div class="pdp-review-item__stars" aria-label="5 stars">
-            {%- for i in (1..5) -%}
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M8 0L10.1631 5.52786L16 6.11146L12 10.0557L12.9443 16L8 13.1631L3.05573 16L4 10.0557L0 6.11146L5.83686 5.52786L8 0Z" fill="#FF5000"/>
-              </svg>
-            {%- endfor -%}
+      {%- for review in default_reviews -%}
+        {%- assign review_parts = review | split: '::' -%}
+        {%- assign review_name = review_parts[0] -%}
+        {%- assign review_rating = review_parts[1] | plus: 0 -%}
+        {%- assign review_message = review_parts[2] -%}
+        <div class="pdp-review-item{% if forloop.first %} pdp-review-item--active{% endif %}" data-review-index="{{ forloop.index0 }}">
+          <div class="pdp-review-item__header">
+            <div class="pdp-review-item__name">{{ review_name }}</div>
+            <div class="pdp-review-item__stars" aria-label="{{ review_rating }} stars">
+              {%- for i in (1..5) -%}
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M8 0L10.1631 5.52786L16 6.11146L12 10.0557L12.9443 16L8 13.1631L3.05573 16L4 10.0557L0 6.11146L5.83686 5.52786L8 0Z" fill="{% if i <= review_rating %}#FF5000{% else %}#E5E5E5{% endif %}"/>
+                </svg>
+              {%- endfor -%}
+            </div>
           </div>
+          <div class="pdp-review-item__message">{{ review_message }}</div>
         </div>
-        <div class="pdp-review-item__message">"Worked overnight! I couldn't believe how fast the fruit flies disappeared. So much better than those vinegar traps."</div>
-      </div>
-      
-      <div class="pdp-review-item" data-review-index="1">
-        <div class="pdp-review-item__header">
-          <div class="pdp-review-item__name">JOHN D.</div>
-          <div class="pdp-review-item__stars" aria-label="5 stars">
-            {%- for i in (1..5) -%}
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M8 0L10.1631 5.52786L16 6.11146L12 10.0557L12.9443 16L8 13.1631L3.05573 16L4 10.0557L0 6.11146L5.83686 5.52786L8 0Z" fill="#FF5000"/>
-              </svg>
-            {%- endfor -%}
-          </div>
-        </div>
-        <div class="pdp-review-item__message">"Finally, a solution that actually works! My kitchen is fruit fly free and I couldn't be happier with the results."</div>
-      </div>
-      
-      <div class="pdp-review-item" data-review-index="2">
-        <div class="pdp-review-item__header">
-          <div class="pdp-review-item__name">MARIA L.</div>
-          <div class="pdp-review-item__stars" aria-label="5 stars">
-            {%- for i in (1..5) -%}
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M8 0L10.1631 5.52786L16 6.11146L12 10.0557L12.9443 16L8 13.1631L3.05573 16L4 10.0557L0 6.11146L5.83686 5.52786L8 0Z" fill="#FF5000"/>
-              </svg>
-            {%- endfor -%}
-          </div>
-        </div>
-        <div class="pdp-review-item__message">"Easy to use, safe around my kids and pets, and incredibly effective. Highly recommend!"</div>
-      </div>
+      {%- endfor -%}
     {%- else -%}
       {%- for review_block in review_items -%}
         <div class="pdp-review-item{% if forloop.first %} pdp-review-item--active{% endif %}" data-review-index="{{ forloop.index0 }}">
@@ -121,19 +104,19 @@
     transform: translateY(-50%);
     width: 36px;
     height: 36px;
-    background: transparent;
+    background: #fff;
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0;
-    transition: opacity 0.2s ease;
+    transition: transform 0.2s ease-in-out;
     z-index: 10;
-  }
+    
+    border-radius: 100%;
+    box-shadow: 0 1px 5px 0px rgb(0 0 0 / 7%);
 
-  .pdp-reviews-carousel__arrow:hover {
-    opacity: 0.9;
   }
 
   .pdp-reviews-carousel__arrow-icon {
@@ -152,6 +135,14 @@
 
   .pdp-reviews-carousel__arrow--next {
     right: -18px;
+  }
+
+  .pdp-reviews-carousel__arrow--next:hover {
+    transform: translateY(-50%) translateX(1px);
+  }
+
+  .pdp-reviews-carousel__arrow--prev:hover {
+    transform: translateY(-50%) translateX(-1px);
   }
 
   @media screen and (max-width: 749px) {
@@ -205,6 +196,7 @@
   }
 
   .pdp-reviews-carousel__container .pdp-review-item__message {
+    position: relative;
     font-family: Tahoma, sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -212,6 +204,60 @@
     line-height: 150%;
     letter-spacing: 0%;
     color: #1C1C1C;
+    height: 54px;   
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .pdp-reviews-carousel__container .pdp-review-item.is-scrollable::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 6px;
+    width: 20px;
+    height: 20px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.9);
+    pointer-events: none;
+    transform: translateX(-50%);
+  }
+
+  .pdp-reviews-carousel__container .pdp-review-item.is-scrollable::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 13px;
+    width: 6px;
+    height: 6px;
+    border-right: 2px solid #1C1C1C;
+    border-bottom: 2px solid #1C1C1C;
+    transform: translateX(-50%) rotate(45deg);
+    pointer-events: none;
+    animation: pdp-review-arrow-bounce 1.4s ease-in-out infinite;
+    opacity: 0.5;
+  }
+
+  .pdp-reviews-carousel__container .pdp-review-item.is-scroll-end::before,
+  .pdp-reviews-carousel__container .pdp-review-item.is-scroll-end::after {
+    opacity: 0;
+    animation: none;
+  }
+
+  .pdp-reviews-carousel__container .pdp-review-item__message::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+
+  @keyframes pdp-review-arrow-bounce {
+    0%,
+    100% {
+      transform: translateX(-50%) translateY(0) rotate(45deg);
+    }
+    50% {
+      transform: translateX(-50%) translateY(3px) rotate(45deg);
+    }
   }
 
   @media screen and (min-width: 750px) {
@@ -227,8 +273,39 @@
 
 <script>
   (function() {
-    const carousel = document.querySelector('.pdp-reviews-carousel');
+    const carousel = document.getElementById('pdp-reviews-carousel-{{ block.id }}');
     if (!carousel) return;
+
+    const messages = carousel.querySelectorAll('.pdp-review-item__message');
+
+    function updateScrollIndicator(message) {
+      const reviewItem = message.closest('.pdp-review-item');
+      if (!reviewItem) return;
+
+      const isScrollable = message.scrollHeight > message.clientHeight + 1;
+      const isAtEnd = message.scrollTop + message.clientHeight >= message.scrollHeight - 1;
+
+      reviewItem.classList.toggle('is-scrollable', isScrollable);
+      reviewItem.classList.toggle('is-scroll-end', !isScrollable || isAtEnd);
+    }
+
+    function refreshScrollIndicators() {
+      messages.forEach((message) => updateScrollIndicator(message));
+    }
+
+    messages.forEach((message) => {
+      message.addEventListener('scroll', function() {
+        updateScrollIndicator(message);
+      });
+    });
+
+    refreshScrollIndicators();
+    requestAnimationFrame(refreshScrollIndicators);
+    window.addEventListener('load', function() {
+      requestAnimationFrame(refreshScrollIndicators);
+      setTimeout(refreshScrollIndicators, 120);
+    });
+    window.addEventListener('resize', refreshScrollIndicators);
 
     const items = carousel.querySelectorAll('.pdp-review-item');
     if (items.length <= 1) return;
@@ -245,6 +322,7 @@
       items.forEach((item, i) => {
         item.classList.toggle('pdp-review-item--active', i === currentIndex);
       });
+      requestAnimationFrame(refreshScrollIndicators);
     }
 
     function nextReview() {

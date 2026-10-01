@@ -88,7 +88,8 @@
             {% content_for 'block',
               type: '_product-card',
               id: 'static-product-card',
-              closest.product: product
+              closest.product: product,
+              forloop: forloop
             %}
           </div>
           {% if block_settings.layout_type == 'carousel' or block_settings.carousel_on_mobile %}

@@ -4,13 +4,24 @@
 
 {% liquid
   assign section_bg = section.settings.background_color | default: '#F0F2F1'
+  assign section_padding_top = section.settings.padding_top | default: 48
+  assign section_padding_bottom = section.settings.padding_bottom | default: 96
+  assign section_padding_top_mobile = section.settings.padding_top_mobile | default: 32
+  assign section_padding_bottom_mobile = section.settings.padding_bottom_mobile | default: 64
   assign card_blocks = section.blocks | where: 'type', 'numbered_card'
+  assign cards_swiper_ref = 'reusableCardsSwiper-' | append: section.id
+
+  if template.name == 'product' and template.suffix == 'v2'
+    assign swiper_arrow_asset = 'arrow-right.svg'
+  else
+    assign swiper_arrow_asset = 'Capa_1.svg'
+  endif
 %}
 
 <section
   id="simple-to-use"
   class="reusable-cards-section reusable-cards-section--{{ section.id }}"
-  style="--rcs-bg: {{ section_bg }};"
+  style="--rcs-bg: {{ section_bg }}; --rcs-padding-top: {{ section_padding_top }}px; --rcs-padding-bottom: {{ section_padding_bottom }}px; --rcs-padding-top-mobile: {{ section_padding_top_mobile }}px; --rcs-padding-bottom-mobile: {{ section_padding_bottom_mobile }}px;"
   {{ section.shopify_attributes }}
 >
   <div class="reusable-cards-section__inner">
@@ -56,38 +67,28 @@
     </div>
 
     {% if card_blocks.size > 0 %}
-      <div class="reusable-cards-section__cards">
+      {% capture reusable_cards_swiper_slides %}
         {% for block in card_blocks %}
-          <article class="reusable-cards-section__card" {{ block.shopify_attributes }}>
-            <div class="reusable-cards-section__card-image-wrapper">
-              {% if block.settings.image != blank %}
-                {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.title, class: 'reusable-cards-section__card-image' }}
-              {% elsif block.settings.asset_image != blank %}
-                <img
-                  src="{{ block.settings.asset_image | asset_url }}"
-                  alt="{{ block.settings.title }}"
-                  class="reusable-cards-section__card-image"
-                  loading="lazy"
-                  width="360"
-                  height="280"
-                >
-              {% else %}
-                {{ 'image' | placeholder_svg_tag: class: 'reusable-cards-section__card-image' }}
-              {% endif %}
-            </div>
+          <div class="swiper-slide resource-list-swiper__slide">
+            {% render 'reusable-cards-section-card', block: block, index: forloop.index %}
+          </div>
+        {% endfor %}
+      {% endcapture %}
 
-            <div class="reusable-cards-section__card-body">
-              <div class="reusable-cards-section__card-copy">
-                <h3 class="reusable-cards-section__card-title">
-                  {{ block.settings.title | default: 'STEP' }}
-                </h3>
-                <div class="reusable-cards-section__card-text rte">
-                  {{ block.settings.content }}
-                </div>
-              </div>
-              <div class="reusable-cards-section__card-number">{{ forloop.index }}</div>
-            </div>
-          </article>
+      <div class="reusable-cards-section__cards-swiper">
+        {% render 'resource-list-swiper',
+          ref: cards_swiper_ref,
+          slides: card_blocks,
+          slides_markup: reusable_cards_swiper_slides,
+          slide_count: card_blocks.size,
+          settings: section.settings,
+          slide_width_max: '313px'
+        %}
+      </div>
+
+      <div class="reusable-cards-section__cards reusable-cards-section__cards-static">
+        {% for block in card_blocks %}
+          {% render 'reusable-cards-section-card', block: block, index: forloop.index, include_shopify_attributes: true %}
         {% endfor %}
       </div>
     {% endif %}
@@ -96,7 +97,7 @@
 
 <style>
   .reusable-cards-section {
-    padding: 48px 16px 96px;
+    padding: var(--rcs-padding-top, 48px) 16px var(--rcs-padding-bottom, 96px);
     background: var(--rcs-bg);
   }
 
@@ -142,6 +143,69 @@
     align-items: stretch;
   }
 
+  .reusable-cards-section__cards-swiper {
+    display: none;
+  }
+
+  .reusable-cards-section__cards-swiper .resource-list-swiper__slide {
+    height: auto;
+  }
+
+  .reusable-cards-section__cards-swiper .reusable-cards-section__card {
+    max-width: 100%;
+  }
+
+  .reusable-cards-section--{{ section.id }} .resource-list-swiper-container {
+    --swiper-navigation-width: 36px;
+    --swiper-navigation-height: 36px;
+  }
+
+  .reusable-cards-section--{{ section.id }} .resource-list-swiper__nav {
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    border: none;
+    border-radius: 100%;
+    box-shadow: 0 1px 5px 0 rgb(0 0 0 / 7%);
+    padding: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .reusable-cards-section--{{ section.id }} .resource-list-swiper__nav:hover {
+    opacity: 0.9;
+  }
+
+  .reusable-cards-section--{{ section.id }} .resource-list-swiper__arrow {
+    font-size: 0;
+    line-height: 0;
+    color: transparent;
+  }
+
+  .reusable-cards-section--{{ section.id }} .resource-list-swiper__arrow::before {
+    content: '';
+    width: 36px;
+    height: 36px;
+    display: block;
+    background-image: url('{{ swiper_arrow_asset | asset_url }}');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .reusable-cards-section--{{ section.id }} .swiper-button-prev .resource-list-swiper__arrow::before {
+    transform: rotate(180deg);
+  }
+
+  @media screen and (max-width: 1199px) {
+    .reusable-cards-section__cards-swiper {
+      display: block;
+    }
+
+    .reusable-cards-section__cards-static {
+      display: none;
+    }
+  }
+
   .reusable-cards-section__card {
     background: #F0F2F1;
     display: flex;
@@ -172,11 +236,12 @@
 
   .reusable-cards-section__card-body {
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 16px;
-    padding: 20px 8px 8px;
+    padding: 20px 12px 12px;
     background: #fff;
+    width: 100%;
   }
 
   .reusable-cards-section__card-copy {
@@ -188,24 +253,17 @@
     margin: 0;
     color: #1C1C1C;
     font-family: var(--font-heading--family);
-    font-size: 36px;
     line-height: 1;
-    font-weight: 700;
     text-transform: uppercase;
   }
 
   .reusable-cards-section__card-text {
     margin: 10px 0 0;
     color: #4A4A4A;
-    font-family: Tahoma, sans-serif;
-    font-size: 19px;
-    line-height: 1.15;
-    font-weight: 400;
   }
 
   .reusable-cards-section__card-text p {
     margin: 0;
-    font-size: 20px!important;
   }
 
   .reusable-cards-section__card-number {
@@ -225,6 +283,11 @@
   }
 
   @media screen and (max-width: 768px) {
+    .reusable-cards-section {
+      padding-top: var(--rcs-padding-top-mobile, 32px);
+      padding-bottom: var(--rcs-padding-bottom-mobile, 64px);
+    }
+
     .reusable-cards-section__heading {
       font-size: var(--rcs-fs-m, 40px) !important;
       line-height: var(--rcs-lh-m, 1.3) !important;
@@ -233,56 +296,6 @@
     .reusable-cards-section__text {
       font-size: var(--rcs-text-fs-m, 16px) !important;
       line-height: var(--rcs-text-lh-m, 1.5) !important;
-    }
-
-    .reusable-cards-section__cards {
-      flex-direction: column;
-      gap: 0;
-      max-width: 560px;
-      margin: 0 auto;
-    }
-
-    .reusable-cards-section__card {
-      flex: 1 1 100%;
-      max-width: 100%;
-    }
-
-    .reusable-cards-section__card {
-      background: transparent;
-      align-items: stretch;
-      margin: 0 !important;
-    }
-
-    .reusable-cards-section__card-image-wrapper,
-    .reusable-cards-section__card-text {
-      display: none;
-    }
-
-    .reusable-cards-section__card-body {
-      background: transparent;
-      padding: 18px 0;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 18px;
-      border-bottom: 3px solid #1C1C1C;
-    }
-
-    .reusable-cards-section__card-copy {
-      flex: initial;
-      order: 1;
-    }
-
-    .reusable-cards-section__card-title {
-      font-size: 24px;
-      line-height: 1;
-    }
-
-    .reusable-cards-section__card-number {
-      order: 0;
-      font-size: 48px;
-      line-height: 1;
-      min-width: 48px;
-      text-align: left;
     }
   }
 </style>
@@ -298,6 +311,161 @@
       "id": "background_color",
       "label": "Background color",
       "default": "#F0F2F1"
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top (desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom (desktop)",
+      "min": 0,
+      "max": 240,
+      "step": 4,
+      "unit": "px",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top (mobile)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom (mobile)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "header",
+      "content": "Carousel layout"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Slides per view (desktop)",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "mobile_columns_carousel",
+      "label": "Slides per view (mobile)",
+      "min": 1,
+      "max": 3,
+      "step": 0.1,
+      "default": 1.2
+    },
+    {
+      "type": "range",
+      "id": "columns_gap",
+      "label": "Slide gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "t:content.navigation"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show arrows (desktop)",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows_mobile",
+      "label": "Show arrows (mobile)",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dots",
+      "label": "Show dots (desktop)",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dots_mobile",
+      "label": "Show dots (mobile)",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop slides",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay slides",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_timeout",
+      "label": "Autoplay timeout",
+      "min": 1000,
+      "max": 9900,
+      "step": 100,
+      "unit": "ms",
+      "default": 2500,
+      "visible_if": "{{ section.settings.autoplay == true }}"
+    },
+    {
+      "type": "select",
+      "id": "icons_style",
+      "label": "t:settings.icon",
+      "options": [
+        {
+          "value": "arrow",
+          "label": "t:options.arrows"
+        },
+        {
+          "value": "chevron",
+          "label": "t:options.chevrons"
+        },
+        {
+          "value": "arrows_large",
+          "label": "t:options.arrows_large"
+        },
+        {
+          "value": "chevron_large",
+          "label": "t:options.chevron_large"
+        },
+        {
+          "value": "none",
+          "label": "t:options.none"
+        }
+      ],
+      "default": "arrow"
     },
     {
       "type": "text",

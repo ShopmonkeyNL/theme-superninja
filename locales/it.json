@@ -144,6 +144,9 @@
     "taxes_at_checkout_shipping_at_checkout_without_policy": "Imposte, sconti e spedizione calcolati al check-out.",
     "checkout": "Check-out",
     "cart_title": "Carrello",
+    "cart_products": "Prodotti",
+    "cart_delivery": "Consegna",
+    "cart_delivery_free": "Gratuito",
     "price": "Prezzo",
     "price_regular": "Prezzo di listino",
     "price_compare_at": "Prezzo di confronto",
@@ -329,6 +332,11 @@
   },
   "products": {
     "product": {
+      "best_for": "Best for",
+      "description": "Descrizione",
+      "ingredients": "Ingredienti",
+      "shipping_and_returns": "Spedizioni e resi",
+      "faq": "Domande frequenti",
       "add_to_cart": "Aggiungi al carrello",
       "adding_to_cart": "Aggiunta in corso...",
       "added_to_cart": "Aggiunto al carrello",
@@ -340,49 +348,63 @@
       "quantity_increments": "Incrementi di {{ increment }}",
       "quantity_minimum": "Minimo di {{ minimum }}",
       "quantity_maximum": "Massimo di {{ maximum }}",
-      "in_cart": "nel carrello"
+      "in_cart": "nel carrello",
+      "features": "Caratteristiche",
+      "other_brands": "Altri marchi",
+      "effectiveness": "Efficacia",
+      "effort": "Sforzo",
+      "minimal": "Minimo",
+      "high": "Alto",
+      "safety": "Sicurezza (animali domestici e bambini)",
+      "clutter_level": "Livello di disordine",
+      "no_clutter": "Nessun disordine",
+      "high_clutter_level": "Alto livello di disordine",
+      "duration": "Durata",
+      "thirty_days": "30 giorni",
+      "two_three_days": "2-3 giorni",
+      "variant_picker": "Fai una scelta"
     }
+  },
+  "contact": {
+    "full_name": "Nome completo",
+    "email_address": "Indirizzo e-mail",
+    "purchase_source": "Dove hai effettuato questo acquisto?",
+    "country": "Paese",
+    "order_number": "Numero ordine",
+    "message": "Messaggio",
+    "placeholder_name": "Mario Rossi",
+    "placeholder_purchase": "Dove hai effettuato questo acquisto?",
+    "placeholder_message": "Dicci di più sulla tua richiesta...",
+    "placeholder_country": "Italia"
+  },
+  "blog": {
+    "minute_to_read": "minuto di lettura",
+    "minutes_to_read": "minuti di lettura",
+    "continue_reading": "Continua a leggere",
+    "categories": "Categorie",
+    "all_categories": "Tutte le categorie",
+    "tag": {
+      "fruit-flies": "Moscerini della frutta",
+      "fungus-gnats": "Moscerini del terriccio",
+      "food-moths": "Tarme alimentari",
+      "silverfish": "Pesciolini d'argento",
+      "wasps": "Vespe",
+      "general": "Generale"
+    }
+  },
+  "partner": {
+    "company_name": "Nome dell'azienda",
+    "company_website": "Sito web dell'azienda",
+    "contact_name": "Nome del contatto",
+    "country": "Paese",
+    "email_address": "Indirizzo e-mail",
+    "phone": "Telefono",
+    "partner_type": "Tipo di partner",
+    "message": "Messaggio",
+    "placeholder_company": "La tua azienda",
+    "placeholder_name": "Mario Rossi",
+    "placeholder_message": "Parlaci del tuo mercato, canale e copertura...",
+    "select_country": "Seleziona il tuo paese",
+    "select_partner_type": "Seleziona il tipo di partner"
   }
-,"contact": {
-  "full_name": "Nome completo",
-  "email_address": "Indirizzo e-mail",
-  "purchase_source": "Dove hai effettuato questo acquisto?",
-  "country": "Paese",
-  "order_number": "Numero ordine",
-  "message": "Messaggio",
-  "placeholder_name": "Mario Rossi",
-  "placeholder_purchase": "Dove hai effettuato questo acquisto?",
-  "placeholder_message": "Dicci di più sulla tua richiesta...",
-  "placeholder_country": "Italia"
-},
-"blog": {
-  "minute_to_read": "minuto di lettura",
-  "minutes_to_read": "minuti di lettura",
-  "continue_reading": "Continua a leggere",
-"categories": "Categorie",
-"all_categories": "Tutte le categorie",
-"tag": {
-  "fruit-flies": "Moscerini della frutta",
-  "fungus-gnats": "Moscerini del terriccio",
-  "food-moths": "Tarme alimentari",
-  "silverfish": "Pesciolini d'argento",
-  "wasps": "Vespe",
-  "general": "Generale"
-}
-},
-"partner": {
-  "company_name": "Nome dell'azienda",
-  "company_website": "Sito web dell'azienda",
-  "contact_name": "Nome del contatto",
-  "country": "Paese",
-  "email_address": "Indirizzo e-mail",
-  "phone": "Telefono",
-  "partner_type": "Tipo di partner",
-  "message": "Messaggio",
-  "placeholder_company": "La tua azienda",
-  "placeholder_name": "Mario Rossi",
-  "placeholder_message": "Parlaci del tuo mercato, canale e copertura...",
-  "select_country": "Seleziona il tuo paese",
-  "select_partner_type": "Seleziona il tipo di partner"
-}
 }

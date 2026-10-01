@@ -207,7 +207,9 @@
 
       case row
         when 'top'
-          assign first = mobile_menu
+          # The mobile menu is rendered explicitly in the mobile column below, so it
+          # must not be duplicated into the desktop column as well.
+          assign first = ''
 
           if bottom_row_blocks.size > 0 and section.settings.divider_size == 'page-width'
             assign class = class | append: ' divider--page-width'
@@ -264,11 +266,11 @@
           {% comment %} Mobile: [logo] | [cart][menu] com space-between {% endcomment %}
           <div class="header__columns header__columns--mobile spacing-style">
             <div class="header-mobile__left">
-              {{ logo }}
+              {{ mobile_menu }}
             </div>
+            {{ logo }}
             <div class="header-mobile__right">
               {{ actions }}
-              {{ mobile_menu }}
             </div>
           </div>
         {% else %}
@@ -520,7 +522,7 @@
 
     /* If there is no center column, make the column the menu is in grow eagerly */
     &:where(:not(:has(.header__column--center))) {
-      @media screen and (min-width: 750px) {
+      @media screen and (min-width: 992px) {
         --header-template-columns: var(--header-left) var(--header-right);
 
         grid-template-areas: 'left right';
@@ -547,7 +549,7 @@
   }
 
   /* Mobile: esconder grid desktop e mostrar estrutura própria [logo] | [cart][menu] */
-  @media screen and (max-width: 749px) {
+  @media screen and (max-width: 991px) {
     .header__columns--desktop {
       display: none;
     }
@@ -564,6 +566,7 @@
     }
 
     .header-mobile__left {
+      flex: 1;
       flex-shrink: 0;
     }
 
@@ -572,9 +575,17 @@
       flex-direction: row;
       align-items: center;
       gap: var(--gap-md, 12px);
+      flex: 1;
       flex-shrink: 0;
+      justify-content: end;
+
+      & .account-button.header-actions__action {
+        display: none;
+      }
     }
   }
+
+  
 
   /* Single column layout if there are no columns within */
   .header__columns:not(:has(.header__column)) {
@@ -614,7 +625,7 @@
     margin-block: calc(-2 * var(--header-padding));
     padding-block: calc(2 * var(--header-padding));
     margin-inline: calc(-1 * var(--gap-xl) / 2);
-    padding-inline: calc(var(--gap-xl) / 2);
+    padding-inline: calc(var(--gap-3xl) / 2);
   }
 
   /* Set header paddings based on height setting */

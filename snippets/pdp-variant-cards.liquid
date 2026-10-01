@@ -1,143 +1,169 @@
 {%- doc -%}
-  Renders variant cards for PDP - Pack quantity selector
-  
+  Renders inline variant cards for PDP pack quantity selector.
+  This snippet is intended to be rendered inside an existing variant-picker form.
+
   @param {object} product_resource - The product object
   @param {string} section_id - Section ID for variant picker integration
+  @param {string} [block_id] - Block ID for unique input naming
 {%- enddoc -%}
 
 {%- liquid
   assign product = product_resource | default: closest.product
   assign selected_variant = product.selected_or_first_available_variant
-  
+
   # Get all variants sorted by option value (quantity)
   assign variants = product.variants | sort: 'option1'
-  
+
   # Get the first option name for the input name attribute
   assign first_option = product.options_with_values.first
   assign option_name = first_option.name | default: 'Packs quantity'
 -%}
 
 {%- if variants.size > 1 -%}
-  <div class="pdp-variant-cards" data-section-id="{{ section_id }}" data-product-id="{{ product.id }}">
-    <variant-picker
-      class="variant-picker"
-      data-section-id="{{ section_id }}"
-      data-product-id="{{ product.id }}"
-      data-product-url="{{ product.url }}"
-      ref="variantCardsPicker"
-    >
-      <form class="variant-picker__form pdp-variant-cards__form">
-        <div class="pdp-variant-cards__container">
-          {%- for variant in variants -%}
-            {%- liquid
-              assign is_selected = false
-              if variant.id == selected_variant.id
-                assign is_selected = true
-              endif
-              
-              assign badge_raw = variant.metafields.custom.variants_badge.value | default: variant.metafields.custom.variants_badge | strip | upcase
-              assign show_most_popular = false
-              assign show_best_value = false
-              if badge_raw == 'MOST POPULAR'
-                assign show_most_popular = true
-              elsif badge_raw == 'BEST VALUE'
-                assign show_best_value = true
-              endif
-              
-              assign variant_title = variant.title | default: variant.option1
-              assign title_stripped = variant_title | replace: '0', '' | replace: '1', '' | replace: '2', '' | replace: '3', '' | replace: '4', '' | replace: '5', '' | replace: '6', '' | replace: '7', '' | replace: '8', '' | replace: '9', ''
-              assign variant_title_only_numbers = false
-              if title_stripped == blank and variant_title != blank
-                assign variant_title_only_numbers = true
-              endif
-              assign current_price = variant.price | money
-              assign compare_at_price = variant.compare_at_price | money
-              assign has_compare_price = false
-              if variant.compare_at_price > variant.price
-                assign has_compare_price = true
-              endif
-            -%}
-            
-            <label
-              class="pdp-variant-card{% if is_selected %} pdp-variant-card--selected{% endif %}{% unless variant.available %} pdp-variant-card--unavailable{% endunless %}"
-              data-variant-id="{{ variant.id }}"
-              data-variant-available="{{ variant.available }}"
-            >
-              <input
-                type="radio"
-                name="options[{{ option_name | escape }}]"
-                value="{{ variant.option1 | escape }}"
-                data-variant-id="{{ variant.id }}"
-                data-option-value-id="{{ variant.id }}"
-                data-input-id="1-{{ forloop.index0 }}"
-                data-fieldset-index="0"
-                {% if is_selected %}checked data-current-checked="true"{% else %}data-current-checked="false"{% endif %}
-                {% unless variant.available %}disabled data-option-available="false"{% else %}data-option-available="true"{% endunless %}
-                class="pdp-variant-card__input"
-              >
-              
-              {%- if show_most_popular -%}
-                <div class="pdp-variant-card__badge pdp-variant-card__badge--popular">{{ badge_raw }}</div>
-              {%- endif -%}
-              {%- if show_best_value -%}
-                <div class="pdp-variant-card__badge pdp-variant-card__badge--value">{{ badge_raw }}</div>
-              {%- endif -%}
-              
-              <div class="pdp-variant-card__checkmark" aria-hidden="true" style="display: {% if is_selected %}block{% else %}none{% endif %};">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="24" height="24" fill="#FF5000"/>
-                <path d="M18.5 8.5L9.69269 15.5L5.5 12.1677" stroke="#F0F2F1" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              
-              <div class="pdp-variant-card__content">
-                <div class="pdp-variant-card__title">{% if variant_title_only_numbers %}{{ variant_title | upcase }} TRAPS{% else %}{{ variant_title | upcase }}{% endif %}</div>
-                <div class="pdp-variant-card__price">
-                  <span class="pdp-variant-card__price-current">{{ current_price }}</span>
-                  {%- if has_compare_price -%}
-                    <span class="pdp-variant-card__price-compare">{{ compare_at_price }}</span>
-                  {%- endif -%}
-                </div>
-              </div>
-            </label>
-          {%- endfor -%}
+  <fieldset
+    class='variant-option pdp-variant-cards__container'
+    data-fieldset-index='0'
+    ref='fieldsets[]'
+  >
+    {% for variant in variants %}
+      {% liquid
+        comment
+          Is selected
+        endcomment
+        assign is_selected = false
+        if variant.id == selected_variant.id
+          assign is_selected = true
+        endif
+
+        comment
+          Options
+        endcomment
+        assign option_value_id = blank
+        for option_value in first_option.values
+          if option_value.name == variant.option1
+            assign option_value_id = option_value.id
+            break
+          endif
+        endfor
+
+        comment
+          Badges
+        endcomment
+        assign badge_raw = variant.metafields.custom.variants_badge.value | default: variant.metafields.custom.variants_badge | strip | upcase
+        assign show_most_popular = false
+        assign show_best_value = false
+
+        if badge_raw == 'MOST POPULAR'
+          assign show_most_popular = true
+        elsif badge_raw == 'BEST VALUE'
+          assign show_best_value = true
+        endif
+
+        comment
+          Variant title + price
+        endcomment
+        assign variant_title = variant.title | default: variant.option1
+        assign title_stripped = variant_title | replace: '0', '' | replace: '1', '' | replace: '2', '' | replace: '3', '' | replace: '4', '' | replace: '5', '' | replace: '6', '' | replace: '7', '' | replace: '8', '' | replace: '9', ''
+        assign variant_title_only_numbers = false
+        if title_stripped == blank and variant_title != blank
+          assign variant_title_only_numbers = true
+        endif
+        assign current_price = variant.price | money
+        assign compare_at_price = variant.compare_at_price | money
+        assign has_compare_price = false
+        if variant.compare_at_price > variant.price
+          assign has_compare_price = true
+        endif
+      %}
+
+      <label
+        class='pdp-variant-card{% unless variant.available %} pdp-variant-card--unavailable{% endunless %}'
+        data-variant-id='{{ variant.id }}'
+        data-variant-available='{{ variant.available }}'
+      >
+        <input
+          type='radio'
+          name='{{ option_name | escape }}-{{ block_id | default: section_id }}-{{ product.id }}'
+          value='{{ variant.option1 | escape }}'
+          aria-label='{{ variant.option1 | escape }}'
+          data-variant-id='{{ variant.id }}'
+          data-option-value-id='{{ option_value_id }}'
+          data-previous-checked='false'
+          data-input-id='1-{{ forloop.index0 }}'
+          data-input-index='{{ forloop.index0 }}'
+          data-fieldset-index='0'
+          {% if is_selected %}
+            checked data-current-checked='true'
+          {% else %}
+            data-current-checked='false'
+          {% endif %}
+          {% unless variant.available %}
+            aria-disabled='true' disabled data-option-available='false'
+          {% else %}
+            data-option-available='true'
+          {% endunless %}
+          class='pdp-variant-card__input'
+        >
+        {%- if show_most_popular -%}
+          <div class='pdp-variant-card__badge pdp-variant-card__badge--popular'>{{ badge_raw }}</div>
+        {%- endif -%}
+        {%- if show_best_value -%}
+          <div class='pdp-variant-card__badge pdp-variant-card__badge--value'>{{ badge_raw }}</div>
+        {%- endif -%}
+
+        <div class='pdp-variant-card__content'>
+          <div class='h5'>
+            {% if variant_title_only_numbers -%}
+              {{- variant_title | upcase }} TRAPS
+            {%- else -%}
+              {{- variant_title | upcase -}}
+            {%- endif %}
+          </div>
+          <div class='h6'>
+            {%- if has_compare_price -%}
+              <span class='pdp-variant-card__price-compare'>{{ compare_at_price }}</span>
+            {%- endif -%}
+            <span class='pdp-variant-card__price-current'>{{ current_price }}</span>
+          </div>
         </div>
-      </form>
-    </variant-picker>
-  </div>
+      </label>
+    {% endfor %}
+  </fieldset>
 
-  <style>
-    .pdp-variant-cards {
-      width: 100%;
-    }
-
+  {% style %}
     .pdp-variant-cards__container {
       display: flex;
-      gap: 16px;
+      gap: 1rem;
       flex-wrap: wrap;
+      row-gap: 2rem;
+      padding: 0;
+      margin: 0;
+      border: 0;
     }
 
     .pdp-variant-card {
       position: relative;
       flex: 1;
-      min-width: 140px;
-      max-width: 200px;
-      border: 2px solid #E5E5E5;
-      background: #FFFFFF;
+      border: 1px solid #e5e5e5;
+      background: #ffffff;
+      color: black;
       cursor: pointer;
       transition: all 0.2s ease;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 0.5rem;
+      padding: 0.5rem;
+      border-radius: 2px;
     }
 
     .pdp-variant-card:hover:not(.pdp-variant-card--unavailable) {
-      border-color: #FF5000;
+      background: #fafafa;
     }
 
-    .pdp-variant-card--selected {
-      border-color: #FF5000;
-      background: #FFF5F0;
+    .pdp-variant-card:has(.pdp-variant-card__input:checked) {
+      border-color: #ff5000;
+      background: #F6EDE9;
+      color: #551b00;
     }
 
     .pdp-variant-card--unavailable {
@@ -153,36 +179,36 @@
 
     .pdp-variant-card__badge {
       position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -100%);
-    box-sizing: border-box;
-    min-width: 79px;
-    min-height: 20px;
-    padding: 4px 10px;
-    gap: 6px;
-    font-family: var(--font-heading--family)!important;
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 100%;
-    letter-spacing: 0;
-    vertical-align: middle;
-    text-transform: uppercase;
-    white-space: nowrap;
-    z-index: 2;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+      top: 0;
+      left: 0.5rem;
+      transform: translateY(-100%);
+      box-sizing: border-box;
+      min-width: 79px;
+      min-height: 20px;
+      padding: 4px 10px;
+      gap: 6px;
+      font-family: var(--font-heading--family) !important;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0;
+      vertical-align: middle;
+      text-transform: uppercase;
+      white-space: nowrap;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .pdp-variant-card__badge--popular {
-      background: #F3B396;
-      color: #1C1C1C;
+      background: #f3b396;
+      color: #1c1c1c;
     }
 
     .pdp-variant-card__badge--value {
-      background: #BEDE9F;
-      color: #1C1C1C;
+      background: #bede9f;
+      color: #1c1c1c;
     }
 
     .pdp-variant-card__checkmark {
@@ -190,18 +216,23 @@
       width: 24px;
       height: 24px;
       z-index: 3;
+      display: none;
     }
 
-    .pdp-variant-card__content > *{
-        font-family: var(--font-heading--family);
-        font-weight: 700;
-        font-size: 22px;
-        line-height: 100%;
-        letter-spacing: 0px;
-        text-transform: uppercase;
-        text-align: center;
+    .pdp-variant-card:has(.pdp-variant-card__input:checked) .pdp-variant-card__checkmark {
+      display: block;
     }
-    
+
+    .pdp-variant-card__content > * {
+      font-family: var(--font-heading--family);
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 100%;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
     .pdp-variant-card__content {
       display: flex;
       flex-direction: column;
@@ -210,56 +241,18 @@
       padding: 16px;
     }
 
-
-
+    .pdp-variant-card__price-compare {
+      opacity: 0.5;
+      text-decoration: line-through;
+      padding-right: 5px;
+      font-size: 0.8em;
+    }
 
     @media screen and (max-width: 749px) {
-
       .pdp-variant-card {
         max-width: 100%;
         min-width: auto;
       }
     }
-  </style>
-
-  <script type="module">
-    (function() {
-      const variantCards = document.querySelector('.pdp-variant-cards');
-      if (!variantCards) return;
-
-      const cards = variantCards.querySelectorAll('.pdp-variant-card');
-      const variantPicker = variantCards.querySelector('variant-picker');
-      
-      if (!variantPicker) return;
-
-      cards.forEach(card => {
-        const input = card.querySelector('input[type="radio"]');
-        if (!input) return;
-
-        card.addEventListener('click', function(e) {
-          if (input.disabled) return;
-          
-          e.preventDefault();
-          
-          // Update radio state
-          cards.forEach(c => {
-            const radio = c.querySelector('input[type="radio"]');
-            if (radio) radio.checked = false;
-            c.classList.remove('pdp-variant-card--selected');
-            const checkmark = c.querySelector('.pdp-variant-card__checkmark');
-            if (checkmark) checkmark.style.display = 'none';
-          });
-          
-          input.checked = true;
-          card.classList.add('pdp-variant-card--selected');
-          const checkmark = card.querySelector('.pdp-variant-card__checkmark');
-          if (checkmark) checkmark.style.display = 'block';
-          
-          // Trigger change event on the input to integrate with variant-picker
-          const changeEvent = new Event('change', { bubbles: true, cancelable: true });
-          input.dispatchEvent(changeEvent);
-        });
-      });
-    })();
-  </script>
+  {% endstyle %}
 {%- endif -%}

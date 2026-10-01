@@ -2330,5 +2330,15 @@
         "default": "equal-width-buttons"
       }
     ]
+  },
+  {
+    "name": "Shipping & Returns",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "shipping_and_returns",
+        "label": "Global shipping & returns information"
+      }
+    ]
   }
 ]

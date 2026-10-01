@@ -1,0 +1,238 @@
+<div class='section-background color-{{ section.settings.color_scheme }}'></div>
+
+<div
+  class='section section--{{ section.settings.section_width }} spacing-style {% if section.settings.color_scheme != blank %}color-{{ section.settings.color_scheme }}{% endif %}'
+  style='{% render 'spacing-padding', settings: section.settings %}'
+>
+  <div class="easy-to-use">
+    <div class="easy-to-use__heading-wrapper">
+      {% content_for 'block', type: 'text', id: 'text' %}
+      {% content_for 'block', type: '_heading', id: 'heading', text: '' %}
+    </div>
+
+    <div class="easy-to-use__content">
+      <div class="content-numbers">
+        {% for i in (1..5) %}
+          <div class="content-numbers__num">{{ i }}</div>
+          {% unless forloop.last %}
+            <div class="content-numbers__line"></div>
+          {% endunless %}
+        {% endfor %}
+      </div>
+      <div class="content-cards">
+        {% for object in section.settings.metaobject_steps %}
+          {% render 'image-with-content', title: object.titel, img: object.afbeelding, description: object.omschrijving %}
+        {% endfor %}
+      </div>
+    </div>
+
+    {% if section.settings.bug_1 %}
+      <img src="{{ section.settings.bug_1 | image_url: width: 400 }}" class="easy-to-use__bug bug-1" alt="Image of bug 1">
+    {% endif %}
+
+    {% if section.settings.bug_2 %}
+      <img src="{{ section.settings.bug_2 | image_url: width: 400 }}" class="easy-to-use__bug bug-2" alt="Image of bug 2">
+    {% endif %}
+
+    {% if section.settings.bug_3 %}
+      <img src="{{ section.settings.bug_3 | image_url: width: 400 }}" class="easy-to-use__bug bug-3" alt="Image of bug 3">
+    {% endif %}
+
+    {% if section.settings.bug_4 %}
+      <img src="{{ section.settings.bug_4 | image_url: width: 400 }}" class="easy-to-use__bug bug-4" alt="Image of bug 4">
+    {% endif %}
+  </div>
+</div>
+
+{% style %}
+  .easy-to-use {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    & .easy-to-use__heading-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      
+      @media (min-width: 750px) {
+        gap: 1rem;
+      }
+    }
+
+    & .easy-to-use__content {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+
+      & .content-numbers {
+        display: none;
+
+        & .content-numbers__num {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 100%;
+          width: 2.5rem;
+          aspect-ratio: 1;
+          border: 1px solid var(--border-color);
+          color: var(--color-foreground-heading);
+          font-weight: bold;
+        }
+
+        & .content-numbers__line {
+          width: 1px;
+          height: 142px;
+          background: var(--border-color);
+        }
+
+        @media (min-width: 576px) {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          gap: 1rem;
+        }
+      }
+
+      & .content-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    }
+
+    & .easy-to-use__bug {
+      position: absolute;
+      height: 200px;
+      width: fit-content;
+      
+      z-index: -1;
+
+      &.bug-1 {
+        left: -3.5rem;
+        top: 1rem;
+      }
+
+      &.bug-2 {
+        left: -5.5rem;
+        top: 15rem;
+      }
+
+      &.bug-3 {
+        right: -1rem;
+        bottom: 12rem;
+      }
+
+      &.bug-4 {
+        right: -3.5rem;
+        bottom: 1rem;
+      }
+
+      @media (max-width: 749px) {
+        display: none;
+      } 
+    }
+
+    @media (min-width: 750px) {
+      gap: 2.5rem;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Easy to use",
+  "blocks": [
+    {
+      "type": "text"
+    },
+    {
+      "type": "_heading"
+    }
+  ],
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "t:options.page"
+        },
+        {
+          "value": "full-width",
+          "label": "t:options.full"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 128,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 128,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "metaobject_list",
+      "id": "metaobject_steps",
+      "label": "Metaobject steps",
+      "metaobject_type": "easy_to_use_steps"
+    },
+    {
+      "type": "image_picker",
+      "id": "bug_1",
+      "label": "Image bug 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "bug_2",
+      "label": "Image bug 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "bug_3",
+      "label": "Image bug 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "bug_4",
+      "label": "Image bug 4"
+    },
+  ],
+  "presets": [
+    {
+      "name": "Easy to use",
+      "category": "Shopmonkey - Custom"
+    }
+  ]
+}
+{% endschema %}

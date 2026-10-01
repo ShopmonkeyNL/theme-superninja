@@ -8,6 +8,7 @@
   {{- block.shopify_attributes -}}
 >
   {% if show_account and shop.customer_accounts_enabled %}
+    {% render 'search' %}
     {% render 'account-popover' %}
     {% render 'account-drawer' %}
   {% endif %}
@@ -447,6 +448,12 @@
     @media screen and (max-width: 749px) {
       justify-self: flex-end;
     }
+
+    @media (min-width: 992px) {
+      search-button {
+        display: none !important;
+      }
+    }
   }
 
   .header__column--right header-actions {
@@ -503,7 +510,7 @@
   }
 
   .cart-drawer__heading .cart-bubble__background {
-    background-color: rgb(var(--color-foreground-rgb) / var(--opacity-10-25));
+    background-color: transparent;
   }
 
   .cart-drawer__heading .cart-bubble__text {
